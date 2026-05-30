@@ -1,0 +1,409 @@
+<HTML>
+<HEAD>
+<TITLE>Heidinger | Gallery</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+
+<!-- begin Alyssa Heidinger scripting for the fadein and fadeout of the work and model shots -->
+<script>
+function SetOpacity(elem, opacityAsInt)
+{
+	var opacityAsDecimal = opacityAsInt;
+	
+	if (opacityAsInt > 100)
+		opacityAsInt = opacityAsDecimal = 100; 
+	else if (opacityAsInt < 0)
+		opacityAsInt = opacityAsDecimal = 0; 
+	
+	opacityAsDecimal /= 100;
+	if (opacityAsInt < 1)
+		opacityAsInt = 1; // IE7 bug, text smoothing cuts out if 0
+	
+	elem.style.opacity = opacityAsDecimal;
+	elem.style.filter  = "alpha(opacity=" + opacityAsInt + ")";
+}
+
+function FadeOpacity(elemId, fromOpacity, toOpacity, time, fps)
+{
+	var steps = Math.ceil(fps * (time / 1000));
+	var delta = (toOpacity - fromOpacity) / steps;
+	
+	FadeOpacityStep(elemId, 0, steps, fromOpacity, delta, (time / steps));
+}
+
+function FadeOpacityStep(elemId, stepNum, steps, fromOpacity, delta, timePerStep)
+{
+    SetOpacity(document.getElementById(elemId), Math.round(parseInt(fromOpacity) + (delta * stepNum)));
+
+    if (stepNum < steps)
+        setTimeout("FadeOpacityStep('" + elemId + "', " + (stepNum+1) + ", " + steps + ", " + fromOpacity + ", " + delta + ", " + timePerStep + ");", timePerStep);
+}
+</script>
+
+<script>
+// this work does not have a model shot
+function fadein_fun_baby() {
+	// fade the initial image out
+	FadeOpacity('work_id', 99, 1, 20, 2);
+	// change to the work image and fade in
+	setTimeout("document.work.src=\"work-fun_baby.jpg\"; FadeOpacity('work_id', 1, 99, 1000, 80);", 100); 
+}	
+function fadein_bow() {
+	// fade the initial image out
+	FadeOpacity('work_id', 99, 1, 20, 2);
+	// change to the work image and fade in
+	setTimeout("document.work.src=\"work-bow.jpg\"; FadeOpacity('work_id', 1, 99, 1000, 80);", 100); 
+}	
+function fadein_cleopatra() {
+	// fade the initial image out
+	FadeOpacity('work_id', 99, 1, 20, 2);
+	// change to the work image and fade in
+	setTimeout("document.work.src=\"work-cleopatra.jpg\"; FadeOpacity('work_id', 1, 99, 1000, 80);", 100); 
+}	
+function fadein_layer() {
+	// fade the initial image out
+	FadeOpacity('work_id', 99, 1, 20, 2);
+	// change to the work image and fade in
+	setTimeout("document.work.src=\"work-layer.jpg\"; FadeOpacity('work_id', 1, 99, 1000, 80);", 100); 
+}	
+
+// this work has a model shot
+function fadein_sinuous() {
+	// fade the initial image out
+	FadeOpacity('work_id', 99, 1, 20, 2);
+	FadeOpacity('model_id', 99, 1, 20, 2);
+	// change to the model and work image and fade in
+	setTimeout("document.work.src=\"work-sinuous.jpg\"; FadeOpacity('work_id', 1, 99, 1000, 80);", 100); 
+	setTimeout("document.model.src=\"model-sinuous.jpg\"; FadeOpacity('model_id', 1, 99, 1000, 80);", 1000); 
+}	
+function fadein_bird() {
+	// fade the initial image out
+	FadeOpacity('work_id', 99, 1, 20, 2);
+	FadeOpacity('model_id', 99, 1, 20, 2);
+	// change to the model and work image and fade in
+	setTimeout("document.work.src=\"work-bird.jpg\"; FadeOpacity('work_id', 1, 99, 1000, 80);", 100); 
+	setTimeout("document.model.src=\"model-bird.jpg\"; FadeOpacity('model_id', 1, 99, 1000, 80);", 1000); 
+}	
+function fadein_bridge() {
+	// fade the initial image out
+	FadeOpacity('work_id', 99, 1, 20, 2);
+	FadeOpacity('model_id', 99, 1, 20, 2);
+	// change to the model and work image and fade in
+	setTimeout("document.work.src=\"work-bridge.jpg\"; FadeOpacity('work_id', 1, 99, 1000, 80);", 100); 
+	setTimeout("document.model.src=\"model-bridge.jpg\"; FadeOpacity('model_id', 1, 99, 1000, 80);", 1000); 
+}	
+function fadein_exo() {
+	// fade the initial image out
+	FadeOpacity('work_id', 99, 1, 20, 2);
+	FadeOpacity('model_id', 99, 1, 20, 2);
+	// change to the model and work image and fade in
+	setTimeout("document.work.src=\"work-exo.jpg\"; FadeOpacity('work_id', 1, 99, 1000, 80);", 100); 
+	setTimeout("document.model.src=\"model-exo.jpg\"; FadeOpacity('model_id', 1, 99, 1000, 80);", 1000); 
+}	
+function fadein_invasion() {
+	// fade the initial image out
+	FadeOpacity('work_id', 99, 1, 20, 2);
+	FadeOpacity('model_id', 99, 1, 20, 2);
+	// change to the model and work image and fade in
+	setTimeout("document.work.src=\"work-invasion.jpg\"; FadeOpacity('work_id', 1, 99, 1000, 80);", 100); 
+	setTimeout("document.model.src=\"model-invasion.jpg\"; FadeOpacity('model_id', 1, 99, 1000, 80);", 1000); 
+}	
+function fadein_sweep() {
+	// fade the initial image out
+	FadeOpacity('work_id', 99, 1, 20, 2);
+	FadeOpacity('model_id', 99, 1, 20, 2);
+	// change to the model and work image and fade in
+	setTimeout("document.work.src=\"work-sweep.jpg\"; FadeOpacity('work_id', 1, 99, 1000, 80);", 100); 
+	setTimeout("document.model.src=\"model-sweep.jpg\"; FadeOpacity('model_id', 1, 99, 1000, 80);", 1000); 
+}	
+function fadein_vert() {
+	// fade the initial image out
+	FadeOpacity('work_id', 99, 1, 20, 2);
+	FadeOpacity('model_id', 99, 1, 20, 2);
+	// change to the model and work image and fade in
+	setTimeout("document.work.src=\"work-vert.jpg\"; FadeOpacity('work_id', 1, 99, 1000, 80);", 100); 
+	setTimeout("document.model.src=\"model-vert.jpg\"; FadeOpacity('model_id', 1, 99, 1000, 80);", 1000); 
+}	
+function fadein_zpr() {
+	// fade the initial image out
+	FadeOpacity('work_id', 99, 1, 20, 2);
+	FadeOpacity('model_id', 99, 1, 20, 2);
+	// change to the model and work image and fade in
+	setTimeout("document.work.src=\"work-zpr.jpg\"; FadeOpacity('work_id', 1, 99, 1000, 80);", 100); 
+	setTimeout("document.model.src=\"model-zpr.jpg\"; FadeOpacity('model_id', 1, 99, 1000, 80);", 1000); 
+}	
+
+// change the work and model shots back to the white background
+function blank_out_images() {
+	document.work.src="work.jpg"; 
+	document.model.src="model.jpg"; 
+}
+</script>
+<!-- end Alyssa Heidinger scripting -->
+
+<meta name="Microsoft Border" content="none, default">
+</HEAD>
+<BODY BGCOLOR=#FFFFFF LEFTMARGIN=0 TOPMARGIN=0 MARGINWIDTH=0 MARGINHEIGHT=0>
+
+
+<!-- begin Alyssa Heidinger page content -->
+<TABLE WIDTH=1024 BORDER=0 CELLPADDING=0 CELLSPACING=0 align="center">
+	<TR>
+		<TD COLSPAN=21>
+			<IMG SRC="gallery_01.jpg" WIDTH=626 HEIGHT=18 ALT=""></TD>
+		<TD ROWSPAN=2>
+			<a href="javascript: fadein_fun_baby();" onmouseout="blank_out_images()"><IMG SRC="fun_baby.jpg" WIDTH=36 HEIGHT=40 ALT="" border=0></a></TD>
+		<TD COLSPAN=6 ROWSPAN=6>
+			<IMG SRC="gallery_03.jpg" WIDTH=362 HEIGHT=219 ALT=""></TD>
+		<TD>
+			<IMG SRC="spacer.gif" WIDTH=1 HEIGHT=18 ALT=""></TD>
+	</TR>
+	<TR>
+		<TD COLSPAN=16 ROWSPAN=3>
+			<IMG SRC="gallery_04.jpg" WIDTH=427 HEIGHT=138 ALT=""></TD>
+		<TD COLSPAN=2 ROWSPAN=2>
+			<a href="javascript: fadein_bow();" onmouseout="blank_out_images()"><IMG SRC="bow.jpg" WIDTH=47 HEIGHT=41 ALT="" border=0></a></TD>
+		<TD COLSPAN=3 ROWSPAN=6>
+			<IMG SRC="gallery_06.jpg" WIDTH=152 HEIGHT=210 ALT="" border=0></TD>
+		<TD>
+			<IMG SRC="spacer.gif" WIDTH=1 HEIGHT=22 ALT="" border=0></TD>
+	</TR>
+	<TR>
+		<TD ROWSPAN=5>
+			<IMG SRC="gallery_07.jpg" WIDTH=36 HEIGHT=188 ALT="" border=0></TD>
+		<TD>
+			<IMG SRC="spacer.gif" WIDTH=1 HEIGHT=19 ALT="" border=0></TD>
+	</TR>
+	<TR>
+		<TD COLSPAN=2 ROWSPAN=17>
+			<IMG SRC="gallery_08.jpg" WIDTH=47 HEIGHT=676 ALT="" border=0></TD>
+		<TD>
+			<IMG SRC="spacer.gif" WIDTH=1 HEIGHT=97 ALT="" border=0></TD>
+	</TR>
+	<TR>
+		<TD COLSPAN=3 ROWSPAN=9>
+			<IMG SRC="gallery_09.jpg" WIDTH=99 HEIGHT=192 ALT="" border=0></TD>
+		<TD COLSPAN=2>
+			<a href="javascript: fadein_vert();" onmouseout="blank_out_images()"><IMG SRC="vert.jpg" WIDTH=45 HEIGHT=35 ALT="" border=0></a></TD>
+		<TD COLSPAN=11>
+			<IMG SRC="gallery_11.jpg" WIDTH=283 HEIGHT=35 ALT="" border=0></TD>
+		<TD>
+			<IMG SRC="spacer.gif" WIDTH=1 HEIGHT=35 ALT="" border=0></TD>
+	</TR>
+	<TR>
+		<TD COLSPAN=11 ROWSPAN=3>
+			<IMG SRC="gallery_12.jpg" WIDTH=205 HEIGHT=48 ALT="" border=0></TD>
+		<TD ROWSPAN=2>
+			<a href="javascript: fadein_sinuous();" onmouseout="blank_out_images()"><IMG SRC="sinuous.jpg" WIDTH=55 HEIGHT=37 ALT="" border=0></a></TD>
+		<TD ROWSPAN=4>
+			<IMG SRC="gallery_14.jpg" WIDTH=68 HEIGHT=68 ALT="" border=0></TD>
+		<TD>
+			<IMG SRC="spacer.gif" WIDTH=1 HEIGHT=28 ALT="" border=0></TD>
+	</TR>
+	<TR>
+		<TD ROWSPAN=6>
+			<IMG SRC="gallery_15.jpg" WIDTH=51 HEIGHT=86 ALT="" border=0></TD>
+		<TD COLSPAN=2 ROWSPAN=3>
+			<a href="javascript: fadein_cleopatra();" onmouseout="blank_out_images()"><IMG SRC="cleopatra.jpg" WIDTH=42 HEIGHT=40 ALT="" border=0></a></TD>
+		<TD COLSPAN=3 ROWSPAN=6>
+			<IMG SRC="gallery_17.jpg" WIDTH=269 HEIGHT=86 ALT="" border=0></TD>
+		<TD>
+			<IMG SRC="spacer.gif" WIDTH=1 HEIGHT=9 ALT="" border=0></TD>
+	</TR>
+	<TR>
+		<TD ROWSPAN=2>
+			<IMG SRC="gallery_18.jpg" WIDTH=55 HEIGHT=31 ALT="" border=0></TD>
+		<TD COLSPAN=2 ROWSPAN=5>
+			<IMG SRC="gallery_19.jpg" WIDTH=143 HEIGHT=77 ALT="" border=0></TD>
+		<TD COLSPAN=2 ROWSPAN=3>
+			<a href="javascript: fadein_layer();" onmouseout="blank_out_images()"><IMG SRC="layer.jpg" WIDTH=45 HEIGHT=40 ALT="" border=0></a></TD>
+		<TD>
+			<IMG SRC="spacer.gif" WIDTH=1 HEIGHT=11 ALT="" border=0></TD>
+	</TR>
+	<TR>
+		<TD COLSPAN=7 ROWSPAN=2>
+			<IMG SRC="gallery_21.jpg" WIDTH=116 HEIGHT=29 ALT="" border=0></TD>
+		<TD COLSPAN=2 ROWSPAN=3>
+			<a href="javascript: fadein_bridge();" onmouseout="blank_out_images()"><IMG SRC="bridge.jpg" WIDTH=41 HEIGHT=39 ALT="" border=0></a></TD>
+		<TD COLSPAN=2>
+			<IMG SRC="gallery_23.jpg" WIDTH=48 HEIGHT=20 ALT="" border=0></TD>
+		<TD>
+			<IMG SRC="spacer.gif" WIDTH=1 HEIGHT=20 ALT="" border=0></TD>
+	</TR>
+	<TR>
+		<TD COLSPAN=4 ROWSPAN=8>
+			<IMG SRC="model.jpg" WIDTH=171 HEIGHT=237 ALT="" border=0 id="model_id" name="model"></TD>
+		<TD COLSPAN=2 ROWSPAN=3>
+			<IMG SRC="gallery_25.jpg" WIDTH=42 HEIGHT=46 ALT="" border=0></TD>
+		<TD>
+			<IMG SRC="spacer.gif" WIDTH=1 HEIGHT=9 ALT="" border=0></TD>
+	</TR>
+	<TR>
+		<TD COLSPAN=3 ROWSPAN=6>
+			<IMG SRC="gallery_26.jpg" WIDTH=59 HEIGHT=188 ALT="" border=0></TD>
+		<TD COLSPAN=3 ROWSPAN=2>
+			<a href="javascript: fadein_invasion();" onmouseout="blank_out_images()"><IMG SRC="invasion.jpg" WIDTH=46 HEIGHT=37 ALT="" border=0></a></TD>
+		<TD ROWSPAN=8>
+			<IMG SRC="gallery_28.jpg" WIDTH=11 HEIGHT=304 ALT="" border=0></TD>
+		<TD COLSPAN=2 ROWSPAN=2>
+			<IMG SRC="gallery_29.jpg" WIDTH=45 HEIGHT=37 ALT="" border=0></TD>
+		<TD>
+			<IMG SRC="spacer.gif" WIDTH=1 HEIGHT=10 ALT="" border=0></TD>
+	</TR>
+	<TR>
+		<TD COLSPAN=2 ROWSPAN=7>
+			<IMG SRC="gallery_30.jpg" WIDTH=41 HEIGHT=294 ALT="" border=0></TD>
+		<TD>
+			<IMG SRC="spacer.gif" WIDTH=1 HEIGHT=27 ALT="" border=0></TD>
+	</TR>
+	<TR>
+		<TD COLSPAN=3>
+			<IMG SRC="gallery_31.jpg" WIDTH=46 HEIGHT=43 ALT="" border=0></TD>
+		<TD COLSPAN=9 ROWSPAN=8>
+			<IMG SRC="work.jpg" WIDTH=458 HEIGHT=430 ALT="" border=0 id="work_id" name="work"></TD>
+		<TD ROWSPAN=8>
+			<IMG SRC="gallery_33.jpg" WIDTH=92 HEIGHT=430 ALT="" border=0></TD>
+		<TD>
+			<IMG SRC="spacer.gif" WIDTH=1 HEIGHT=43 ALT="" border=0></TD>
+	</TR>
+	<TR>
+		<TD ROWSPAN=7>
+			<IMG SRC="gallery_34.jpg" WIDTH=38 HEIGHT=387 ALT="" border=0></TD>
+		<TD ROWSPAN=2>
+			<a href="javascript: fadein_sweep();" onmouseout="blank_out_images()"><IMG SRC="sweep.jpg" WIDTH=45 HEIGHT=54 ALT="" border=0></a></TD>
+		<TD ROWSPAN=7>
+			<IMG SRC="gallery_36.jpg" WIDTH=16 HEIGHT=387 ALT="" border=0></TD>
+		<TD COLSPAN=3>
+			<a href="javascript: fadein_zpr();" onmouseout="blank_out_images()"><IMG SRC="zpr.jpg" WIDTH=46 HEIGHT=44 ALT="" border=0></a></TD>
+		<TD>
+			<IMG SRC="spacer.gif" WIDTH=1 HEIGHT=44 ALT="" border=0></TD>
+	</TR>
+	<TR>
+		<TD COLSPAN=3 ROWSPAN=2>
+			<IMG SRC="gallery_38.jpg" WIDTH=46 HEIGHT=64 ALT="" border=0></TD>
+		<TD>
+			<IMG SRC="spacer.gif" WIDTH=1 HEIGHT=10 ALT="" border=0></TD>
+	</TR>
+	<TR>
+		<TD ROWSPAN=5>
+			<IMG SRC="gallery_39.jpg" WIDTH=45 HEIGHT=333 ALT="" border=0></TD>
+		<TD>
+			<IMG SRC="spacer.gif" WIDTH=1 HEIGHT=54 ALT="" border=0></TD>
+	</TR>
+	<TR>
+		<TD ROWSPAN=4>
+			<IMG SRC="gallery_40.jpg" WIDTH=33 HEIGHT=279 ALT="" border=0></TD>
+		<TD COLSPAN=3>
+			<a href="javascript: fadein_bird();" onmouseout="blank_out_images()"><IMG SRC="bird.jpg" WIDTH=48 HEIGHT=40 ALT="" border=0></a></TD>
+		<TD COLSPAN=2 ROWSPAN=2>
+			<IMG SRC="gallery_42.jpg" WIDTH=24 HEIGHT=116 ALT="" border=0></TD>
+		<TD>
+			<IMG SRC="spacer.gif" WIDTH=1 HEIGHT=40 ALT="" border=0></TD>
+	</TR>
+	<TR>
+		<TD COLSPAN=3 ROWSPAN=3>
+			<IMG SRC="gallery_43.jpg" WIDTH=48 HEIGHT=239 ALT="" border=0></TD>
+		<TD COLSPAN=4 ROWSPAN=3>
+			<IMG SRC="gallery_44.jpg" WIDTH=171 HEIGHT=239 ALT="" border=0></TD>
+		<TD>
+			<IMG SRC="spacer.gif" WIDTH=1 HEIGHT=76 ALT="" border=0></TD>
+	</TR>
+	<TR>
+		<TD ROWSPAN=3>
+			<IMG SRC="gallery_45.jpg" WIDTH=8 HEIGHT=196 ALT="" border=0></TD>
+		<TD COLSPAN=3>
+			<a href="javascript: fadein_exo();" onmouseout="blank_out_images()"><IMG SRC="exo.jpg" WIDTH=49 HEIGHT=46 ALT="" border=0></a></TD>
+		<TD ROWSPAN=3>
+			<IMG SRC="gallery_47.jpg" WIDTH=19 HEIGHT=196 ALT="" border=0></TD>
+		<TD>
+			<IMG SRC="spacer.gif" WIDTH=1 HEIGHT=46 ALT="" border=0></TD>
+	</TR>
+	<TR>
+		<TD COLSPAN=3 ROWSPAN=2>
+			<IMG SRC="gallery_48.jpg" WIDTH=49 HEIGHT=150 ALT="" border=0></TD>
+		<TD>
+			<IMG SRC="spacer.gif" WIDTH=1 HEIGHT=117 ALT="" border=0></TD>
+	</TR>
+	<TR>
+		<TD COLSPAN=5>
+			<a href="../heidinger.html" onMouseOver="document.home.src='home-ro.jpg';" onMouseOut="document.home.src='home-pink.jpg';"><IMG SRC="home-pink.jpg" WIDTH=144 HEIGHT=33 ALT="" border=0 name="home"></a></TD>
+		<TD COLSPAN=2>
+			<IMG SRC="gallery_50.jpg" WIDTH=36 HEIGHT=33 ALT="" border=0></TD>
+		<TD>
+			<IMG SRC="gallery_51.jpg" WIDTH=30 HEIGHT=33 ALT="" border=0></TD>
+		<TD COLSPAN=4>
+			<IMG SRC="gallery-grey.jpg" WIDTH=164 HEIGHT=33 ALT="" border=0></TD>
+		<TD COLSPAN=2>
+			<IMG SRC="gallery_53.jpg" WIDTH=126 HEIGHT=33 ALT="" border=0></TD>
+		<TD COLSPAN=5>
+			<a href="../resume/resume.html" onMouseOver="document.cv.src='cv-ro.jpg';" onMouseOut="document.cv.src='cv-pink.jpg';"><IMG SRC="cv-pink.jpg" WIDTH=145 HEIGHT=33 ALT="" border=0 name="cv"></a></TD>
+		<TD COLSPAN=2>
+			<IMG SRC="gallery_55.jpg" WIDTH=142 HEIGHT=33 ALT="" border=0></TD>
+		<TD COLSPAN=2>
+			<a href="../statement/statement.html" onMouseOver="document.statement.src='statement-ro.jpg';" onMouseOut="document.statement.src='statement-pink.jpg';"><IMG SRC="statement-pink.jpg" WIDTH=161 HEIGHT=33 ALT="" border=0 name="statement"></a></TD>
+		<TD>
+			<IMG SRC="spacer.gif" WIDTH=1 HEIGHT=33 ALT="" border=0></TD>
+	</TR>
+	<TR>
+		<TD>
+			<IMG SRC="spacer.gif" WIDTH=38 HEIGHT=1 ALT="" border=0></TD>
+		<TD>
+			<IMG SRC="spacer.gif" WIDTH=45 HEIGHT=1 ALT="" border=0></TD>
+		<TD>
+			<IMG SRC="spacer.gif" WIDTH=16 HEIGHT=1 ALT="" border=0></TD>
+		<TD>
+			<IMG SRC="spacer.gif" WIDTH=33 HEIGHT=1 ALT="" border=0></TD>
+		<TD>
+			<IMG SRC="spacer.gif" WIDTH=12 HEIGHT=1 ALT="" border=0></TD>
+		<TD>
+			<IMG SRC="spacer.gif" WIDTH=14 HEIGHT=1 ALT="" border=0></TD>
+		<TD>
+			<IMG SRC="spacer.gif" WIDTH=22 HEIGHT=1 ALT="" border=0></TD>
+		<TD>
+			<IMG SRC="spacer.gif" WIDTH=8 HEIGHT=1 ALT="" border=0></TD>
+		<TD>
+			<IMG SRC="spacer.gif" WIDTH=16 HEIGHT=1 ALT="" border=0></TD>
+		<TD>
+			<IMG SRC="spacer.gif" WIDTH=11 HEIGHT=1 ALT="" border=0></TD>
+		<TD>
+			<IMG SRC="spacer.gif" WIDTH=22 HEIGHT=1 ALT="" border=0></TD>
+		<TD>
+			<IMG SRC="spacer.gif" WIDTH=19 HEIGHT=1 ALT="" border=0></TD>
+		<TD>
+			<IMG SRC="spacer.gif" WIDTH=30 HEIGHT=1 ALT="" border=0></TD>
+		<TD>
+			<IMG SRC="spacer.gif" WIDTH=18 HEIGHT=1 ALT="" border=0></TD>
+		<TD>
+			<IMG SRC="spacer.gif" WIDTH=55 HEIGHT=1 ALT="" border=0></TD>
+		<TD>
+			<IMG SRC="spacer.gif" WIDTH=68 HEIGHT=1 ALT="" border=0></TD>
+		<TD>
+			<IMG SRC="spacer.gif" WIDTH=23 HEIGHT=1 ALT="" border=0></TD>
+		<TD>
+			<IMG SRC="spacer.gif" WIDTH=24 HEIGHT=1 ALT="" border=0></TD>
+		<TD>
+			<IMG SRC="spacer.gif" WIDTH=102 HEIGHT=1 ALT="" border=0></TD>
+		<TD>
+			<IMG SRC="spacer.gif" WIDTH=41 HEIGHT=1 ALT="" border=0></TD>
+		<TD>
+			<IMG SRC="spacer.gif" WIDTH=9 HEIGHT=1 ALT="" border=0></TD>
+		<TD>
+			<IMG SRC="spacer.gif" WIDTH=36 HEIGHT=1 ALT="" border=0></TD>
+		<TD>
+			<IMG SRC="spacer.gif" WIDTH=51 HEIGHT=1 ALT="" border=0></TD>
+		<TD>
+			<IMG SRC="spacer.gif" WIDTH=8 HEIGHT=1 ALT="" border=0></TD>
+		<TD>
+			<IMG SRC="spacer.gif" WIDTH=34 HEIGHT=1 ALT="" border=0></TD>
+		<TD>
+			<IMG SRC="spacer.gif" WIDTH=108 HEIGHT=1 ALT="" border=0></TD>
+		<TD>
+			<IMG SRC="spacer.gif" WIDTH=69 HEIGHT=1 ALT="" border=0></TD>
+		<TD>
+			<IMG SRC="spacer.gif" WIDTH=92 HEIGHT=1 ALT="" border=0></TD>
+		<TD></TD>
+	</TR>
+</TABLE>
+<p><!-- text below generated by server. PLEASE REMOVE --><!-- Counter/Statistics data collection code --><script language="JavaScript" src="http://us.js2.yimg.com/us.js.yimg.com/lib/smb/js/hosting/cp/js_source/whv2_001.js"></script><script language="javascript">geovisit();</script><noscript><img src="http://visit.webhosting.yahoo.com/visit.gif?us1208910918" alt="setstats" border="0" width="1" height="1">
+</p>
+</noscript></BODY>
+</HTML>

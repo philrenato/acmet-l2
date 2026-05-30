@@ -1,0 +1,606 @@
+#!/usr/bin/env python3
+"""Generate the directory index + profile pages from acmet.db.
+
+2026-05-30 rebuild:
+  * builds out EVERY high-confidence, non-disputed person (not just 7)
+  * bidirectional teacher<->student cross-links (click an instructor on a
+    student's page -> their page; a teacher's page lists the students they
+    taught) — Phil's request
+  * institution-type labels (university / art-college / craft-school /
+    trade-school / community-college / museum-school ...) from school_type
+  * name wording driven by fc_change_kind (genuine change vs archive misspelling)
+
+Each profile still pulls its narrative bio live from GitHub (wiki -> repo file
+-> embedded fallback); the embedded fallback is the hand-written wiki bio when
+one exists, otherwise the sourced fc_summary."""
+import os, re, sqlite3, html, json
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+SITE = os.path.join(HERE, "site")
+WIKI_DIR = os.path.join(SITE, "wiki")
+os.makedirs(WIKI_DIR, exist_ok=True)
+con = sqlite3.connect(os.path.join(HERE, "acmet.db")); con.row_factory = sqlite3.Row
+
+OWNER, REPO = "philrenato", "acmet-l2"
+
+# curated pages keep their stable filenames (existing links + memory rely on these)
+CURATED = {
+    "crafts/metalsdirectorypage/s272.html": ("phil-renato.html",      "Phil-Renato"),
+    "crafts/metalsdirectorypage/p82.html":  ("mary-lee-hu.html",      "Mary-Lee-Hu"),
+    "crafts/metalsdirectorypage/p97.html":  ("stanley-lechtzin.html", "Stanley-Lechtzin"),
+    "crafts/metalsdirectorypage/p88.html":  ("daniella-kerner.html",  "Daniella-Kerner"),
+    "crafts/metalsdirectorypage/p170.html": ("vickie-sedman.html",    "Vickie-Sedman"),
+    "gap/rebecca-strzelec":                 ("rebecca-strzelec.html", "Rebecca-Strzelec"),
+    "gap/skip-hunter":                      ("skip-hunter.html",      "Skip-Hunter"),
+}
+
+TYPE_LABEL = {
+    "university": "university art department", "art-college": "art &amp; design college",
+    "community-college": "community / technical college", "craft-school": "craft school / center",
+    "trade-school": "private jewelry / trade school", "museum-school": "museum art school",
+    "art-association": "art association school", "k12-school": "secondary / day school",
+    "unclassified": "",
+}
+
+def titlecase(n):
+    n = re.sub(r"\s+", " ", (n or "").strip())
+    cap = lambda w: "-".join(p.capitalize() for p in w.split("-"))
+    return " ".join(cap(w) for w in n.split())
+
+def clean_name(n):  # strip parentheticals like "Phil Renato (Phillip Renato)"
+    return re.sub(r"\s*\(.*?\)\s*", "", n or "").strip()
+
+def status_phrase(alive, job):
+    # state what someone is/was, never emphasize what they aren't
+    if alive == "no": return "Deceased"
+    if alive == "likely-deceased": return ""        # don't assert a death we're unsure of
+    if job == "retired-emeritus": return "Retired"
+    if alive == "unknown": return ""
+    return "Active"
+
+def srcs(s):
+    return [u.strip() for u in (s or "").split("|") if u.strip().startswith("http")]
+
+def norm(s):  # name normalisation for cross-link resolution
+    s = re.sub(r"\([^)]*\)", " ", (s or "").lower())
+    s = re.sub(r"\b(dr|prof|professor|mr|mrs|ms|jr|sr|phd|mfa|bfa)\b\.?", " ", s)
+    return re.sub(r"\s+", " ", re.sub(r"[^a-z ]", " ", s)).strip()
+
+def slugify(s):
+    return re.sub(r"[^a-z0-9]+", "-", clean_name(s or "").lower()).strip("-")
+
+# ---------------------------------------------------------------------------
+# choose the build-out set: one row per distinct person, high confidence,
+# not disputed. dedupe across the old/new archive trees (keep the checked row).
+# ---------------------------------------------------------------------------
+checked = [dict(r) for r in con.execute(
+    "SELECT * FROM people WHERE fc_checked IS NOT NULL")]
+by_name = {}
+for r in checked:
+    by_name.setdefault(r["name"], []).append(r)
+# pick best row per name (most informative summary wins)
+people = []
+for nm, rows in by_name.items():
+    rows.sort(key=lambda r: len(r["fc_summary"] or ""), reverse=True)
+    people.append(rows[0])
+
+def buildable(r):
+    if r["slug"] in CURATED: return True
+    if r["fc_verified"] == "disputed": return False
+    if r["fc_confidence"] == "high": return True
+    # additions brought current (gap / succession / editor) that carry a source + link:
+    # build them (thin but sourced) so the new teachers are discoverable and cross-link.
+    if r["fc_verified"] in ("snag-gap-2026", "succession-scan", "phil-added") and (r["fc_current_link"] or r["fc_sources"]):
+        return True
+    return False
+
+build_rows = [r for r in people if buildable(r)]
+
+# ---- assign filenames (curated stay fixed; rest auto, de-duped) ----
+fname_of = {}     # slug -> filename
+used = set(v[0] for v in CURATED.values())
+for r in sorted(build_rows, key=lambda r: r["name"]):
+    if r["slug"] in CURATED:
+        fname_of[r["slug"]] = CURATED[r["slug"]][0]; continue
+    disp = clean_name(r["fc_current_name"]) if (r["fc_name_changed"] == "yes" and r["fc_current_name"]) else r["name"]
+    base = slugify(disp) or slugify(r["name"]) or ("person-" + str(r["id"]))
+    fn = base + ".html"; i = 2
+    while fn in used:
+        fn = f"{base}-{i}.html"; i += 1
+    used.add(fn); fname_of[r["slug"]] = fn
+
+# ---------------------------------------------------------------------------
+# cross-link resolver: any name -> built person's filename
+# ---------------------------------------------------------------------------
+# index built people by normalised full name, by (last, first-initial), by last name
+exact, bylastinit, bylast, lastcount = {}, {}, {}, {}
+for r in build_rows:
+    for cand in {norm(r["name"]), norm(clean_name(r["fc_current_name"] or ""))}:
+        if not cand: continue
+        exact.setdefault(cand, r["slug"])
+        parts = cand.split()
+        if len(parts) >= 2:
+            bylastinit.setdefault((parts[-1], parts[0][0]), set()).add(r["slug"])
+            bylast.setdefault(parts[-1], set()).add(r["slug"])
+# known instructor spelling/nickname aliases -> canonical normalised name
+ALIAS = {
+    "arthur viertahler": "arthur vierthaler", "alvine pine": "alvin pine",
+    "bob ebendorf": "robert ebendorf", "fredrich holschuh": "frederick holschuh",
+    "dick hay": "richard hay", "bill macon": "william macon",
+}
+slug_by_name = {}
+for r in build_rows: slug_by_name[r["slug"]] = r
+
+def resolve_file(nm):
+    k = norm(nm); k = ALIAS.get(k, k)
+    if not k: return None
+    if k in exact: return fname_of.get(exact[k])
+    parts = k.split()
+    if len(parts) >= 2:
+        s = bylastinit.get((parts[-1], parts[0][0]))
+        if s and len(s) == 1: return fname_of.get(next(iter(s)))
+        s = bylast.get(parts[-1])
+        if s and len(s) == 1: return fname_of.get(next(iter(s)))
+    return None
+
+# ---------------------------------------------------------------------------
+# reverse student map: teacher filename -> [(student display, student file)]
+# from education.instructor (split on / , & "and") resolved to a built person.
+# ---------------------------------------------------------------------------
+id2row = {r["id"]: r for r in checked}
+name2builtrow = {}
+for r in build_rows: name2builtrow[r["name"]] = r
+students_of = {}   # teacher_slug -> set of (student_name, student_slug)
+slug_of_id = {}
+# map person id -> its build slug (dedup by name)
+for r in build_rows:
+    slug_of_id[r["id"]] = r["slug"]
+namebuilt = {r["name"]: r for r in build_rows}
+
+for e in con.execute("SELECT person_id, instructor FROM education WHERE instructor IS NOT NULL AND instructor!=''"):
+    student = id2row.get(e["person_id"])
+    if not student: continue
+    # the student we link to is the built row for that name (if any)
+    sb = namebuilt.get(student["name"])
+    for part in re.split(r"[/,&]| and ", e["instructor"]):
+        part = re.sub(r"\([^)]*\)", "", part).strip()
+        if not part: continue
+        k = norm(part); k = ALIAS.get(k, k)
+        tslug = exact.get(k)
+        if not tslug:
+            ps = k.split()
+            if len(ps) >= 2:
+                cand = bylastinit.get((ps[-1], ps[0][0])) or bylast.get(ps[-1])
+                if cand and len(cand) == 1: tslug = next(iter(cand))
+        if tslug and sb and tslug != sb["slug"]:
+            students_of.setdefault(tslug, set()).add((clean_name(sb["fc_current_name"]) if (sb["fc_name_changed"]=="yes" and sb["fc_current_name"]) else titlecase(sb["name"]), fname_of[sb["slug"]]))
+
+# ---------------------------------------------------------------------------
+# PROGRAMS: profile pages + person<->program cross-links
+# ---------------------------------------------------------------------------
+programs = [dict(r) for r in con.execute("SELECT * FROM programs WHERE fc_checked IS NOT NULL")]
+# dedupe by name (old/new tree) keeping the richest row
+prog_by_name = {}
+for p in programs:
+    prog_by_name.setdefault(p["name"], []).append(p)
+programs = []
+for nm, rows in prog_by_name.items():
+    rows.sort(key=lambda r: len((r["fc_what_happened"] or "")) + len((r["fc_current_faculty"] or "")), reverse=True)
+    programs.append(rows[0])
+
+pfile_of = {}   # program slug -> filename
+for p in sorted(programs, key=lambda p: p["name"]):
+    base = slugify(p["name"]) or ("program-" + str(p["id"]))
+    fn = base + ".html"; i = 2
+    while fn in used:
+        fn = f"{base}-{i}.html"; i += 1
+    used.add(fn); pfile_of[p["slug"]] = fn
+
+# program name resolver (for education.school + currently_at -> program page)
+prog_exact, prog_list = {}, []
+for p in programs:
+    n = norm(p["name"])
+    if n: prog_exact.setdefault(n, p["slug"]); prog_list.append((n, p["slug"]))
+def resolve_prog_file(nm):
+    n = norm(nm)
+    if not n: return None
+    if n in prog_exact: return pfile_of.get(prog_exact[n])
+    # substring either way, require a reasonably specific match
+    best = None
+    for pn, slug in prog_list:
+        if len(pn) >= 6 and (pn in n or n in pn):
+            best = slug
+            if pn == n: break
+    return pfile_of.get(best) if best else None
+
+prog_id2slug = {p["id"]: p["slug"] for p in programs}
+prog_row = {p["slug"]: p for p in programs}
+
+# faculty per program + which programs a person taught at (from program_faculty)
+prog_faculty = {}   # prog_slug -> list of (display, person_file_or_None, status, years)
+taught_at = {}      # person_file -> list of (prog_name, prog_file, status, years)
+for f in con.execute("SELECT program_id,name,person_url,status,years FROM program_faculty"):
+    pslug = prog_id2slug.get(f["program_id"])
+    if not pslug: continue
+    raw = f["name"] or ""
+    yrs = f["years"] or ""
+    m = re.search(r"\b(1[89]\d\d|20\d\d).*$", raw)
+    if m and not yrs: yrs = raw[m.start():].strip()
+    cleannm = re.sub(r"\s+\b(1[89]\d\d|20\d\d).*$", "", raw).strip()
+    status = f["status"] or "current"
+    pf = resolve_file(cleannm)
+    prog_faculty.setdefault(pslug, []).append((titlecase(cleannm), pf, status, yrs))
+    if pf:
+        taught_at.setdefault(pf, []).append((prog_row[pslug]["name"], pfile_of[pslug], status, yrs))
+
+# alumni per program (people who studied there) + a person's studied-at programs
+prog_alumni = {}    # prog_slug -> list of (display, person_file)
+studied_at = {}     # person_id -> set(prog_slug)
+for e in con.execute("SELECT person_id, school, degree FROM education WHERE school IS NOT NULL AND school!=''"):
+    pf_slug = prog_exact.get(norm(e["school"]))
+    if not pf_slug:
+        # fuzzy
+        n = norm(e["school"])
+        for pn, slug in prog_list:
+            if len(pn) >= 6 and (pn in n or n in pn): pf_slug = slug; break
+    if not pf_slug: continue
+    studied_at.setdefault(e["person_id"], set()).add(pf_slug)
+    student = id2row.get(e["person_id"])
+    if not student: continue
+    sb = namebuilt.get(student["name"])
+    disp = (clean_name(sb["fc_current_name"]) if (sb and sb["fc_name_changed"]=="yes" and sb["fc_current_name"])
+            else titlecase(student["name"]))
+    pf = fname_of.get(sb["slug"]) if sb else None
+    prog_alumni.setdefault(pf_slug, []).append((disp, pf))
+
+# dedupe the per-program lists
+for d in (prog_faculty, prog_alumni):
+    for k, v in d.items():
+        seen=set(); out=[]
+        for item in v:
+            key=item[0].lower()
+            if key not in seen: seen.add(key); out.append(item)
+        d[k]=out
+
+STATUS_PROG = {"yes":"Active","no":"Closed","merged-renamed":"Merged / renamed","unknown":""}
+
+# ---------------------------------------------------------------------------
+# page template
+# ---------------------------------------------------------------------------
+CSS = ""
+for seed in ("phil-renato.html", "mary-lee-hu.html"):
+    p = os.path.join(SITE, seed)
+    if os.path.exists(p):
+        CSS = open(p).read().split("<style>")[1].split("</style>")[0]; break
+if not CSS:
+    CSS = "body{font-family:-apple-system,sans-serif;max-width:720px;margin:0 auto;padding:40px}"
+
+PAGE = """<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{title} — Academic Metals Directory</title>
+<style>{css}
+  .back{{display:inline-block;margin-bottom:22px;font-size:13px;color:var(--soft);text-decoration:none}}
+  .back:hover{{color:var(--ink)}}
+  .newadd{{background:#f0efe7}}
+  .typetag{{display:inline-block;font-size:11px;letter-spacing:.04em;color:var(--soft);
+    border:1px solid #ddd9cd;border-radius:999px;padding:1px 9px;margin-left:6px;vertical-align:middle}}
+  .people-links a{{color:var(--good);text-decoration:none;font-weight:600}}
+  .people-links a:hover{{text-decoration:underline}}
+  .lineage-card h3{{margin-top:0}}
+  .lineage-card .lbl{{display:block;margin:10px 0 3px}}
+  .chip{{display:inline-block;margin:2px 5px 2px 0;padding:3px 9px;border-radius:8px;
+    background:#f2f0e8;font-size:13px}}
+  .chip a{{color:var(--ink);text-decoration:none}} .chip a:hover{{color:var(--good)}}
+  .instr-link{{color:var(--good);text-decoration:none}} .instr-link:hover{{text-decoration:underline}}
+</style></head><body><div class="wrap">
+  <a class="back" href="./">← the directory</a>
+  <p class="kicker">Academic Metals Directory · entry</p>
+  <h1 id="name">{title}</h1>
+  {former}
+  <div class="role">{role}</div>
+  <div class="checked">{checked}</div>
+  <hr>
+  {cards}
+  {edu}
+  {lineage}
+  <hr>
+  <div class="bio" id="bio">loading bio…</div>
+  <p class="checked">bio source: <span id="bio-src"></span> · <a id="edit-link" href="#" target="_blank" rel="noopener">✎ edit this bio</a></p>
+  <hr>
+  <h3 style="font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--soft)">Sources</h3>
+  <div class="sources" id="sources">{sources}</div>
+  <p class="foot">Structured facts come from <code>acmet.db</code>. The bio is pulled live from
+  GitHub (<code>{wiki}</code>) so it stays editable. If GitHub can't be reached, a built-in copy shows.</p>
+</div>
+<script>
+const WIKI={{owner:"{owner}",repo:"{repo}",page:"{wiki}"}};
+const SOURCES=[
+ {{url:`https://raw.githubusercontent.com/wiki/${{WIKI.owner}}/${{WIKI.repo}}/${{WIKI.page}}.md`,label:"live · github wiki",edit:`https://github.com/${{WIKI.owner}}/${{WIKI.repo}}/wiki/${{WIKI.page}}/_edit`}},
+ {{url:`https://raw.githubusercontent.com/${{WIKI.owner}}/${{WIKI.repo}}/main/${{WIKI.page}}.md`,label:"live · github repo",edit:`https://github.com/${{WIKI.owner}}/${{WIKI.repo}}/edit/main/${{WIKI.page}}.md`}}
+];
+const EDIT_FALLBACK=`https://github.com/${{WIKI.owner}}/${{WIKI.repo}}/edit/main/${{WIKI.page}}.md`;
+const FALLBACK_MD={fallback};
+function esc(s){{return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}}
+function inl(s){{return esc(s).replace(/\\[([^\\]]+)\\]\\(([^)]+)\\)/g,'<a href="$2" target="_blank" rel="noopener">$1</a>').replace(/\\*\\*([^*]+)\\*\\*/g,'<b>$1</b>').replace(/(^|[^*])\\*([^*]+)\\*/g,'$1<em>$2</em>');}}
+function md(t){{let h='',p=[];const f=()=>{{if(p.length){{const x=p.join(' ').trim();if(x)h+=(x.startsWith('*')&&x.endsWith('*')&&!x.includes('**'))?`<p class="note">${{inl(x.replace(/^\\*|\\*$/g,''))}}</p>`:`<p>${{inl(x)}}</p>`;p=[];}}}};
+ for(const l of t.replace(/\\r/g,'').split('\\n')){{if(/^###\\s/.test(l)){{f();h+=`<h3>${{inl(l.slice(4))}}</h3>`;}}else if(/^##\\s/.test(l)){{f();h+=`<h2>${{inl(l.slice(3))}}</h2>`;}}else if(/^#\\s/.test(l)){{f();h+=`<h1>${{inl(l.slice(2))}}</h1>`;}}else if(/^---+\\s*$/.test(l)){{f();h+='<hr>';}}else if(/^\\s*$/.test(l)){{f();}}else p.push(l);}}
+ f();return h;}}
+function show(t,live,label,edit){{document.getElementById('bio').innerHTML=md(t);document.getElementById('bio-src').innerHTML=live?`<span class="badge live">${{label}}</span>`:`<span class="badge local">built-in copy (github unreachable)</span>`;document.getElementById('edit-link').href=edit||EDIT_FALLBACK;}}
+(async()=>{{for(const s of SOURCES){{try{{const r=await fetch(s.url,{{cache:'no-store'}});if(r.ok){{show(await r.text(),true,s.label,s.edit);return;}}}}catch(e){{}}}}show(FALLBACK_MD,false,'',EDIT_FALLBACK);}})();
+</script></body></html>"""
+
+def kv(label, val):
+    return f'<p class="kv"><span class="lbl">{html.escape(label)}</span><br>{val}</p>' if val else ""
+
+def link_instructor(nm):
+    """instructor name -> linked if a built page exists, else plain."""
+    out = []
+    for part in re.split(r"(\s*[/,&]\s*|\s+and\s+)", nm):
+        if not part or re.fullmatch(r"\s*[/,&]\s*|\s+and\s+", part):
+            out.append(html.escape(part)); continue
+        f = resolve_file(part)
+        if f:
+            out.append(f'<a class="instr-link" href="{f}">{html.escape(part.strip())}</a>')
+        else:
+            out.append(html.escape(part))
+    return "".join(out)
+
+def fallback_bio(r):
+    wf = os.path.join(WIKI_DIR, fname_of[r["slug"]].replace(".html", "").title() + ".md")
+    # curated hand-written bios
+    if r["slug"] in CURATED:
+        p = os.path.join(WIKI_DIR, CURATED[r["slug"]][1] + ".md")
+        if os.path.exists(p): return open(p).read(), CURATED[r["slug"]][1]
+    # otherwise synthesize from the sourced summary
+    disp = clean_name(r["fc_current_name"]) if (r["fc_name_changed"]=="yes" and r["fc_current_name"]) else titlecase(r["name"])
+    wikiname = re.sub(r"\.html$", "", fname_of[r["slug"]])
+    wikiname = "-".join(w.capitalize() for w in wikiname.split("-"))
+    body = r["fc_summary"] or ""
+    if not body:
+        bits = [r["fc_current_role"], ("at " + r["currently_at"]) if r["currently_at"] else ""]
+        body = "; ".join(b for b in bits if b)
+    txt = f"# {disp}\n\n{body}\n\n*This entry is auto-drafted from the directory's fact-check notes. Edit to expand.*\n"
+    return txt, wikiname
+
+def build_profile(r):
+    name = r["name"]; changed = (r["fc_name_changed"] == "yes")
+    kind = r["fc_change_kind"]
+    cur = clean_name(r["fc_current_name"]) if (changed and r["fc_current_name"]) else titlecase(name)
+    title = cur
+    # if the "change" leaves the displayed name identical, there's nothing to note
+    if changed and norm(cur) == norm(titlecase(name)):
+        changed = False
+    if changed and kind == "spelling-correction":
+        former = f'<div class="former">archived (misspelled) as {html.escape(titlecase(name))}</div>'
+    elif changed and kind == "name-variant":
+        former = f'<div class="former">also listed as {html.escape(titlecase(name))}</div>'
+    elif changed:
+        former = f'<div class="former">formerly {html.escape(titlecase(name))}</div>'
+    else:
+        former = ""
+    role = html.escape(r["fc_current_role"] or "")
+    note = ""
+    if changed and kind == "name-change": note = " · ⚑ name change confirmed"
+    checked = f'last checked {r["fc_checked"] or ""}' + note
+    gap = (r["kind"] in ("person-gap-addition",))
+    succ = (r["fc_verified"] == "succession-scan")
+    sp = status_phrase(r["fc_alive"], r["fc_still_in_job"])
+    link = r["fc_current_link"]
+    now = (kv("Goes by", f'<b>{html.escape(cur)}</b>')
+           + kv("Current role", html.escape(r["fc_current_role"] or ""))
+           + (kv("Status", html.escape(sp)) if sp else "")
+           + (kv("Link", f'<a href="{html.escape(link)}" target="_blank" rel="noopener">{html.escape(re.sub(r"^https?://","",link))}</a>') if link else ""))
+    nowcard = f'<div class="card now"><h3>Now (checked 2026)</h3>{now}</div>'
+    if gap or succ:
+        if r["fc_verified"] == "phil-added":
+            lead = "Added to the directory in 2026 (not in the original Tyler listing)."
+        elif succ:
+            lead = "Current faculty — added in the 2026 succession scan; not in the original directory."
+        else:
+            lead = "Added during gap analysis; not in the original directory."
+        cards = f'<div style="margin:8px 0"><p class="note">{lead}</p>{nowcard}</div>'
+    else:
+        arch = r["currently_at"] or ""
+        thenline = f'<b>{html.escape(titlecase(name))}</b><br>' if changed else ""
+        then = (kv("Listed as", f'{thenline}{html.escape(arch)}' + (f' — since {r["since_year"]}' if r["since_year"] else ""))
+                + kv("Born", html.escape(", ".join([x for x in [r["dob"], r["birthplace"]] if x]))))
+        cards = (f'<div class="grid"><div class="card then"><h3>As archived (≈2014)</h3>{then}</div>{nowcard}</div>')
+    # ---- training (with institution-type tag + linked instructors) ----
+    edu_rows = con.execute("SELECT level,school,years,major,degree,instructor FROM education WHERE person_id=?", (r["id"],)).fetchall()
+    edu = ""
+    if edu_rows:
+        trs = ""
+        for e in edu_rows:
+            stype = con.execute("SELECT school_type FROM programs WHERE lower(name)=lower(?) LIMIT 1", (e["school"] or "",)).fetchone()
+            tag = f'<span class="typetag">{TYPE_LABEL[stype["school_type"]]}</span>' if (stype and stype["school_type"] in TYPE_LABEL and TYPE_LABEL[stype["school_type"]]) else ""
+            instr = (' · instructor: ' + link_instructor(e["instructor"])) if e["instructor"] else ""
+            sch = html.escape(e["school"] or "")
+            pf = resolve_prog_file(e["school"] or "")
+            schhtml = f'<a class="instr-link" href="{pf}">{sch}</a>' if pf else sch
+            trs += (f'<tr><td>{html.escape(e["level"] or "")}</td><td><b>{schhtml}</b>{tag}'
+                    f'{(" · "+html.escape(e["years"])) if e["years"] else ""}<br>'
+                    f'<span class="lbl">{html.escape(e["degree"] or "")}{instr}</span></td></tr>')
+        edu = f'<div class="card" style="margin-top:18px"><h3>Training</h3><table class="edu"><tbody>{trs}</tbody></table></div>'
+    # ---- lineage: students taught + institutions taught at (cross-links) ----
+    kids = sorted(students_of.get(r["slug"], []))
+    myfile = fname_of[r["slug"]]
+    taught = taught_at.get(myfile, [])
+    # dedupe taught-at by program, prefer a 'former'/years-bearing label
+    seenp = {}
+    for pn, pf2, st, yrs in taught:
+        seenp.setdefault(pf2, (pn, st, yrs))
+    lineage = ""
+    if kids or seenp:
+        parts = []
+        if seenp:
+            tchips = "".join(
+                f'<span class="chip"><a href="{pf2}">{html.escape(pn)}</a>'
+                + (f' <span class="lbl" style="display:inline">· {html.escape(("former " if st=="former" else "")+(yrs or ""))}</span>' if (st=="former" or yrs) else "")
+                + '</span>'
+                for pf2, (pn, st, yrs) in sorted(seenp.items(), key=lambda x: x[1][0]))
+            parts.append(f'<span class="lbl">Taught at</span><div class="people-links">{tchips}</div>')
+        if kids:
+            chips = "".join(f'<span class="chip"><a href="{f}">{html.escape(n)}</a></span>' for n, f in kids)
+            parts.append(f'<span class="lbl">Taught (in this directory)</span><div class="people-links">{chips}</div>')
+        lineage = (f'<div class="card lineage-card" style="margin-top:18px"><h3>Lineage</h3>'
+                   + "".join(parts)
+                   + f'<p class="checked" style="margin-top:8px">Students drawn from who lists this person as an instructor; '
+                     f'institutions from faculty records. See the full <a href="lineage.html">lineage timeline →</a></p></div>')
+    sources = "".join(f'<a href="{html.escape(u)}" target="_blank" rel="noopener">{html.escape(u)}</a>' for u in srcs(r["fc_sources"]))
+    fb, wikiname = fallback_bio(r)
+    fallback = json.dumps(fb)
+    out = PAGE.format(title=html.escape(title), css=CSS, former=former, role=role, checked=html.escape(checked),
+                      cards=cards, edu=edu, lineage=lineage, sources=sources,
+                      wiki=wikiname, owner=OWNER, repo=REPO, fallback=fallback)
+    open(os.path.join(SITE, fname_of[r["slug"]]), "w").write(out)
+    return title
+
+# ---------------------------------------------------------------------------
+# program profile page
+# ---------------------------------------------------------------------------
+PROG_PAGE = """<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{title} — Academic Metals Directory</title>
+<style>{css}
+  .back{{display:inline-block;margin-bottom:22px;font-size:13px;color:var(--soft);text-decoration:none}}
+  .back:hover{{color:var(--ink)}}
+  .typetag{{display:inline-block;font-size:11px;letter-spacing:.04em;color:var(--soft);
+    border:1px solid #ddd9cd;border-radius:999px;padding:1px 9px;margin-left:6px;vertical-align:middle}}
+  .people-links a{{color:var(--good);text-decoration:none;font-weight:600}}
+  .chip{{display:inline-block;margin:2px 5px 2px 0;padding:3px 9px;border-radius:8px;background:#f2f0e8;font-size:13px}}
+  .chip a{{color:var(--ink);text-decoration:none}} .chip a:hover{{color:var(--good)}}
+  .chip.plain{{color:var(--soft)}}
+</style></head><body><div class="wrap">
+  <a class="back" href="./">← the directory</a>
+  <p class="kicker">Academic Metals Directory · program</p>
+  <h1>{title}</h1>
+  <div class="role">{typelabel}{statusline}</div>
+  <div class="checked">{checked}</div>
+  <hr>
+  {cards}
+  {faculty}
+  {alumni}
+  <hr>
+  <h3 style="font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--soft)">Sources</h3>
+  <div class="sources">{sources}</div>
+  <p class="foot">A program in the Academic Metals Directory. People shown are linked where they
+  have an entry. <a href="map/">See it on the map →</a></p>
+</div></body></html>"""
+
+def build_program(p):
+    title = titlecase(re.sub(r"\s+", " ", p["name"]))
+    stype = p["school_type"] or ""
+    typelabel = TYPE_LABEL.get(stype, "") or ""
+    stat = STATUS_PROG.get(p["fc_still_exists"], "")
+    statusline = (f' · {stat}' if stat else "")
+    link = p["fc_current_link"] or p["source_url"]
+    started = p["program_started"] or ""
+    curname = p["fc_current_name"] if (p["fc_still_exists"]=="merged-renamed" and p["fc_current_name"] and norm(p["fc_current_name"])!=norm(p["name"])) else ""
+    now = (kv("Status", html.escape(stat)) if stat else "")
+    now += (kv("Now known as", html.escape(curname)) if curname else "")
+    now += (kv("What happened", html.escape(p["fc_what_happened"])) if p["fc_what_happened"] else "")
+    now += (kv("Link", f'<a href="{html.escape(link)}" target="_blank" rel="noopener">{html.escape(re.sub(r"^https?://","",link))}</a>') if link else "")
+    then = (kv("Program began", html.escape(started)) if started else "") + (kv("Degrees", html.escape(p["degrees"])) if p["degrees"] else "")
+    if then:
+        cards = f'<div class="grid"><div class="card then"><h3>As archived</h3>{then}</div><div class="card now"><h3>Now (checked 2026)</h3>{now}</div></div>'
+    else:
+        cards = f'<div class="card now"><h3>Now (checked 2026)</h3>{now}</div>'
+    # faculty
+    facs = prog_faculty.get(p["slug"], [])
+    faculty = ""
+    if facs:
+        def fac_chip(t):
+            disp, pf, status, yrs = t
+            label = disp + ((" · " + ("former " if status=="former" else "") + yrs) if (yrs or status=="former") else "")
+            inner = f'<a href="{pf}">{html.escape(disp)}</a>' if pf else f'<span class="plain">{html.escape(disp)}</span>'
+            extra = (("former " if status=="former" else "")+yrs).strip()
+            return f'<span class="chip">{inner}{(" · "+html.escape(extra)) if extra else ""}</span>'
+        cur_f = [t for t in facs if t[2] != "former"]; old_f = [t for t in facs if t[2]=="former"]
+        blocks = ""
+        if cur_f: blocks += f'<span class="lbl">Faculty</span><div class="people-links">{"".join(fac_chip(t) for t in sorted(cur_f))}</div>'
+        if old_f: blocks += f'<span class="lbl" style="margin-top:8px">Formerly taught here</span><div class="people-links">{"".join(fac_chip(t) for t in sorted(old_f))}</div>'
+        faculty = f'<div class="card lineage-card" style="margin-top:18px"><h3>People</h3>{blocks}</div>'
+    # alumni (trained here)
+    al = prog_alumni.get(p["slug"], [])
+    al = [a for a in al if a[1]]   # only those with pages
+    alumni = ""
+    if al:
+        chips = "".join(f'<span class="chip"><a href="{f}">{html.escape(n)}</a></span>' for n, f in sorted(al)[:60])
+        more = f' <span class="checked">(+{len(al)-60} more)</span>' if len(al) > 60 else ""
+        alumni = f'<div class="card lineage-card" style="margin-top:18px"><h3>Trained here</h3><div class="people-links">{chips}</div>{more}</div>'
+    checked = f'last checked {p["fc_checked"] or ""}'
+    sources = "".join(f'<a href="{html.escape(u)}" target="_blank" rel="noopener">{html.escape(u)}</a>' for u in srcs(p["fc_sources"]))
+    tl = f'<span class="typetag">{typelabel}</span>' if typelabel else ""
+    out = PROG_PAGE.format(title=html.escape(title), css=CSS, typelabel=tl, statusline=statusline,
+                           checked=html.escape(checked), cards=cards, faculty=faculty, alumni=alumni, sources=sources)
+    open(os.path.join(SITE, pfile_of[p["slug"]]), "w").write(out)
+
+# ---- build all profiles ----
+built = {}   # name -> (display, filename)
+for r in sorted(build_rows, key=lambda r: r["name"]):
+    disp = build_profile(r)
+    built[r["name"]] = (disp, fname_of[r["slug"]])
+print(f"built {len(built)} profiles")
+
+# ---- build all program pages ----
+for p in programs:
+    build_program(p)
+print(f"built {len(programs)} program pages")
+
+# ---------------------------------------------------------------------------
+# index: every distinct checked person; built ones are links, rest greyed
+# ---------------------------------------------------------------------------
+all_names = {r["name"] for r in people if r["kind"] != "person-gap-addition"} | set(built.keys())
+entries = []
+for n in all_names:
+    if n in built:
+        entries.append((built[n][0], built[n][1]))
+    else:
+        entries.append((titlecase(n), None))
+entries.sort(key=lambda e: ((e[0].split()[-1].lower() if e[0].split() else e[0].lower()), e[0].lower()))
+items = [f'<a class="on" href="{fn}">{html.escape(d)}</a>' if fn else f'<span class="off">{html.escape(d)}</span>'
+         for d, fn in entries]
+listing = "\n".join(items)
+total, nbuilt = len(entries), len(built)
+INDEX = f"""<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Academic Metals Directory</title>
+<style>{CSS}
+  .names{{column-width:220px;column-gap:32px;margin-top:8px}}
+  .names a, .names span{{display:block;padding:4px 0;font-size:15px;break-inside:avoid}}
+  .names .off{{color:#b9b6ac}}
+  .names a.on{{color:var(--ink);text-decoration:none;font-weight:600}}
+  .names a.on::after{{content:" ·";color:var(--good)}}
+  .names a.on:hover{{color:var(--good)}}
+  .lead{{font-size:17px;color:var(--ink)}}
+  .maplink{{display:inline-block;margin-top:16px;padding:9px 16px;border-radius:10px;
+    background:#181014;color:#ffd27a;text-decoration:none;font-size:14px;font-weight:600;
+    border:1px solid #3a2a1a;box-shadow:0 0 22px rgba(255,150,60,.18)}}
+  .maplink:hover{{box-shadow:0 0 30px rgba(255,150,60,.34);color:#ffe2a8}}
+</style></head><body><div class="wrap">
+  <p class="kicker">recovered + being updated</p>
+  <h1>Academic Metals Directory</h1>
+  <p class="lead">The old Tyler School of Art directory of US jewelry/metals/CAD-CAM teachers,
+  pulled back from the dead and brought current. {total} names below; {nbuilt} are
+  built out — click through. Names still greyed are low-confidence or disputed, held for a human pass.</p>
+  <a class="maplink" href="map/">🔥 see them on the map →</a>
+  <a class="maplink" href="lineage.html" style="background:#0f1418;color:#9ad0ff;border-color:#1a2a3a;box-shadow:0 0 22px rgba(60,150,255,.16)">↳ the lineage &amp; timeline →</a>
+  <hr>
+  <div class="names">
+{listing}
+  </div>
+  <p class="foot">Each built page shows the archived entry beside today's facts, the teachers and
+  students that connect it to the rest of the directory, and an editable bio pulled live from GitHub.</p>
+  <p class="foot" style="margin-top:20px;border-top:1px solid #e6e3d8;padding-top:16px">
+  <b>Mirror &amp; extend this.</b> The whole project is open source — the database (<code>acmet.db</code>),
+  the build scripts, and the recovered archive all live in one repo:
+  <a href="https://github.com/philrenato/acmet-l2">github.com/philrenato/acmet-l2</a>.
+  Clone it, open the folder with an LLM (Claude Code or similar), and pick up where this left off —
+  add people, verify claims, fix a record, or rescope it past metals. Start with
+  <a href="https://github.com/philrenato/acmet-l2/blob/main/MIRROR.md">MIRROR.md</a>.
+  Nobody needs permission to be in a directory; living people get a say before anything new goes public.</p>
+</div></body></html>"""
+open(os.path.join(SITE, "index.html"), "w").write(INDEX)
+print(f"index: {total} names, {nbuilt} built out")
+# coverage of cross-links
+print(f"teachers with student lists: {len(students_of)}; total student links: {sum(len(v) for v in students_of.values())}")

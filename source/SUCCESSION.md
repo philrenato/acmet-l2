@@ -1,0 +1,299 @@
+# Faculty-succession re-scan (2026-05-30)
+
+Re-scanned 152 surviving programs for their CURRENT metals/jewelry faculty.
+
+## NEW people to add (218) — successors not in the archived directory
+
+- **Charlene Modena** — Director, School of Jewelry & Metal Arts · Academy of Art College
+- **Lindsey Eason** — Part-Time Faculty · Academy of Art College
+- **Justin McGinnis** — Part-Time Faculty · Academy of Art College
+- **Chrystal Sunshine** — Part-Time Faculty · Academy of Art College
+- **Daniel Randall** — Associate Professor, School of Art, Craft and Design (metalsmithing/blacksmithing) · Appalachian Center for Crafts, T.T.U.
+- **Talia Tax** — Metals Artist in Residence · Appalachian Center for Crafts, T.T.U.
+- **Wanesia Spry Misquadace** — Associate Professor (Metals; head of the Metals program), School of Art · Arizona State University
+- **Jessica Calderwood** — Associate Professor of Art, Metals and Jewelry · Ball State University
+- **Karen E. Misher** — Department Chair, Associate Professor - Visual and Performing Arts (Metals & Jewelry) · Beaver College
+- **Robin Servo** — Head of the Jewelry/Metals Department · Birmingham Bloomfield Art Association
+- **Marissa Saneholtz** — Associate Teaching Professor, Jewelry & Metals (BGSU since 2016) · Bowling Green State University
+- **Yvonne Escalante** — Instructor, Art Studio (metalsmithing/jewelry) · Cabrillo College
+- **Leeyeon Yoo** — Associate Faculty, Art Studio (MFA Jewelry & Metal Arts, Univ. of Iowa) · Cabrillo College
+- **Payson McNett** — Art Studio Instructor (also teaches ART 8A Metal/Jewelry Fabrication) · Cabrillo College
+- **Curtis Arima** — Dean of Fine Arts; Professor, Jewelry and Metal Arts Program · California College of Arts and Crafts
+- **David Cole** — Senior Adjunct Professor, Jewelry and Metal Arts Program · California College of Arts and Crafts
+- **Jo-Ann Maggiora Donivan** — Adjunct II Professor, Jewelry and Metal Arts Program · California College of Arts and Crafts
+- **Deborah Lozier** — Senior Adjunct Professor, Jewelry and Metal Arts Program · California College of Arts and Crafts
+- **Olivia S. Shih** — Adjunct II, Jewelry and Metal Arts Program · California College of Arts and Crafts
+- **Amy Tavern** — Adjunct II Professor, Jewelry and Metal Arts Program · California College of Arts and Crafts
+- **Corey Wolffs** — Adjunct II Professor, Jewelry and Metal Arts Program · California College of Arts and Crafts
+- **Aaron Gach** — Co-Chair, Jewelry and Metal Arts; Assistant Professor, Fine Arts · California College of Arts and Crafts
+- **Katherine Lam** — Co-Chair, Jewelry and Metal Arts; Associate Professor (Furniture Program) · California College of Arts and Crafts
+- **Christina Smith** — Professor of Art; Area Coordinator, Jewelry and Metals · California State University - Fullerton
+- **Susanna Ali** — Professor & Program Head, Metals & Jewelry · California State University at Long Beach
+- **Rachel Shimpock** — Adjunct / Lecturer, Metals & Jewelry · California State University at Long Beach
+- **Carli Holcomb** — Visual Arts Instructor (head of sculpture and metalsmithing concentration) · Casper College
+- **Aaron Deshields** — Adjunct Professor, Metalsmithing & Jewelry / Blacksmithing · Center for Creative Studies
+- **Marthe Roberts/Shea** — Jewelry / Metalsmithing Instructor (Fibers, Metals, Paper, and More) · Cheltenham Center for the Arts
+- **Allison Syes** — Metal Arts Instructor (Fine Arts) · Clark College
+- **Rachel Suzanne Smith** — Professor of Practice, Craft + Design and Foundations (metalsmith); full-time from Fall 2025 · Cleveland Institute of Art
+- **Jill Gower (Jill Baker Gower)** — Assistant Professor of Art - Jewelry/Metals (MFA in metals, Arizona State University) · College of DuPage
+- **Tova Lund** — Associate Faculty, Jewelry and Metalsmithing · College of the Redwoods
+- **Haley Bates** — Professor of Metalsmithing; Metalsmithing & Jewelry Area Coordinator and Graduate Program Coordinator · Colorado State University
+- **Iris Eichenberg** — Artist-in-Residence, Head of Metalsmithing Department · Cranbrook Academy of Art
+- **Mi-Sook Hur** — Professor, Metal Design (first-year) · East Carolina University
+- **Tim Lazure** — Professor, Metal Design · East Carolina University
+- **Mindy Herrin-Lewis** — Professor of Jewelry & Metals · East Tennessee State University
+- **Erin M. Rice** — Instructor of Metalsmithing · Eastern Illinois University
+- **Felicia Szorad** — Professor of Art, Metals Program Coordinator · Eastern Kentucky University
+- **Eric Okon** — Part Time Lecturer (Metalsmithing/Jewelry) · Eastern Michigan University
+- **Cappy Counard** — Professor of Jewelry and Metals · Edinboro University of Pennsylvania
+- **Kim Nelson** — Assistant Professor and Assistant Chair of the Department, Fashion–Jewelry · Fashion Institute of Technology
+- **Karen Bachmann** — Adjunct Assistant Professor, Fashion–Jewelry · Fashion Institute of Technology
+- **Richard A. Barth** — Adjunct Assistant Professor, Fashion–Jewelry · Fashion Institute of Technology
+- **Dana Buscaglia** — Adjunct Instructor, Fashion–Jewelry · Fashion Institute of Technology
+- **Frank Fraley** — Adjunct Instructor, Fashion–Jewelry · Fashion Institute of Technology
+- **Lisa Linhardt** — Adjunct Instructor, Fashion–Jewelry · Fashion Institute of Technology
+- **Akiyo Matsuoka** — Adjunct Instructor, Fashion–Jewelry · Fashion Institute of Technology
+- **Steven Parker** — Adjunct Assistant Professor, Fashion–Jewelry · Fashion Institute of Technology
+- **Jill Baker Gower** — Associate Professor of Art (Jewelry/Metals) · Glassboro State College
+- **Sandie Zilker** — Head, Jewelry and Enamel Department · Glassell School of Art / The Museum of Fine Arts
+- **Jan Arthur Harrell** — Faculty, Enameling / Metalsmithing · Glassell School of Art / The Museum of Fine Arts
+- **Nathan Dube** — Faculty, Metalsmithing / Jewelry · Glassell School of Art / The Museum of Fine Arts
+- **Angela Bubash** — Instructor - Jewelry (Professional Crafts Jewelry program lead) · Haywood Community College
+- **Marilyn Koch** — Visiting Faculty, Jewelry & Small Metals · Humboldt State University
+- **Kristina Glick** — Associate Lecturer, Metals and Jewelry (MFA East Carolina University, 2007) · Idaho State University
+- **Nicole Jacquard** — Professor and Area Head, Metalsmithing + Jewelry Design · Indiana University
+- **Angela Caldwell** — Lecturer, Metalsmithing and Jewelry Design · Indiana University
+- **Sharon Massey** — Professor, Jewelry and Metals, Computer-Aided Design + Digital Fabrication; Department Chairperson · Indiana University of Pennsylvania
+- **Brian Fleetwood** — Assistant Professor, Studio Arts (jewelry and metals) · Institute of American Indian Arts
+- **Patty Smith** — Director of Visual Arts; Instructor of metalsmithing and sculpture · Interlochen Center for the Visual Arts
+- **Katie DuVal Mihelich** — Interim Lecturer, Jewelry and Metalsmithing · Iowa State University
+- **Joe Muench** — Professor Emeritus, Metalsmithing (joined 2001, retired 2025) · Iowa State University
+- **Mark Rooker** — Professor of Art; Metals Area Head; Studio Art Program Coordinator · James Madison University
+- **Dukno Yoon** — Associate Professor & Area Coordinator, Metalsmithing & Jewelry · Kansas State University
+- **Heather Bayless** — Instructor, Metalsmithing & Jewelry · Kansas State University
+- **Phillip Renato** — Professor, M.F.A. (metals/jewelry, now within the interdisciplinary Product Design program) · Kendall College of Art and Design
+- **Andrew Kuebeck** — Assistant Professor and Area Head, Jewelry/Metals/Enameling · Kent State University
+- **Sophia Park** — Assistant Professor, Fine Metals/Jewelry & Metalsmithing (MFA in Jewelry and Metals, San Diego State University). Successor to James Malenda. · Kutztown University of Pennsylvania
+- **Hosanna Rubio** — Adjunct Faculty, Jewelry & Metalsmithing · Long Beach City College
+- **Alexandra Dickinson** — Instructional Associate, Jewelry & Metalsmithing · Long Beach City College
+- **Kristin Beeler** — Professor of Art / Coordinator (Applied Design, jewelry/metalwork) · Long Beach City College
+- **Kathleen Kennedy** — Assistant Professor of Art in Jewelry/Metalsmithing · Longwood College
+- **Jacquie Tull** — Metalworking Instructor, Interdisciplinary Sculpture · Maryland Art Institute, Jewelry Institute
+- **Heather White** — Professor, Jewelry and Metalsmithing (also known as Heather White van Stolk); Metals Department Coordinator · Massachusetts College of Art
+- **Emily Cobb** — Associate Professor, Jewelry and Metalsmithing · Massachusetts College of Art
+- **Venetia Dale** — Visiting Lecturer, Jewelry and Metalsmithing · Massachusetts College of Art
+- **Joyce Kutty** — Visiting Lecturer, Jewelry and Metalsmithing · Massachusetts College of Art
+- **Dr. Samanthessa R. Jacob, PhD** — Executive Director and Instructor (Master Jeweler, Metal Fabrication) · Miami Jewelry Institute
+- **Cynthia Zambrano** — Instructor (GIA Certified Jeweler, Metal Fabrication) · Miami Jewelry Institute
+- **Natasha Miller** — Instructor (Master Jeweler, Metal Smithing / Sculptural Jewelry) · Miami Jewelry Institute
+- **Geoff Riggle** — Associate Teaching Professor of Studio Art (jewelry design and metalsmithing) · Miami University
+- **Suguru Hiraide** — Professor, Sculpture and Metals · Midwestern State University
+- **Becky McDonah** — Professor in Fine Art Metals · Millersville University
+- **Victoria Burchill** — Instructor, Metalsmithing · Montana State University
+- **Lucy Louise Derickson** — Associate Professor & Coordinator of Jewelry and Metalsmithing/Crafts Area (MFA, Virginia Commonwealth University) · Montgomery College
+- **Katja Toporski** — Faculty, Jewelry / 3D Art (MFA, Towson University) · Montgomery College
+- **Wanjin Kim** — Instructor, Jewelry & Metalsmithing / Crafts (MFA Metalsmithing, Cranbrook Academy of Art), teaching at MC since 2003 · Montgomery College
+- **Holland Houdek** — Associate Professor in Professional Practice (Jewelry & Metalsmithing); Director of the Studio Art Undergraduate Program; Art Gallery Director · Nazareth College
+- **Motoko Furuhashi** — Professor, Metalsmithing & Jewelry · New Mexico State University
+- **Klaus Burgel** — Adjunct Instructor, Studio Art (Metalsmithing / Jewelry), NYU Steinhardt; also RISD Jewelry+Metalsmithing faculty · New York University
+- **Biba Schutz** — Adjunct Instructor, Studio Art (Metalsmithing / Jewelry), NYU Steinhardt; NYC studio jeweler/metalsmith · New York University
+- **Tracey Jenkins Darji** — Department Head & Instructor, Jewelry Making & Repair · North Bennet Street School
+- **Haley Filamond** — Instructor, Jewelry Making & Repair · North Bennet Street School
+- **Isabelle Schmit** — Teaching Assistant, Jewelry Making & Repair · North Bennet Street School
+- **Jamie Obermeier** — Associate Professor, Head of the Division of Studio Art (Metals, Jewelry, and Digital Fabrication) · Northern Illinois University
+- **Cloris (Yuchen) Ding** — Visiting Assistant Professor in Jewelry & Metalsmithing (Studio Art) · Oklahoma State University
+- **Emily Culver** — Assistant Professor of Jewelry and Metalsmithing · Old Dominion University
+- **Lisa Slovis Mandel** — Metalsmithing/Jewelry instructor (adjunct); MFA Metalsmithing, UW-Madison; also teaches Southwestern College · Palomar College
+- **Melisa Selvius** — Jewelry & Metalsmithing instructor (recent ART 150) · Palomar College
+- **Jillian Thompson** — Jewelry & Metalsmithing instructor (recent ART 150) · Palomar College
+- **Brice Garrett** — Part-time Assistant Professor · Parsons School of Design
+- **Sterling King** — Part-time Lecturer · Parsons School of Design
+- **April Kawaoka** — Assistant Professor, Art (Jewelry/Metal Fabrication), Division of Visual Arts & Media Studies · Pasadena City College
+- **Janet Lewis** — Associate Instructional Professor (possible metals/jewelry-adjacent successor; unconfirmed teaching assignment) · Pittsburg State University
+- **Sharon Portelance** — Professor & Chair of Metalsmithing & Jewelry · Portland School of Art
+- **Kyle Patnaude** — Associate Professor of Metalsmithing & Jewelry and MFA in Studio Art · Portland School of Art
+- **Wyatt Nestor-Pasicznyk** — Metalsmithing & Jewelry Studio Technician · Portland School of Art
+- **Jessica Mohl** — Assistant Professor of Practice in Jewelry and Metalsmithing (Craft and Materials) · Purdue University
+- **Dianne M. Reilly** — Professor and Department Chair, Department of Art (metals and jewelry) · Rhode Island College
+- **Timothy Veske-McMahon** — Associate Professor, Department Head · Rhode Island School of Design
+- **Seth Papac** — Associate Professor, Graduate Program Director · Rhode Island School of Design
+- **Tracy Steepy** — Professor · Rhode Island School of Design
+- **Brian Bergeron** — Faculty / Technical Assistant · Rhode Island School of Design
+- **Donna Bilak** — Faculty · Rhode Island School of Design
+- **Tzu-Ju Chen** — Faculty · Rhode Island School of Design
+- **Funlola Coker** — Faculty · Rhode Island School of Design
+- **Dominik Cunningham** — Faculty · Rhode Island School of Design
+- **Noam Elyashiv** — Senior Critic · Rhode Island School of Design
+- **Lauren Fensterstock** — Faculty · Rhode Island School of Design
+- **JOFF** — Faculty · Rhode Island School of Design
+- **Suzanne Pugh** — Faculty · Rhode Island School of Design
+- **Sarah Turner** — Faculty · Rhode Island School of Design
+- **Johan Van Aswegen** — Faculty · Rhode Island School of Design
+- **Barbara Seidenath** — Senior Critic · Rhode Island School of Design
+- **Juan Carlos Caballero-Perez** — Professor, Metals and Jewelry Design · Rochester Institute of Technology
+- **Laurel Fulton** — Assistant Professor, Metals and Jewelry Design · Rochester Institute of Technology
+- **Maureen Duffy** — Instructor / Professor of Jewelry and Metalsmithing (3/4 time) · Rowan University
+- **Sondra Sherman** — Professor; Head of Jewelry and Metalwork Program (since 2010); Graduate Program Advisor and Coordinator · San Diego State University
+- **Kerianne Quick** — Associate Professor / Associate Director, Jewelry and Metalwork · San Diego State University
+- **Reed Fagan** — Lecturer, Jewelry and Metalwork; Instructional Support Technician, Digital Fabrication Lab · San Diego State University
+- **Jay H. Song** — Professor and Chair of Jewelry · Savannah College of Art and Design
+- **Adam Grinovich** — Professor of Jewelry · Savannah College of Art and Design
+- **Lanelle Keyes** — Professor of Jewelry · Savannah College of Art and Design
+- **Hongsock Lee** — Professor of Jewelry · Savannah College of Art and Design
+- **Annika Pettersson** — Professor of Jewelry · Savannah College of Art and Design
+- **Tanya Crane** — Professor of the Practice in Metals · School of the Museum of Fine Arts
+- **Kendall Reiss** — Professor of the Practice in Metals · School of the Museum of Fine Arts
+- **Hannah Oatman** — Part-Time Lecturer in Metals · School of the Museum of Fine Arts
+- **Erica Bello** — Part-Time Lecturer in Metals · School of the Museum of Fine Arts
+- **Brian Ferrell** — Associate Professor of Art, Jewelry/Metals (M.F.A. UMass-Dartmouth 2004; SNAG Board 2014-2020, President 2019) · Seton Hill College
+- **David Peterson** — Professor (Jewelry and Metals) · Skidmore College
+- **Joe Pillari** — Visiting Assistant Professor (Jewelry and Metals) · Skidmore College
+- **Sean Macmillan** — Professor of Metalsmithing; Chairperson, Art Department · Slippery Rock University
+- **Terrence Lavin** — Professor of Jewelry/Metals (and Chair, Department of Art and Design) · Southern Connecticut State University
+- **Rick Smith** — Professor (blacksmithing & metalsmithing) · Southern Illinois University Carbondale
+- **Sun Kyoung Kim** — Associate Professor (metalsmithing & jewelry) · Southern Illinois University Carbondale
+- **Jin A. Seo** — Associate Professor (Metals & Jewelry) · Southwest Missouri State University
+- **Jillian (Jill) Sortore** — Professor of Instruction (Sculpture and Metals), UTSA School of Art — lead/advanced metals faculty · Southwest School of Art and Craft
+- **Sulo Bee** — Metals/jewelry community-art instructor (metalsmith, MFA SUNY New Paltz) · Southwest School of Art and Craft
+- **Denise McCoy** — Advanced Metals instructor — UTSA Community Art · Southwest School of Art and Craft
+- **Tobin Nieto** — Jewelry & Metals instructor — UTSA Community Art · Southwest School of Art and Craft
+- **Alejandra Salinas Pérez** — Jewelry & Metals instructor — UTSA Community Art · Southwest School of Art and Craft
+- **Laura Quiñones** — Jewelry-Making instructor — UTSA Community Art · Southwest School of Art and Craft
+- **Adam Atkinson** — Assistant Professor, Area Head – Studio Arts: Metals · Southwest Texas State University
+- **Nicole DesChamps-Benke** — Professor of Instruction, Studio Art: Metals; Fabrication Lab Manager · Southwest Texas State University
+- **Laritza Garcia Janiga** — Associate Professor of Instruction, Studio Art: Metals/3D Design · Southwest Texas State University
+- **Tara J. Nahabetian** — Associate Professor and Program Coordinator, Metals/Jewelry · State University College at Buffalo
+- **Stephen F. Saracino** — Professor, Metals/Jewelry · State University College at Buffalo
+- **Lynn Batchelder** — Assistant/Associate Professor of Metal (also Chair of Dept. of Art) · State University of New York at New Paltz
+- **Adam Mastropaolo** — Instructional Support Technician · State University of New York at New Paltz
+- **Amelia Toelke** — Visiting Faculty · State University of New York at New Paltz
+- **Lauren Selden** — Professor of Art (Metalworking, Jewelry, and Sculpture) · Stephen F. Austin State University
+- **Hiroko M. Streppone** — Instructor · Studio Jewelers, Ltd.
+- **Michiyo Fujiwara** — Instructor · Studio Jewelers, Ltd.
+- **Boris Goynatsky** — Instructor · Studio Jewelers, Ltd.
+- **Robly A. Glover** — Professor, Jewelry Design and Metalsmithing · Texas Tech University
+- **Nancy Slagle** — Associate Professor, Jewelry Design and Metalsmithing; Associate Director, School of Art · Texas Tech University
+- **Sherry Simms** — Associate Professor of Art; Metalsmithing & Jewelry Area Coordinator · The University of Akron
+- **Hershall Seals** — Adjunct Faculty, Art Metals · The University of Mary Hardin-Baylor
+- **Rebecca Strzelec** — Professor and Associate Dean for Academic Programs (Metals/Jewelry/CAD-CAM) · The University of Michigan
+- **Mike Vitale** — 3D Studios Supervisor / Materials Fabrication Studio Coordinator (Jewelry/Metalsmithing studio) · The University of Michigan
+- **Guadalupe Navarro** — Lecturer in Sculpture, Metalsmithing, and 3D Design · The University of Texas Pan American
+- **Jessica L. Tolbert** — Associate Professor of Art; Head of the Jewelry + Metals program · The University of Texas at El Paso
+- **Alejandra Carrillo-Estrada** — Lecturer, Foundations / Metals · The University of Texas at El Paso
+- **Yevgeniya Kaganovich** — Professor & Area Head, Jewelry & Metalsmithing · The University of Wisconsin -Milwaukee
+- **Jim Charles** — Teaching Faculty II, Jewelry & Metalsmithing; Program Coordinator · The University of Wisconsin -Milwaukee
+- **Erica A. Meier** — Teaching Faculty II, Jewelry & Metalsmithing; Studio Technician · The University of Wisconsin -Milwaukee
+- **Ryan Send** — Lecturer, Jewelry & Metalsmithing · The University of Wisconsin -Milwaukee
+- **Luci Jockel** — Assistant Teaching Professor / Lecturer — Area Coordinator, Metalsmithing & Jewelry · Towson University
+- **Joshua DeMonte** — Associate Professor — Area Coordinator, Interdisciplinary Object Design (Jewelry/Metalsmithing, 3D Design) · Towson University
+- **Andrew (Andy) Lowrie** — Adjunct Faculty — Jewelry + Metalsmithing · Towson University
+- **Doug Bucci** — Assistant Professor and Program Head of Metals/Jewelry/CAD-CAM · Tyler School of Art/Temple University
+- **Mallory Weston** — Associate Professor · Tyler School of Art/Temple University
+- **Barb Baur** — Adjunct Faculty · Tyler School of Art/Temple University
+- **James Betts** — Adjunct Faculty · Tyler School of Art/Temple University
+- **Valerie James** — Adjunct Faculty · Tyler School of Art/Temple University
+- **Sarah Montagnoli** — Adjunct Faculty · Tyler School of Art/Temple University
+- **Sharon Stampfer** — Adjunct Faculty · Tyler School of Art/Temple University
+- **Steve McGuire** — Professor and Area Head, Jewelry and Metal Arts · University of Iowa
+- **Lonna Huisingh (Keller)** — Visiting Assistant Professor, Jewelry and Metal Arts · University of Iowa
+- **Sunyoung Cheong** — Assistant Professor, Mary Fischer Traver Metalsmithing & Jewelry Professorship · University of Kansas
+- **Gina Westergard** — Professor of Visual Art in Metalsmithing/Jewelry · University of Kansas
+- **Erick Morales Scholz** — Lecturer of Metalsmithing/Jewelry; Area Lab Coordinator · University of Kansas
+- **Tom Tivol** — Adjunct Lecturer, Metalsmithing and Jewelry (gemological method) · University of Kansas
+- **Donovan Widmer** — Associate Professor & Associate Chair, Jewelry/Metalsmithing · University of North Dakota
+- **James Thurman** — Professor, Studio Art: Metalsmithing and Jewelry; Program Coordinator of Metalsmithing and Jewelry · University of North Texas
+- **Ana M. Lopez** — Professor, Studio Art: Metalsmithing and Jewelry · University of North Texas
+- **Anya Kivarkis** — Professor; Department Head; Jewelry & Metalsmithing Coordinator (Area Head) · University of Oregon
+- **Valerie Ho (Oi Ying Valerie Ho)** — Jewelry & Metalsmithing Visiting Artist Assistant Professor · University of Oregon
+- **Jacquelyn Knapp** — Professor of Art and Coordinator of the Art Department (Jewelry, Sculpture, Drawing, Design) · University of Science & Arts of Oklahoma
+- **Thomas Bosse** — Instructor, Studio Art (Jewelry & Metalsmithing) · University of South Carolina
+- **Michael Wartgow** — Lecturer (Metals/3D/Photo) · University of Wisconsin - Green Bay
+- **Bradley Nichols** — Professor (Metalsmithing and Blacksmithing) · University of Wisconsin-La Crosse
+- **Jaydan Moore** — Assistant Professor of Art Metals · University of Wisconsin-Madison
+- **Matthew Mauk** — Teaching faculty, Art Metals (Ring Making) · University of Wisconsin-Madison
+- **Masako Onodera** — Professor, Metals and Contemporary Art Jewelry · University of Wisconsin-Stout
+- **Teresa Faris** — Professor of Art & Design; Area Head, Jewelry and Metalsmithing · University of Wisconsin-Whitewater
+- **Susie Ganch** — Associate Professor - Metals; Graduate Program Director, Department of Craft/Material Studies · Virginia Commonwealth University
+- **Evan Larson-Voltz** — Associate Professor of Metalsmithing (Metalsmithing area coordinator) · Wayne State University
+- **Katie MacDonald** — Associate Professor of Teaching, Sculpture and Metalsmithing · Wayne State University
+- **Mayela Cardenas Surillo** — Professor of Art (BFA RIT; MFA University of Oregon) - jewelry/metals · Western State College of Colorado
+- **Lori Martin Price** — Jewelry Making & Metalsmithing Instructor · Wichita Center for the Arts
+- **Ernst Kind** — Enameling Instructor · Wichita Center for the Arts
+- **Anne Fiala** — Assistant Professor of Fine Arts (Metalsmithing & Jewelry Design); MFA Program Coordinator · Winthrop College
+- **Chelsea Stone** — Jewelry/Metalsmithing Instructor (BFA Metals, NAU; MFA Jewelry, Texas Tech) · Yavapai College
+- **Jami Conroy** — Jewelry & Lapidary Arts Instructor (GIA Applied Jewelry Professional) · Yavapai College
+
+## Programs that LOST dedicated metals faculty / lapsed (34)
+
+- **Adams State College** — active-no-dedicated-metals-faculty
+  - Adams State College is now Adams State University (Alamosa, CO). The art program is active, but the current official Art Faculty directory lists 5 faculty (Anna
+- **Carnegie-Mellon University** — active-no-dedicated-metals-faculty
+  - Carol Kumata (the archived metals/3D-media-metals faculty member, at CMU School of Art since 1979) RETIRED at the end of spring 2021 (retirement announcement da
+- **Cleveland Institute of Art** — active-no-dedicated-metals-faculty
+  - The Jewelry + Metals program still exists but was merged into a combined Craft + Design major (Ceramics/Glass/Metals) c.2021. Both ranked metals professors from
+- **Columbia College** — active-no-dedicated-metals-faculty
+  - Same-name ambiguity: at least two US "Columbia College" art programs are plausible matches, and the archived entry listed NO faculty, so it cannot be disambigua
+- **Columbus College** — active-no-dedicated-metals-faculty
+  - "Columbus College" = Columbus College of Art & Design (CCAD), Columbus, OH (independent art college; the only US art school matching this name). CCAD's Fine Art
+- **Eastern New Mexico University** — active-no-dedicated-metals-faculty
+  - The archived metals/jewelry faculty member, Gregory P. (Greg) Senn, was the longtime three-dimensional studio art professor at ENMU (hired 1986) who taught jewe
+- **Emporia State University** — active-no-dedicated-metals-faculty
+  - Emporia State University (Department of Art, School of Visual + Performing Arts) is active but has NO dedicated metals/jewelry/metalsmithing concentration or fa
+- **Indiana Purdue University at Fort Wayne** — active-no-dedicated-metals-faculty
+  - IPFW (Indiana University-Purdue University Fort Wayne) was restructured in 2018: the Purdue-administered programs, including Art and Design, became Purdue Unive
+- **Joliet Junior College** — active-no-dedicated-metals-faculty
+  - JJC's Art/Fine Arts program is active and still offers ART 240 Jewelry and Metalsmithing I plus a fully equipped metals studio. However, no current publicly-nam
+- **Lane Community College** — active-no-dedicated-metals-faculty
+  - Lane Community College (Eugene, OR) still has a credit jewelry/metals course on the books -- ART 257 "Introduction to Jewelry and Metalsmithing" appears in the 
+- **Long Island University** — active-no-dedicated-metals-faculty
+  - LIU Post (Long Island University, C.W. Post campus) still has an art program and the Crafts Center still houses jewelry/ceramics studios, but no DEDICATED metal
+- **Maryland Art Institute, Jewelry Institute** — active-no-dedicated-metals-faculty
+  - Institution resolves to MICA (Maryland Institute College of Art), Baltimore — the "Maryland Art Institute, Jewelry Institute" label has no exact match; there is
+- **Metairie Park Country Day School** — active-no-dedicated-metals-faculty
+  - Metairie Park Country Day School (a K-12 independent school in Metairie/New Orleans, LA) is active, and its Visual Arts program STILL offers metals: the Upper S
+- **Minneapolis Technical College** — lapsed-or-closed
+  - Minneapolis Technical College no longer exists as a standalone institution. In Feb 1996 it merged with Minneapolis Community College to form Minneapolis Communi
+- **Missouri Southern State College** — active-no-dedicated-metals-faculty
+  - "Missouri Southern State College" was renamed Missouri Southern State University (MSSU), Joplin, MO in 2003. The Art and Design Department is active and still o
+- **Mott Community College** — active-no-dedicated-metals-faculty
+  - Mott Community College (Flint, MI) is an active school with a Fine Arts program (Associate in Fine Arts, Studio Art Option), but it has NO dedicated metals/jewe
+- **Oral Roberts University** — active-no-dedicated-metals-faculty
+  - ORU (Tulsa, OK) is a separate school from Roberts Wesleyan University (roberts.edu); some web results conflated them and were disregarded. ORU's College of Arts
+- **Pittsburg State University** — active-no-dedicated-metals-faculty
+  - Marjorie Schick (the archived metals/jewelry faculty) RETIRED in May 2017 and DIED December 2017. No source names a dedicated successor for metals/jewelry. The 
+- **San Antonio College** — active-no-dedicated-metals-faculty
+  - San Antonio College (Alamo Colleges District, San Antonio TX) is active and has a Visual Arts program, but I found NO current dedicated metals/jewelry/metalsmit
+- **State University of New York at Brockport** — active-no-dedicated-metals-faculty
+  - SUNY Brockport's Department of Art (now "Art and Design") is active, but the dedicated metals/jewelry program founded by Thomas Markusen (professor of sculpture
+- **Syracuse University** — active-no-dedicated-metals-faculty
+  - The Jewelry and Metalsmithing program at Syracuse University (College of Visual and Performing Arts, School of Art) still EXISTS as a named B.F.A./M.F.A. concen
+- **The School of the Art Institute of Chicago** — active-no-dedicated-metals-faculty
+  - SAIC is an interdisciplinary art school that never had a conventional standalone Metals/Jewelry department; metalsmithing historically lived inside the "Designe
+- **The University of Texas at Austin** — lapsed-or-closed
+  - The Department of Art and Art History at UT Austin no longer has a dedicated metals/jewelry/metalsmithing concentration or faculty. Current Studio Art concentra
+- **University of Arizona** — active-no-dedicated-metals-faculty
+  - University of Arizona School of Art is active, but no longer has a dedicated metals/metalsmithing/jewelry concentration or any faculty in that specialty. The st
+- **University of Massachusetts / Dartmouth** — active-no-dedicated-metals-faculty
+  - The Jewelry/Metals program at UMass Dartmouth (Dept. of Artisanry, College of Visual & Performing Arts) is clearly ACTIVE: an MFA in Jewelry/Metals, an undergra
+- **University of Minnesota** — lapsed-or-closed
+  - University of Minnesota Twin Cities Department of Art (CLA). The archived faculty name, Philip Morton, was the founder-era metalsmithing professor (author of th
+- **University of Texas at Arlington** — lapsed-or-closed
+  - David Keens (the archived name) founded the UTA Metals-Jewelry Program in 1973 and taught until his retirement in 2013 (confirmed via department history timelin
+- **University of Washington** — active-no-dedicated-metals-faculty
+  - The University of Washington's School of Art + Art History + Design still exists and is active, but its historic dedicated Metal Arts / jewelry program has effe
+- **University of Wisconsin - Green Bay** — active-no-dedicated-metals-faculty
+  - Neither archived name (Robert Pum, Donald P. Taylor) appears on current UWGB pages. The dedicated jewelry/metals professor for ~1998-2015 was Jennifer Mokren (M
+- **University of Wisconsin-Eau Claire** — active-no-dedicated-metals-faculty
+  - The University of Wisconsin-Eau Claire Art & Design Department is active and well-staffed, but offers NO dedicated metals/metalsmithing/jewelry program, no meta
+- **Washington University** — lapsed-or-closed
+  - Institution = Washington University in St. Louis (Sam Fox School of Design & Visual Arts); the archived names (Heikki/Heikka Seppä, John Baltrusunas) confirm th
+- **Weber State University** — active-no-dedicated-metals-faculty
+  - Weber State's Department of Visual Art and Design is active and still OFFERS small-metals/jewelry instruction — ART 2350 "Small Metals/Jewelry I" remains a curr
+- **Western Maryland College** — active-no-dedicated-metals-faculty
+  - Western Maryland College was renamed McDaniel College in 2002 (Westminster, MD). The Art Department still exists and the catalog still lists a metalsmithing/jew
+- **Western Montana College** — active-no-dedicated-metals-faculty
+  - Western Montana College was renamed The University of Montana Western (effective July 1, 2001). The institution is alive and well with an active Fine Arts (Visu
+
+## Still active with dedicated metals faculty (116)
+
+Academy of Art College, Appalachian Center for Crafts, T.T.U., Arizona State University, Ball State University, Beaver College, Birmingham Bloomfield Art Association, Bowling Green State University, Cabrillo College, California College of Arts and Crafts, California State University - Fullerton, California State University at Long Beach, Casper College, Center for Creative Studies, Central Washington University, Cheltenham Center for the Arts, Clark College, College of DuPage, College of the Redwoods, Colorado State University, Cranbrook Academy of Art, East Carolina University, East Tennessee State University, Eastern Illinois University, Eastern Kentucky University, Eastern Michigan University, Edinboro University of Pennsylvania, Fashion Institute of Technology, Glassboro State College, Glassell School of Art / The Museum of Fine Arts, Haywood Community College, Humboldt State University, Idaho State University, Indiana University, Indiana University of Pennsylvania, Institute of American Indian Arts, Interlochen Center for the Visual Arts, Iowa State University, James Madison University, Kansas State University, Kendall College of Art and Design, Kent State University, Kutztown University of Pennsylvania, Long Beach City College, Longwood College, Maine College of Art, Massachusetts College of Art, Miami Jewelry Institute, Miami University, Midwestern State University, Millersville University, Montana State University, Montgomery College, Nazareth College, Nebraska Wesl e yan University, New Jersey City University, New Mexico State University, New York University, North Bennet Street School, Northern Illinois University, Northern Michigan University, Oklahoma State University, Old Dominion University, Palomar College, Parsons School of Design, Pasadena City College, Portland School of Art, Purdue University, Rhode Island College, Rhode Island School of Design, Rochester Institute of Technology, Rowan University, San Diego State University, Savannah College of Art and Design, Sawtooth Center for Visual Art, School of the Museum of Fine Arts, Seton Hill College, Skidmore College, Slippery Rock University, Southern Connecticut State University, Southern Illinois University, Southern Illinois University Carbondale, Southwest Missouri State University, Southwest School of Art and Craft, Southwest Texas State University, State University College at Buffalo, State University of New York at New Paltz, Stephen F. Austin State University, Studio Jewelers, Ltd., Tarrant County Junior College/ N.E., Texas Tech University, The University of Akron, The University of Mary Hardin-Baylor, The University of Michigan, The University of Texas Pan American, The University of Texas at El Paso, The University of Wisconsin -Milwaukee, Towson University, Tufts University, Tyler School of Art/Temple University, University of Iowa, University of Kansas, University of North Dakota, University of North Texas, University of Oregon, University of Science & Arts of Oklahoma, University of South Carolina, University of Wisconsin-La Crosse, University of Wisconsin-Madison, University of Wisconsin-Stout, University of Wisconsin-Whitewater, Virginia Commonwealth University, Wayne State University, Western State College of Colorado, Wichita Center for the Arts, Winthrop College, Yavapai College

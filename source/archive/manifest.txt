@@ -1,0 +1,33 @@
+ACADEMIC METALS DIRECTORY — WAYBACK RECOVERY — RUN REPORT
+(text only; images deliberately not downloaded)
+
+unique HTML URLs enumerated : 4502
+pages fetched + parsed      : 4499
+  bios                      : 170
+  school/directory entries  : 1269
+  gallery (text) pages      : 2918
+  index/other               : 142
+fetch failures              : 3
+image URLs referenced (not downloaded) : 11342
+
+CAPTURE POLICY: latest status-200 text/html capture per URL (the most complete version before takedown).
+
+CARRIZZI located : ["http://www.temple.edu/crafts/metalsdirectorypage/s272.html  (title='Phil Carrizzi')", "http://www.temple.edu:80/crafts/metalsdirectorypage/s272.html  (title='Phil Carrizzi')", "http://www.temple.edu:80/crafts/public_html/mjcc/local/history/s272.html  (title='Phil Carrizzi')"]
+
+ALL CARRIZZI / KENDALL SIGHTINGS:
+  http://temple.edu:80/crafts/public_html/mjcc/local/history/hhome.html  (title='index')
+  http://www.temple.edu/crafts/metalsdirectorypage/hhome.html  (title='index')
+  http://www.temple.edu/crafts/metalsdirectorypage/s272.html  (title='Phil Carrizzi')
+  http://www.temple.edu/crafts/metalsdirectorypage/s273.html  (title='Kendall College of Art and Design')
+  http://www.temple.edu/crafts/public_html/mjcc/local/history/hhome.html  (title='index')
+  http://www.temple.edu:80/crafts/metalsdirectorypage/hhome.html  (title='index')
+  http://www.temple.edu:80/crafts/metalsdirectorypage/s272.html  (title='Phil Carrizzi')
+  http://www.temple.edu:80/crafts/metalsdirectorypage/s273.html  (title='Kendall College of Art and Design')
+  http://www.temple.edu:80/crafts/public_html/mjcc/local/history/hhome.html  (title='index')
+  http://www.temple.edu:80/crafts/public_html/mjcc/local/history/s272.html  (title='Phil Carrizzi')
+  http://www.temple.edu:80/crafts/public_html/mjcc/local/history/s273.html  (title='Kendall College of Art and Design')
+
+FETCH FAILURES:
+  http://www.temple.edu:80/crafts/public_html/mjcc/local/gallery/seniorshow/SENIOR%20SHOW%202004/CRISTINAÂ­_PAGE_1.htm  <-  fetch 404
+  http://www.temple.edu:80/crafts/public_html/mjcc/local/gallery/seniorshow/SENIOR%20SHOW%202004/CRISTINAÂ­_PAGE_2.htm  <-  fetch 404
+  http://www.temple.edu:80/crafts/public_html/mjcc/local/gallery/seniorshow/SENIOR%20SHOW%202004/CRISTINAÂ­_PAGE_3.htm  <-  fetch 404

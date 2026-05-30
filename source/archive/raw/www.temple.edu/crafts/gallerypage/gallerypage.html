@@ -1,0 +1,717 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<script type="text/javascript" src="seminar/light/js/prototype.js"></script>
+<script type="text/javascript" src="seminar/light/js/scriptaculous.js?load=effects,builder"></script>
+<script type="text/javascript" src="seminar/light/js/lightbox.js"></script>
+
+<link href="style.css" rel="stylesheet" type="text/css" /> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>gallerypage</title>
+<script type="text/javascript">
+function newImage(arg) {
+	if (document.images) {
+		rslt = new Image();
+		rslt.src = arg;
+		return rslt;
+	}
+}
+
+function changeImages() {
+	if (document.images && (preloadFlag == true)) {
+		for (var i=0; i<changeImages.arguments.length; i+=2) {
+			document[changeImages.arguments[i]].src = changeImages.arguments[i+1];
+		}
+	}
+}
+
+
+
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+//-->
+function MM_goToURL() { //v3.0
+  var i, args=MM_goToURL.arguments; document.MM_returnValue = false;
+  for (i=0; i<(args.length-1); i+=2) eval(args[i]+".location='"+args[i+1]+"'");
+}
+</script>
+
+<link rel="stylesheet" href="seminar/light/css/lightbox.css" type="text/css" media="screen" />
+
+<style type="text/css">
+body {
+	background-color: #333;
+}
+<!--
+a {
+	font-family: Estrangelo Edessa;
+	font-size: 17px;
+	color: #666;
+}
+a:visited {
+	color: #999;
+	text-decoration: none;
+}
+a:hover {
+	color: #999;
+	text-decoration: none;
+}
+a:active {
+	color: #999;
+	text-decoration: none;
+}
+body,td,th {
+	font-family: Estrangelo Edessa;
+	font-size: 17px;
+	color: #666;
+}
+a:link {
+	text-decoration: none;
+	color: #999;
+}
+-->
+</style>
+
+</head>
+<br />
+
+<body onload=
+
+&lt;div;MM_preloadImages('archive_tree/gallery/lloyd_archive.jpg','archive_tree/gallery/moran_archive.jpg','archive_tree/gallery/hooper_archive.jpg','archive_tree/gallery/kraus_archive.jpg','archive_tree/gallery/lee_archive.jpg','archive_tree/gallery/tatalick_archive.jpg') id="gallerywrapper"> 
+<!--copy this navigation bar for all pages, place directly after <body>-->
+<!--msnavigation-->
+<table border="0" cellpadding="0" cellspacing="0" width="800" align="center">
+  <td><p style="MARGIN-BOTTOM: 2px" align="center">
+  <a href="http://www.temple.edu/tyler">Tyler Home</a>&nbsp;&nbsp;
+  <a href="../indexpage/indexpage.html">Index</a>&nbsp;&nbsp;
+  <a href="../aboutuspage/aboutuspage.html">About Us</a>&nbsp;&nbsp; 
+  <a href="gallerypage.html">Gallery</a>&nbsp;&nbsp;
+</p>
+
+<hr width="80%" noShade SIZE="1">
+<p style="MARGIN-TOP: -2px" align="center">
+<a href="../index.html">M/J/C-C Home&nbsp;</a>&nbsp;&nbsp;
+<a href="../newspage/newspage.html">Net Resources</a>&nbsp;&nbsp; 
+<a href="../metalsdirectorypage/hhome.html">Academic Metals Directory</a>&nbsp; 
+<a href="../contactpage/contactpage.html">Contact Page</a>&nbsp;&nbsp;
+<a href="../sitecreditspage/sitecredits.htm">Site Credits</a></td></tr>
+</table>
+<!--msnavigation-->
+<!--this is the end of the navigation bar-->
+
+<div id="galleryhead"><img src="gallery_logo.jpg" /> </div> 
+    <br />
+	<div id="currthesishead"><img src="current_thesis_logo.jpg" /> </div>
+  
+  <table width="800" height="200" border="0" cellpadding="0" cellspacing="0" align="center" id="Table_01">
+	<tr>
+     <td colspan="20" align="center">
+      <a href="thesis/choi/choi.html"><img src="current/11choi.jpg" border="0"/></a></td>
+	  <td colspan="20" align="center">
+      <img src="current/spacer1.jpg" border="0"/></a></td>
+	 
+	  <td colspan="20" align="center">
+      <a href="thesis/finkowski/fink_main/finkowski_main.html"><img src="current/finkowski.jpg" border="0"/></a></a></td>
+	</tr>
+
+</table>
+<br />
+</div>	
+<div id="thesisarchhead"> <img src="gallery_mfaacrchive_logo.jpg"/> </div>
+<br />
+<div id="gallerywrapper"> 
+
+  
+  <table width="800" "border="0" align="center" cellpadding="0" cellspacing="0" onmouseout="MM_swapImgRestore()" id="Table_02" ;return document.MM_returnValue>
+  
+<tr>
+  <td colspan="20">&nbsp;</td>
+<td colspan="60" align="right"><p>May 2010<br>
+  </p>
+  <p><br>
+    <br>
+    May 2009</p></td>
+    <td colspan="20"></td>
+            
+<td colspan="60" align="left">
+    <blockquote>
+      <p><a href="thesis/alaniz/alaniz/alaniz.html" border="0"
+            onclick="MM_goToURL('parent','thesis/alaniz/alaniz/alaniz.html');return document.MM_returnValue" 
+            onmouseover="MM_swapImage('placeholder','','archive_tree/gallery/alaniz_archive.jpg',1)" 
+            onmouseout="MM_swapImgRestore()"><big>Christine Alaniz</big></a>
+        
+        <br>
+        
+        <a href="thesis/annand/annand/Home.html" border="0"
+            onclick="MM_goToURL('parent','thesis/annand/annand/home.html');return document.MM_returnValue" 
+            onmouseover="MM_swapImage('placeholder','','archive_tree/gallery/annand_archive.jpg',1)" 
+            onmouseout="MM_swapImgRestore()"><big>Rebecca Annand</big></a>
+        <br>
+        
+        <a href="thesis/hollow horn/home-hollow-horn.html" border="0"
+            onclick="MM_goToURL('parent','thesis/hollow horn/home-hollow-horn.html');return document.MM_returnValue" 
+            onmouseover="MM_swapImage('placeholder','','archive_tree/gallery/hollowhorn_archive.jpg',1)" 
+            onmouseout="MM_swapImgRestore()"><big>Kathleen DeNooyer Hollow-Horn</big></a>
+        
+        <br>
+        <br>
+        
+        <a href="thesis/demonte/demonte.html" border="0"
+            onclick="MM_goToURL('parent','thesis/demonte/demonte.html');return document.MM_returnValue" 
+            onmouseover="MM_swapImage('placeholder','','archive_tree/gallery/demonte_archive.jpg',1)" 
+            onmouseout="MM_swapImgRestore()"><big>Joshua Demonte</big></a><br>
+      </p>
+    </blockquote></td>
+     
+    <td width="250" colspan="20" align="center">
+      <img src="archive_tree/gallery/spacer.gif" alt="" name="placeholder" width="250" id="placeholder"></td>
+    
+</tr>  
+  
+<tr>
+ <td colspan="20">&nbsp;</td>
+<td colspan="60" align="right">
+     May 2008<br><br><br><br><br><br></td>
+     <td colspan="20">&nbsp;</td>
+            
+<td colspan="60" align="left">
+			
+        <blockquote>
+          <p><a href="thesis/kolb/kolb.html" border="0"
+            onclick="MM_goToURL('parent','thesis/kolb/kolb.html');return document.MM_returnValue" 
+            onmouseover="MM_swapImage('placeholder2','','archive_tree/gallery/kolb_archive.jpg',1)" 
+            onmouseout="MM_swapImgRestore()"><big>Jocelyn Kolb</big></a>
+            <br>
+            
+            <a href="thesis/heidinger/heidinger.html" border="0"
+            onclick="MM_goToURL('parent','thesis/heidinger/heidinger.html');return document.MM_returnValue" 
+            onmouseover="MM_swapImage('placeholder2','','archive_tree/gallery/heidinger_archive.jpg',1)" 
+            onmouseout="MM_swapImgRestore()"><big>Alyssa Heidinger</big></a>
+            <br>
+            
+            <a href="thesis/seo/Seo_Home.htm" border="0"
+            onclick="MM_goToURL('parent','thesis/seo/Seo_Home.htm');return document.MM_returnValue" 
+            onmouseover="MM_swapImage('placeholder2','','archive_tree/gallery/seo_archive.jpg',1)" 
+            onmouseout="MM_swapImgRestore()"><big>Minhee Seo</big></a>
+            <br>
+            
+            <a href="thesis/Montagna/montagna.html" border="0"
+            onclick="MM_goToURL('parent','thesis/montagna/montagna.html');return document.MM_returnValue" 
+            onmouseover="MM_swapImage('placeholder2','','archive_tree/gallery/montagna_archive.jpg',1)" 
+            onmouseout="MM_swapImgRestore()"><big>Mary-Lou Montagna</big></a>
+            <br>
+            
+            <a href="thesis/chen/chenhome/chen_home.htm" border="0"
+            onclick="MM_goToURL('parent','thesis/chen/chenhome/chen_home.htm');return document.MM_returnValue" 
+            onmouseover="MM_swapImage('placeholder2','','archive_tree/gallery/chen_fuya_archive.jpg',1)" 
+            onmouseout="MM_swapImgRestore()"><big>Fu-Ya Chen</big></a>    
+            <br>
+            
+            <a href="thesis/tammaro/tammaro.html" border="0"
+            onclick="MM_goToURL('parent','thesis/tammaro/tammaro.html');return document.MM_returnValue" 
+            onmouseover="MM_swapImage('placeholder2','','archive_tree/gallery/tammaro_archive.jpg',1)" 
+            onmouseout="MM_swapImgRestore()"><big>Anthony Tammaro</big></a>
+          </p>
+      </blockquote></td>
+     
+    <td colspan="20" align="center">
+      <img src="archive_tree/gallery/spacer2.gif" alt="" name="placeholder2" width="250" id="placeholder2"></td>
+  <tr>
+<td colspan="20">&nbsp;</td>
+<td colspan="60" align="right"><p>May 2007  
+  </p>
+  <p>&nbsp;</p>
+  <p>May 2006</p>
+  <p>&nbsp; </p>
+  <p>January 2006</p></td>
+      <td colspan="20">&nbsp;</td>
+<td colspan="60" align="left">
+			
+        <blockquote>
+          <p><a href="thesis/grealish/grealish_home.htm" border="0"
+            onclick="MM_goToURL('parent','thesis/grealish/grealish_home.htm');return document.MM_returnValue" 
+            onmouseover="MM_swapImage('placeholder3','','archive_tree/gallery/grealish_archive.jpg',1)" 
+            onmouseout="MM_swapImgRestore()"><big>Corinne Grealish</big></a>
+            <br>
+            
+            <a href="thesis/yang/yang.htm" border="0"
+            onclick="MM_goToURL('parent','thesis/yang/yang.htm');return document.MM_returnValue" 
+            onmouseover="MM_swapImage('placeholder3','','archive_tree/gallery/yang_archive.jpg',1)" 
+            onmouseout="MM_swapImgRestore()"><big>Dini Yang</big></a>            </p>
+          <p><br>
+            
+            <a href="thesis/zimmerman/zimmerman/zimmerman.htm" border="0"
+            onclick="MM_goToURL('parent','thesis/zimmerman/zimmerman/zimmerman.htm');return document.MM_returnValue" 
+            onmouseover="MM_swapImage('placeholder3','','archive_tree/gallery/zimmerman_archive.jpg',1)" 
+            onmouseout="MM_swapImgRestore()"><big>Pamela Zimmerman</big></a></p>
+          <p><br>
+            
+            <a href="thesis/theokary/start/index.htm" border="0"
+            onclick="MM_goToURL('parent','thesis/theokary/start/index.htm');return document.MM_returnValue" 
+            onmouseover="MM_swapImage('placeholder3','','archive_tree/gallery/theokary_archive.jpg',1)" 
+            onmouseout="MM_swapImgRestore()"><big>Jennifer Theokary</big></a><br>
+            
+            <a href="thesis/hocker/hocker_home.htm" border="0"
+            onclick="MM_goToURL('parent','thesis/hocker/hocker_home.htm');return document.MM_returnValue" 
+            onmouseover="MM_swapImage('placeholder3','','archive_tree/gallery/hocker_archive.jpg',1)" 
+            onmouseout="MM_swapImgRestore()"><big>Stephanie Hocker</big></a></p>
+        </blockquote>      </td>
+  
+<td colspan="20" align="center">
+      <img src="archive_tree/gallery/spacer3.gif" alt="" name="placeholder3" width="250" id="placeholder3"></td>
+</tr>
+ 
+<tr>
+  <td colspan="20">&nbsp;</td>
+<td colspan="60" align="right">
+  <p>May 2005 </p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p>December 2004</p></td>
+      <td colspan="20">&nbsp;</td>
+<td colspan="60" align="left">
+			
+        <blockquote>
+          <p><a href="thesis/blum/blum_frontpage/blum.htm" border="0"
+            onclick="MM_goToURL('parent','thesis/blum/blum_frontpage/blum.htm');return document.MM_returnValue" 
+            onmouseover="MM_swapImage('placeholder5','','archive_tree/gallery/blum_archive.jpg',1)" 
+            onmouseout="MM_swapImgRestore()"><big>Joshua S. Blum</big></a>
+            <br>
+            
+            <a href="thesis/korony/korony.htm" border="0"
+            onclick="MM_goToURL('parent','thesis/korony/korony.htm');return document.MM_returnValue" 
+            onmouseover="MM_swapImage('placeholder5','','archive_tree/gallery/korony_archive.jpg',1)" 
+            onmouseout="MM_swapImgRestore()"><big>Julia Korony</big></a>
+            <br>  
+            
+            <a href="thesis/martino/main/main.htm" border="0"
+            onclick="MM_goToURL('parent','thesis/martino/main/main.htm');return document.MM_returnValue" 
+            onmouseover="MM_swapImage('placeholder5','','archive_tree/gallery/martino_archive.jpg',1)" 
+            onmouseout="MM_swapImgRestore()"><big>Cris Martino</big></a>
+            <br>
+            
+            <a href="thesis/starrett/starrett.htm" border="0"
+            onclick="MM_goToURL('parent','thesis/starrett/starrett.htm');return document.MM_returnValue" 
+            onmouseover="MM_swapImage('placeholder5','','archive_tree/gallery/starrett_archive.jpg',1)" 
+            onmouseout="MM_swapImgRestore()"><big>Courtney Starrett</big></a>        </p>
+          <p><br>
+            
+            <a href="thesis/kim/kim_web_final/kim/kim_main.htm" border="0"
+            onclick="MM_goToURL('parent','thesis/kim/kim_web_final/kim/kim_main.htm');return document.MM_returnValue" 
+            onmouseover="MM_swapImage('placeholder5','','archive_tree/gallery/kim_archive.jpg',1)" 
+            onmouseout="MM_swapImgRestore()"><big>Erin Kim</big></a></p>
+        </blockquote>      </td>
+     
+    <td colspan="20" align="center">
+      <img src="archive_tree/gallery/spacer5.gif" alt="" name="placeholder5" width="250" id="placeholder5"></td>
+
+ <tr>
+<td colspan="20">&nbsp;</td>
+<td colspan="60" align="right">
+  <p>May 2004</p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p>May 2003</p>
+  <p>&nbsp;</p></td>
+      <td colspan="20">&nbsp;</td>
+<td colspan="60" align="left">
+        <blockquote>
+          <p><a href="thesis/fletcher/fletcher.htm" border="0"
+            onclick="MM_goToURL('parent','thesis/fletcher/fletcher.htm');return document.MM_returnValue" 
+            onmouseover="MM_swapImage('placeholder6','','archive_tree/gallery/fletcher_archive.jpg',1)" 
+            onmouseout="MM_swapImgRestore()"><big>Sabina H. Fletcher</big></a>
+            <br>
+            
+            <a href="thesis/ty_kim/ty_kim.html" border="0"
+            onclick="MM_goToURL('parent','thesis/ty_kim/ty_kim.html');return document.MM_returnValue" 
+            onmouseover="MM_swapImage('placeholder6','','archive_tree/gallery/tykim_archive.jpg',1)" 
+            onmouseout="MM_swapImgRestore()"><big>Tae Ywan Kim</big></a> 
+            <br>
+            
+            <a href="thesis/sweigart/donna_main.htm" border="0"
+            onclick="MM_goToURL('parent','thesis/sweigart/donna_main.htm');return document.MM_returnValue" 
+            onmouseover="MM_swapImage('placeholder6','','archive_tree/gallery/sweigart_archive.jpg',1)" 
+            onmouseout="MM_swapImgRestore()"><big>Donna Mason Sweigart</big></a></p>
+          <p><br>
+            
+            <a href="thesis/ranieri/home/ranieri_home.htm" border="0"
+            onclick="MM_goToURL('parent','thesis/ranieri/home/ranieri_home.htm');return document.MM_returnValue" 
+            onmouseover="MM_swapImage('placeholder6','','archive_tree/gallery/ranieri_archive.jpg',1)" 
+            onmouseout="MM_swapImgRestore()"><big>Peter Ranieri</big></a>
+            <br>
+            
+            <a href="thesis/sholtis/sholtis.html" border="0"
+            onclick="MM_goToURL('parent','thesis/sholtis/sholtis.html');return document.MM_returnValue" 
+            onmouseover="MM_swapImage('placeholder6','','archive_tree/gallery/sholtis_archive.jpg',1)" 
+            onmouseout="MM_swapImgRestore()"><big>Jennifer Sholtis</big></a></p>
+        </blockquote>      </td>
+     
+    <td colspan="20" align="center">
+      <img src="archive_tree/gallery/spacer6.gif" alt="" name="placeholder6" width="250" id="placeholder6"></td>
+
+<tr>
+<td colspan="20">&nbsp;</td>
+<td colspan="60" align="right">
+  <p>January 2003</p>
+  <p>&nbsp;</p>
+  <p>May 2002</p>
+  <p>&nbsp;</p>
+  <p>December 2001</p></td>
+      <td colspan="20">&nbsp;</td>
+<td colspan="60" align="left">
+
+        <blockquote>
+          <p><a href="thesis/massinger/home.htm" border="0"
+            onclick="MM_goToURL('parent','thesis/massinger/home.htm');return document.MM_returnValue" 
+            onmouseover="MM_swapImage('placeholder7','','archive_tree/gallery/massinger_archive.jpg',1)" 
+            onmouseout="MM_swapImgRestore()"><big>Heather Massinger</big></a> 
+            <br>
+            
+            <a href="thesis/h_park/parkhome/park1.html" border="0"
+            onclick="MM_goToURL('parent','thesis/h_park/parkhome/park1.html');return document.MM_returnValue" 
+            onmouseover="MM_swapImage('placeholder7','','archive_tree/gallery/h_park_archive.jpg',1)" 
+            onmouseout="MM_swapImgRestore()"><big>Hye Park</big></a>        </p>
+          <p><br>
+            
+            <a href="thesis/strzelec/strzelec.htm" border="0"
+            onclick="MM_goToURL('parent','thesis/strzelec/strzelec.htm');return document.MM_returnValue" 
+            onmouseover="MM_swapImage('placeholder7','','archive_tree/gallery/strzelec_archive.jpg',1)" 
+            onmouseout="MM_swapImgRestore()"><big>Rebecca Strzelec</big></a>        </p>
+          <p><br>
+            
+            <a href="thesis/hsu/homepage/hsu.htm" border="0"
+            onclick="MM_goToURL('parent','"thesis/hsu/homepage/hsu.htm');return document.MM_returnValue" 
+            onmouseover="MM_swapImage('placeholder7','','archive_tree/gallery/hsu_archive.jpg',1)" 
+            onmouseout="MM_swapImgRestore()"><big>I-Lin hsu</big></a></p>
+        </blockquote>      </td>
+     
+    <td colspan="20" align="center">
+      <img src="archive_tree/gallery/spacer7.gif" alt="" name="placeholder7" width="250" id="placeholder7"></td>
+        
+ <tr>
+<td colspan="20">&nbsp;</td>
+<td colspan="60" align="right">
+  <p>May 2001</p>
+  <p>&nbsp;</p>
+  <p>May 2000</p>
+  <p>&nbsp;</p>
+  <p>January 2000</p></td>
+      <td colspan="20">&nbsp;</td>
+<td colspan="60" align="left">
+
+        <blockquote>
+          <p><a href="thesis/reigart/reigart.htm" border="0"
+            onclick="MM_goToURL('parent','thesis/reigart/reigart.htm');return document.MM_returnValue" 
+            onmouseover="MM_swapImage('placeholder8','','archive_tree/gallery/reigart_archive.jpg',1)" 
+            onmouseout="MM_swapImgRestore()"><big>April Reigart</big></a> <br>
+            
+            <a href="thesis/uhrik/uhrik.htm" border="0"
+            onclick="MM_goToURL('parent','thesis/uhrik/uhrik.htm');return document.MM_returnValue" 
+            onmouseover="MM_swapImage('placeholder8','','archive_tree/gallery/uhrik_archive.jpg',1)" 
+            onmouseout="MM_swapImgRestore()"><big>Kelly M. Uhrik</big></a>        </p>
+          <p><br>
+            
+            <a href="thesis/park/park.htm" border="0"
+            onclick="MM_goToURL('parent','thesis/park/park.htm');return document.MM_returnValue" 
+            onmouseover="MM_swapImage('placeholder8','','archive_tree/gallery/park_archive.jpg',1)" 
+            onmouseout="MM_swapImgRestore()"><big>Sung Hyun Park</big></a></p>
+          <p> <br>
+            
+            <a href="thesis/minich/minich.html" border="0"
+            onclick="MM_goToURL('parent','thesis/minich/minich.html');return document.MM_returnValue" 
+            onmouseover="MM_swapImage('placeholder8','','archive_tree/gallery/minich_archive.jpg',1)" 
+            onmouseout="MM_swapImgRestore()"><big>Catherine Minich</big></a><br>
+          </p>
+        </blockquote>      </td>
+     
+    <td colspan="20" align="center">
+      <img src="archive_tree/gallery/spacer8.gif" alt="" name="placeholder8" width="250" id="placeholder8"></td>
+        
+ <tr>
+<td colspan="20">&nbsp;</td>
+<td colspan="60" align="right" >
+  <p>December 1999</p>
+  <p>&nbsp;</p>
+  <p>May 1999</p>
+  <p>&nbsp;</p>
+  <p>December 1998</p></td>
+      <td colspan="20">&nbsp;</td>
+<td colspan="60" align="left">
+             
+        <blockquote>
+          <p><a href="thesis/czapka/czapka.htm" border="0"
+            onclick="MM_goToURL('parent','thesis/czapka/czapka.htm');return document.MM_returnValue" 
+            onmouseover="MM_swapImage('placeholder10','','archive_tree/gallery/czapka_archive.jpg',1)" 
+            onmouseout="MM_swapImgRestore()"><big>Andrew C. Czapka</big></a> </p>
+          <p><br>
+            
+            <a href="thesis/griffin/griffin.html" border="0"
+            onclick="MM_goToURL('parent','thesis/griffin/griffin.html');return document.MM_returnValue" 
+            onmouseover="MM_swapImage('placeholder10','','archive_tree/gallery/griffin_archive.jpg',1)" 
+            onmouseout="MM_swapImgRestore()"><big>Cisco Griffin</big></a><br>
+            
+            <a href="thesis/kawase/kawase.html" border="0"
+            onclick="MM_goToURL('parent','thesis/kawase/kawase.html');return document.MM_returnValue" 
+            onmouseover="MM_swapImage('placeholder10','','archive_tree/gallery/kawase_archive.jpg',1)" 
+            onmouseout="MM_swapImgRestore()"><big>Kaori Kawase</big></a><br>
+            
+            <a href="thesis/voigt/voigt.html" border="0"
+            onclick="MM_goToURL('parent','thesis/voigt/voigt.html');return document.MM_returnValue" 
+            onmouseover="MM_swapImage('placeholder10','','archive_tree/gallery/voigt_archive.jpg',1)" 
+            onmouseout="MM_swapImgRestore()"><big>Kimberly Voigt</big></a></p>
+          <p><br>
+            
+            
+            <a href="thesis/bucci/indexdb.html" border="0"
+            onclick="MM_goToURL('parent','thesis/bucci/indexdb.html');return document.MM_returnValue" 
+            onmouseover="MM_swapImage('placeholder10','','archive_tree/gallery/bucci_archive.jpg',1)" 
+            onmouseout="MM_swapImgRestore()"><big>Douglas Bucci</big></a><br>
+          </p>
+        </blockquote>      </td>
+     
+    <td colspan="20" align="center">
+      <img src="archive_tree/gallery/spacer10.gif" alt="" name="placeholder10" width="250" id="placeholder10"></td>
+              
+ <tr>
+<td colspan="20">&nbsp;</td>
+<td colspan="60" align="right">
+  <p>May 1998</p>
+  <p>&nbsp;</p>
+  <p>May 1997</p>
+  <p>&nbsp;</p></td>
+      <td colspan="20">&nbsp;</td>
+<td colspan="60" align="left">
+      
+        	
+        <blockquote>
+          <p><a href="thesis/nbryant/index.html" border="0"
+            onclick="MM_goToURL('parent','thesis/nbryant/index.html');return document.MM_returnValue" 
+            onmouseover="MM_swapImage('placeholder11','','archive_tree/gallery/nbryant_archive.jpg',1)" 
+            onmouseout="MM_swapImgRestore()"><big>Nancy Bryant</big></a><br>
+            
+            <a href="thesis/yoon/yoonhomepage.html" border="0"
+            onclick="MM_goToURL('parent','thesis/yoon/yoonhomepage.html');return document.MM_returnValue" 
+            onmouseover="MM_swapImage('placeholder11','','archive_tree/gallery/yoon_archive.jpg',1)" 
+            onmouseout="MM_swapImgRestore()"><big>Jungwha Yoon</big></a> <br>
+            
+            <a href="thesis/zindell/open/mike1.html" border="0"
+            onclick="MM_goToURL('parent','thesis/zindell/open/mike1.html');return document.MM_returnValue" 
+            onmouseover="MM_swapImage('placeholder11','','archive_tree/gallery/zindell_archive.jpg',1)" 
+            onmouseout="MM_swapImgRestore()"><big>Michael Zindell</big></a><br>
+          </p>
+          <p><br>
+            
+            <a href="thesis/hooper/index.html" border="0"
+            onclick="MM_goToURL('parent','thesis/hooper/index.html');return document.MM_returnValue" 
+            onmouseover="MM_swapImage('placeholder11','','archive_tree/gallery/hooper_archive.jpg',1)" 
+            onmouseout="MM_swapImgRestore()"><big>T. Scott Hooper</big></a><br>
+            <a href="thesis/kraus/index.html" border="0"
+            onclick="MM_goToURL('parent','thesis/kraus/index.html');return document.MM_returnValue" 
+            onmouseover="MM_swapImage('placeholder11','','archive_tree/gallery/kraus_archive.jpg',1)" 
+            onmouseout="MM_swapImgRestore()"><big>Lori Kraus</big></a><br>
+            
+            <a href="thesis/lee/index.html" border="0"
+            onclick="MM_goToURL('parent','thesis/lee/index.html');return document.MM_returnValue" 
+            onmouseover="MM_swapImage('placeholder11','','archive_tree/gallery/lee_archive.jpg',1)" 
+            onmouseout="MM_swapImgRestore()"><big>Sookjin Lee</big></a><br>
+            <a href="thesis/reml/intro.html" border="0"
+            onclick="MM_goToURL('parent','thesis/reml/intro.html');return document.MM_returnValue" 
+            onmouseover="MM_swapImage('placeholder12','','archive_tree/gallery/lloyd_archive.jpg',1)" 
+            onmouseout="MM_swapImgRestore()"><big>Robert Elder Marks Lloyd</big></a><br />
+            <a href="thesis/moran/moranindex.html" border="0"
+            onclick="MM_goToURL('parent','thesis/moran/moranindex.html');return document.MM_returnValue" 
+            onmouseover="MM_swapImage('placeholder12','','archive_tree/gallery/moran_archive.jpg',1)" 
+            onmouseout="MM_swapImgRestore()"><big>Jessica Moran</big></a></p>
+</blockquote>      </td>
+     
+    <td colspan="20" align="center">
+      <img src="archive_tree/gallery/spacer11.gif" alt="" name="placeholder11" width="250" id="placeholder11"></td>
+             
+              
+ <tr>
+<td colspan="20">&nbsp;</td>
+<td colspan="60" align="right">
+      <p>August 1996</p>
+      <p>&nbsp;</p>
+      <p>May 1996</p>
+      <p>&nbsp;</p>
+      <p>May 1995</p></td>
+      <td colspan="20">&nbsp;</td>
+<td colspan="60" align="left">
+
+		 <blockquote>
+		   <p><a href="thesis/tatalick/gallery.html" border="0"
+            onclick="MM_goToURL('parent','thesis/tatalick/gallery.html');return document.MM_returnValue" 
+            onmouseover="MM_swapImage('placeholder12','','archive_tree/gallery/tatalick_archive.jpg',1)" 
+            onmouseout="MM_swapImgRestore()"><big>Kimberlie Tatalick</big></a></p>
+		   <p><br>	
+		     
+		     <a href="thesis/yaukey/gal_yauk.html" border="0"
+            onclick="MM_goToURL('parent','"thesis/yaukey/gal_yauk.html');return document.MM_returnValue" 
+            onmouseover="MM_swapImage('placeholder12','','archive_tree/gallery/yaukey_archive.jpg',1)" 
+            onmouseout="MM_swapImgRestore()"><big>Margaret Yaukey</big></a></p>
+		   <p><br>
+		     
+		     <a href="thesis/parkin/the_cparkin.html" border="0"
+            onclick="MM_goToURL('parent','thesis/parkin/the_cparkin.html');return document.MM_returnValue" 
+            onmouseover="MM_swapImage('placeholder12','','archive_tree/gallery/parkin_archive.jpg',1)" 
+            onmouseout="MM_swapImgRestore()"><big>Christina Parkin</big></a></p>
+        </blockquote>	    </td>
+     
+    <td colspan="20" align="center"><img src="archive_tree/gallery/spacer12.gif" alt="" name="placeholder12" width="250" id="placeholder12"></td>
+                      
+          
+                       
+          
+        
+            
+          
+        
+     
+	
+</table>
+</div>
+
+<br>
+<div id="seniorwrapper"> 
+<div id="seniorhead"> <img src="gallery_seniorexhib_logo.jpg" /></div>
+   
+     <table width="800" height="200" border="0" cellpadding="0" cellspacing="0" align="center" id="Table_02">
+	<tr>
+      <td colspan="20"><a href="senior/seniorshowsites/seniorshow11/seniorshow11/seniorshow11_home.htm"><img src="senior/11senior.jpg" border="0"/></a>
+      <td colspan="20" align="center">
+      <a href="senior/seniorshowsites/seniorshow10/seniorshow10/senior10_home.html"><img src="senior/10senior.jpg" border="0"/></a></td>
+	  <td colspan="20" align="center">
+      <a href="senior/seniorshowsites/seniorshow09/homepage.html"><img src="senior/09senior.jpg" border="0"/></a></td>
+	 
+	</tr>
+	<tr>
+      <td colspan="20" align="center">
+      <a href="senior/seniorshowsites/seniorshow08/index.htm"><img src="senior/08senior.jpg" border="0"/></a></td>
+      <td colspan="20" align="center">
+      <a href="senior/seniorshowsites/seniorshow07/index.htm"><img src="senior/07senior.jpg" border="0"/></a></td>
+      <td colspan="20" align="center">
+      <a href="senior/seniorshowsites/seniorshow06/pages etc/index.htm"><img src="senior/06senior.jpg" border="0"/></a></td>
+     
+      </tr>
+    <tr>
+	  <td colspan="20" align="center">
+      <a href="senior/seniorshowsites/seniorshow05/Home page/Portrait page.htm"><img src="senior/05senior.jpg" border="0"/></a></td>
+      <td colspan="20" align="center"><a href="senior/seniorshowsites/seniorshow04/SENIOR_SHOW_START_2004.htm"><img src="senior/04senior.jpg" border="0"/></a></td>
+	  <td colspan="20" align="center"><a href="senior/seniorshowsites/seniorshow03/seniorshow_03_gallery/seniorshow_gallery_home.htm"><img src="senior/03senior.jpg" border="0"/></a></td>
+	</tr>
+    <tr>
+      <td colspan="20" align="center">
+      <a href="senior/seniorshowsites/seniorshow02/seniorshow_home.html"><img src="senior/02senior.jpg" border="0"/></a></td>
+      <td colspan="20"><a href="senior/seniorshowsites/seniorshow01/seniorshow.html"><img src="senior/01senior.jpg" border="0"/></a>
+      <td colspan="12"><img src="senior/seniorspacer.jpg" border="0"/>
+	</tr>
+ </table>
+</div>
+<br>
+	<div id="facultyhead"><img src="gallery_faculty_logo.jpg" width="800" height="50" /> </div>
+	
+<br>
+     	  <table width="800" height="200" border="0" cellpadding="0" cellspacing="0" align="center" id="Table_01">
+	<tr>
+	  <td colspan="20" align="center">	    
+      <a href="../facultypage/stanley/facultypage_stanley.html"><img src="../facultypage/lechtzin1.jpg" border="0" /></a></a></td>
+	  <td colspan="20" align="center"><a href="../facultypage/vickie/facultypage_vickie.html"><img src="../facultypage/sedman1.jpg" border="0" /></a></a></td>
+	  <td colspan="20" align="center">
+      <a href="../facultypage/daniella/facultypage_daniella.html"><img src="../facultypage/kerner1.jpg" border="0" /></a></a></td>
+	</tr>
+</div>
+	</table>
+<br><br>
+    <div id="seminarhead"><img src="gallery_seminar_logo.jpg" width="800" height="50" /> </div>
+    	<div id="seminarbody">
+<br>
+		<table width="800" height="200" border="0" cellpadding="5" cellspacing="0" align="center" id="Table_05">
+        
+    <tr>
+   	  
+      <td colspan="20" align="center"><a href="seminar/lightbox_seminar/photos/gallery16.jpg" width="810" height="873" rel="lightbox[seminar]"><img src="seminar/lightbox_seminar/thumbnails/galleryicon_16.gif" width="106" height="106" border="0"/></a></td>
+
+      <td colspan="20" align="center"><a href="seminar/lightbox_seminar/photos/gallery15.jpg" width="810" height="873" rel="lightbox[seminar]"><img src="seminar/lightbox_seminar/thumbnails/galleryicon_15.gif" alt="" width="106" height="106" border="0"/></a>
+            
+      <td colspan="20" align="center"><a href="seminar/lightbox_seminar/photos/gallery14.jpg" width="810" height="873" rel="lightbox[seminar]"><img src="seminar/lightbox_seminar/thumbnails/galleryicon_14.gif" alt="" width="106" height="106" border="0" /></a>
+      <tr>
+      
+      <td colspan="20" align="center"><a href="seminar/lightbox_seminar/photos/gallery13.jpg" width="810" height="873" rel="lightbox[seminar]"><img src="seminar/lightbox_seminar/thumbnails/galleryicon_13.gif" alt="" width="106" height="106" border="0"/></a><a href="seminar/lightbox_seminar/photos/gallery01.jpg" width="810" height="873" rel="lightbox[seminar]"></a></td>
+      <td colspan="20" align="center">
+        <a href="seminar/lightbox_seminar/photos/gallery02.jpg" width="810" height="873" rel="lightbox[seminar]"></a><a href="seminar/lightbox_seminar/photos/gallery12.jpg" width="810" height="873"rel="lightbox[seminar]"><img src="seminar/lightbox_seminar/thumbnails/galleryicon_12.gif" alt="" width="106" height="106" border="0"/></a></td>
+      <td colspan="20" align="center">
+        <a href="seminar/lightbox_seminar/photos/gallery03.jpg" width="810" height="873" rel="lightbox[seminar]"></a><a href="seminar/lightbox_seminar/photos/gallery11.jpg" width="810" height="873" rel="lightbox[seminar]"><img src="seminar/lightbox_seminar/thumbnails/galleryicon_11.gif" alt="" width="106" height="106" border="0"/></a></td>
+	</tr>	
+	 <tr>
+   	   <td colspan="20" align="center">
+       <a href="seminar/lightbox_seminar/photos/gallery10.jpg" width="810" height="873" rel="lightbox[seminar]"><img src="seminar/lightbox_seminar/thumbnails/galleryicon_10.gif" alt="" width="106" height="106" border="0"/></a><a href="seminar/lightbox_seminar/photos/gallery04.jpg" width="810" height="873" rel="lightbox[seminar]"></a></td>
+       <td colspan="20" align="center">
+       <a href="seminar/lightbox_seminar/photos/gallery05.jpg" width="810" height="873" rel="lightbox[seminar]"></a><a href="seminar/lightbox_seminar/photos/gallery09.jpg" width="810" height="873" rel="lightbox[seminar]"><img src="seminar/lightbox_seminar/thumbnails/galleryicon_09.gif" alt="" width="106" height="106" border="0"/></a></td>
+       <td colspan="20" align="center">
+       <a href="seminar/lightbox_seminar/photos/gallery06.jpg" width="810" height="873" rel="lightbox[seminar]"></a><a href="seminar/lightbox_seminar/photos/gallery08.jpg" width="810" height="873" rel="lightbox[seminar]"><img src="seminar/lightbox_seminar/thumbnails/galleryicon_08.gif" alt="" width="106" height="106" border="0"/></a></td>
+	</tr>
+	 <tr>
+   	   <td colspan="20" align="center">
+        <a href="seminar/lightbox_seminar/photos/gallery07.jpg" width="810" height="873" rel="lightbox[seminar]">
+<img src="seminar/lightbox_seminar/thumbnails/galleryicon_07.gif" width="106" height="106" border="0"/></a></td>
+       <td colspan="20" align="center">
+       <a href="seminar/lightbox_seminar/photos/gallery08.jpg" width="810" height="873" rel="lightbox[seminar]"></a><a href="seminar/lightbox_seminar/photos/gallery06.jpg" width="810" height="873" rel="lightbox[seminar]"><img src="seminar/lightbox_seminar/thumbnails/galleryicon_06.gif" alt="" width="106" height="106" border="0"/></a></td>
+       <td colspan="20" align="center">
+       <a href="seminar/lightbox_seminar/photos/gallery09.jpg" width="810" height="873" rel="lightbox[seminar]"></a><a href="seminar/lightbox_seminar/photos/gallery05.jpg" width="810" height="873" rel="lightbox[seminar]"><img src="seminar/lightbox_seminar/thumbnails/galleryicon_05.gif" alt="" width="106" height="106" border="0"/></a></td>
+	</tr>
+	 <tr>
+   	   <td colspan="20" align="center">
+       <a href="seminar/lightbox_seminar/photos/gallery06.jpg" width="810" height="873" rel="lightbox[seminar]"></a><a href="seminar/lightbox_seminar/photos/gallery04.jpg" width="810" height="873" rel="lightbox[seminar]"><img src="seminar/lightbox_seminar/thumbnails/galleryicon_04.gif" alt="" width="106" height="106" border="0"/></a><a href="seminar/lightbox_seminar/photos/gallery10.jpg" width="810" height="873" rel="lightbox[seminar]"></a></td>
+       <td colspan="20" align="center">
+       <a href="seminar/lightbox_seminar/photos/gallery05.jpg" width="810" height="873" rel="lightbox[seminar]"></a><a href="seminar/lightbox_seminar/photos/gallery11.jpg" width="810" height="873" rel="lightbox[seminar]"></a><a href="seminar/lightbox_seminar/photos/gallery03.jpg" width="810" height="873" rel="lightbox[seminar]"><img src="seminar/lightbox_seminar/thumbnails/galleryicon_03.gif" alt="" width="106" height="106" border="0"/></a></td>
+       <td colspan="20" align="center">
+       <a href="seminar/lightbox_seminar/photos/gallery12.jpg" width="810" height="873"rel="lightbox[seminar]"></a><a href="seminar/lightbox_seminar/photos/gallery04.jpg" width="810" height="873" rel="lightbox[seminar]"></a><a href="seminar/lightbox_seminar/photos/gallery02.jpg" width="810" height="873" rel="lightbox[seminar]"><img src="seminar/lightbox_seminar/thumbnails/galleryicon_02.gif" alt="" width="106" height="106" border="0"/></a></td>
+	</tr>
+     <tr>
+   	   <td colspan="20" align="center">
+       <a href="seminar/lightbox_seminar/photos/gallery03.jpg" width="810" height="873" rel="lightbox[seminar]"></a><a href="seminar/lightbox_seminar/photos/gallery01.jpg" width="810" height="873" rel="lightbox[seminar]"><img src="seminar/lightbox_seminar/thumbnails/galleryicon_01.gif" alt="" width="106" height="106" border="0"/></a><a href="seminar/lightbox_seminar/photos/gallery13.jpg" width="810" height="873" rel="lightbox[seminar]"></a></td>
+       <td colspan="20" align="center">
+       <a href="seminar/lightbox_seminar/photos/gallery02.jpg" width="810" height="873" rel="lightbox[seminar]"></a><a href="seminar/lightbox_seminar/photos/gallery14.jpg" width="810" height="873" rel="lightbox[seminar]"></a></td>
+       <td colspan="20" align="center">
+       <a href="seminar/lightbox_seminar/photos/gallery15.jpg" width="810" height="873" rel="lightbox[seminar]"></a><a href="seminar/lightbox_seminar/photos/gallery01.jpg" width="810" height="873" rel="lightbox[seminar]"></a></td>
+	</tr>
+</table>
+</div>
+
+<br>
+<a href="#" target="_top" align="center"><img src="top_01.gif" width="147" height="50" border="0" /></a>
+
+<div id="copyright">
+<img src="../copyright.png" width="800" height="100" border="0" />
+</div>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,67 @@
+[
+  {
+    "entity_type": "person",
+    "slug": "crafts/metalsdirectorypage/s272.html",
+    "name": "Phil Carrizzi",
+    "question": "name changed / still in job / alive",
+    "finding": "Name changed to Phillip Renato (formerly Carrizzi). Alive/active. Now Professor at Kendall College of Art and Design (Ferris State); founding chair of the Allesee Metals/Jewelry Design program (now under Product Design). MFA Univ. of Washington matches archive.",
+    "status": "updated",
+    "confidence": "high",
+    "source_url": "https://www.ferris.edu/redirects/kcad/programs/faculty/renato-phillip.html",
+    "source_title": "Phillip Renato (formerly Carrizzi) — KCAD faculty profile",
+    "date_checked": "2026-05-29",
+    "notes": "Name change is the key update. This is the directory entry used as the recovery proof."
+  },
+  {
+    "entity_type": "person",
+    "slug": "crafts/metalsdirectorypage/p82.html",
+    "name": "Mary Lee Hu",
+    "question": "still in job / alive / name changed",
+    "finding": "Alive (b.1943). Name unchanged. RETIRED — Professor Emeritus, University of Washington (retired 2006). Archive said 'currently teaching since 1980' -> now emerita.",
+    "status": "updated",
+    "confidence": "high",
+    "source_url": "https://en.wikipedia.org/wiki/Mary_Lee_Hu",
+    "source_title": "Mary Lee Hu — Wikipedia",
+    "date_checked": "2026-05-29",
+    "notes": "Phil's professor. Honors since: ACC Fellows 1996, Twining Humber 2008."
+  },
+  {
+    "entity_type": "person",
+    "slug": "STANLEY_LECHTZIN_curator",
+    "name": "Stanley Lechtzin",
+    "question": "still in job / alive / name changed",
+    "finding": "Alive (b.1936 Detroit). Name unchanged. RETIRED 2018 — Professor Emeritus, Tyler School of Art, Temple. Founded Tyler Jewelry/Metals 1962, led until 2018. Curator of THIS directory ('send corrections to Stanley Lechtzin').",
+    "status": "updated",
+    "confidence": "high",
+    "source_url": "https://en.wikipedia.org/wiki/Stanley_Lechtzin",
+    "source_title": "Stanley Lechtzin — Wikipedia / Tyler faculty page",
+    "date_checked": "2026-05-29",
+    "notes": "Slug to be matched to his directory person-page if one exists. SNAG Lifetime Achievement 2009."
+  },
+  {
+    "entity_type": "program",
+    "slug": "crafts/metalsdirectorypage/s273.html",
+    "name": "Kendall College of Art and Design",
+    "question": "program still exists / current chair",
+    "finding": "Exists. Metals/Jewelry continues as the Allesee Metals & Jewelry Design program (now grouped under Product Design at KCAD, Ferris State). Chair: Phillip Renato (formerly Carrizzi).",
+    "status": "updated",
+    "confidence": "high",
+    "source_url": "https://kcad.ferris.edu/about/history.html",
+    "source_title": "KCAD / Ferris State",
+    "date_checked": "2026-05-29",
+    "notes": "Archive said 'Metals program started 2002, faculty Phillip Carrizzi'."
+  },
+  {
+    "entity_type": "program",
+    "slug": "TYLER_MJCC",
+    "name": "Tyler School of Art Metals/Jewelry/CAD-CAM",
+    "question": "program still exists / leadership after Lechtzin",
+    "finding": "Exists. 'New vision for Tyler Metals/Jewelry/CAD-CAM' announced Oct 2018 as Lechtzin retired; program continues. Successor leadership to confirm.",
+    "status": "needs_more",
+    "confidence": "medium",
+    "source_url": "https://news.temple.edu/news/2018-10-23/new-vision-tyler-metalsjewelrycad-cam",
+    "source_title": "New vision for Tyler Metals/Jewelry/CAD-CAM — Temple Now (2018)",
+    "date_checked": "2026-05-29",
+    "notes": "Home program of the whole directory."
+  }
+]

@@ -1,0 +1,119 @@
+==============================================================================
+HANDOFF — ACADEMIC METALS DIRECTORY / WAYBACK RECOVERY
+Date: 2026-05-29
+For: a Claude Code session (or Phil running the included script directly)
+Scope: RETRIEVAL + ASSEMBLY ONLY. Rebuild/redesign is the NEXT step — Phil
+       will instruct on that separately. Do not build a site in this pass.
+==============================================================================
+
+0. ONE-LINE GOAL
+   Pull every recoverable Wayback snapshot of the old Temple "Academic Metals
+   Directory," then assemble its contents into a reviewable local corpus —
+   raw mirror plus structured JSON. Stop there.
+
+
+1. WHAT THIS THING WAS
+   - Project: the Academic Metals Directory, a sub-site of the Tyler School of
+     Art Metals/Jewelry/CAD-CAM (M/J/C-C) program at Temple University.
+   - Two linked halves under one roof:
+       (a) a biographical archive — 200+ profiles of US metalsmiths and
+           jewelers, each a numbered static page: b36.html, b73.html, b97.html,
+           b141.html, b206.html ... numbering is NON-contiguous, so don't
+           assume a clean b1..bN range — enumerate, don't guess.
+       (b) a schools directory — US universities and art schools teaching
+           jewelry/metals, each entry carrying a program and its faculty.
+           Phil's former listing lives in THIS half: name "Phil Carrizzi,"
+           program "Kendall College of Art and Design." Finding it is the
+           proof the run worked.
+   - Current status: the live site is dead — every page 404s. Only the
+     Internet Archive has it.
+
+
+2. TWO URL ERAS — COVER BOTH (content moved hosts over the site's life)
+   - Older tree:  http://www.temple.edu/crafts/public_html/mjcc/...
+                    index at  .../mjcc/local/history/hhome.html
+                    bios at   .../mjcc/local/history/biographies/bNN.html
+   - Newer tree:  http://www.temple.edu/crafts/metalsdirectorypage/...
+                    bios at   .../metalsdirectorypage/biographies/bNN.html
+   - Sweep broadly under  temple.edu/crafts/*  so nothing is missed: the
+     gallery, "net resources," the academic-directory index, the site-credits
+     page, and the images.
+
+
+3. METHOD — what the code must do, in order
+   Step 1  ENUMERATE via the Wayback CDX API. Do not hand-build URL lists;
+           ask the archive what it actually holds.
+   Step 2  For each unique original URL, pick the BEST capture — the latest
+           HTTP 200 text/html grab before takedown is the most complete.
+   Step 3  FETCH the raw archived bytes using the "id_" modifier on the
+           timestamp, so you get the ORIGINAL page without the Wayback toolbar
+           and rewrites injected into the markup.
+   Step 4  SAVE both: a path-faithful raw mirror (HTML + referenced images)
+           AND a parsed structured record per page.
+   Step 5  WRITE a manifest — totals, what parsed cleanly, what failed, what's
+           missing, and whether "Carrizzi" was located.
+
+   Endpoints the script encodes:
+   - CDX enumerate:
+       http://web.archive.org/cdx/search/cdx
+         ?url=temple.edu/crafts/*
+         &output=json
+         &fl=original,timestamp,statuscode,mimetype
+         &filter=statuscode:200
+   - Raw snapshot, no toolbar:
+       http://web.archive.org/web/{timestamp}id_/{original_url}
+
+   Politeness + robustness — NON-NEGOTIABLE (archive.org rate-limits hard):
+   - real User-Agent; ~1.5-2s delay between hits; exponential backoff on
+     429/503; resume-safe (skip files already on disk); cache the CDX result
+     so a re-run doesn't re-enumerate from scratch.
+
+
+4. OUTPUT LAYOUT
+   amd-recovery/
+     raw/             path-faithful mirror of the original HTML
+     images/          downloaded referenced images
+     data/
+       cdx_best.json    the enumeration result (one best capture per URL)
+       pages.json       one record per page: url, timestamp, type
+                        (bio | school | index | other), title, name,
+                        body_text, image_refs, links
+       schools.json     the school-directory entries pulled out (Kendall here)
+     manifest.txt       run report
+
+
+5. PARSING NOTES (old craft HTML is messy — parse leniently, never crash a run)
+   - Bio title pattern is "Biography: <Name>" — use it to set name + type=bio.
+   - Strip the shared nav chrome so body_text is just the entry. The chrome
+     reads: "Tyler Home / Index / About Us / Gallery / M/J/C-C Home /
+     Net Resources / Academic Metals Directory / Contact Page / Site Credits."
+   - School-directory pages carry a program plus faculty names — capture the
+     faculty VERBATIM; that's where "Phil Carrizzi / Kendall" surfaces. Flag
+     it in the manifest the moment it's found.
+   - Expect tables-for-layout, inline <font> tags, and possibly bad encoding.
+     Tolerate all of it; one ugly page must not kill the run.
+
+
+6. WHAT NOT TO DO (this pass)
+   - No redesign, no new site, no framework, no cleanup of the prose itself.
+     Recovery only.
+   - Don't invent or backfill missing bios. Missing = logged, left blank.
+   - Don't let parsing destroy the raw mirror — keep both, always.
+   - No keyboard-shortcut tooling, no dev-jargon ceremony.
+
+
+7. INCLUDED IN THIS ZIP
+   - wayback_pull.py — a runnable reference (requests + beautifulsoup4).
+       pip install requests beautifulsoup4
+       python wayback_pull.py
+     The spec in section 3 is the contract; the script is a starting point —
+     adapt it freely.
+
+
+8. RESERVED FOR PHIL — the "next" he'll instruct after reviewing the corpus
+   - What the revived directory should BE: faithful mirror, or fresh build
+     under renato.design conventions.
+   - Whether living-person bios need consent or a refresh before re-publishing
+     (the citation/living-voice rules apply once this stops being private).
+   - Naming: keep "Academic Metals Directory," or rename.
+==============================================================================

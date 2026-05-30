@@ -1,0 +1,220 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+		<title>Sholtis 9</title>
+		<csscriptdict>
+			<script><!--CSInit = new Array;function CSScriptInit() {if(typeof(skipPage) != "undefined") { if(skipPage) return; }
+idxArray = new Array;
+for(var i=0;i<CSInit.length;i++)
+	idxArray[i] = i;
+CSAction2(CSInit, idxArray);}CSAg = window.navigator.userAgent; CSBVers = parseInt(CSAg.charAt(CSAg.indexOf("/")+1),10);
+function IsIE() { return CSAg.indexOf("MSIE") > 0;}
+function CSIEStyl(s) { return document.all.tags("div")[s].style; }
+function CSNSStyl(s) { return CSFindElement(s,0); }
+function CSFindElement(n,ly) { if (CSBVers < 4) return document[n];
+	var curDoc = ly ? ly.document : document; var elem = curDoc[n];
+	if (!elem) { for (var i=0;i<curDoc.layers.length;i++) {
+		elem = CSFindElement(n,curDoc.layers[i]); if (elem) return elem; }}
+	return elem;
+}function CSClickReturn () {
+	var bAgent = window.navigator.userAgent; 
+	var bAppName = window.navigator.appName;
+	if ((bAppName.indexOf("Explorer") >= 0) && (bAgent.indexOf("Mozilla/3") >= 0) && (bAgent.indexOf("Mac") >= 0))
+		return true; // dont follow link
+	else return false; // dont follow link
+}function CSButtonReturn () {
+	var bAgent = window.navigator.userAgent; 
+	var bAppName = window.navigator.appName;
+	if ((bAppName.indexOf("Explorer") >= 0) && (bAgent.indexOf("Mozilla/3") >= 0) && (bAgent.indexOf("Mac") >= 0))
+		return false; // follow link
+	else return true; // follow link
+}CSIm = new Object();
+function CSIShow(n,i) {
+	if (document.images) {
+		if (CSIm[n]) {
+			var img = (!IsIE()) ? CSFindElement(n,0) : document[n];
+			if (img && typeof(CSIm[n][i].src) != "undefined") {img.src = CSIm[n][i].src;}
+			if(i != 0)
+				self.status = CSIm[n][3];
+			else
+				self.status = " ";
+			return true;
+		}
+	}
+	return false;
+}
+function CSILoad(action) {
+	im = action[1];
+	if (document.images) {
+		CSIm[im] = new Object();
+		for (var i=2;i<5;i++) {
+			if (action[i] != '') { CSIm[im][i-2] = new Image(); CSIm[im][i-2].src = action[i]; }
+			else CSIm[im][i-2] = 0;
+		}
+		CSIm[im][3] = action[5];
+	}
+}
+CSStopExecution = false;
+function CSAction(array) { 
+	return CSAction2(CSAct, array);
+}
+function CSAction2(fct, array) { 
+	var result;
+	for (var i=0;i<array.length;i++) {
+		if(CSStopExecution) return false; 
+		var actArray = fct[array[i]];
+		if(actArray == null) return false; 
+		var tempArray = new Array;
+		for(var j=1;j<actArray.length;j++) {
+			if((actArray[j] != null) && (typeof(actArray[j]) == "object") && (actArray[j].length == 2)) {
+				if(actArray[j][0] == "VAR") {
+					tempArray[j] = CSStateArray[actArray[j][1]];
+				}
+				else {
+					if(actArray[j][0] == "ACT") {
+						tempArray[j] = CSAction(new Array(new String(actArray[j][1])));
+					}
+				else
+					tempArray[j] = actArray[j];
+				}
+			}
+			else
+				tempArray[j] = actArray[j];
+		}			
+		result = actArray[0](tempArray);
+	}
+	return result;
+}
+CSAct = new Object;// --></script>
+		</csscriptdict>
+		<csactiondict>
+			<script><!--CSInit[CSInit.length] = new Array(CSILoad,/*CMP*/'button',/*URL*/'../../statement/back.gif',/*URL*/'../../statement/navbar_back.gif',/*URL*/'','');
+CSInit[CSInit.length] = new Array(CSILoad,/*CMP*/'button2',/*URL*/'../../statement/h.jpg',/*URL*/'../../statement/navbar_h.gif',/*URL*/'','');
+CSInit[CSInit.length] = new Array(CSILoad,/*CMP*/'button3',/*URL*/'../../statement/s.jpg',/*URL*/'../../statement/navbar_s.gif',/*URL*/'','');
+CSInit[CSInit.length] = new Array(CSILoad,/*CMP*/'button4',/*URL*/'../../statement/c.jpg',/*URL*/'../../statement/navbar_c.gif',/*URL*/'','');
+CSInit[CSInit.length] = new Array(CSILoad,/*CMP*/'button5',/*URL*/'../../statement/g.jpg',/*URL*/'../../statement/navbar_g.gif',/*URL*/'','');
+CSInit[CSInit.length] = new Array(CSILoad,/*CMP*/'button6',/*URL*/'../../statement/forward.jpg',/*URL*/'../../statement/navbar_forward.gif',/*URL*/'','');
+// --></script>
+		</csactiondict>
+	<meta name="Microsoft Border" content="tb">
+</head>
+
+<body bgcolor="#333333" text="#ffffcc" onload="CSScriptInit();"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+
+<p style="MARGIN-BOTTOM: 2px" align="center"><font face="Arial" size="2">
+<font color="#8AC5FF"><a href="http://www.temple.edu/tyler/">
+<font color="#8AC5FF">Tyler Home</font></a>&nbsp;
+<a href="../../../../../../mjcc.html"><font color="#8AC5FF">Index</font></a>&nbsp;&nbsp;
+<a href="../../../../../../tour/MJCC_tour.htm"><font color="#8AC5FF">
+Facilities</font></a><span lang="en-us"><a href="../../../../../../../../../MJC-C_Site_4_15_04/public_html/mjcc/tour/mjcc_Tour.htm" style="text-decoration: none"><font color="#8AC5FF">&nbsp;
+</font></a></span>&nbsp;<a href="../../../../mjcc_gallery.html"><font color="#8AC5FF">Gallery</font></a>&nbsp;&nbsp;<a href="http://oll.temple.edu/crafts233_public/"><font color="#8AC5FF">
+</font></a></font><font color="#8ac5ff">
+<a href="http://oll.temple.edu/crafts233_public/"><font color="#8AC5FF">CAD/CAM 
+I Online course</font></a></font></font></p>
+<hr width="80%" noShade SIZE="1">
+<p style="MARGIN-TOP: -2px" align="center"><font face="Arial" size="2">
+<a href="../../../../../../../../index.html"><font color="#8AC5FF">M/J/C-C Home&nbsp;</font></a><font color="#8AC5FF">&nbsp;&nbsp;<a href="../../../../../../site_credits.htm"><font color="#8AC5FF">
+</font></a><a href="../../../../../../../tylersitemap.html"><font color="#8AC5FF">Site 
+Map</font></a>&nbsp;&nbsp;<a href="../../../../../../net/news.html"><font color="#8AC5FF">
+</font></a></font><a href="../../../../../../net/news.html">
+<font color="#8AC5FF">Net Resources</font></a><font color="#8AC5FF">&nbsp;&nbsp;<a href="../../../../../history/hhome.html"><font color="#8AC5FF">
+</font></a><a href="../../../../../history/intro.html">
+<span lang="en-us"><font color="#8AC5FF">Academic Metals Directory</font></span></a></font><span lang="en-us"><font color="#8ac5ff">
+</font></span><font color="#8AC5FF">&nbsp;<span lang="en-us"> </span></font>
+<a href="../../../../../../tour/contactpage.html"><font color="#8AC5FF">
+Contact Page</font></a><span lang="en-us"><font color="#8AC5FF">&nbsp;&nbsp;
+<a href="../../../../../../site_credits.htm"><font color="#8AC5FF">Site 
+Credits</font></a></font></span></font></p>
+<p>&nbsp;</p>
+
+</td></tr><!--msnavigation--></table><!--msnavigation--><table dir="ltr" border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top">
+		<div align="center">
+			<p></p>
+			<table border="0" cellpadding="0" cellspacing="0" width="787" height="496" background="9_background.jpg">
+				<tr height="26">
+					<td valign="middle" align="left" width="69" height="26"><csobj w="20" h="26" t="Button" ht="../../statement/navbar_back.gif"><a href="../8_EMBRACE1/sholtis_8.html" onmouseover="return CSIShow(/*CMP*/'button',1)" onmouseout="return CSIShow(/*CMP*/'button',0)" onclick="return CSButtonReturn()"><img src="../../statement/back.gif" width="20" height="26" name="button" border="0"></a></csobj><csobj w="24" h="26" t="Button" ht="../../statement/navbar_h.gif"><a href="../../sholtis.html" onmouseover="return CSIShow(/*CMP*/'button2',1)" onmouseout="return CSIShow(/*CMP*/'button2',0)" onclick="return CSButtonReturn()"><img src="../../statement/h.jpg" name="button2" border="0" width="24" height="26"></a></csobj><csobj w="24" h="26" t="Button" ht="../../statement/navbar_s.gif"><a href="../../statement/sholtis_statement.html" onmouseover="return CSIShow(/*CMP*/'button3',1)" onmouseout="return CSIShow(/*CMP*/'button3',0)" onclick="return CSButtonReturn()"><img src="../../statement/s.jpg" name="button3" border="0" width="24" height="26"></a></csobj></td>
+					<td height="26" width="190"><csobj w="24" h="26" t="Button" ht="../../statement/navbar_c.gif"><a href="../../cv/sholtis_cv.HTM" onmouseover="return CSIShow(/*CMP*/'button4',1)" onmouseout="return CSIShow(/*CMP*/'button4',0)" onclick="return CSButtonReturn()">
+                    <img src="../../statement/c.jpg" name="button4" border="0" width="24" height="26"></a></csobj><csobj w="22" h="26" t="Button" ht="../../statement/navbar_g.gif"><a href="../sholtis_gallery_main.htm" onmouseover="return CSIShow(/*CMP*/'button5',1)" onmouseout="return CSIShow(/*CMP*/'button5',0)" onclick="return CSButtonReturn()"><img src="../../statement/g.jpg" name="button5" border="0" width="22" height="26"></a></csobj><csobj w="22" h="26" t="Button" ht="../../statement/navbar_forward.gif"><a href="../10_REVOLVE_EVOLVE/sholtis_10.html" onmouseover="return CSIShow(/*CMP*/'button6',1)" onmouseout="return CSIShow(/*CMP*/'button6',0)" onclick="return CSButtonReturn()"><img src="../../statement/forward.jpg" name="button6" border="0" width="22" height="26"></a></csobj></td>
+					<td height="26" width="133"></td>
+					<td height="26" width="130"></td>
+					<td height="26" width="132"></td>
+					<td height="26" width="134"></td>
+				</tr>
+				<tr height="280">
+					<td width="69" height="280" valign="middle" align="center"></td>
+					<td width="190" height="280" valign="middle" align="left"><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular">Ring <br>
+						</font>
+						<p><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular">2003 CAD Tangible<br>
+							</font></p>
+						<p><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular">Sander's Wax 
+                        RP /<br>
+							</font></p>
+						<p><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular">Cast in 14kt<br>
+							</font></p>
+						<p><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular">2.0&quot; x 1.0&quot; x 0.65&quot;<br>
+							</font></p>
+						<p></p>
+						<p></p>
+					</td>
+					<td rowspan="2" colspan="4" valign="middle" align="center">
+                    <img src="9_main.jpg" border="0" width="529" height="378"></td>
+				</tr>
+				<tr>
+					<td width="69" valign="middle" align="center"></td>
+					<td width="190" valign="middle" align="center"></td>
+				</tr>
+				<tr height="183">
+					<td height="183" colspan="2" valign="middle" align="center">
+                    <img src="9_animation.gif" border="0" width="258" height="183"></td>
+					<td height="183" valign="top" align="center" colspan="4">
+                    <img border="0" src="9_seq2.gif" width="529" height="100"></td>
+				</tr>
+			</table>
+		</div>
+		<p></p>
+	    <p>&nbsp;</p>
+        <p>&nbsp;</p>
+	
+<!--msnavigation--></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+
+<p style="MARGIN-BOTTOM: 2px" align="center">&nbsp;</p>
+
+<p style="MARGIN-BOTTOM: 2px" align="center"><font face="Arial" size="2">
+<a href="http://www.temple.edu/tyler/main.htm"><font color="#8AC5FF">Tyler Home</font></a><font color="#8AC5FF">&nbsp;&nbsp;
+</font><font color="#8ac5ff"><a href="../../../../../../mjcc.html">
+<font color="#8AC5FF">Index</font></a></font><font color="#8AC5FF">&nbsp;&nbsp;
+<a href="../../../../../../tour/MJCC_tour.htm"><font color="#8AC5FF">
+Facilities</font></a>&nbsp;&nbsp; </font><font color="#8ac5ff">
+<a href="../../../../mjcc_gallery.html">
+<font color="#8AC5FF">Gallery</font></a></font><font color="#8AC5FF">&nbsp;&nbsp;
+</font><font color="#8ac5ff"><a href="http://oll.temple.edu/crafts233_public/">
+<font color="#8AC5FF">CAD/CAM I Online course</font></a></font></font></p>
+<hr width="80%" noShade SIZE="1">
+<p style="MARGIN-TOP: -2px" align="center"><font face="Arial" size="2">
+<a href="../../../../../../../../index.html"><font color="#8AC5FF">M/J/C-C Home&nbsp;</font></a><font color="#8AC5FF">&nbsp;&nbsp;
+</font><font color="#8ac5ff"><a href="../../../../../../../tylersitemap.html">
+<font color="#8AC5FF">Site Map</font></a></font><font color="#8AC5FF">&nbsp;&nbsp;
+</font><a href="../../../../../../net/news.html"><font color="#8AC5FF">Net 
+Resources</font></a><font color="#8AC5FF">&nbsp;&nbsp; </font>
+<a href="../../../../../history/intro.html"><span lang="en-us">
+<font color="#8AC5FF">Academic Metals Directory</font></span></a><font color="#8AC5FF">
+<span lang="en-us">&nbsp; </span></font>
+<a href="../../../../../../tour/contactpage.html"><font color="#8AC5FF">
+Contact Page</font></a><span lang="en-us"><font color="#8AC5FF">&nbsp;&nbsp;
+<a href="../../../../../../site_credits.htm"><font color="#8AC5FF">Site 
+Credits</font></a></font></span></font></p>
+<address style="MARGIN: 10px; LINE-HEIGHT: 100%" align="left">
+  <font size="2" color="#8AC5FF">Last Updated: <span lang="en-us">10/16/2004</span></font></address>
+<address style="MARGIN: 10px; LINE-HEIGHT: 100%" align="left">
+  <font color="#8AC5FF"><font size="2">Copyright 1996 - 200<span lang="en-us">4</span> 
+  by Temple University. All rights reserved. No part of this site may be 
+  reproduced or used in any form or by any means without written permission.</font>
+  </font>
+</address>
+
+</td></tr><!--msnavigation--></table></body>
+
+</html>
