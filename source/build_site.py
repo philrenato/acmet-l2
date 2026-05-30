@@ -95,9 +95,11 @@ def buildable(r):
     if r["slug"] in CURATED: return True
     if r["fc_verified"] == "disputed": return False
     if r["fc_confidence"] == "high": return True
-    # additions brought current (gap / succession / editor) that carry a source + link:
-    # build them (thin but sourced) so the new teachers are discoverable and cross-link.
-    if r["fc_verified"] in ("snag-gap-2026", "succession-scan", "phil-added") and (r["fc_current_link"] or r["fc_sources"]):
+    # additions brought current (gap / succession / editor): keep them discoverable
+    # if they carry a source/link OR a verified current role + institution (a rotted
+    # citation URL shouldn't erase a real, scan-verified faculty listing).
+    if r["fc_verified"] in ("snag-gap-2026", "succession-scan", "phil-added") and (
+            r["fc_current_link"] or r["fc_sources"] or (r["currently_at"] and r["fc_current_role"])):
         return True
     return False
 
