@@ -109,7 +109,12 @@
 <script>
 // ---- config: where the editable bio lives ----------------------------------
 const WIKI = { owner: 'philrenato', repo: 'acmet-l2', page: 'Phil-Renato' };
-const RAW = `https://raw.githubusercontent.com/wiki/${WIKI.owner}/${WIKI.repo}/${WIKI.page}.md`;
+// try the wiki first; fall back to a repo file (which can be published without the
+// browser-only wiki bootstrap), then to the built-in copy.
+const SOURCES = [
+  { url: `https://raw.githubusercontent.com/wiki/${WIKI.owner}/${WIKI.repo}/${WIKI.page}.md`, label: 'live · github wiki' },
+  { url: `https://raw.githubusercontent.com/${WIKI.owner}/${WIKI.repo}/main/${WIKI.page}.md`,  label: 'live · github repo' },
+];
 
 // ---- structured facts (from acmet.db) --------------------------------------
 const REC = {
@@ -193,18 +198,22 @@ document.getElementById('sources').innerHTML = REC.sources.map(u =>
   `<a href="${u}" target="_blank" rel="noopener">${u}</a>`).join('');
 document.getElementById('wiki-url').textContent = `wiki/${WIKI.owner}/${WIKI.repo}/${WIKI.page}`;
 
-// ---- pull the bio from the GitHub wiki, fall back to the built-in copy ------
-function showBio(md, src, live){
+// ---- pull the bio from GitHub (wiki → repo → built-in copy) ----------------
+function showBio(md, live, label){
   document.getElementById('bio').innerHTML = renderMD(md);
-  const s = document.getElementById('bio-src');
-  s.innerHTML = live
-    ? `<span class="badge live">live · github wiki</span>`
-    : `<span class="badge local">built-in copy (wiki unreachable)</span>`;
+  document.getElementById('bio-src').innerHTML = live
+    ? `<span class="badge live">${label}</span>`
+    : `<span class="badge local">built-in copy (github unreachable)</span>`;
 }
-fetch(RAW, {cache:'no-store'})
-  .then(r => { if(!r.ok) throw new Error(r.status); return r.text(); })
-  .then(md => showBio(md, RAW, true))
-  .catch(() => showBio(FALLBACK_MD, 'fallback', false));
+(async () => {
+  for (const s of SOURCES){
+    try {
+      const r = await fetch(s.url, {cache:'no-store'});
+      if (r.ok){ showBio(await r.text(), true, s.label); return; }
+    } catch(e){ /* try next */ }
+  }
+  showBio(FALLBACK_MD, false);
+})();
 </script>
 </body>
 </html>
