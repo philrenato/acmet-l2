@@ -1,0 +1,249 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chelsea Stone — Academic Metals Directory</title>
+<style>
+  :root{
+    --ink:#1a1a18; --soft:#6b6b66; --line:#d8d6cf; --paper:#f4f2ec;
+    --card:#fbfaf6; --accent:#7a7468; --good:#3d6b4a; --warn:#9a6b3a;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:720px; margin:0 auto; padding:56px 24px 96px}
+  .kicker{font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--soft); margin:0 0 18px}
+  h1{font-size:40px; line-height:1.05; margin:0; font-weight:650; letter-spacing:-.01em}
+  .former{color:var(--soft); font-style:italic; font-weight:400; font-size:19px; margin-top:6px}
+  .role{margin-top:14px; font-size:18px; color:var(--ink)}
+  .badge{display:inline-block; font-size:11px; letter-spacing:.04em; padding:2px 9px; border-radius:999px;
+    border:1px solid var(--line); color:var(--soft); background:var(--card); vertical-align:middle; margin-left:8px}
+  .badge.live{color:var(--good); border-color:#bcd3c2}
+  .badge.local{color:var(--warn); border-color:#e0cdb4}
+  hr{border:none; border-top:1px solid var(--line); margin:36px 0}
+  .grid{display:grid; grid-template-columns:1fr 1fr; gap:18px; margin:8px 0}
+  @media(max-width:560px){.grid{grid-template-columns:1fr}}
+  .card{background:var(--card); border:1px solid var(--line); border-radius:10px; padding:16px 18px}
+  .card h3{margin:0 0 10px; font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:var(--soft); font-weight:600}
+  .card.then h3::before{content:"⌗ "; color:var(--accent)}
+  .card.now h3::before{content:"→ "; color:var(--good)}
+  .kv{margin:0 0 6px; font-size:15px}
+  .kv b{font-weight:600}
+  .lbl{color:var(--soft); font-size:13px}
+  table.edu{width:100%; border-collapse:collapse; font-size:14.5px; margin-top:4px}
+  table.edu td{padding:7px 10px 7px 0; border-bottom:1px solid var(--line); vertical-align:top}
+  table.edu td:first-child{color:var(--soft); white-space:nowrap; width:1%}
+  .bio{font-family:Georgia,"Iowan Old Style",Cambria,"Times New Roman",serif; font-size:18px; line-height:1.7}
+  .bio h1{font-size:26px; margin:0 0 4px; font-weight:600; font-family:inherit}
+  .bio h2{font-size:15px; letter-spacing:.06em; text-transform:uppercase; color:var(--accent);
+    font-family:-apple-system,sans-serif; margin:30px 0 8px; font-weight:600}
+  .bio p{margin:0 0 16px}
+  .bio em{color:var(--soft)}
+  .bio a{color:#3a5a8a; text-decoration:none; border-bottom:1px solid #c9d4e4}
+  .bio hr{margin:28px 0}
+  .bio .note{font-size:14px; color:var(--soft); font-style:italic}
+  .sources{font-size:13.5px; color:var(--soft)}
+  .sources a{color:var(--soft); display:block; padding:3px 0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+  .sources a:hover{color:var(--ink)}
+  .foot{margin-top:48px; font-size:12.5px; color:var(--soft); line-height:1.5}
+  .foot code{background:#e9e7df; padding:1px 5px; border-radius:4px; font-size:12px}
+  .checked{font-size:12px; color:var(--soft); margin-top:6px}
+
+  .back{display:inline-block;margin-bottom:22px;font-size:13px;color:var(--soft);text-decoration:none}
+  .back:hover{color:var(--ink)}
+  .newadd{background:#f0efe7}
+
+  .back{display:inline-block;margin-bottom:22px;font-size:13px;color:var(--soft);text-decoration:none}
+  .back:hover{color:var(--ink)}
+  .newadd{background:#f0efe7}
+
+  .back{display:inline-block;margin-bottom:22px;font-size:13px;color:var(--soft);text-decoration:none}
+  .back:hover{color:var(--ink)}
+  .newadd{background:#f0efe7}
+
+  .back{display:inline-block;margin-bottom:22px;font-size:13px;color:var(--soft);text-decoration:none}
+  .back:hover{color:var(--ink)}
+  .newadd{background:#f0efe7}
+
+  .back{display:inline-block;margin-bottom:22px;font-size:13px;color:var(--soft);text-decoration:none}
+  .back:hover{color:var(--ink)}
+  .newadd{background:#f0efe7}
+
+  .back{display:inline-block;margin-bottom:22px;font-size:13px;color:var(--soft);text-decoration:none}
+  .back:hover{color:var(--ink)}
+  .newadd{background:#f0efe7}
+
+  .back{display:inline-block;margin-bottom:22px;font-size:13px;color:var(--soft);text-decoration:none}
+  .back:hover{color:var(--ink)}
+  .newadd{background:#f0efe7}
+
+  .back{display:inline-block;margin-bottom:22px;font-size:13px;color:var(--soft);text-decoration:none}
+  .back:hover{color:var(--ink)}
+  .newadd{background:#f0efe7}
+
+  .back{display:inline-block;margin-bottom:22px;font-size:13px;color:var(--soft);text-decoration:none}
+  .back:hover{color:var(--ink)}
+  .newadd{background:#f0efe7}
+
+  .back{display:inline-block;margin-bottom:22px;font-size:13px;color:var(--soft);text-decoration:none}
+  .back:hover{color:var(--ink)}
+  .newadd{background:#f0efe7}
+  .typetag{display:inline-block;font-size:11px;letter-spacing:.04em;color:var(--soft);
+    border:1px solid #ddd9cd;border-radius:999px;padding:1px 9px;margin-left:6px;vertical-align:middle}
+  .people-links a{color:var(--good);text-decoration:none;font-weight:600}
+  .people-links a:hover{text-decoration:underline}
+  .lineage-card h3{margin-top:0}
+  .lineage-card .lbl{display:block;margin:10px 0 3px}
+  .chip{display:inline-block;margin:2px 5px 2px 0;padding:3px 9px;border-radius:8px;
+    background:#f2f0e8;font-size:13px}
+  .chip a{color:var(--ink);text-decoration:none} .chip a:hover{color:var(--good)}
+  .instr-link{color:var(--good);text-decoration:none} .instr-link:hover{text-decoration:underline}
+
+  .back{display:inline-block;margin-bottom:22px;font-size:13px;color:var(--soft);text-decoration:none}
+  .back:hover{color:var(--ink)}
+  .newadd{background:#f0efe7}
+  .typetag{display:inline-block;font-size:11px;letter-spacing:.04em;color:var(--soft);
+    border:1px solid #ddd9cd;border-radius:999px;padding:1px 9px;margin-left:6px;vertical-align:middle}
+  .people-links a{color:var(--good);text-decoration:none;font-weight:600}
+  .people-links a:hover{text-decoration:underline}
+  .lineage-card h3{margin-top:0}
+  .lineage-card .lbl{display:block;margin:10px 0 3px}
+  .chip{display:inline-block;margin:2px 5px 2px 0;padding:3px 9px;border-radius:8px;
+    background:#f2f0e8;font-size:13px}
+  .chip a{color:var(--ink);text-decoration:none} .chip a:hover{color:var(--good)}
+  .instr-link{color:var(--good);text-decoration:none} .instr-link:hover{text-decoration:underline}
+
+  .back{display:inline-block;margin-bottom:22px;font-size:13px;color:var(--soft);text-decoration:none}
+  .back:hover{color:var(--ink)}
+  .newadd{background:#f0efe7}
+  .typetag{display:inline-block;font-size:11px;letter-spacing:.04em;color:var(--soft);
+    border:1px solid #ddd9cd;border-radius:999px;padding:1px 9px;margin-left:6px;vertical-align:middle}
+  .people-links a{color:var(--good);text-decoration:none;font-weight:600}
+  .people-links a:hover{text-decoration:underline}
+  .lineage-card h3{margin-top:0}
+  .lineage-card .lbl{display:block;margin:10px 0 3px}
+  .chip{display:inline-block;margin:2px 5px 2px 0;padding:3px 9px;border-radius:8px;
+    background:#f2f0e8;font-size:13px}
+  .chip a{color:var(--ink);text-decoration:none} .chip a:hover{color:var(--good)}
+  .instr-link{color:var(--good);text-decoration:none} .instr-link:hover{text-decoration:underline}
+
+  .back{display:inline-block;margin-bottom:22px;font-size:13px;color:var(--soft);text-decoration:none}
+  .back:hover{color:var(--ink)}
+  .newadd{background:#f0efe7}
+  .typetag{display:inline-block;font-size:11px;letter-spacing:.04em;color:var(--soft);
+    border:1px solid #ddd9cd;border-radius:999px;padding:1px 9px;margin-left:6px;vertical-align:middle}
+  .people-links a{color:var(--good);text-decoration:none;font-weight:600}
+  .people-links a:hover{text-decoration:underline}
+  .lineage-card h3{margin-top:0}
+  .lineage-card .lbl{display:block;margin:10px 0 3px}
+  .chip{display:inline-block;margin:2px 5px 2px 0;padding:3px 9px;border-radius:8px;
+    background:#f2f0e8;font-size:13px}
+  .chip a{color:var(--ink);text-decoration:none} .chip a:hover{color:var(--good)}
+  .instr-link{color:var(--good);text-decoration:none} .instr-link:hover{text-decoration:underline}
+
+  .back{display:inline-block;margin-bottom:22px;font-size:13px;color:var(--soft);text-decoration:none}
+  .back:hover{color:var(--ink)}
+  .newadd{background:#f0efe7}
+  .typetag{display:inline-block;font-size:11px;letter-spacing:.04em;color:var(--soft);
+    border:1px solid #ddd9cd;border-radius:999px;padding:1px 9px;margin-left:6px;vertical-align:middle}
+  .people-links a{color:var(--good);text-decoration:none;font-weight:600}
+  .people-links a:hover{text-decoration:underline}
+  .lineage-card h3{margin-top:0}
+  .lineage-card .lbl{display:block;margin:10px 0 3px}
+  .chip{display:inline-block;margin:2px 5px 2px 0;padding:3px 9px;border-radius:8px;
+    background:#f2f0e8;font-size:13px}
+  .chip a{color:var(--ink);text-decoration:none} .chip a:hover{color:var(--good)}
+  .instr-link{color:var(--good);text-decoration:none} .instr-link:hover{text-decoration:underline}
+
+  .back{display:inline-block;margin-bottom:22px;font-size:13px;color:var(--soft);text-decoration:none}
+  .back:hover{color:var(--ink)}
+  .newadd{background:#f0efe7}
+  .typetag{display:inline-block;font-size:11px;letter-spacing:.04em;color:var(--soft);
+    border:1px solid #ddd9cd;border-radius:999px;padding:1px 9px;margin-left:6px;vertical-align:middle}
+  .people-links a{color:var(--good);text-decoration:none;font-weight:600}
+  .people-links a:hover{text-decoration:underline}
+  .lineage-card h3{margin-top:0}
+  .lineage-card .lbl{display:block;margin:10px 0 3px}
+  .chip{display:inline-block;margin:2px 5px 2px 0;padding:3px 9px;border-radius:8px;
+    background:#f2f0e8;font-size:13px}
+  .chip a{color:var(--ink);text-decoration:none} .chip a:hover{color:var(--good)}
+  .instr-link{color:var(--good);text-decoration:none} .instr-link:hover{text-decoration:underline}
+
+  .back{display:inline-block;margin-bottom:22px;font-size:13px;color:var(--soft);text-decoration:none}
+  .back:hover{color:var(--ink)}
+  .newadd{background:#f0efe7}
+  .typetag{display:inline-block;font-size:11px;letter-spacing:.04em;color:var(--soft);
+    border:1px solid #ddd9cd;border-radius:999px;padding:1px 9px;margin-left:6px;vertical-align:middle}
+  .people-links a{color:var(--good);text-decoration:none;font-weight:600}
+  .people-links a:hover{text-decoration:underline}
+  .lineage-card h3{margin-top:0}
+  .lineage-card .lbl{display:block;margin:10px 0 3px}
+  .chip{display:inline-block;margin:2px 5px 2px 0;padding:3px 9px;border-radius:8px;
+    background:#f2f0e8;font-size:13px}
+  .chip a{color:var(--ink);text-decoration:none} .chip a:hover{color:var(--good)}
+  .instr-link{color:var(--good);text-decoration:none} .instr-link:hover{text-decoration:underline}
+
+  .back{display:inline-block;margin-bottom:22px;font-size:13px;color:var(--soft);text-decoration:none}
+  .back:hover{color:var(--ink)}
+  .newadd{background:#f0efe7}
+  .typetag{display:inline-block;font-size:11px;letter-spacing:.04em;color:var(--soft);
+    border:1px solid #ddd9cd;border-radius:999px;padding:1px 9px;margin-left:6px;vertical-align:middle}
+  .people-links a{color:var(--good);text-decoration:none;font-weight:600}
+  .people-links a:hover{text-decoration:underline}
+  .lineage-card h3{margin-top:0}
+  .lineage-card .lbl{display:block;margin:10px 0 3px}
+  .chip{display:inline-block;margin:2px 5px 2px 0;padding:3px 9px;border-radius:8px;
+    background:#f2f0e8;font-size:13px}
+  .chip a{color:var(--ink);text-decoration:none} .chip a:hover{color:var(--good)}
+  .instr-link{color:var(--good);text-decoration:none} .instr-link:hover{text-decoration:underline}
+
+  .back{display:inline-block;margin-bottom:22px;font-size:13px;color:var(--soft);text-decoration:none}
+  .back:hover{color:var(--ink)}
+  .newadd{background:#f0efe7}
+  .typetag{display:inline-block;font-size:11px;letter-spacing:.04em;color:var(--soft);
+    border:1px solid #ddd9cd;border-radius:999px;padding:1px 9px;margin-left:6px;vertical-align:middle}
+  .people-links a{color:var(--good);text-decoration:none;font-weight:600}
+  .people-links a:hover{text-decoration:underline}
+  .lineage-card h3{margin-top:0}
+  .lineage-card .lbl{display:block;margin:10px 0 3px}
+  .chip{display:inline-block;margin:2px 5px 2px 0;padding:3px 9px;border-radius:8px;
+    background:#f2f0e8;font-size:13px}
+  .chip a{color:var(--ink);text-decoration:none} .chip a:hover{color:var(--good)}
+  .instr-link{color:var(--good);text-decoration:none} .instr-link:hover{text-decoration:underline}
+</style></head><body><div class="wrap">
+  <a class="back" href="./">← the directory</a>
+  <p class="kicker">Academic Metals Directory · entry</p>
+  <h1 id="name">Chelsea Stone</h1>
+  
+  <div class="role">Jewelry/Metalsmithing Instructor (BFA Metals, NAU; MFA Jewelry, Texas Tech)</div>
+  <div class="checked">last checked 2026-05-30</div>
+  <hr>
+  <div style="margin:8px 0"><p class="note">Current faculty — added in the 2026 succession scan; not in the original directory.</p><div class="card now"><h3>Now (checked 2026)</h3><p class="kv"><span class="lbl">Goes by</span><br><b>Chelsea Stone</b></p><p class="kv"><span class="lbl">Current role</span><br>Jewelry/Metalsmithing Instructor (BFA Metals, NAU; MFA Jewelry, Texas Tech)</p><p class="kv"><span class="lbl">Status</span><br>Active</p><p class="kv"><span class="lbl">Link</span><br><a href="https://www.ycarts.org/chelsea-stone" target="_blank" rel="noopener">www.ycarts.org/chelsea-stone</a></p></div></div>
+  
+  
+  <hr>
+  <div class="bio" id="bio">loading bio…</div>
+  <p class="checked">bio source: <span id="bio-src"></span> · <a id="edit-link" href="#" target="_blank" rel="noopener">✎ edit this bio</a></p>
+  <hr>
+  <h3 style="font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--soft)">Sources</h3>
+  <div class="sources" id="sources"><a href="https://www.ycarts.org/chelsea-stone" target="_blank" rel="noopener">https://www.ycarts.org/chelsea-stone</a><a href="https://www.ycarts.org/jami-conroy" target="_blank" rel="noopener">https://www.ycarts.org/jami-conroy</a><a href="https://www.yc.edu/v6/instructional-support/docs/faculty-list.pdf" target="_blank" rel="noopener">https://www.yc.edu/v6/instructional-support/docs/faculty-list.pdf</a><a href="https://www.facebook.com/ycvisualarts/posts/discover-the-art-of-jewelry-making-at-yavapai-collegejoin-instructor-jami-conroy/1238516611630817/" target="_blank" rel="noopener">https://www.facebook.com/ycvisualarts/posts/discover-the-art-of-jewelry-making-at-yavapai-collegejoin-instructor-jami-conroy/1238516611630817/</a><a href="https://catalog.yc.edu/preview_course_nopop.php?catoid=19&amp;coid=35528" target="_blank" rel="noopener">https://catalog.yc.edu/preview_course_nopop.php?catoid=19&amp;coid=35528</a><a href="https://yc.libguides.com/emeritus/richard-marcusen" target="_blank" rel="noopener">https://yc.libguides.com/emeritus/richard-marcusen</a></div>
+  <p class="foot">Structured facts come from <code>acmet.db</code>. The bio is pulled live from
+  GitHub (<code>Chelsea-Stone</code>) so it stays editable. If GitHub can't be reached, a built-in copy shows.</p>
+</div>
+<script>
+const WIKI={owner:"philrenato",repo:"acmet-l2",page:"Chelsea-Stone"};
+const SOURCES=[
+ {url:`https://raw.githubusercontent.com/wiki/${WIKI.owner}/${WIKI.repo}/${WIKI.page}.md`,label:"live · github wiki",edit:`https://github.com/${WIKI.owner}/${WIKI.repo}/wiki/${WIKI.page}/_edit`},
+ {url:`https://raw.githubusercontent.com/${WIKI.owner}/${WIKI.repo}/main/${WIKI.page}.md`,label:"live · github repo",edit:`https://github.com/${WIKI.owner}/${WIKI.repo}/edit/main/${WIKI.page}.md`}
+];
+const EDIT_FALLBACK=`https://github.com/${WIKI.owner}/${WIKI.repo}/edit/main/${WIKI.page}.md`;
+const FALLBACK_MD="# Chelsea Stone\n\nJewelry/Metalsmithing Instructor (BFA Metals, NAU; MFA Jewelry, Texas Tech); at Yavapai College\n\n*This entry is auto-drafted from the directory's fact-check notes. Edit to expand.*\n";
+function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function inl(s){return esc(s).replace(/\[([^\]]+)\]\(([^)]+)\)/g,'<a href="$2" target="_blank" rel="noopener">$1</a>').replace(/\*\*([^*]+)\*\*/g,'<b>$1</b>').replace(/(^|[^*])\*([^*]+)\*/g,'$1<em>$2</em>');}
+function md(t){let h='',p=[];const f=()=>{if(p.length){const x=p.join(' ').trim();if(x)h+=(x.startsWith('*')&&x.endsWith('*')&&!x.includes('**'))?`<p class="note">${inl(x.replace(/^\*|\*$/g,''))}</p>`:`<p>${inl(x)}</p>`;p=[];}};
+ for(const l of t.replace(/\r/g,'').split('\n')){if(/^###\s/.test(l)){f();h+=`<h3>${inl(l.slice(4))}</h3>`;}else if(/^##\s/.test(l)){f();h+=`<h2>${inl(l.slice(3))}</h2>`;}else if(/^#\s/.test(l)){f();h+=`<h1>${inl(l.slice(2))}</h1>`;}else if(/^---+\s*$/.test(l)){f();h+='<hr>';}else if(/^\s*$/.test(l)){f();}else p.push(l);}
+ f();return h;}
+function show(t,live,label,edit){document.getElementById('bio').innerHTML=md(t);document.getElementById('bio-src').innerHTML=live?`<span class="badge live">${label}</span>`:`<span class="badge local">built-in copy (github unreachable)</span>`;document.getElementById('edit-link').href=edit||EDIT_FALLBACK;}
+(async()=>{for(const s of SOURCES){try{const r=await fetch(s.url,{cache:'no-store'});if(r.ok){show(await r.text(),true,s.label,s.edit);return;}}catch(e){}}show(FALLBACK_MD,false,'',EDIT_FALLBACK);})();
+</script></body></html>

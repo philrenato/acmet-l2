@@ -1,0 +1,249 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Alan Revere — Academic Metals Directory</title>
+<style>
+  :root{
+    --ink:#1a1a18; --soft:#6b6b66; --line:#d8d6cf; --paper:#f4f2ec;
+    --card:#fbfaf6; --accent:#7a7468; --good:#3d6b4a; --warn:#9a6b3a;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:720px; margin:0 auto; padding:56px 24px 96px}
+  .kicker{font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--soft); margin:0 0 18px}
+  h1{font-size:40px; line-height:1.05; margin:0; font-weight:650; letter-spacing:-.01em}
+  .former{color:var(--soft); font-style:italic; font-weight:400; font-size:19px; margin-top:6px}
+  .role{margin-top:14px; font-size:18px; color:var(--ink)}
+  .badge{display:inline-block; font-size:11px; letter-spacing:.04em; padding:2px 9px; border-radius:999px;
+    border:1px solid var(--line); color:var(--soft); background:var(--card); vertical-align:middle; margin-left:8px}
+  .badge.live{color:var(--good); border-color:#bcd3c2}
+  .badge.local{color:var(--warn); border-color:#e0cdb4}
+  hr{border:none; border-top:1px solid var(--line); margin:36px 0}
+  .grid{display:grid; grid-template-columns:1fr 1fr; gap:18px; margin:8px 0}
+  @media(max-width:560px){.grid{grid-template-columns:1fr}}
+  .card{background:var(--card); border:1px solid var(--line); border-radius:10px; padding:16px 18px}
+  .card h3{margin:0 0 10px; font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:var(--soft); font-weight:600}
+  .card.then h3::before{content:"⌗ "; color:var(--accent)}
+  .card.now h3::before{content:"→ "; color:var(--good)}
+  .kv{margin:0 0 6px; font-size:15px}
+  .kv b{font-weight:600}
+  .lbl{color:var(--soft); font-size:13px}
+  table.edu{width:100%; border-collapse:collapse; font-size:14.5px; margin-top:4px}
+  table.edu td{padding:7px 10px 7px 0; border-bottom:1px solid var(--line); vertical-align:top}
+  table.edu td:first-child{color:var(--soft); white-space:nowrap; width:1%}
+  .bio{font-family:Georgia,"Iowan Old Style",Cambria,"Times New Roman",serif; font-size:18px; line-height:1.7}
+  .bio h1{font-size:26px; margin:0 0 4px; font-weight:600; font-family:inherit}
+  .bio h2{font-size:15px; letter-spacing:.06em; text-transform:uppercase; color:var(--accent);
+    font-family:-apple-system,sans-serif; margin:30px 0 8px; font-weight:600}
+  .bio p{margin:0 0 16px}
+  .bio em{color:var(--soft)}
+  .bio a{color:#3a5a8a; text-decoration:none; border-bottom:1px solid #c9d4e4}
+  .bio hr{margin:28px 0}
+  .bio .note{font-size:14px; color:var(--soft); font-style:italic}
+  .sources{font-size:13.5px; color:var(--soft)}
+  .sources a{color:var(--soft); display:block; padding:3px 0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+  .sources a:hover{color:var(--ink)}
+  .foot{margin-top:48px; font-size:12.5px; color:var(--soft); line-height:1.5}
+  .foot code{background:#e9e7df; padding:1px 5px; border-radius:4px; font-size:12px}
+  .checked{font-size:12px; color:var(--soft); margin-top:6px}
+
+  .back{display:inline-block;margin-bottom:22px;font-size:13px;color:var(--soft);text-decoration:none}
+  .back:hover{color:var(--ink)}
+  .newadd{background:#f0efe7}
+
+  .back{display:inline-block;margin-bottom:22px;font-size:13px;color:var(--soft);text-decoration:none}
+  .back:hover{color:var(--ink)}
+  .newadd{background:#f0efe7}
+
+  .back{display:inline-block;margin-bottom:22px;font-size:13px;color:var(--soft);text-decoration:none}
+  .back:hover{color:var(--ink)}
+  .newadd{background:#f0efe7}
+
+  .back{display:inline-block;margin-bottom:22px;font-size:13px;color:var(--soft);text-decoration:none}
+  .back:hover{color:var(--ink)}
+  .newadd{background:#f0efe7}
+
+  .back{display:inline-block;margin-bottom:22px;font-size:13px;color:var(--soft);text-decoration:none}
+  .back:hover{color:var(--ink)}
+  .newadd{background:#f0efe7}
+
+  .back{display:inline-block;margin-bottom:22px;font-size:13px;color:var(--soft);text-decoration:none}
+  .back:hover{color:var(--ink)}
+  .newadd{background:#f0efe7}
+
+  .back{display:inline-block;margin-bottom:22px;font-size:13px;color:var(--soft);text-decoration:none}
+  .back:hover{color:var(--ink)}
+  .newadd{background:#f0efe7}
+
+  .back{display:inline-block;margin-bottom:22px;font-size:13px;color:var(--soft);text-decoration:none}
+  .back:hover{color:var(--ink)}
+  .newadd{background:#f0efe7}
+
+  .back{display:inline-block;margin-bottom:22px;font-size:13px;color:var(--soft);text-decoration:none}
+  .back:hover{color:var(--ink)}
+  .newadd{background:#f0efe7}
+
+  .back{display:inline-block;margin-bottom:22px;font-size:13px;color:var(--soft);text-decoration:none}
+  .back:hover{color:var(--ink)}
+  .newadd{background:#f0efe7}
+  .typetag{display:inline-block;font-size:11px;letter-spacing:.04em;color:var(--soft);
+    border:1px solid #ddd9cd;border-radius:999px;padding:1px 9px;margin-left:6px;vertical-align:middle}
+  .people-links a{color:var(--good);text-decoration:none;font-weight:600}
+  .people-links a:hover{text-decoration:underline}
+  .lineage-card h3{margin-top:0}
+  .lineage-card .lbl{display:block;margin:10px 0 3px}
+  .chip{display:inline-block;margin:2px 5px 2px 0;padding:3px 9px;border-radius:8px;
+    background:#f2f0e8;font-size:13px}
+  .chip a{color:var(--ink);text-decoration:none} .chip a:hover{color:var(--good)}
+  .instr-link{color:var(--good);text-decoration:none} .instr-link:hover{text-decoration:underline}
+
+  .back{display:inline-block;margin-bottom:22px;font-size:13px;color:var(--soft);text-decoration:none}
+  .back:hover{color:var(--ink)}
+  .newadd{background:#f0efe7}
+  .typetag{display:inline-block;font-size:11px;letter-spacing:.04em;color:var(--soft);
+    border:1px solid #ddd9cd;border-radius:999px;padding:1px 9px;margin-left:6px;vertical-align:middle}
+  .people-links a{color:var(--good);text-decoration:none;font-weight:600}
+  .people-links a:hover{text-decoration:underline}
+  .lineage-card h3{margin-top:0}
+  .lineage-card .lbl{display:block;margin:10px 0 3px}
+  .chip{display:inline-block;margin:2px 5px 2px 0;padding:3px 9px;border-radius:8px;
+    background:#f2f0e8;font-size:13px}
+  .chip a{color:var(--ink);text-decoration:none} .chip a:hover{color:var(--good)}
+  .instr-link{color:var(--good);text-decoration:none} .instr-link:hover{text-decoration:underline}
+
+  .back{display:inline-block;margin-bottom:22px;font-size:13px;color:var(--soft);text-decoration:none}
+  .back:hover{color:var(--ink)}
+  .newadd{background:#f0efe7}
+  .typetag{display:inline-block;font-size:11px;letter-spacing:.04em;color:var(--soft);
+    border:1px solid #ddd9cd;border-radius:999px;padding:1px 9px;margin-left:6px;vertical-align:middle}
+  .people-links a{color:var(--good);text-decoration:none;font-weight:600}
+  .people-links a:hover{text-decoration:underline}
+  .lineage-card h3{margin-top:0}
+  .lineage-card .lbl{display:block;margin:10px 0 3px}
+  .chip{display:inline-block;margin:2px 5px 2px 0;padding:3px 9px;border-radius:8px;
+    background:#f2f0e8;font-size:13px}
+  .chip a{color:var(--ink);text-decoration:none} .chip a:hover{color:var(--good)}
+  .instr-link{color:var(--good);text-decoration:none} .instr-link:hover{text-decoration:underline}
+
+  .back{display:inline-block;margin-bottom:22px;font-size:13px;color:var(--soft);text-decoration:none}
+  .back:hover{color:var(--ink)}
+  .newadd{background:#f0efe7}
+  .typetag{display:inline-block;font-size:11px;letter-spacing:.04em;color:var(--soft);
+    border:1px solid #ddd9cd;border-radius:999px;padding:1px 9px;margin-left:6px;vertical-align:middle}
+  .people-links a{color:var(--good);text-decoration:none;font-weight:600}
+  .people-links a:hover{text-decoration:underline}
+  .lineage-card h3{margin-top:0}
+  .lineage-card .lbl{display:block;margin:10px 0 3px}
+  .chip{display:inline-block;margin:2px 5px 2px 0;padding:3px 9px;border-radius:8px;
+    background:#f2f0e8;font-size:13px}
+  .chip a{color:var(--ink);text-decoration:none} .chip a:hover{color:var(--good)}
+  .instr-link{color:var(--good);text-decoration:none} .instr-link:hover{text-decoration:underline}
+
+  .back{display:inline-block;margin-bottom:22px;font-size:13px;color:var(--soft);text-decoration:none}
+  .back:hover{color:var(--ink)}
+  .newadd{background:#f0efe7}
+  .typetag{display:inline-block;font-size:11px;letter-spacing:.04em;color:var(--soft);
+    border:1px solid #ddd9cd;border-radius:999px;padding:1px 9px;margin-left:6px;vertical-align:middle}
+  .people-links a{color:var(--good);text-decoration:none;font-weight:600}
+  .people-links a:hover{text-decoration:underline}
+  .lineage-card h3{margin-top:0}
+  .lineage-card .lbl{display:block;margin:10px 0 3px}
+  .chip{display:inline-block;margin:2px 5px 2px 0;padding:3px 9px;border-radius:8px;
+    background:#f2f0e8;font-size:13px}
+  .chip a{color:var(--ink);text-decoration:none} .chip a:hover{color:var(--good)}
+  .instr-link{color:var(--good);text-decoration:none} .instr-link:hover{text-decoration:underline}
+
+  .back{display:inline-block;margin-bottom:22px;font-size:13px;color:var(--soft);text-decoration:none}
+  .back:hover{color:var(--ink)}
+  .newadd{background:#f0efe7}
+  .typetag{display:inline-block;font-size:11px;letter-spacing:.04em;color:var(--soft);
+    border:1px solid #ddd9cd;border-radius:999px;padding:1px 9px;margin-left:6px;vertical-align:middle}
+  .people-links a{color:var(--good);text-decoration:none;font-weight:600}
+  .people-links a:hover{text-decoration:underline}
+  .lineage-card h3{margin-top:0}
+  .lineage-card .lbl{display:block;margin:10px 0 3px}
+  .chip{display:inline-block;margin:2px 5px 2px 0;padding:3px 9px;border-radius:8px;
+    background:#f2f0e8;font-size:13px}
+  .chip a{color:var(--ink);text-decoration:none} .chip a:hover{color:var(--good)}
+  .instr-link{color:var(--good);text-decoration:none} .instr-link:hover{text-decoration:underline}
+
+  .back{display:inline-block;margin-bottom:22px;font-size:13px;color:var(--soft);text-decoration:none}
+  .back:hover{color:var(--ink)}
+  .newadd{background:#f0efe7}
+  .typetag{display:inline-block;font-size:11px;letter-spacing:.04em;color:var(--soft);
+    border:1px solid #ddd9cd;border-radius:999px;padding:1px 9px;margin-left:6px;vertical-align:middle}
+  .people-links a{color:var(--good);text-decoration:none;font-weight:600}
+  .people-links a:hover{text-decoration:underline}
+  .lineage-card h3{margin-top:0}
+  .lineage-card .lbl{display:block;margin:10px 0 3px}
+  .chip{display:inline-block;margin:2px 5px 2px 0;padding:3px 9px;border-radius:8px;
+    background:#f2f0e8;font-size:13px}
+  .chip a{color:var(--ink);text-decoration:none} .chip a:hover{color:var(--good)}
+  .instr-link{color:var(--good);text-decoration:none} .instr-link:hover{text-decoration:underline}
+
+  .back{display:inline-block;margin-bottom:22px;font-size:13px;color:var(--soft);text-decoration:none}
+  .back:hover{color:var(--ink)}
+  .newadd{background:#f0efe7}
+  .typetag{display:inline-block;font-size:11px;letter-spacing:.04em;color:var(--soft);
+    border:1px solid #ddd9cd;border-radius:999px;padding:1px 9px;margin-left:6px;vertical-align:middle}
+  .people-links a{color:var(--good);text-decoration:none;font-weight:600}
+  .people-links a:hover{text-decoration:underline}
+  .lineage-card h3{margin-top:0}
+  .lineage-card .lbl{display:block;margin:10px 0 3px}
+  .chip{display:inline-block;margin:2px 5px 2px 0;padding:3px 9px;border-radius:8px;
+    background:#f2f0e8;font-size:13px}
+  .chip a{color:var(--ink);text-decoration:none} .chip a:hover{color:var(--good)}
+  .instr-link{color:var(--good);text-decoration:none} .instr-link:hover{text-decoration:underline}
+
+  .back{display:inline-block;margin-bottom:22px;font-size:13px;color:var(--soft);text-decoration:none}
+  .back:hover{color:var(--ink)}
+  .newadd{background:#f0efe7}
+  .typetag{display:inline-block;font-size:11px;letter-spacing:.04em;color:var(--soft);
+    border:1px solid #ddd9cd;border-radius:999px;padding:1px 9px;margin-left:6px;vertical-align:middle}
+  .people-links a{color:var(--good);text-decoration:none;font-weight:600}
+  .people-links a:hover{text-decoration:underline}
+  .lineage-card h3{margin-top:0}
+  .lineage-card .lbl{display:block;margin:10px 0 3px}
+  .chip{display:inline-block;margin:2px 5px 2px 0;padding:3px 9px;border-radius:8px;
+    background:#f2f0e8;font-size:13px}
+  .chip a{color:var(--ink);text-decoration:none} .chip a:hover{color:var(--good)}
+  .instr-link{color:var(--good);text-decoration:none} .instr-link:hover{text-decoration:underline}
+</style></head><body><div class="wrap">
+  <a class="back" href="./">← the directory</a>
+  <p class="kicker">Academic Metals Directory · entry</p>
+  <h1 id="name">Alan Revere</h1>
+  
+  <div class="role">Retired founder/director of the Revere Academy of Jewelry Arts (San Francisco), which he ran 1979-2017; now a goldsmith/educator who consults with GIA and leads the &quot;Let&#x27;s Make Professional Jewelry&quot; online community.</div>
+  <div class="checked">last checked 2026-05-29</div>
+  <hr>
+  <div class="grid"><div class="card then"><h3>As archived (≈2014)</h3><p class="kv"><span class="lbl">Listed as</span><br>Revere Academy of Jewelry Arts — since 1979</p><p class="kv"><span class="lbl">Born</span><br>1947, New York, New York</p></div><div class="card now"><h3>Now (checked 2026)</h3><p class="kv"><span class="lbl">Goes by</span><br><b>Alan Revere</b></p><p class="kv"><span class="lbl">Current role</span><br>Retired founder/director of the Revere Academy of Jewelry Arts (San Francisco), which he ran 1979-2017; now a goldsmith/educator who consults with GIA and leads the &quot;Let&#x27;s Make Professional Jewelry&quot; online community.</p><p class="kv"><span class="lbl">Status</span><br>Retired</p><p class="kv"><span class="lbl">Link</span><br><a href="https://www.alanrevere.com/about-alan" target="_blank" rel="noopener">www.alanrevere.com/about-alan</a></p></div></div>
+  <div class="card" style="margin-top:18px"><h3>Training</h3><table class="edu"><tbody><tr><td>Undergraduate</td><td><b>University of Virginia</b> · 1965 to 1969<br><span class="lbl">BA · instructor: Tom Hagen (sculpture)</span></td></tr><tr><td>Graduate</td><td><b><a class="instr-link" href="instituto-allende.html">Instituto Allende</a></b><span class="typetag">art &amp; design college</span> · 1970 to 1972<br><span class="lbl">MFA · instructor: <a class="instr-link" href="ana-m-lopez.html">Enrique Lopez</a></span></td></tr><tr><td>Graduate</td><td><b>Fachhochschul fur Gestaltung</b> · 1972 to 1974<br><span class="lbl">none · instructor: Reinhold Reiling</span></td></tr></tbody></table></div>
+  
+  <hr>
+  <div class="bio" id="bio">loading bio…</div>
+  <p class="checked">bio source: <span id="bio-src"></span> · <a id="edit-link" href="#" target="_blank" rel="noopener">✎ edit this bio</a></p>
+  <hr>
+  <h3 style="font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--soft)">Sources</h3>
+  <div class="sources" id="sources"><a href="https://www.alanrevere.com/about-alan" target="_blank" rel="noopener">https://www.alanrevere.com/about-alan</a><a href="https://www.alanrevere.com/revere-academy" target="_blank" rel="noopener">https://www.alanrevere.com/revere-academy</a><a href="https://nationaljeweler.com/articles/3895-revere-academy-to-close" target="_blank" rel="noopener">https://nationaljeweler.com/articles/3895-revere-academy-to-close</a><a href="https://www.jckonline.com/editorial-article/revere-academy-close/" target="_blank" rel="noopener">https://www.jckonline.com/editorial-article/revere-academy-close/</a><a href="https://nationaljeweler.com/articles/11532-gia-has-enlisted-alan-revere-to-revamp-the-graduate-jeweler-program" target="_blank" rel="noopener">https://nationaljeweler.com/articles/11532-gia-has-enlisted-alan-revere-to-revamp-the-graduate-jeweler-program</a><a href="https://www.ajdc.org/member/alan-revere/" target="_blank" rel="noopener">https://www.ajdc.org/member/alan-revere/</a></div>
+  <p class="foot">Structured facts come from <code>acmet.db</code>. The bio is pulled live from
+  GitHub (<code>Alan-Revere</code>) so it stays editable. If GitHub can't be reached, a built-in copy shows.</p>
+</div>
+<script>
+const WIKI={owner:"philrenato",repo:"acmet-l2",page:"Alan-Revere"};
+const SOURCES=[
+ {url:`https://raw.githubusercontent.com/wiki/${WIKI.owner}/${WIKI.repo}/${WIKI.page}.md`,label:"live · github wiki",edit:`https://github.com/${WIKI.owner}/${WIKI.repo}/wiki/${WIKI.page}/_edit`},
+ {url:`https://raw.githubusercontent.com/${WIKI.owner}/${WIKI.repo}/main/${WIKI.page}.md`,label:"live · github repo",edit:`https://github.com/${WIKI.owner}/${WIKI.repo}/edit/main/${WIKI.page}.md`}
+];
+const EDIT_FALLBACK=`https://github.com/${WIKI.owner}/${WIKI.repo}/edit/main/${WIKI.page}.md`;
+const FALLBACK_MD="# Alan Revere\n\nAlan Revere is alive and active. He closed the Revere Academy of Jewelry Arts in December 2017 after 40 years and retired from running the school; he continues as a goldsmith/educator (GIA consulting, online teaching community, ongoing jewelry design).\n\n*This entry is auto-drafted from the directory's fact-check notes. Edit to expand.*\n";
+function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function inl(s){return esc(s).replace(/\[([^\]]+)\]\(([^)]+)\)/g,'<a href="$2" target="_blank" rel="noopener">$1</a>').replace(/\*\*([^*]+)\*\*/g,'<b>$1</b>').replace(/(^|[^*])\*([^*]+)\*/g,'$1<em>$2</em>');}
+function md(t){let h='',p=[];const f=()=>{if(p.length){const x=p.join(' ').trim();if(x)h+=(x.startsWith('*')&&x.endsWith('*')&&!x.includes('**'))?`<p class="note">${inl(x.replace(/^\*|\*$/g,''))}</p>`:`<p>${inl(x)}</p>`;p=[];}};
+ for(const l of t.replace(/\r/g,'').split('\n')){if(/^###\s/.test(l)){f();h+=`<h3>${inl(l.slice(4))}</h3>`;}else if(/^##\s/.test(l)){f();h+=`<h2>${inl(l.slice(3))}</h2>`;}else if(/^#\s/.test(l)){f();h+=`<h1>${inl(l.slice(2))}</h1>`;}else if(/^---+\s*$/.test(l)){f();h+='<hr>';}else if(/^\s*$/.test(l)){f();}else p.push(l);}
+ f();return h;}
+function show(t,live,label,edit){document.getElementById('bio').innerHTML=md(t);document.getElementById('bio-src').innerHTML=live?`<span class="badge live">${label}</span>`:`<span class="badge local">built-in copy (github unreachable)</span>`;document.getElementById('edit-link').href=edit||EDIT_FALLBACK;}
+(async()=>{for(const s of SOURCES){try{const r=await fetch(s.url,{cache:'no-store'});if(r.ok){show(await r.text(),true,s.label,s.edit);return;}}catch(e){}}show(FALLBACK_MD,false,'',EDIT_FALLBACK);})();
+</script></body></html>
