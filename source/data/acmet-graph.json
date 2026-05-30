@@ -6,7 +6,7 @@
   "people": 844,
   "programs": 463,
   "programs_placed": 365,
-  "edges": 2088
+  "edges": 2090
  },
  "nodes": [
   {
@@ -15725,8 +15725,13 @@
    "name": "Melis Agabigum",
    "date": null,
    "status": "alive",
-   "location": null,
-   "summary": "Workshop instructor \u2014 metalsmithing/precious metals (The Golden Touch), Peninsula School of Art (PenArt).",
+   "location": {
+    "state": "MI",
+    "lat": 42.29,
+    "lng": -85.59,
+    "precision": "city"
+   },
+   "summary": "Melis Agabigum is Assistant Professor of Art and Metals/Jewelry Area Coordinator in the Gwen Frostic School of Art at Western Michigan University, where she joined the faculty in 2022. She holds an MFA in Intermedia (jewelry/metals, sculptu",
    "page": null
   },
   {
@@ -24213,7 +24218,13 @@
   },
   {
    "from": "snag-gap/melis-agabigum",
-   "to": "snag-gap/peninsula-school-of-art-penart",
+   "to": "crafts/metalsdirectorypage/s203.html",
+   "type": "studied-at",
+   "label": "BFA Art & Design"
+  },
+  {
+   "from": "snag-gap/melis-agabigum",
+   "to": "snag-gap/western-michigan-university",
    "type": "taught-at",
    "label": ""
   },
@@ -28952,12 +28963,6 @@
    "label": ""
   },
   {
-   "from": "snag-gap/melis-agabigum",
-   "to": "snag-gap/peninsula-school-of-art-penart",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
    "from": "snag-gap/joshua-kosker",
    "to": "snag-gap/peninsula-school-of-art-penart",
    "type": "faculty-of",
@@ -28982,6 +28987,12 @@
    "label": ""
   },
   {
+   "from": "snag-gap/melis-agabigum",
+   "to": "snag-gap/peninsula-school-of-art-penart",
+   "type": "faculty-of",
+   "label": ""
+  },
+  {
    "from": "snag-gap/david-clemons",
    "to": "snag-gap/penland-school-of-craft",
    "type": "faculty-of",
@@ -28989,6 +29000,12 @@
   },
   {
    "from": "snag-gap/heather-nuber",
+   "to": "snag-gap/penland-school-of-craft",
+   "type": "faculty-of",
+   "label": ""
+  },
+  {
+   "from": "gap/phillip-renato",
    "to": "snag-gap/penland-school-of-craft",
    "type": "faculty-of",
    "label": ""

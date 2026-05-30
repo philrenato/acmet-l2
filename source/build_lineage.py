@@ -46,8 +46,14 @@ HTML = """<!doctype html><html lang="en"><head><meta charset="utf-8">
          --dim:#6e6456; --ink:#e8e6df; --soft:#8a8678; }
   html,body{margin:0;height:100%;background:#07070b;color:var(--ink);overflow:hidden;
     font:14px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}
-  svg{display:block;width:100vw;height:100vh;cursor:grab}
+  svg{display:block;width:100vw;height:100vh;cursor:grab;touch-action:none}
   svg.drag{cursor:grabbing}
+  .hint{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);z-index:5;
+    font-size:11px;color:#7a776c;pointer-events:none;text-align:center}
+  @media (max-width:600px){
+    .hdr{max-width:62vw} .hdr h1{font-size:19px} .hdr .sub{font-size:11px}
+    .legend{font-size:10px;bottom:30px} .panel{max-width:78vw;left:12px;bottom:34px} .hint{bottom:4px}
+  }
   .hdr{position:fixed;top:20px;left:24px;z-index:5;pointer-events:none;max-width:46%}
   .hdr .k{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--soft)}
   .hdr h1{margin:4px 0 2px;font-size:26px;font-weight:600;letter-spacing:-.01em;
@@ -86,6 +92,7 @@ HTML = """<!doctype html><html lang="en"><head><meta charset="utf-8">
   <span><i style="background:#7fb2e6;box-shadow:0 0 7px #4a86c8"></i>program</span>
   <span><i style="background:#6e6456"></i>deceased / closed</span></div>
 <svg id="svg"></svg><div class="tip" id="tip"></div>
+<div class="hint">pinch or scroll to zoom · drag to pan · tap a name</div>
 <div class="panel" id="panel"></div>
 <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
 <script>

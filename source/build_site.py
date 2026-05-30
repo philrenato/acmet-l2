@@ -61,6 +61,13 @@ def status_phrase(alive, job):
 def srcs(s):
     return [u.strip() for u in (s or "").split("|") if u.strip().startswith("http")]
 
+def stint(status, years):
+    # how a teaching stint reads on a chip: faculty appointment vs. a workshop vs. a past post
+    y = (years or "").strip()
+    if status == "workshop": return ("workshops " + y).strip() if y else "workshop"
+    if status == "former":   return ("former " + y).strip()
+    return y
+
 def norm(s):  # name normalisation for cross-link resolution
     s = re.sub(r"\([^)]*\)", " ", (s or "").lower())
     s = re.sub(r"\b(dr|prof|professor|mr|mrs|ms|jr|sr|phd|mfa|bfa)\b\.?", " ", s)
@@ -309,6 +316,7 @@ PAGE = """<!doctype html><html lang="en"><head><meta charset="utf-8">
   <hr>
   <h3 style="font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--soft)">Sources</h3>
   <div class="sources" id="sources">{sources}</div>
+  <p class="checked" style="margin-top:14px">{provenance}</p>
   <p class="foot">Structured facts come from <code>acmet.db</code>. The bio is pulled live from
   GitHub (<code>{wiki}</code>) so it stays editable. If GitHub can't be reached, a built-in copy shows.</p>
 </div>
@@ -379,9 +387,7 @@ def build_profile(r):
     else:
         former = ""
     role = html.escape(r["fc_current_role"] or "")
-    note = ""
-    if changed and kind == "name-change": note = " · ⚑ name change confirmed"
-    checked = f'last checked {r["fc_checked"] or ""}' + note
+    checked = f'last checked {r["fc_checked"] or ""}'
     gap = (r["kind"] in ("person-gap-addition",))
     succ = (r["fc_verified"] == "succession-scan")
     sp = status_phrase(r["fc_alive"], r["fc_still_in_job"])
@@ -391,14 +397,19 @@ def build_profile(r):
            + (kv("Status", html.escape(sp)) if sp else "")
            + (kv("Link", f'<a href="{html.escape(link)}" target="_blank" rel="noopener">{html.escape(re.sub(r"^https?://","",link))}</a>') if link else ""))
     nowcard = f'<div class="card now"><h3>Now (checked 2026)</h3>{now}</div>'
+    # provenance is a quiet breadcrumb at the BOTTOM, not a banner up top
+    if r["fc_verified"] == "phil-added":
+        provenance = "Added to the directory in 2026. Not in the original 2014 listing."
+    elif succ:
+        provenance = "Identified in the 2026 faculty-succession review. Not in the original 2014 listing."
+    elif gap:
+        provenance = "Surfaced in the 2026 program review. Not in the original 2014 listing."
+    else:
+        provenance = "From the original Tyler “Academic Metals Directory” (≈2014), brought current in 2026."
+    if changed and kind == "name-change":
+        provenance += " Name change confirmed against the sources below."
     if gap or succ:
-        if r["fc_verified"] == "phil-added":
-            lead = "Added to the directory in 2026 (not in the original Tyler listing)."
-        elif succ:
-            lead = "Current faculty — added in the 2026 succession scan; not in the original directory."
-        else:
-            lead = "Added during gap analysis; not in the original directory."
-        cards = f'<div style="margin:8px 0"><p class="note">{lead}</p>{nowcard}</div>'
+        cards = f'<div style="margin:8px 0">{nowcard}</div>'
     else:
         arch = r["currently_at"] or ""
         thenline = f'<b>{html.escape(titlecase(name))}</b><br>' if changed else ""
@@ -433,11 +444,11 @@ def build_profile(r):
     if kids or seenp:
         parts = []
         if seenp:
-            tchips = "".join(
-                f'<span class="chip"><a href="{pf2}">{html.escape(pn)}</a>'
-                + (f' <span class="lbl" style="display:inline">· {html.escape(("former " if st=="former" else "")+(yrs or ""))}</span>' if (st=="former" or yrs) else "")
-                + '</span>'
-                for pf2, (pn, st, yrs) in sorted(seenp.items(), key=lambda x: x[1][0]))
+            def tchip(pf2, pn, st, yrs):
+                suf = stint(st, yrs)
+                tail = f' <span class="lbl" style="display:inline">· {html.escape(suf)}</span>' if suf else ""
+                return f'<span class="chip"><a href="{pf2}">{html.escape(pn)}</a>{tail}</span>'
+            tchips = "".join(tchip(pf2, pn, st, yrs) for pf2, (pn, st, yrs) in sorted(seenp.items(), key=lambda x: x[1][0]))
             parts.append(f'<span class="lbl">Taught at</span><div class="people-links">{tchips}</div>')
         if kids:
             chips = "".join(f'<span class="chip"><a href="{f}">{html.escape(n)}</a></span>' for n, f in kids)
@@ -450,7 +461,7 @@ def build_profile(r):
     fb, wikiname = fallback_bio(r)
     fallback = json.dumps(fb)
     out = PAGE.format(title=html.escape(title), css=CSS, former=former, role=role, checked=html.escape(checked),
-                      cards=cards, edu=edu, lineage=lineage, sources=sources,
+                      cards=cards, edu=edu, lineage=lineage, sources=sources, provenance=html.escape(provenance),
                       wiki=wikiname, owner=OWNER, repo=REPO, fallback=fallback)
     open(os.path.join(SITE, fname_of[r["slug"]]), "w").write(out)
     return title
@@ -483,6 +494,7 @@ PROG_PAGE = """<!doctype html><html lang="en"><head><meta charset="utf-8">
   <hr>
   <h3 style="font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--soft)">Sources</h3>
   <div class="sources">{sources}</div>
+  <p class="checked" style="margin-top:14px">{provenance}</p>
   <p class="foot">A program in the Academic Metals Directory. People shown are linked where they
   have an entry. <a href="map/">See it on the map →</a></p>
 </div></body></html>"""
@@ -511,14 +523,16 @@ def build_program(p):
     if facs:
         def fac_chip(t):
             disp, pf, status, yrs = t
-            label = disp + ((" · " + ("former " if status=="former" else "") + yrs) if (yrs or status=="former") else "")
             inner = f'<a href="{pf}">{html.escape(disp)}</a>' if pf else f'<span class="plain">{html.escape(disp)}</span>'
-            extra = (("former " if status=="former" else "")+yrs).strip()
+            extra = stint(status, yrs) if status != "current" else (yrs or "")
             return f'<span class="chip">{inner}{(" · "+html.escape(extra)) if extra else ""}</span>'
-        cur_f = [t for t in facs if t[2] != "former"]; old_f = [t for t in facs if t[2]=="former"]
+        cur_f = [t for t in facs if t[2] not in ("former", "workshop")]
+        old_f = [t for t in facs if t[2] == "former"]
+        ws_f  = [t for t in facs if t[2] == "workshop"]
         blocks = ""
         if cur_f: blocks += f'<span class="lbl">Faculty</span><div class="people-links">{"".join(fac_chip(t) for t in sorted(cur_f))}</div>'
         if old_f: blocks += f'<span class="lbl" style="margin-top:8px">Formerly taught here</span><div class="people-links">{"".join(fac_chip(t) for t in sorted(old_f))}</div>'
+        if ws_f:  blocks += f'<span class="lbl" style="margin-top:8px">Workshop instructors (selected)</span><div class="people-links">{"".join(fac_chip(t) for t in sorted(ws_f))}</div>'
         faculty = f'<div class="card lineage-card" style="margin-top:18px"><h3>People</h3>{blocks}</div>'
     # alumni (trained here)
     al = prog_alumni.get(p["slug"], [])
@@ -531,8 +545,12 @@ def build_program(p):
     checked = f'last checked {p["fc_checked"] or ""}'
     sources = "".join(f'<a href="{html.escape(u)}" target="_blank" rel="noopener">{html.escape(u)}</a>' for u in srcs(p["fc_sources"]))
     tl = f'<span class="typetag">{typelabel}</span>' if typelabel else ""
+    prov = ("Added in the 2026 program review; not in the original 2014 directory."
+            if p["fc_verified"] in ("snag-gap-2026", "phil-added")
+            else "From the original Tyler “Academic Metals Directory” (≈2014), brought current in 2026.")
     out = PROG_PAGE.format(title=html.escape(title), css=CSS, typelabel=tl, statusline=statusline,
-                           checked=html.escape(checked), cards=cards, faculty=faculty, alumni=alumni, sources=sources)
+                           checked=html.escape(checked), cards=cards, faculty=faculty, alumni=alumni,
+                           sources=sources, provenance=html.escape(prov))
     open(os.path.join(SITE, pfile_of[p["slug"]]), "w").write(out)
 
 # ---- build all profiles ----
@@ -577,20 +595,34 @@ INDEX = f"""<!doctype html><html lang="en"><head><meta charset="utf-8">
     background:#181014;color:#ffd27a;text-decoration:none;font-size:14px;font-weight:600;
     border:1px solid #3a2a1a;box-shadow:0 0 22px rgba(255,150,60,.18)}}
   .maplink:hover{{box-shadow:0 0 30px rgba(255,150,60,.34);color:#ffe2a8}}
+  html,body{{overflow-x:hidden}}
+  .maplink{{white-space:normal}}
+  .search{{width:100%;box-sizing:border-box;padding:12px 16px;font-size:16px;
+    border:1px solid #d8d4c8;border-radius:12px;margin:18px 0 4px;background:#fff;color:var(--ink)}}
+  .search:focus{{outline:none;border-color:var(--good);box-shadow:0 0 0 3px rgba(120,160,90,.15)}}
+  .qcount{{font-size:12px;color:var(--soft);min-height:16px;margin-bottom:6px}}
+  .vizhint{{font-size:12px;color:var(--soft);margin-top:8px}}
+  @media (max-width:520px){{ .maplink{{display:block;margin-right:0}} }}
 </style></head><body><div class="wrap">
   <p class="kicker">recovered + being updated</p>
   <h1>Academic Metals Directory</h1>
-  <p class="lead">The old Tyler School of Art directory of US jewelry/metals/CAD-CAM teachers,
-  pulled back from the dead and brought current. {total} names below; {nbuilt} are
-  built out — click through. Names still greyed are low-confidence or disputed, held for a human pass.</p>
+  <p class="lead">US jewelry, metals, and CAD-CAM teaching programs and the people who taught them —
+  the old Tyler School of Art directory, brought current. {total} names; the {nbuilt} in <b>bold</b> have a page.</p>
+  <input class="search" id="q" type="search" placeholder="Search names…" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Search names">
+  <div class="qcount" id="qcount"></div>
   <a class="maplink" href="map/">🔥 see them on the map →</a>
   <a class="maplink" href="lineage.html" style="background:#0f1418;color:#9ad0ff;border-color:#1a2a3a;box-shadow:0 0 22px rgba(60,150,255,.16)">↳ the lineage &amp; timeline →</a>
+  <div class="vizhint">The map and lineage are pinch-to-zoom on a phone, and roomiest on a desktop browser.</div>
   <hr>
-  <div class="names">
+  <div class="names" id="names">
 {listing}
   </div>
-  <p class="foot">Each built page shows the archived entry beside today's facts, the teachers and
-  students that connect it to the rest of the directory, and an editable bio pulled live from GitHub.</p>
+  <p class="qcount" id="noresults" style="display:none">No names match. Try a last name, or browse the list.</p>
+  <p class="foot">Each built page sets the archived 2014 entry beside today's facts, with the teachers,
+  students, and programs that connect it to the rest of the directory.</p>
+  <p class="foot">Names shown in grey don't have a page yet — they're held back pending a clearer source
+  (the archived listing is the trusted baseline; anything newer is checked against a citation). Some are
+  low-confidence or disputed on purpose, left visible rather than guessed at.</p>
   <p class="foot" style="margin-top:20px;border-top:1px solid #e6e3d8;padding-top:16px">
   <b>Mirror &amp; extend this.</b> The whole project is open source — the database (<code>acmet.db</code>),
   the build scripts, and the recovered archive all live in one repo:
@@ -599,7 +631,25 @@ INDEX = f"""<!doctype html><html lang="en"><head><meta charset="utf-8">
   add people, verify claims, fix a record, or rescope it past metals. Start with
   <a href="https://github.com/philrenato/acmet-l2/blob/main/MIRROR.md">MIRROR.md</a>.
   Nobody needs permission to be in a directory; living people get a say before anything new goes public.</p>
-</div></body></html>"""
+</div>
+<script>
+(function(){{
+  var q=document.getElementById('q'), nr=document.getElementById('noresults'),
+      c=document.getElementById('qcount'),
+      items=[].slice.call(document.querySelectorAll('#names a, #names span'));
+  function run(){{
+    var v=q.value.trim().toLowerCase(), n=0;
+    for(var i=0;i<items.length;i++){{
+      var hit = !v || items[i].textContent.toLowerCase().indexOf(v)>=0;
+      items[i].style.display = hit ? '' : 'none'; if(hit) n++;
+    }}
+    c.textContent = v ? (n+' name'+(n===1?'':'s')) : '';
+    nr.style.display = (v && n===0) ? '' : 'none';
+  }}
+  q.addEventListener('input', run);
+}})();
+</script>
+</body></html>"""
 open(os.path.join(SITE, "index.html"), "w").write(INDEX)
 print(f"index: {total} names, {nbuilt} built out")
 # coverage of cross-links

@@ -50,7 +50,15 @@ HTML = """<!doctype html><html lang="en"><head><meta charset="utf-8">
 <style>
   html,body{margin:0;height:100%;background:#07070b;color:#e8e6df;
     font:14px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}
-  #map{display:block;width:100vw;height:100vh}
+  #map{display:block;width:100vw;height:100vh;touch-action:none;cursor:grab}
+  #map:active{cursor:grabbing}
+  .hint{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);z-index:5;
+    font-size:11px;color:#7a776c;pointer-events:none;text-align:center}
+  @media (max-width:600px){
+    .hdr h1{font-size:19px} .hdr .sub{font-size:11px;max-width:64vw}
+    .legend{font-size:10.5px;bottom:34px} .legend span{margin-right:9px}
+    .ctl{bottom:34px} .hint{bottom:6px}
+  }
   .hdr{position:fixed;top:20px;left:24px;z-index:5;pointer-events:none}
   .hdr .k{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#8a8678}
   .hdr h1{margin:4px 0 2px;font-size:26px;font-weight:600;letter-spacing:-.01em;
@@ -82,6 +90,7 @@ HTML = """<!doctype html><html lang="en"><head><meta charset="utf-8">
   <span><i class="dot" style="background:#8a4a4a;box-shadow:0 0 6px #6a2a2a"></i>closed</span>
 </div>
 <div class="ctl"><label><input type="checkbox" id="arcs" checked> lineage arcs</label></div>
+<div class="hint">pinch or scroll to zoom · drag to pan · tap a dot</div>
 <div class="tip" id="tip"></div>
 <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
 <script src="https://cdn.jsdelivr.net/npm/topojson-client@3"></script>
@@ -105,10 +114,13 @@ function draw(us){
   const path = d3.geoPath(proj);
   const maxCount = Math.max(...Object.values(DATA.stateCounts));
 
+  // a single zoomable/pannable viewport group holds everything (pinch on touch, wheel on desktop)
+  const vp = svg.append("g").attr("class","vp");
+
   // heat: tint each state by program density
   const heat = d3.scaleSequential(t=>d3.interpolateRgb("#101018","#3a241a")(t)).domain([0,maxCount]);
   const byId = {}; // FIPS not needed; tint by centroid->state match is hard, so flat dark + per-state glow blobs
-  svg.append("g").selectAll("path").data(states.features).join("path")
+  vp.append("g").selectAll("path").data(states.features).join("path")
      .attr("d",path).attr("fill","#0e0e16").attr("stroke","#23232e").attr("stroke-width",.7);
 
   // city-accurate dots barely jitter (just to unstack); state-only dots spread to fill the state
@@ -116,7 +128,7 @@ function draw(us){
     return proj([p.lng + (hash(p.name)-.5)*j*1.4, p.lat + (hash(p.name+"y")-.5)*j]); };
 
   // lineage-migration arcs
-  const arcG = svg.append("g").attr("opacity",.5);
+  const arcG = vp.append("g").attr("opacity",.5);
   const maxF = Math.max(1,...DATA.flows.map(f=>f.n));
   arcG.selectAll("path").data(DATA.flows).join("path").attr("d",f=>{
       const a=proj([f.a[1],f.a[0]]), b=proj([f.b[1],f.b[0]]); if(!a||!b)return null;
@@ -129,7 +141,7 @@ function draw(us){
 
   // program glow dots
   const r = d3.scaleSqrt().domain([1, Math.max(2,d3.max(DATA.points,p=>p.w))]).range([3.5,16]);
-  const g = svg.append("g");
+  const g = vp.append("g");
   g.selectAll("circle").data(DATA.points.filter(p=>proj([p.lng,p.lat]))).join("circle")
     .attr("cx",p=>(P(p)||[-99,-99])[0]).attr("cy",p=>(P(p)||[-99,-99])[1])
     .attr("r",p=>r(p.w)).attr("fill",p=>COLOR[p.status]||COLOR.unknown)
@@ -137,7 +149,15 @@ function draw(us){
     .attr("stroke","rgba(255,255,255,.25)").attr("stroke-width",.5)
     .on("mousemove",(ev,p)=>{tip.style("opacity",1).style("left",(ev.clientX+14)+"px").style("top",(ev.clientY+12)+"px")
         .html(`<b>${p.name}</b><br>${p.status} · ${p.state} · ${p.w} connections<br><span style="color:#9a968a">${p.summary||""}</span>`);})
-    .on("mouseleave",()=>tip.style("opacity",0));
+    .on("mouseleave",()=>tip.style("opacity",0))
+    .on("click",(ev,p)=>{ev.stopPropagation();tip.style("opacity",1)
+        .style("left",Math.min(ev.clientX+14,innerWidth-220)+"px").style("top",(ev.clientY+12)+"px")
+        .html(`<b>${p.name}</b><br>${p.status} · ${p.state} · ${p.w} connections<br><span style="color:#9a968a">${p.summary||""}</span>`);});
+
+  // pinch (touch) + wheel (desktop) zoom, drag to pan
+  const zoom = d3.zoom().scaleExtent([0.8,9]).on("zoom",ev=>vp.attr("transform",ev.transform));
+  svg.call(zoom).on("dblclick.zoom",null);
+  svg.on("click",()=>tip.style("opacity",0));  // tap empty space to dismiss tip
 }
 </script></body></html>"""
 
