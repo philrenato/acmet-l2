@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Phil Renato — Academic Metals Directory</title>
+<style>
+  :root{
+    --ink:#1a1a18; --soft:#6b6b66; --line:#d8d6cf; --paper:#f4f2ec;
+    --card:#fbfaf6; --accent:#7a7468; --good:#3d6b4a; --warn:#9a6b3a;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:720px; margin:0 auto; padding:56px 24px 96px}
+  .kicker{font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--soft); margin:0 0 18px}
+  h1{font-size:40px; line-height:1.05; margin:0; font-weight:650; letter-spacing:-.01em}
+  .former{color:var(--soft); font-style:italic; font-weight:400; font-size:19px; margin-top:6px}
+  .role{margin-top:14px; font-size:18px; color:var(--ink)}
+  .badge{display:inline-block; font-size:11px; letter-spacing:.04em; padding:2px 9px; border-radius:999px;
+    border:1px solid var(--line); color:var(--soft); background:var(--card); vertical-align:middle; margin-left:8px}
+  .badge.live{color:var(--good); border-color:#bcd3c2}
+  .badge.local{color:var(--warn); border-color:#e0cdb4}
+  hr{border:none; border-top:1px solid var(--line); margin:36px 0}
+  .grid{display:grid; grid-template-columns:1fr 1fr; gap:18px; margin:8px 0}
+  @media(max-width:560px){.grid{grid-template-columns:1fr}}
+  .card{background:var(--card); border:1px solid var(--line); border-radius:10px; padding:16px 18px}
+  .card h3{margin:0 0 10px; font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:var(--soft); font-weight:600}
+  .card.then h3::before{content:"⌗ "; color:var(--accent)}
+  .card.now h3::before{content:"→ "; color:var(--good)}
+  .kv{margin:0 0 6px; font-size:15px}
+  .kv b{font-weight:600}
+  .lbl{color:var(--soft); font-size:13px}
+  table.edu{width:100%; border-collapse:collapse; font-size:14.5px; margin-top:4px}
+  table.edu td{padding:7px 10px 7px 0; border-bottom:1px solid var(--line); vertical-align:top}
+  table.edu td:first-child{color:var(--soft); white-space:nowrap; width:1%}
+  .bio{font-family:Georgia,"Iowan Old Style",Cambria,"Times New Roman",serif; font-size:18px; line-height:1.7}
+  .bio h1{font-size:26px; margin:0 0 4px; font-weight:600; font-family:inherit}
+  .bio h2{font-size:15px; letter-spacing:.06em; text-transform:uppercase; color:var(--accent);
+    font-family:-apple-system,sans-serif; margin:30px 0 8px; font-weight:600}
+  .bio p{margin:0 0 16px}
+  .bio em{color:var(--soft)}
+  .bio a{color:#3a5a8a; text-decoration:none; border-bottom:1px solid #c9d4e4}
+  .bio hr{margin:28px 0}
+  .bio .note{font-size:14px; color:var(--soft); font-style:italic}
+  .sources{font-size:13.5px; color:var(--soft)}
+  .sources a{color:var(--soft); display:block; padding:3px 0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+  .sources a:hover{color:var(--ink)}
+  .foot{margin-top:48px; font-size:12.5px; color:var(--soft); line-height:1.5}
+  .foot code{background:#e9e7df; padding:1px 5px; border-radius:4px; font-size:12px}
+  .checked{font-size:12px; color:var(--soft); margin-top:6px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <p class="kicker">Academic Metals Directory · entry</p>
+  <h1 id="name">Phil Renato</h1>
+  <div class="former">formerly Phil Carrizzi</div>
+  <div class="role" id="role"></div>
+  <div class="checked" id="checked"></div>
+
+  <hr>
+
+  <div class="grid">
+    <div class="card then">
+      <h3>As archived (≈2014)</h3>
+      <p class="kv"><span class="lbl">Listed as</span><br><b>Phil Carrizzi</b></p>
+      <p class="kv"><span class="lbl">Teaching at</span><br>Kendall College of Art and Design<br>Assistant Professor, Chair Jewelry/Metals — since 2002</p>
+      <p class="kv"><span class="lbl">Born</span><br>1974, Pontiac, Michigan</p>
+      <p class="kv"><span class="lbl">Signature work</span><br><i>“Squeeze”</i></p>
+    </div>
+    <div class="card now">
+      <h3>Now (checked 2026)</h3>
+      <p class="kv"><span class="lbl">Goes by</span><br><b id="now-name">Phil Renato</b></p>
+      <p class="kv"><span class="lbl">Current role</span><br><span id="now-role"></span></p>
+      <p class="kv"><span class="lbl">Status</span><br><span id="now-status"></span></p>
+      <p class="kv"><span class="lbl">Link</span><br><a id="now-link" href="#"></a></p>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:18px">
+    <h3>Training</h3>
+    <table class="edu"><tbody id="edu"></tbody></table>
+  </div>
+
+  <hr>
+
+  <div class="bio" id="bio">loading bio…</div>
+  <p class="checked">bio source: <span id="bio-src"></span></p>
+
+  <hr>
+
+  <h3 class="card-h3" style="font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--soft)">Sources</h3>
+  <div class="sources" id="sources"></div>
+
+  <p class="foot">
+    Structured facts come from <code>acmet.db</code>. The narrative bio is pulled live
+    from a GitHub wiki page —
+    <code id="wiki-url"></code> — so it stays editable without touching the database.
+    If the wiki can’t be reached, a built-in copy is shown instead.
+  </p>
+
+</div>
+
+<script>
+// ---- config: where the editable bio lives ----------------------------------
+const WIKI = { owner: 'philrenato', repo: 'acmet-l2', page: 'Phil-Renato' };
+const RAW = `https://raw.githubusercontent.com/wiki/${WIKI.owner}/${WIKI.repo}/${WIKI.page}.md`;
+
+// ---- structured facts (from acmet.db) --------------------------------------
+const REC = {
+  now_name: "Phil Renato (Phillip Renato)",
+  role: "Professor & founding Chair, Allesee Metals/Jewelry Design Program — Kendall College of Art and Design (Ferris State University), Grand Rapids, MI",
+  status: "still teaching — same institution & role he held since 2002 (metals/jewelry is now a concentration within KCAD's Product Design BFA)",
+  link: "https://www.ferris.edu/art-design/programs/faculty/renato-phillip.htm",
+  checked: "2026-05-29",
+  education: [
+    ["Undergraduate", "Eastern Michigan University", "1994–1999", "BFA", "Skip Hunter"],
+    ["Graduate", "University of Washington", "to 2002", "MFA, Metals", "Mary Lee Hu"]
+  ],
+  sources: [
+    "https://www.ferris.edu/art-design/programs/faculty/renato-phillip.htm",
+    "https://www.kcad.edu/programs/faculty/renato-phillip/",
+    "https://www.philrenato.com/",
+    "https://web.archive.org/web/2014id_/http://www.temple.edu/crafts/metalsdirectorypage/s272.html"
+  ]
+};
+
+// ---- fallback bio (used if the wiki can't be fetched) ----------------------
+const FALLBACK_MD = `# Phil Renato
+
+*formerly Phil Carrizzi*
+
+Phil Renato is a jeweler, metalsmith, and educator based in Grand Rapids, Michigan. He is a Professor at Kendall College of Art and Design (Ferris State University), where in 2002 he founded the **Allesee Metals/Jewelry Design** program and served as its chair. He still teaches there today — though, like the field around it, the program has changed shape: metals and jewelry is now a concentration inside KCAD's interdisciplinary **Product Design** BFA rather than a standalone degree.
+
+## Work
+
+Renato's practice moves between studio jewelry, object design, and digital fabrication. He came up through traditional bench training and then leaned hard into CAD/CAM — the same lineage the old Tyler "C-C" stood for — using rapid prototyping and rendering as part of the design language rather than just the output. His work has appeared in over fifty national and international exhibitions.
+
+## Training
+
+He earned a BFA at **Eastern Michigan University** (1994–1999) studying under Skip Hunter, and an MFA in Metals at the **University of Washington** (2002) under **Mary Lee Hu**. He briefly taught at the University of Washington as auxiliary faculty before taking the position at Kendall.
+
+## The name
+
+Earlier in his career he published and exhibited as **Phil Carrizzi** — the name under which he appears in the original Academic Metals Directory. He later took the name **Renato**. The two names are the same person; this is exactly the kind of quiet change a static directory could never keep up with, and the reason this project exists.
+
+---
+
+*This page is the editable, narrative half of his directory entry. The structured facts come from acmet.db. Edit this text in the wiki; the page will pick it up.*`;
+
+// ---- tiny markdown renderer (headings, bold, italic, links, hr, paragraphs) -
+function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function inline(s){
+  return esc(s)
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g,'<a href="$2" target="_blank" rel="noopener">$1</a>')
+    .replace(/\*\*([^*]+)\*\*/g,'<b>$1</b>')
+    .replace(/(^|[^*])\*([^*]+)\*/g,'$1<em>$2</em>');
+}
+function renderMD(md){
+  const lines = md.replace(/\r/g,'').split('\n');
+  let html='', para=[];
+  const flush=()=>{ if(para.length){ const t=para.join(' ').trim();
+    if(t) html += (t.startsWith('*')&&t.endsWith('*')&&!t.includes('**')) ?
+      `<p class="note">${inline(t.replace(/^\*|\*$/g,''))}</p>` : `<p>${inline(t)}</p>`;
+    para=[]; } };
+  for(const ln of lines){
+    if(/^###\s/.test(ln)){flush(); html+=`<h3>${inline(ln.slice(4))}</h3>`;}
+    else if(/^##\s/.test(ln)){flush(); html+=`<h2>${inline(ln.slice(3))}</h2>`;}
+    else if(/^#\s/.test(ln)){flush(); html+=`<h1>${inline(ln.slice(2))}</h1>`;}
+    else if(/^---+\s*$/.test(ln)){flush(); html+='<hr>';}
+    else if(/^\s*$/.test(ln)){flush();}
+    else para.push(ln);
+  }
+  flush();
+  return html;
+}
+
+// ---- paint structured facts ------------------------------------------------
+document.getElementById('role').textContent = REC.role;
+document.getElementById('checked').textContent = 'last checked ' + REC.checked + ' · ⚑ name change confirmed';
+document.getElementById('now-name').textContent = REC.now_name;
+document.getElementById('now-role').textContent = REC.role;
+document.getElementById('now-status').textContent = REC.status;
+const nl = document.getElementById('now-link'); nl.href = REC.link; nl.textContent = REC.link.replace(/^https?:\/\//,'');
+document.getElementById('edu').innerHTML = REC.education.map(e =>
+  `<tr><td>${e[0]}</td><td><b>${e[1]}</b> · ${e[2]}<br><span class="lbl">${e[3]}${e[4]?' · instructor: '+e[4]:''}</span></td></tr>`).join('');
+document.getElementById('sources').innerHTML = REC.sources.map(u =>
+  `<a href="${u}" target="_blank" rel="noopener">${u}</a>`).join('');
+document.getElementById('wiki-url').textContent = `wiki/${WIKI.owner}/${WIKI.repo}/${WIKI.page}`;
+
+// ---- pull the bio from the GitHub wiki, fall back to the built-in copy ------
+function showBio(md, src, live){
+  document.getElementById('bio').innerHTML = renderMD(md);
+  const s = document.getElementById('bio-src');
+  s.innerHTML = live
+    ? `<span class="badge live">live · github wiki</span>`
+    : `<span class="badge local">built-in copy (wiki unreachable)</span>`;
+}
+fetch(RAW, {cache:'no-store'})
+  .then(r => { if(!r.ok) throw new Error(r.status); return r.text(); })
+  .then(md => showBio(md, RAW, true))
+  .catch(() => showBio(FALLBACK_MD, 'fallback', false));
+</script>
+</body>
+</html>
