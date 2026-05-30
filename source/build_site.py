@@ -566,20 +566,53 @@ for p in programs:
 print(f"built {len(programs)} program pages")
 
 # ---------------------------------------------------------------------------
-# index: every distinct checked person; built ones are links, rest greyed
+# index: two sets — degree-granting programs & their faculty on top, everything
+# else beneath. A person is "degree" if any teaching affiliation (current job or
+# a program_faculty link) is at a degree-granting institution.
 # ---------------------------------------------------------------------------
+DG_TYPES = {"university", "art-college", "community-college"}
+pfile_type = {pfile_of[p["slug"]]: (p["school_type"] or "") for p in programs}
+row_by_name = {r["name"]: r for r in people}
+
+def bucket_of(name):
+    r = row_by_name.get(name)
+    fname = built[name][1] if name in built else None
+    if r is None: return "degree"
+    if fname:
+        for (_pn, pf2, _st, _yrs) in taught_at.get(fname, []):
+            if pfile_type.get(pf2) in DG_TYPES: return "degree"
+    pf = resolve_prog_file(r["currently_at"] or "")
+    if pf and pfile_type.get(pf):
+        return "degree" if pfile_type.get(pf) in DG_TYPES else "other"
+    # no resolvable institution: original-directory people were academic; later
+    # gap/succession/editor additions without a degree-granting tie go to "other"
+    if r["fc_verified"] in ("snag-gap-2026", "phil-added") or r["kind"] == "person-gap-addition":
+        return "other"
+    return "degree"
+
 all_names = {r["name"] for r in people if r["kind"] != "person-gap-addition"} | set(built.keys())
-entries = []
+deg, oth = [], []
 for n in all_names:
-    if n in built:
-        entries.append((built[n][0], built[n][1]))
-    else:
-        entries.append((titlecase(n), None))
-entries.sort(key=lambda e: ((e[0].split()[-1].lower() if e[0].split() else e[0].lower()), e[0].lower()))
-items = [f'<a class="on" href="{fn}">{html.escape(d)}</a>' if fn else f'<span class="off">{html.escape(d)}</span>'
-         for d, fn in entries]
-listing = "\n".join(items)
-total, nbuilt = len(entries), len(built)
+    disp, fn = built[n] if n in built else (titlecase(n), None)
+    (deg if bucket_of(n) == "degree" else oth).append((disp, fn))
+
+def render_items(lst):
+    lst.sort(key=lambda e: ((e[0].split()[-1].lower() if e[0].split() else e[0].lower()), e[0].lower()))
+    return "\n".join(
+        f'<a class="on nm" href="{fn}">{html.escape(d)}</a>' if fn else f'<span class="off nm">{html.escape(d)}</span>'
+        for d, fn in lst)
+deg_html, oth_html = render_items(deg), render_items(oth)
+n_deg, n_oth = len(deg), len(oth)
+
+# programs, same split (by the institution's own type)
+pdeg, poth = [], []
+for p in programs:
+    item = (titlecase(re.sub(r"\s+", " ", p["name"])), pfile_of[p["slug"]])
+    (pdeg if (p["school_type"] in DG_TYPES) else poth).append(item)
+pdeg_html, poth_html = render_items(pdeg), render_items(poth)
+n_pdeg, n_poth = len(pdeg), len(poth)
+
+total, nbuilt = n_deg + n_oth, len(built)
 INDEX = f"""<!doctype html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Academic Metals Directory</title>
@@ -603,24 +636,58 @@ INDEX = f"""<!doctype html><html lang="en"><head><meta charset="utf-8">
   .qcount{{font-size:12px;color:var(--soft);min-height:16px;margin-bottom:6px}}
   .vizhint{{font-size:12px;color:var(--soft);margin-top:8px}}
   @media (max-width:520px){{ .maplink{{display:block;margin-right:0}} }}
+  .tabs{{display:flex;gap:8px;margin:14px 0 2px}}
+  .tab{{padding:7px 16px;border-radius:999px;border:1px solid #d8d4c8;background:#fff;color:var(--soft);
+    font-size:14px;font-weight:600;cursor:pointer}}
+  .tab[aria-selected="true"]{{background:#181014;color:#ffd27a;border-color:#3a2a1a}}
+  .setlabel{{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--soft);
+    margin:22px 0 2px;font-weight:600}}
+  .setlabel .setn{{color:#b9b6ac;font-weight:400;letter-spacing:0}}
+  .panel[hidden]{{display:none}}
 </style></head><body><div class="wrap">
   <p class="kicker">recovered + being updated</p>
   <h1>Academic Metals Directory</h1>
   <p class="lead">US jewelry, metals, and CAD-CAM teaching programs and the people who taught them —
-  the old Tyler School of Art directory, brought current. {total} names; the {nbuilt} in <b>bold</b> have a page.</p>
-  <input class="search" id="q" type="search" placeholder="Search names…" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Search names">
-  <div class="qcount" id="qcount"></div>
+  the old Tyler School of Art directory, brought current. {total} names across {len(programs)} programs;
+  the {nbuilt} in <b>bold</b> have a page. Degree-granting programs and their faculty come first;
+  craft schools, studios, and workshops follow.</p>
   <a class="maplink" href="map/">🔥 see them on the map →</a>
   <a class="maplink" href="lineage.html" style="background:#0f1418;color:#9ad0ff;border-color:#1a2a3a;box-shadow:0 0 22px rgba(60,150,255,.16)">↳ the lineage &amp; timeline →</a>
   <div class="vizhint">The map and lineage are pinch-to-zoom on a phone, and roomiest on a desktop browser.</div>
   <hr>
-  <div class="names" id="names">
-{listing}
+  <div class="tabs" role="tablist">
+    <button class="tab" id="tab-people" role="tab" aria-selected="true" onclick="showTab('people')">People</button>
+    <button class="tab" id="tab-programs" role="tab" aria-selected="false" onclick="showTab('programs')">Programs</button>
   </div>
-  <p class="qcount" id="noresults" style="display:none">No names match. Try a last name, or browse the list.</p>
+  <input class="search" id="q" type="search" placeholder="Search people…" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Search">
+  <div class="qcount" id="qcount"></div>
+
+  <div class="panel" id="panel-people" data-noun="people">
+    <div class="setlabel" data-set>Degree-granting programs &amp; their faculty <span class="setn">{n_deg}</span></div>
+    <div class="names" data-names>
+{deg_html}
+    </div>
+    <div class="setlabel" data-set>Craft schools, studios, trade schools &amp; workshops <span class="setn">{n_oth}</span></div>
+    <div class="names" data-names>
+{oth_html}
+    </div>
+  </div>
+
+  <div class="panel" id="panel-programs" data-noun="programs" hidden>
+    <div class="setlabel" data-set>Degree-granting institutions <span class="setn">{n_pdeg}</span></div>
+    <div class="names" data-names>
+{pdeg_html}
+    </div>
+    <div class="setlabel" data-set>Craft schools, studios, trade schools &amp; workshops <span class="setn">{n_poth}</span></div>
+    <div class="names" data-names>
+{poth_html}
+    </div>
+  </div>
+
+  <p class="qcount" id="noresults" style="display:none">Nothing matches. Try a last name or a school.</p>
   <p class="foot">Each built page sets the archived 2014 entry beside today's facts, with the teachers,
   students, and programs that connect it to the rest of the directory.</p>
-  <p class="foot">Names shown in grey don't have a page yet — they're held back pending a clearer source
+  <p class="foot">Names in grey don't have a page yet — held back pending a clearer source
   (the archived listing is the trusted baseline; anything newer is checked against a citation). Some are
   low-confidence or disputed on purpose, left visible rather than guessed at.</p>
   <p class="foot" style="margin-top:20px;border-top:1px solid #e6e3d8;padding-top:16px">
@@ -634,18 +701,34 @@ INDEX = f"""<!doctype html><html lang="en"><head><meta charset="utf-8">
 </div>
 <script>
 (function(){{
-  var q=document.getElementById('q'), nr=document.getElementById('noresults'),
-      c=document.getElementById('qcount'),
-      items=[].slice.call(document.querySelectorAll('#names a, #names span'));
+  var q=document.getElementById('q'), nr=document.getElementById('noresults'), c=document.getElementById('qcount');
+  var panels={{people:document.getElementById('panel-people'), programs:document.getElementById('panel-programs')}};
+  var cur='people';
+  function active(){{ return panels[cur]; }}
   function run(){{
-    var v=q.value.trim().toLowerCase(), n=0;
-    for(var i=0;i<items.length;i++){{
-      var hit = !v || items[i].textContent.toLowerCase().indexOf(v)>=0;
-      items[i].style.display = hit ? '' : 'none'; if(hit) n++;
+    var v=q.value.trim().toLowerCase(), n=0, p=active();
+    var sets=p.querySelectorAll('[data-names]'), labels=p.querySelectorAll('[data-set]');
+    for(var s=0;s<sets.length;s++){{
+      var items=sets[s].children, shown=0;
+      for(var i=0;i<items.length;i++){{
+        var hit = !v || items[i].textContent.toLowerCase().indexOf(v)>=0;
+        items[i].style.display = hit ? '' : 'none'; if(hit){{shown++; n++;}}
+      }}
+      // hide a set's label + list when nothing in it matches
+      if(labels[s]) labels[s].style.display = shown ? '' : 'none';
+      sets[s].style.display = shown ? '' : 'none';
     }}
-    c.textContent = v ? (n+' name'+(n===1?'':'s')) : '';
+    c.textContent = v ? (n+' '+(n===1?(cur==='people'?'name':'program'):cur==='people'?'names':'programs')) : '';
     nr.style.display = (v && n===0) ? '' : 'none';
   }}
+  window.showTab=function(t){{
+    cur=t;
+    panels.people.hidden = t!=='people'; panels.programs.hidden = t!=='programs';
+    document.getElementById('tab-people').setAttribute('aria-selected', t==='people');
+    document.getElementById('tab-programs').setAttribute('aria-selected', t==='programs');
+    q.placeholder = t==='people' ? 'Search people…' : 'Search programs…';
+    run();
+  }};
   q.addEventListener('input', run);
 }})();
 </script>
