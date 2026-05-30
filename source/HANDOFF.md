@@ -1,90 +1,126 @@
 # acmet-l2 — handoff (state as of 2026-05-30)
 
-Where this project is, so anyone (or a future Claude session) can pick it up cold.
-Plain-language map; the README is the front door, this is the "what's actually done
-and what's loose" doc.
+The recovered Tyler "Academic Metals Directory," brought current and published.
+This is the "what's actually done and what's loose" doc; `README.md` is the
+front door, `MIRROR.md` is the clone-and-extend guide for the next person.
 
-## status: working. everything below is built, run, and verified.
+**Live:** https://renato.design/acmet-l2/  ·  **Repo:** github.com/philrenato/acmet-l2 (the whole project — site + source)
 
-### what got done
-1. **recovered** the dead Tyler "Academic Metals Directory" from the Wayback Machine
-   → `archive/` (4,492 text pages, frozen). tool: `archive/wayback_pull.py`.
-2. **parsed** it into `acmet.db` (people / education / programs / program_faculty /
-   factcheck). extractor: `build_database.py`.
-3. **fact-checked** 217 people + 202 programs with a multi-agent workflow (alive? job?
-   name change? program fate?) — sourced + adversarially verified. → `factcheck_workflow.js`,
-   loaded by `load_factcheck.py`. notable stuff in `CHANGES.md`.
-4. **gap analysis** — programs the directory missed / nothing founded post-2014.
-   → `gap_workflow.js` → `GAPS.md`.
-5. **faculty-succession re-scan** of 152 surviving programs — who teaches metals *now*.
-   added **218 successors** (db now 651 people), flagged 34 programs that quietly lost
-   metals. → `succession_workflow.js` → `load_succession.py` → `SUCCESSION.md`.
-6. **the site** — directory index (218 names, the built-out ones lit) + per-person
-   profile pages (then/now + DB facts + bio pulled live from GitHub). `build_site.py`.
-   7 built out: Phil Renato, Mary Lee Hu, Stanley Lechtzin, Daniella Kerner, Vickie
-   Sedman, Rebecca Strzelec, Skip Hunter.
-7. **three cohered faces over one database:**
-   - the **directory** (names) — `index.html` + profile pages
-   - the **map** — `site/map/` — US map, glowing program dots + lineage-migration arcs,
-     city-level geocoding. `build_graph.py` → `build_map.py`.
-   - the **lineage** — `site/lineage.html` — dark timeline/genealogy (my `/ecosystem/`
-     system rebuilt natively): timeline / lineage / all-connections modes, click-to-trace.
-     `build_graph.py` → `build_lineage.py`.
+## status: working, published, link-audited.
 
-### the build pipeline (one DB → three faces)
+### the shape of it
+- **One database** (`acmet.db`) → three faces: the **directory** (people + program
+  pages), the **map** (`/map/`), the **lineage** (`/lineage.html`). Fix a record,
+  rebuild, all three update.
+- **847 people / 465 programs** in the DB; **779 person pages + 463 program pages**
+  built and live. Distinct, deduped (the old/new archive trees produced shadow rows;
+  builders filter `fc_checked IS NOT NULL`).
+
+### what got done (chronological-ish)
+1. **Recovered** the dead site from the Wayback Machine → `archive/` (4,492 text pages,
+   frozen). Tool: `archive/wayback_pull.py`.
+2. **Parsed** → `acmet.db` (people / education / programs / program_faculty / factcheck).
+   `build_database.py`. ⚠ rerunning DROPS the DB — re-extract THEN reload.
+3. **Fact-checked** the archived roster (deaths / name-changes / current job / program
+   fate), multi-agent, sourced + adversarially verified. `factcheck_workflow.js`.
+4. **Faculty-succession** re-scan of surviving programs → +218 current faculty.
+   `succession_workflow.js` → `load_succession.py`.
+5. **Coherence audit** (`audit_coherence.py`): added `people.fc_change_kind`
+   (genuine name-change vs name-variant vs archive spelling-fix — 8 of the 20 "name
+   changes" were just OCR fixes) and `programs.school_type` (university / art-college /
+   community-college / craft-school / trade-school / museum-school / art-association /
+   k12). Cleaned 387 orphaned `education` rows (build_database left education pointing at
+   non-existent person_ids; they collided with new inserts via `lastrowid`).
+6. **Re-verification pass** (`updates_2026_05_30.py`, `scrub_death_speculation.py`):
+   **PURGED "likely-deceased"** entirely — Phil's rule: never assert/speculate a death
+   without a good source (scrubbed speculative death language from 57 bios). Fixed two
+   wrong-person sources (Vierthaler→von Neumann; Sipantzi→"Arnold Hassoldt"). Resolved
+   disputes (Fred Woell deceased 2015 w/ obituary; Kamal Baum no longer COD faculty).
+7. **SNAG gap pass** — pulled SNAG's full community-links list via its WordPress REST API
+   (`/wp-json/wp/v2/community_links?link_type=613` schools / `615` craft-centers — bypasses
+   the JS pagination that defeats a naive fetch; 282 schools + 208 craft-centers), diffed
+   vs the DB → 339 candidates → one verify-agent each (`gap_workflow_v2.js` → `load_gaps.py`)
+   → **+266 programs + ~396 current faculty** (73 rejected as out-of-scope: gemology, welding,
+   suppliers).
+8. **Named additions** (`people_records_workflow.js`/`2` → `load_people_records.py`): Nashef,
+   Skelcey, Gayk, Starrett, Elaver, Flood, DeMonte, Beverly Seley, Robyn Kane Haberkorn,
+   David Huang + Appalachian State, Grand Rapids CC. Beeler→Dundee, Scotland; Saracino retired;
+   Melis Agabigum corrected to Western Michigan (primary) with PenArt as a workshop; Jill
+   Baker Gower reconciled to College of DuPage.
+9. **Cross-linking** (the headline feature): bidirectional teacher↔student (from
+   `education.instructor`) AND person↔program (taught-at / studied-at / faculty / alumni,
+   from `program_faculty` + `education.school`). Every instructor name and school name on a
+   page is a link where the target has an entry.
+10. **UX pass**: directory index now has **People / Programs tabs**, a **two-set split**
+    (degree-granting programs & their faculty on top, craft schools / studios / trade /
+    workshops beneath), and **live search** over the active tab. Process language ("added
+    during gap analysis") moved off page tops to a quiet **provenance breadcrumb at the
+    bottom**; real provisos (sources, consent, low-confidence held back) kept in the footer.
+    **Map + lineage are pinch-zoom + drag-pan on phone** (d3.zoom + `touch-action:none`),
+    with a "best on desktop" note. `program_faculty.status='workshop'` renders workshop
+    stints distinctly ("Workshop instructors (selected)" — kept partial; Penland rosters
+    would balloon).
+11. **Open-sourced** the whole project: the published repo holds the built site at the root
+    AND `source/` (acmet.db, all scripts, the archive, the docs) + `MIRROR.md` + one-command
+    `source/deploy.sh`. Mirror invitation in the index footer.
+12. **Link audit** (`fix_links` pass): checked every displayed external URL (2,629 distinct).
+    Dropped **68 confirmed-dead (404/410)** links — per Phil, "if a link doesn't show info
+    about the person/program (not just the school), drop it" (so dead deep links are dropped,
+    NOT rooted to a school homepage). Tyler-archive URLs (`temple.edu/crafts/...`) →
+    **Wayback captures** (they resolve to exactly the recovered entry). Kept personal artist
+    sites, art-department pages, specific deep links, and bot-blocked/slow ones (not
+    high-confidence dead). **0 broken internal links; cross-link resolution verified.**
+
+### the build + deploy pipeline (one DB → three faces → live)
 ```
-acmet.db ──build_graph.py──▶ data/acmet-graph.json ──▶ build_map.py     (map)
-                                                    └─▶ build_lineage.py (lineage)
-acmet.db ──build_site.py──▶ index + profile pages
+acmet.db ─build_graph.py─▶ data/acmet-graph.json ─▶ build_map.py  (site/map/)
+                                                  └▶ build_lineage.py (site/lineage.html)
+acmet.db ─build_site.py──▶ site/ (index + person pages + program pages)
+source/deploy.sh  ─▶ rebuilds all, syncs site→repo root + source→/source, commits, pushes
 ```
-Stable slugs throughout, so cross-linking the faces is additive, not rework.
+Run `ACMET_REPO=/tmp/acmet-deploy ./deploy.sh "message"` to publish. Verify live with a
+cache-busted `curl` (GitHub Pages lags 1–2 min); the page is JS for tabs/search, so a quick
+phone tap-through is worth it.
 
-### the live page
-- repo: `github.com/philrenato/acmet-l2` (PUBLIC), served by GitHub Pages on renato.design.
-- `site/phil-renato.html` — then/now entry, facts from the DB, bio pulled live from GitHub.
-- `site/wiki/Phil-Renato.md` — the editable bio (also pushed to the repo root as `Phil-Renato.md`).
-- bio source order: github **wiki** → github **repo file** → built-in copy. right now it
-  serves the repo file ("live · github repo") because the wiki isn't bootstrapped yet.
-- "✎ edit this bio" link on the page → GitHub editor for the bio.
+### ⚠️ the deploy trap (don't relearn this)
+`renato.design/acmet-l2/` is served by the **separate `philrenato/acmet-l2` PROJECT repo**,
+NOT by `philrenato-web/acmet-l2/`. A project repo named `acmet-l2` publishes to the same
+`/acmet-l2/` path and *shadows* a same-named folder in the user-site repo. The local
+`~/Documents/claude/acmet-l2` is NOT a git checkout. `deploy.sh` clones/uses the project repo
+correctly. Confirm the target with `gh api repos/philrenato/acmet-l2/pages`.
 
-### the one loose thread: the wiki
-GitHub won't let a wiki be created by API or push — the **first page must be made in the
-browser** once. to finish wiring the true wiki:
-1. go to `github.com/philrenato/acmet-l2/wiki` → create the first page (save anything).
-2. then push the bio:
-   ```
-   cd /tmp && rm -rf w && git clone https://github.com/philrenato/acmet-l2.wiki.git w
-   cp ~/acmet-l2/site/wiki/Phil-Renato.md w/ && cd w
-   git add . && git commit -m "Phil Renato bio" && git push
-   ```
-3. the page auto-flips to "live · github wiki" — no code change.
+### data model (the fc_* layer is the work)
+- `people` — identity + `fc_alive` (yes/no/unknown — never "likely-deceased"),
+  `fc_current_role`, `fc_still_in_job`, `fc_current_link`, `fc_sources` (` | `-joined),
+  `fc_confidence`, `fc_verified`, `fc_change_kind`, `fc_summary`, `fc_checked`.
+- `programs` — `fc_still_exists`, `fc_current_name`, `school_type`, `fc_what_happened`,
+  `fc_current_link`, `fc_succession_status`, sources.
+- `education` — person_id, level, school, years, degree, **instructor** (drives lineage).
+- `program_faculty` — program_id, name, **status** (current/former/workshop), **years**.
+- `factcheck` — the dated audit log (every re-verification appends here).
 
-## open items / next moves  (full roadmap in FUTURE.md)
-- **full pages for everyone** sourceable — flip `build_site.py` BUILT→all-with-fc-data; bios via a workflow.
-- **per-page interlinking** — map ↔ lineage ↔ profile via `?focus=slug` deep-links (click map → person → back).
-- **let anyone add a person/program** — contributor flow (form → GitHub issue/PR, or editable data file).
-- **solid search** across names / programs / states / degrees / instructors / lineage.
-- **finish geocoding** the last ~84 state-level programs to city precision (CITY/INST_CITY tables in build_graph.py).
-- **rescope** beyond metals → all art/design/crafts. same data model.
-- **clean the noisy rows**: `fc_verified='disputed'` (17) + `fc_confidence='low'` need a human pass.
-- **consent** before any of this goes public for living people (original handoff §8).
+### the renato.design wiring
+- Grid card `id="grid-acmetl"` (name "acmetl", tool-tier — grid-only, no featured rotation,
+  no per-app accent) in `philrenato-web/index.html`.
+- `philrenato-web/data/apps.json` entry slug `acmet-l2` → feeds the polyhedral launcher.
+- sitemap entry at 0.8. (Separate repo `philrenato/philrenato.github.io`.)
 
-## gotchas (don't relearn these the hard way)
-- DON'T re-run `build_database.py` on the live DB — it drops + rebuilds, wiping the `fc_*`
-  columns. re-extract, THEN re-run the loaders. (build_graph/map/lineage/site are safe to re-run.)
-- workflow results come back wrapped — read `result.{people|programs}` from the task
-  **output file**, not the truncated inline notification. per-agent transcripts are the backup.
-- verify any live page with headless Chrome + a `?v=$(date +%s)` cache-bust; Pages' CDN
-  lags a few minutes, and **Safari caches HTML hard** (⌥⌘R to force-refresh).
-- recovery enumeration must NOT use CDX `collapse=urlkey` (gives earliest, not latest).
-- **map geocoding** is city-level via tables in `build_graph.py` (state centroids were wrong —
-  "no dots in Detroit"). 90 city-accurate, 84 still state-level.
-- **lineage perf/layout** (build_lineage.py): cap dot size + fixed lane spacing or dots overlap;
-  declutter labels (≤16) + reveal on zoom/hover; NEVER drop-shadow all 639 nodes (Safari crash) —
-  glow only on focus; use edge index not E.indexOf; clamp junk years.
-- "state what someone is/was doing, never what they aren't" (Phil's copy rule — baked into build_site.py).
+## loose threads / next moves (full roadmap in FUTURE.md)
+- **Living-person consent** — it's public now; corrections welcome via GitHub. If anyone asks
+  to be removed/edited, that's authoritative.
+- **Bot-blocked / slow links** (205 blocked + ~69 timeouts) were left as-is — they're live in a
+  browser but a deeper pass could confirm or replace them.
+- **Faculty without a live citation** — a handful of scan-verified faculty have a page but no
+  working source link (their URL rotted); buildable keeps them via verified role+institution.
+  A future pass could re-source them.
+- **Disputed / low-confidence rows** still greyed (no page), held for a human pass.
+- **Department-page links** — ~8 programs link to an art-department homepage rather than the
+  metals/jewelry program page specifically; fine, but tighten if better URLs surface.
+- **Rescope beyond metals** → all art/design/crafts (same model; per-discipline seeds like
+  NCECA / GAS / Furniture Society). The SNAG-REST gap method generalizes.
 
 ## the keeper insight
-for a people-directory, the updates that matter most are the ones a flat scan can't see:
-**name changes** (Rizzi→Carrizzi→Renato) and **faculty succession** (who replaced whom; which
-programs quietly died when someone retired). build for those first.
+For a people-directory, the highest-value updates are the ones a flat scan can't see —
+**name changes** (Carrizzi→Renato) and **faculty succession** (who replaced whom; which
+programs quietly lost the discipline). And a link is only worth showing if it actually shows
+the person or program — a dead link or a bare school homepage is worse than none.
