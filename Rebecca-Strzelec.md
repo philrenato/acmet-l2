@@ -11,14 +11,13 @@ Museum.
 MFA at **Tyler School of Art**, Temple University (2002, metals/jewelry/CAD-CAM) —
 the program at the center of this directory. She was **Distinguished Professor of
 Visual Arts at Penn State Altoona** from 2002 to 2023, and a Penn State Laureate
-for 2016–17. Since 2023 she has been at the **University of Michigan** as Associate
-Dean for Academic Programs at the Penny W. Stamps School of Art & Design — an
-administrative role; she is not currently teaching.
+for 2016–17. Since 2023 she has been **Associate Dean for Academic Programs and
+Professor** at the University of Michigan's Penny W. Stamps School of Art & Design.
 
 ## Training
 
 BFA (2000) and MFA (2002), both from Tyler School of Art, where she studied with
-Stanley Lechtzin and Daniella Kerner.
+Stanley Lechtzin, Daniella Kerner, and Vickie Sedman.
 
 ---
 
