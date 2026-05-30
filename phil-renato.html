@@ -71,7 +71,6 @@
       <p class="kv"><span class="lbl">Listed as</span><br><b>Phil Carrizzi</b></p>
       <p class="kv"><span class="lbl">Teaching at</span><br>Kendall College of Art and Design<br>Assistant Professor, Chair Jewelry/Metals — since 2002</p>
       <p class="kv"><span class="lbl">Born</span><br>1974, Pontiac, Michigan</p>
-      <p class="kv"><span class="lbl">Signature work</span><br><i>“Squeeze”</i></p>
     </div>
     <div class="card now">
       <h3>Now (checked 2026)</h3>
@@ -90,7 +89,7 @@
   <hr>
 
   <div class="bio" id="bio">loading bio…</div>
-  <p class="checked">bio source: <span id="bio-src"></span></p>
+  <p class="checked">bio source: <span id="bio-src"></span> · <a id="edit-link" href="#" target="_blank" rel="noopener">✎ edit this bio</a></p>
 
   <hr>
 
@@ -112,9 +111,12 @@ const WIKI = { owner: 'philrenato', repo: 'acmet-l2', page: 'Phil-Renato' };
 // try the wiki first; fall back to a repo file (which can be published without the
 // browser-only wiki bootstrap), then to the built-in copy.
 const SOURCES = [
-  { url: `https://raw.githubusercontent.com/wiki/${WIKI.owner}/${WIKI.repo}/${WIKI.page}.md`, label: 'live · github wiki' },
-  { url: `https://raw.githubusercontent.com/${WIKI.owner}/${WIKI.repo}/main/${WIKI.page}.md`,  label: 'live · github repo' },
+  { url: `https://raw.githubusercontent.com/wiki/${WIKI.owner}/${WIKI.repo}/${WIKI.page}.md`, label: 'live · github wiki',
+    edit: `https://github.com/${WIKI.owner}/${WIKI.repo}/wiki/${WIKI.page}/_edit` },
+  { url: `https://raw.githubusercontent.com/${WIKI.owner}/${WIKI.repo}/main/${WIKI.page}.md`,  label: 'live · github repo',
+    edit: `https://github.com/${WIKI.owner}/${WIKI.repo}/edit/main/${WIKI.page}.md` },
 ];
+const EDIT_FALLBACK = `https://github.com/${WIKI.owner}/${WIKI.repo}/edit/main/${WIKI.page}.md`;
 
 // ---- structured facts (from acmet.db) --------------------------------------
 const REC = {
@@ -142,21 +144,17 @@ const FALLBACK_MD = `# Phil Renato
 
 Phil Renato is a jeweler, metalsmith, and educator based in Grand Rapids, Michigan. He is a Professor at Kendall College of Art and Design (Ferris State University), where in 2002 he founded the **Allesee Metals/Jewelry Design** program and served as its chair. He still teaches there today — though, like the field around it, the program has changed shape: metals and jewelry is now a concentration inside KCAD's interdisciplinary **Product Design** BFA rather than a standalone degree.
 
-## Work
-
-Renato's practice moves between studio jewelry, object design, and digital fabrication. He came up through traditional bench training and then leaned hard into CAD/CAM — the same lineage the old Tyler "C-C" stood for — using rapid prototyping and rendering as part of the design language rather than just the output. His work has appeared in over fifty national and international exhibitions.
-
 ## Training
 
 He earned a BFA at **Eastern Michigan University** (1994–1999) studying under Skip Hunter, and an MFA in Metals at the **University of Washington** (2002) under **Mary Lee Hu**. He briefly taught at the University of Washington as auxiliary faculty before taking the position at Kendall.
 
 ## The name
 
-Earlier in his career he published and exhibited as **Phil Carrizzi** — the name under which he appears in the original Academic Metals Directory. He later took the name **Renato**. The two names are the same person; this is exactly the kind of quiet change a static directory could never keep up with, and the reason this project exists.
+The names trace one person: **Rizzi** (1974–2002), then **Carrizzi** (2002–2008) — the name under which he appears in the original Academic Metals Directory — and **Renato** since 2008. This is exactly the kind of quiet change a static directory could never keep up with, and the reason this project exists.
 
 ---
 
-*This page is the editable, narrative half of his directory entry. The structured facts come from acmet.db. Edit this text in the wiki; the page will pick it up.*`;
+*This page is the editable, narrative half of his directory entry. The structured facts come from acmet.db. Edit this text and the profile page picks it up.*`;
 
 // ---- tiny markdown renderer (headings, bold, italic, links, hr, paragraphs) -
 function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
@@ -199,20 +197,21 @@ document.getElementById('sources').innerHTML = REC.sources.map(u =>
 document.getElementById('wiki-url').textContent = `wiki/${WIKI.owner}/${WIKI.repo}/${WIKI.page}`;
 
 // ---- pull the bio from GitHub (wiki → repo → built-in copy) ----------------
-function showBio(md, live, label){
+function showBio(md, live, label, editUrl){
   document.getElementById('bio').innerHTML = renderMD(md);
   document.getElementById('bio-src').innerHTML = live
     ? `<span class="badge live">${label}</span>`
     : `<span class="badge local">built-in copy (github unreachable)</span>`;
+  document.getElementById('edit-link').href = editUrl || EDIT_FALLBACK;
 }
 (async () => {
   for (const s of SOURCES){
     try {
       const r = await fetch(s.url, {cache:'no-store'});
-      if (r.ok){ showBio(await r.text(), true, s.label); return; }
+      if (r.ok){ showBio(await r.text(), true, s.label, s.edit); return; }
     } catch(e){ /* try next */ }
   }
-  showBio(FALLBACK_MD, false);
+  showBio(FALLBACK_MD, false, '', EDIT_FALLBACK);
 })();
 </script>
 </body>
