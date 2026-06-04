@@ -224,8 +224,26 @@ def resolve_prog_file(nm):
 
 prog_id2slug = {p["id"]: p["slug"] for p in programs}
 prog_row = {p["slug"]: p for p in programs}
+slug_of_pfile = {v: k for k, v in pfile_of.items()}   # program filename -> slug
+
+# when a person's institution has a notable fate (closed, renamed/merged), say so
+# inline WITH a link — a claim like "Siena Heights has closed" never floats unsourced;
+# the program page it points at carries the story and the citations.
+FATE_WORD = {"no": "closed", "merged-renamed": "renamed / merged"}
+def inst_link(nm):
+    """institution name -> link to its program page + (html, fate-word-or-None)."""
+    if not nm: return "", None
+    pf = resolve_prog_file(nm)
+    if not pf: return html.escape(nm), None
+    fate = FATE_WORD.get(((prog_row[slug_of_pfile[pf]]["fc_still_exists"] or "").strip()))
+    out = f'<a class="instr-link" href="{pf}">{html.escape(nm)}</a>'
+    if fate: out += f' <a class="fatetag" href="{pf}">{fate}</a>'
+    return out, fate
 
 # faculty per program + which programs a person taught at (from program_faculty)
+# a deceased person never renders as CURRENT faculty, however the archived row
+# reads ("X 1980 to present") — demote to former and drop the "to present"
+dead_norms = {norm(r["name"]) for r in people if r["fc_alive"] == "no"}
 prog_faculty = {}   # prog_slug -> list of (display, person_file_or_None, status, years)
 taught_at = {}      # person_file -> list of (prog_name, prog_file, status, years)
 for f in con.execute("SELECT program_id,name,person_url,status,years FROM program_faculty"):
@@ -237,6 +255,10 @@ for f in con.execute("SELECT program_id,name,person_url,status,years FROM progra
     if m and not yrs: yrs = raw[m.start():].strip()
     cleannm = re.sub(r"\s+\b(1[89]\d\d|20\d\d).*$", "", raw).strip()
     status = f["status"] or "current"
+    if status == "current" and norm(cleannm) in dead_norms:
+        status = "former"
+        y2 = re.sub(r"(?i)\s*to\s+present\s*$", "", yrs).strip()
+        yrs = ("from " + y2) if re.fullmatch(r"1[89]\d\d|20\d\d", y2) else y2
     pf = resolve_file(cleannm)
     prog_faculty.setdefault(pslug, []).append((titlecase(cleannm), pf, status, yrs))
     if pf:
@@ -293,6 +315,10 @@ PAGE = """<!doctype html><html lang="en"><head><meta charset="utf-8">
   .newadd{{background:#f0efe7}}
   .typetag{{display:inline-block;font-size:11px;letter-spacing:.04em;color:var(--soft);
     border:1px solid #ddd9cd;border-radius:999px;padding:1px 9px;margin-left:6px;vertical-align:middle}}
+  .fatetag{{display:inline-block;font-size:11px;letter-spacing:.04em;color:#8a4a2a;
+    background:#f6ece3;border:1px solid #e2cfba;border-radius:999px;padding:1px 9px;
+    margin-left:6px;vertical-align:middle;text-decoration:none;font-weight:600}}
+  .fatetag:hover{{background:#f0e0cf}}
   .people-links a{{color:var(--good);text-decoration:none;font-weight:600}}
   .people-links a:hover{{text-decoration:underline}}
   .lineage-card h3{{margin-top:0}}
@@ -328,7 +354,8 @@ const SOURCES=[
  {{url:`https://raw.githubusercontent.com/wiki/${{WIKI.owner}}/${{WIKI.repo}}/${{WIKI.page}}.md`,label:"live · github wiki",edit:`https://github.com/${{WIKI.owner}}/${{WIKI.repo}}/wiki/${{WIKI.page}}/_edit`}},
  {{url:`https://raw.githubusercontent.com/${{WIKI.owner}}/${{WIKI.repo}}/main/${{WIKI.page}}.md`,label:"live · github repo",edit:`https://github.com/${{WIKI.owner}}/${{WIKI.repo}}/edit/main/${{WIKI.page}}.md`}}
 ];
-const EDIT_FALLBACK=`https://github.com/${{WIKI.owner}}/${{WIKI.repo}}/edit/main/${{WIKI.page}}.md`;
+// no wiki page or repo file yet -> GitHub's create-file flow (auto-forks + opens a PR for non-collaborators)
+const EDIT_FALLBACK=`https://github.com/${{WIKI.owner}}/${{WIKI.repo}}/new/main?filename=${{WIKI.page}}.md`;
 const FALLBACK_MD={fallback};
 function esc(s){{return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}}
 function inl(s){{return esc(s).replace(/\\[([^\\]]+)\\]\\(([^)]+)\\)/g,'<a href="$2" target="_blank" rel="noopener">$1</a>').replace(/\\*\\*([^*]+)\\*\\*/g,'<b>$1</b>').replace(/(^|[^*])\\*([^*]+)\\*/g,'$1<em>$2</em>');}}
@@ -394,9 +421,13 @@ def build_profile(r):
     succ = (r["fc_verified"] == "succession-scan")
     sp = status_phrase(r["fc_alive"], r["fc_still_in_job"])
     link = r["fc_current_link"]
+    dead = (r["fc_alive"] == "no")
+    insthtml, instfate = inst_link(r["currently_at"] or "")
     now = (kv("Goes by", f'<b>{html.escape(cur)}</b>')
-           + kv("Current role", html.escape(r["fc_current_role"] or ""))
-           + (kv("Status", html.escape(sp)) if sp else "")
+           # a deceased person doesn't hold a CURRENT role — label it as their last
+           + kv("Last role" if dead else "Current role", html.escape(r["fc_current_role"] or ""))
+           + (kv("Institution", insthtml) if instfate else "")
+           + (kv("Status", f'<b>{html.escape(sp)}</b>' if dead else html.escape(sp)) if sp else "")
            + (kv("Link", f'<a href="{html.escape(link)}" target="_blank" rel="noopener">{html.escape(re.sub(r"^https?://","",link))}</a>') if link else ""))
     nowcard = f'<div class="card now"><h3>Now (checked 2026)</h3>{now}</div>'
     # provenance is a quiet breadcrumb at the BOTTOM, not a banner up top
@@ -415,7 +446,7 @@ def build_profile(r):
     else:
         arch = r["currently_at"] or ""
         thenline = f'<b>{html.escape(titlecase(name))}</b><br>' if changed else ""
-        then = (kv("Listed as", f'{thenline}{html.escape(arch)}' + (f' — since {r["since_year"]}' if r["since_year"] else ""))
+        then = (kv("Listed as", f'{thenline}{inst_link(arch)[0]}' + (f' — since {r["since_year"]}' if r["since_year"] else ""))
                 + kv("Born", html.escape(", ".join([x for x in [r["dob"], r["birthplace"]] if x]))))
         cards = (f'<div class="grid"><div class="card then"><h3>As archived (≈2014)</h3>{then}</div>{nowcard}</div>')
     # ---- training (with institution-type tag + linked instructors) ----
@@ -479,6 +510,10 @@ PROG_PAGE = """<!doctype html><html lang="en"><head><meta charset="utf-8">
   .back:hover{{color:var(--ink)}}
   .typetag{{display:inline-block;font-size:11px;letter-spacing:.04em;color:var(--soft);
     border:1px solid #ddd9cd;border-radius:999px;padding:1px 9px;margin-left:6px;vertical-align:middle}}
+  .fatetag{{display:inline-block;font-size:11px;letter-spacing:.04em;color:#8a4a2a;
+    background:#f6ece3;border:1px solid #e2cfba;border-radius:999px;padding:1px 9px;
+    margin-left:6px;vertical-align:middle;text-decoration:none;font-weight:600}}
+  .fatetag:hover{{background:#f0e0cf}}
   .people-links a{{color:var(--good);text-decoration:none;font-weight:600}}
   .chip{{display:inline-block;margin:2px 5px 2px 0;padding:3px 9px;border-radius:8px;background:#f2f0e8;font-size:13px}}
   .chip a{{color:var(--ink);text-decoration:none}} .chip a:hover{{color:var(--good)}}
@@ -598,6 +633,34 @@ for n in all_names:
     disp, fn = built[n] if n in built else (titlecase(n), None)
     (deg if bucket_of(n) == "degree" else oth).append((disp, fn))
 
+# ---- mention-only names: anyone listed on a page (an instructor on a Training
+# card, a faculty name on a program page) gets a search hit even without an
+# entry of their own — the result points at the page that lists them.
+known_norms = {norm(n) for n in all_names}
+row_by_id = {r["id"]: r for r in people}
+mention_hosts = {}   # display name -> set of (host display, host file)
+def mention_add(nm, host_disp, host_file):
+    nm = re.sub(r"\s+", " ", (nm or "").strip(" .;:"))
+    if len(nm) < 5 or " " not in nm: return          # need a real first+last name
+    if norm(nm) in known_norms or resolve_file(nm): return  # already in the index
+    mention_hosts.setdefault(titlecase(nm), set()).add((host_disp, host_file))
+for e in con.execute("SELECT person_id, instructor FROM education WHERE instructor IS NOT NULL AND instructor!=''"):
+    pr = row_by_id.get(e["person_id"])
+    if not pr or pr["slug"] not in fname_of: continue   # host page must exist
+    hd = built.get(pr["name"], (titlecase(pr["name"]),))[0]
+    for part in re.split(r"\s*[/,&]\s*|\s+and\s+", e["instructor"]):
+        mention_add(part, hd, fname_of[pr["slug"]])
+for pslug, flist in prog_faculty.items():
+    pname = titlecase(re.sub(r"\s+", " ", prog_row[pslug]["name"]))
+    for (dispnm, pf, _st, _yrs) in flist:
+        if not pf: mention_add(dispnm, pname, pfile_of[pslug])
+mn_html = "\n".join(
+    f'<a class="nm mn" href="{hf}">{html.escape(nm)} <span class="mhost">· listed under {html.escape(hd)}</span></a>'
+    for nm, hosts in sorted(mention_hosts.items(),
+                            key=lambda kv: ((kv[0].split()[-1].lower() if kv[0].split() else kv[0].lower()), kv[0].lower()))
+    for hd, hf in [sorted(hosts)[0]])
+n_mn = len(mention_hosts)
+
 def render_items(lst):
     lst.sort(key=lambda e: ((e[0].split()[-1].lower() if e[0].split() else e[0].lower()), e[0].lower()))
     return "\n".join(
@@ -646,6 +709,10 @@ INDEX = f"""<!doctype html><html lang="en"><head><meta charset="utf-8">
     margin:22px 0 2px;font-weight:600}}
   .setlabel .setn{{color:#b9b6ac;font-weight:400;letter-spacing:0}}
   .panel[hidden]{{display:none}}
+  .names a.mn{{color:var(--soft);text-decoration:none;font-weight:400}}
+  .names a.mn:hover{{color:var(--good)}}
+  .names a.mn::after{{content:""}}
+  .mhost{{font-size:12px;color:#b9b6ac}}
 </style></head><body><div class="wrap">
   <p class="kicker">recovered + being updated</p>
   <h1>Academic Metals Directory</h1>
@@ -672,6 +739,10 @@ INDEX = f"""<!doctype html><html lang="en"><head><meta charset="utf-8">
     <div class="setlabel" data-set>Craft schools, studios, trade schools &amp; workshops <span class="setn">{n_oth}</span></div>
     <div class="names" data-names>
 {oth_html}
+    </div>
+    <div class="setlabel" data-set data-mention>Listed on another page <span class="setn">{n_mn}</span></div>
+    <div class="names" data-names data-mention>
+{mn_html}
     </div>
   </div>
 
@@ -712,8 +783,9 @@ INDEX = f"""<!doctype html><html lang="en"><head><meta charset="utf-8">
     var sets=p.querySelectorAll('[data-names]'), labels=p.querySelectorAll('[data-set]');
     for(var s=0;s<sets.length;s++){{
       var items=sets[s].children, shown=0;
+      var isMention=sets[s].hasAttribute('data-mention'); // mention-only names appear only in search results
       for(var i=0;i<items.length;i++){{
-        var hit = !v || items[i].textContent.toLowerCase().indexOf(v)>=0;
+        var hit = v ? items[i].textContent.toLowerCase().indexOf(v)>=0 : !isMention;
         items[i].style.display = hit ? '' : 'none'; if(hit){{shown++; n++;}}
       }}
       // hide a set's label + list when nothing in it matches

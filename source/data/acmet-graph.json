@@ -2,11 +2,11 @@
  "_generated": "2026-05-30",
  "_source": "acmet.db",
  "stats": {
-  "nodes": 1307,
-  "people": 844,
+  "nodes": 1309,
+  "people": 846,
   "programs": 463,
   "programs_placed": 365,
-  "edges": 2090
+  "edges": 2109
  },
  "nodes": [
   {
@@ -7371,7 +7371,7 @@
     "lng": -119.7,
     "precision": "state"
    },
-   "summary": "Alvin A. Pine was an award-winning metalsmith and educator who taught metalsmithing/jewelry at CSU Long Beach (1962-1996, full professor). He died January 28, 2010, in Santa Rosa, CA.",
+   "summary": "Alvin A. Pine was an award-winning metalsmith and educator who taught metalsmithing/jewelry at CSU Long Beach (1962-1996). He died January 28, 2010, in Santa Rosa, CA.",
    "page": null
   },
   {
@@ -10415,8 +10415,13 @@
    "name": "Maureen Duffy",
    "date": null,
    "status": "alive",
-   "location": null,
-   "summary": "Instructor / Professor of Jewelry and Metalsmithing (3/4 time)",
+   "location": {
+    "state": "PA",
+    "lat": 40.9,
+    "lng": -77.8,
+    "precision": "state"
+   },
+   "summary": "Maureen Duffy is a jeweler and metalsmith based in Philadelphia who teaches Jewelry and Metalsmithing at Rowan University (Glassboro, NJ). She earned her BFA in 3-D Design with a concentration in Metals from Moore College of Art and Design ",
    "page": null
   },
   {
@@ -17403,6 +17408,36 @@
    },
    "summary": "David Huang (b. 1971, Grand Rapids, MI) is a studio metalsmith in Sand Lake, Michigan, known for hand-raised copper vessels lined with gold and silver leaf so they glow from within ('Luminous Relic' vessels). He earned a BFA in Metalsmithin",
    "page": null
+  },
+  {
+   "id": "gap/donna-sweigart",
+   "kind": "person",
+   "name": "Donna Sweigart",
+   "date": null,
+   "status": "alive",
+   "location": {
+    "state": "WA",
+    "lat": 47.4,
+    "lng": -120.5,
+    "precision": "state"
+   },
+   "summary": "Donna Mason Sweigart is Professor of Art & Design at Rowan University (Glassboro, NJ), where she heads the Metals/Jewelry/CAD area and chairs the Department of Art. She earned her BFA in Metals/Jewelry from Beaver College (now Arcadia Unive",
+   "page": null
+  },
+  {
+   "id": "gap/john-van-haren",
+   "kind": "person",
+   "name": "John Van Haren",
+   "date": 1930,
+   "status": "deceased",
+   "location": {
+    "state": "MI",
+    "lat": 42.24,
+    "lng": -83.62,
+    "precision": "city"
+   },
+   "summary": "John E. Van Haren (1930-2010) was a Professor of Art at Eastern Michigan University for forty years, where he created the Jewelry Program and the African Art Program (1970) and served as Head of the Art Department for fifteen years. Born in",
+   "page": null
   }
  ],
  "edges": [
@@ -19025,6 +19060,12 @@
    "to": "crafts/public_html/mjcc/local/history/s175.html",
    "type": "studied-at",
    "label": "MFA"
+  },
+  {
+   "from": "crafts/metalsdirectorypage/p200.html",
+   "to": "gap/john-van-haren",
+   "type": "studied-under",
+   "label": "BFA"
   },
   {
    "from": "crafts/metalsdirectorypage/p200.html",
@@ -20927,6 +20968,18 @@
    "to": "crafts/metalsdirectorypage/s156.html",
    "type": "taught-at",
    "label": ""
+  },
+  {
+   "from": "gap/maureen-duffy",
+   "to": "snag-gap/moore-college-of-art-design",
+   "type": "studied-at",
+   "label": "BFA"
+  },
+  {
+   "from": "gap/maureen-duffy",
+   "to": "crafts/metalsdirectorypage/s188.html",
+   "type": "studied-at",
+   "label": "MFA"
   },
   {
    "from": "gap/maureen-duffy",
@@ -25147,6 +25200,36 @@
    "label": "(transferred)"
   },
   {
+   "from": "gap/donna-sweigart",
+   "to": "crafts/metalsdirectorypage/s9.html",
+   "type": "studied-at",
+   "label": "BFA"
+  },
+  {
+   "from": "gap/donna-sweigart",
+   "to": "crafts/metalsdirectorypage/s218.html",
+   "type": "studied-at",
+   "label": "MFA"
+  },
+  {
+   "from": "gap/donna-sweigart",
+   "to": "crafts/metalsdirectorypage/s158.html",
+   "type": "taught-at",
+   "label": ""
+  },
+  {
+   "from": "gap/john-van-haren",
+   "to": "crafts/metalsdirectorypage/s209.html",
+   "type": "studied-at",
+   "label": "degree"
+  },
+  {
+   "from": "gap/john-van-haren",
+   "to": "crafts/metalsdirectorypage/s52.html",
+   "type": "taught-at",
+   "label": ""
+  },
+  {
    "from": "crafts/metalsdirectorypage/p165.html",
    "to": "crafts/metalsdirectorypage/s1.html",
    "type": "faculty-of",
@@ -25190,6 +25273,12 @@
   },
   {
    "from": "crafts/metalsdirectorypage/p139.html",
+   "to": "crafts/metalsdirectorypage/s107.html",
+   "type": "faculty-of",
+   "label": ""
+  },
+  {
+   "from": "gap/maureen-duffy",
    "to": "crafts/metalsdirectorypage/s107.html",
    "type": "faculty-of",
    "label": ""
@@ -25465,6 +25554,18 @@
    "label": ""
   },
   {
+   "from": "gap/donna-sweigart",
+   "to": "crafts/metalsdirectorypage/s158.html",
+   "type": "faculty-of",
+   "label": ""
+  },
+  {
+   "from": "gap/maureen-duffy",
+   "to": "crafts/metalsdirectorypage/s158.html",
+   "type": "faculty-of",
+   "label": ""
+  },
+  {
    "from": "crafts/metalsdirectorypage/p199.html",
    "to": "crafts/metalsdirectorypage/s16.html",
    "type": "faculty-of",
@@ -25633,6 +25734,12 @@
    "label": ""
   },
   {
+   "from": "gap/maureen-duffy",
+   "to": "crafts/metalsdirectorypage/s188.html",
+   "type": "faculty-of",
+   "label": ""
+  },
+  {
    "from": "crafts/metalsdirectorypage/p183.html",
    "to": "crafts/metalsdirectorypage/s190.html",
    "type": "faculty-of",
@@ -25713,6 +25820,12 @@
   {
    "from": "crafts/metalsdirectorypage/p187.html",
    "to": "crafts/metalsdirectorypage/s206.html",
+   "type": "faculty-of",
+   "label": ""
+  },
+  {
+   "from": "gap/donna-sweigart",
+   "to": "crafts/metalsdirectorypage/s207.html",
    "type": "faculty-of",
    "label": ""
   },
@@ -25831,6 +25944,12 @@
    "label": ""
   },
   {
+   "from": "gap/maureen-duffy",
+   "to": "crafts/metalsdirectorypage/s210.html",
+   "type": "faculty-of",
+   "label": ""
+  },
+  {
    "from": "crafts/metalsdirectorypage/p97.html",
    "to": "crafts/metalsdirectorypage/s218.html",
    "type": "faculty-of",
@@ -25850,6 +25969,12 @@
   },
   {
    "from": "crafts/metalsdirectorypage/p88.html",
+   "to": "crafts/metalsdirectorypage/s218.html",
+   "type": "faculty-of",
+   "label": ""
+  },
+  {
+   "from": "gap/maureen-duffy",
    "to": "crafts/metalsdirectorypage/s218.html",
    "type": "faculty-of",
    "label": ""
@@ -26036,6 +26161,12 @@
   },
   {
    "from": "crafts/metalsdirectorypage/p83.html",
+   "to": "crafts/metalsdirectorypage/s242.html",
+   "type": "faculty-of",
+   "label": ""
+  },
+  {
+   "from": "gap/donna-sweigart",
    "to": "crafts/metalsdirectorypage/s242.html",
    "type": "faculty-of",
    "label": ""
@@ -26294,6 +26425,12 @@
   },
   {
    "from": "crafts/metalsdirectorypage/p110.html",
+   "to": "crafts/metalsdirectorypage/s52.html",
+   "type": "faculty-of",
+   "label": ""
+  },
+  {
+   "from": "gap/john-van-haren",
    "to": "crafts/metalsdirectorypage/s52.html",
    "type": "faculty-of",
    "label": ""
@@ -28741,6 +28878,12 @@
    "label": ""
   },
   {
+   "from": "gap/maureen-duffy",
+   "to": "snag-gap/moore-college-of-art-design",
+   "type": "faculty-of",
+   "label": ""
+  },
+  {
    "from": "snag-gap/connie-hubbard",
    "to": "snag-gap/morean-arts-center",
    "type": "faculty-of",
@@ -29709,6 +29852,12 @@
   {
    "from": "snag-gap/anne-bujold",
    "to": "snag-gap/university-of-louisiana-at-lafayette",
+   "type": "faculty-of",
+   "label": ""
+  },
+  {
+   "from": "gap/donna-sweigart",
+   "to": "snag-gap/university-of-texas-rio-grande-valley-school-of-art-and-design",
    "type": "faculty-of",
    "label": ""
   },

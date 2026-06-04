@@ -126,3 +126,72 @@ Arts & Crafts (defunct).
 (24) are surfaced for human review, not treated as settled. A few internal
 contradictions (e.g. a "deceased" + "still teaching" combo) are intentionally
 left visible rather than silently resolved.
+
+---
+
+## 2026-06-04 — Rowan University pass (first inbound contributor email)
+
+Donna Sweigart (Rowan University) emailed the directory with her program's
+degrees and faculty — the first real-world correction to arrive by email.
+House rule applied: **nothing published on the email alone**; two research
+agents re-verified every claim against fetched, live URLs.
+
+- **Donna Sweigart added** (person 1063): Professor of Art & Design, head of
+  the Metals/Jewelry/CAD area, Chair of the Department of Art. BFA Beaver
+  College/Arcadia 1996; **MFA Tyler School of Art 2004** (a Tyler alum —
+  cross-links into the directory's home program). Before Rowan: UT Pan
+  American 2008–14 (MFA director 2010–12) → UT Rio Grande Valley 2015–19;
+  earlier Univ. of Washington (2006). Rank carries an evidence footnote
+  (research profile + her own bio say Professor; the dept faculty page still
+  says Associate Professor).
+- **Maureen Duffy filled out** (person 488, was a bare succession-scan stub):
+  3/4-time Professor of Jewelry and Metalsmithing at Rowan; BFA Moore College
+  2005, MFA SUNY New Paltz 2007; ten years a Philadelphia production jeweler;
+  prior teaching Tyler, Towson, Moore, Millersville, New Paltz; Fleisher Art
+  Memorial; Peters Valley/Touchstone workshops. Her ccca.rowan.edu bio URL is
+  **dead** (301s to an unrelated college page) — replaced with live sources.
+- **Rowan program (51)** updated: Jewelry & Metals is a named studio area of
+  the BFA in Art (rowan.edu BFA page, verbatim); the area is officially the
+  **Metals/Jewelry/CAD area** — that page label, not the email, is the citation
+  for the CAD claim. Faculty now linked both ways.
+- **Excluded:** the email's "3 additional adjunct faculty" — unnamed, and
+  Rowan's faculty directory is JS-rendered (no fetchable public page).
+- **House style ruling (Phil):** never write "full professor" — someone holds
+  a sub-professor rank (assistant/associate) or they are a Professor; "full"
+  may appear only in a promoted-to-full-in-year sentence. Scrubbed the one
+  violation (Alvin A. Pine); Anne Mondro's "promoted to full Professor May 21,
+  2026" is the allowed form. When rank/program-name evidence conflicts,
+  publish the best-evidenced value and footnote the conflict.
+- **Edit capability fixed:** profiles with no wiki page or repo bio file used
+  to point "✎ edit this bio" at a 404; the fallback now opens GitHub's
+  create-file flow (auto-fork + PR for non-collaborators), so every one of the
+  780 built profiles is publicly editable.
+
+### Same-day follow-ups (2026-06-04, Phil-driven)
+
+- **Maureen Duffy rank corrected by archive evidence**: a Feb 2023 Wayback
+  capture of Rowan's official art-department roster lists "Maureen Duffy,
+  Instructor" (and corroborates "Donna Sweigart, Associate Professor and
+  Chair"). Her record now reads "Teaches Jewelry and Metalsmithing" — role,
+  not rank — with the evidence in a footnote. New house rules: never
+  characterize teaching load (¾-time etc. — it changes); "professor" is often
+  colloquial for the role, so rank comes only from the school's own
+  current-or-recent page, and absent that we say what the person *does*.
+- **John Van Haren added** (1930–2010): Professor of Art at Eastern Michigan
+  University for forty years, **founder of the EMU Jewelry Program (1970)**,
+  Head of the Art Department for fifteen years (obituary + independent
+  corroboration). The archive misspelled him "John Vanharen" on John
+  Wittersheim's card — corrected; teacher and student now cross-link.
+- **Deceased ≠ employed, sweep**: deceased people no longer render with a
+  "Current role" (label flips to **Last role**, status **Deceased** bolded);
+  ~199 archived "…to present" faculty rows for deceased people now demote to
+  *former* on program pages at build time ("former from 1980"); Oklahoma
+  State's current-faculty text dropped the late Chris Ramsay.
+- **Institution fates carry links**: when a person's institution closed or
+  was renamed/merged, the card now flags it inline (a small "closed" tag)
+  linking to the program page, which holds the closure story and citations —
+  e.g. Wittersheim → Siena Heights University (closing at the end of 2025-26).
+- **Mention search**: anyone listed on a page — an instructor on a Training
+  card, a name on a program roster — now yields a search result even without
+  an entry of their own ("listed under …", pointing at the hosting page).
+  122 such names became findable.
