@@ -291,3 +291,47 @@ LinkedIn screenshot for education. Verification:
   Native artists "(Tribe) 'year"; Herndon is tagged only "faculty '05–'15".
 Cross-links: Harlan Butt ↔ Herndon (teacher/student), IAIA roster (former,
 2005–2015), UNT alumni. Script: `updates_2026_06_04_herndon.py`.
+
+---
+
+## 2026-06-04 (third pass) — THE FABRICATED-EDUCATION PURGE + disputed-row cleanup
+
+Phil: "Do everything you have to do/can do." Two audits he'd queued ran in full.
+
+### Education fabrication audit — Caballero-Perez was the tip of the iceberg
+
+Every workflow-added education row carrying a named instructor was verified
+against fetched sources (44 people, 90 rows). Verdict: **67 rows FABRICATED,
+15 suspect-unsupported, 4 plausible inferences, 4 confirmed.** The
+succession-scan agent (2026-05-30) systematically attached invented
+mid-century educations under marquee teacher names — Fisch, Ebendorf, Carlyle
+Smith, Alvin Pine, Lechtzin, Mary Lee Hu, Fenster — to contemporary faculty.
+The tell: impossible dates (Annika Pettersson, b. 1981, "Cleveland Institute
+of Art 1936–1940"; Jaydan Moore, b. ~1984, "Emporia State '63").
+
+Action taken: **82 rows deleted, 59 real rows inserted** from each person's
+own bio or official directory (every replacement cited; three spot-checked
+live before applying — Modena/Academy of Art, Ganch/VCU, Moore/own site).
+Suspect rows with no source at all were deleted, not kept: a claim with no
+source doesn't ship. ~48 false teacher→student lineage edges left the graph.
+Per-person corrections logged in `factcheck`. Lesson for the method docs:
+**never load workflow-generated education rows without a per-row source** —
+plausible big-name lineage is exactly what scan agents invent.
+
+### Disputed / low-confidence re-verification (24 people)
+
+3 RESOLVED + 7 IMPROVED with real sources (TWU's own mace page for Bud Green;
+a 1912 Penn Museum bulletin for Karl Nacke; CCA's library pages for Martin
+Streich; VCU alumni material for Nancy Kunkle Thompson; metalcyberspace for
+van Duinwyk; CSU/studio trail for Nilda Getty; a 2021 Chisholm Trail show for
+Hollis Howard). 14 honestly UNFINDABLE — left held back, attempts logged.
+Four wrong-person sources caught adversarially and dropped: Nacke (a German
+porcelain artist), van Duinwyk (legal directories), Duncan (a pastor's
+obituary), Sholtis (a horn professor). No death asserted anywhere; one
+"likely alive" clamped to unknown — the bio states the dated activity instead.
+`build_site.py` now surfaces sourced medium-confidence re-verifications
+(`fc_verified='reverified-2026-06-04'`), so 8 formerly-greyed names got pages.
+
+Script: `updates_2026_06_04_audit2.py`. Also: Rowan's "3 additional adjunct
+faculty" re-attempted (curl 403, headless render empty, no recent Wayback) —
+still excluded, logged unverifiable.

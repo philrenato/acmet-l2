@@ -145,6 +145,10 @@ def buildable(r):
     if r["fc_verified"] in ("snag-gap-2026", "succession-scan", "phil-added") and (
             r["fc_current_link"] or r["fc_sources"] or (r["currently_at"] and r["fc_current_role"])):
         return True
+    # formerly-disputed/low rows settled by the 2026-06-04 re-verification pass:
+    # medium-confidence WITH a source beats greyed-out (truly unfindable stay low)
+    if r["fc_verified"] == "reverified-2026-06-04" and r["fc_confidence"] in ("high", "medium") and r["fc_sources"]:
+        return True
     return False
 
 build_rows = [r for r in people if buildable(r)]

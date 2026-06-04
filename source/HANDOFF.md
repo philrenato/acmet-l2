@@ -216,14 +216,28 @@ with **Harlan Butt** (lineage-inference rule + Phil's statement — flagged
 only. Cross-linked: Butt ↔ Herndon, IAIA roster, UNT alumni.
 `updates_2026_06_04_herndon.py`; 4 factcheck audit rows.
 
+### 2026-06-04 (third pass) — fabricated-education purge + disputed cleanup
+- ⚠⚠ **The education-fabrication audit ran: 67 of 90 workflow-added
+  instructor-bearing education rows were FABRICATED** (systematic across the
+  succession-scan cohort — invented mid-century educations under marquee
+  teacher names, impossible dates). 82 rows deleted, 59 real cited rows
+  inserted (spot-checked), ~48 false lineage edges dropped from the graph.
+  RULE going forward: never load workflow-generated education rows without a
+  per-row source. `updates_2026_06_04_audit2.py` + RESEARCH_LOG.
+- **Disputed/low re-verification (24 people):** 3 resolved + 7 improved
+  (sourced, promoted to medium, `fc_verified='reverified-2026-06-04'`,
+  buildable() extended → 8 new pages, 790 total); 14 honestly unfindable left
+  held back; 4 wrong-person sources caught + dropped (Nacke, van Duinwyk,
+  Duncan, Sholtis).
+- Rowan adjuncts re-attempted (403 + empty headless render + no recent
+  Wayback) — still excluded, logged unverifiable in factcheck.
+
 ## loose threads / next moves (full roadmap in FUTURE.md)
 - **Donna Sweigart's "3 additional adjunct faculty"** at Rowan — unnamed, faculty
-  directory is JS-rendered; excluded. If she replies with names, verify + add.
+  directory is JS-rendered + bot-blocked (re-tried 2026-06-04); excluded. If she
+  replies with names, verify + add.
 - **Okon/Nahabetian studied-with-Skip links** rest on Phil's editor knowledge + the
   era inference (documented rule); fine, but a fetched page naming Skip would harden them.
-- **Other scan-fabricated education rows?** Caballero-Perez was caught only because Phil
-  knew. A targeted audit (education rows added by workflows vs. a source check) is a
-  good next sweep.
 - **Living-person consent** — it's public now; corrections welcome via GitHub. If anyone asks
   to be removed/edited, that's authoritative.
 - **Bot-blocked / slow links** (205 blocked + ~69 timeouts) were left as-is — they're live in a
