@@ -1,5 +1,8 @@
 # acmet-l2 — future direction
 
+> Written 2026-05-29/30; items marked ✅ were completed in later passes — HANDOFF.md
+> has the current state.
+
 ## Rescope: from Metals/Jewelry to all art / design / crafts (Phil, 2026-05-29)
 
 Expand the directory beyond just **Metals/Jewelry/CAD-CAM** to a broad directory
@@ -22,9 +25,9 @@ What widening the net means in practice:
   latest-200 + `id_` raw fetch, text-first).
 
 ## Roadmap (Phil's notes, 2026-05-30)
-- **Full pages for everyone** we can source (flip `build_site.py` from the 7-name
-  BUILT list to all-with-fc-data; bios via a workflow; thin records carry a
-  "corrections welcome" note).
+- ✅ **Full pages for everyone** we can source — done; `build_site.py` builds every
+  record with fc-data (781 person + 463 program pages); thin records carry a
+  "corrections welcome" note.
 - **Per-page interlinking** — map ↔ lineage ↔ profile all wired: every node links
   to its page; every page links "see in map / see in lineage" centered on that
   person (`?focus=slug` deep-links). Click map → person → back to map.
@@ -36,10 +39,11 @@ What widening the net means in practice:
 - **Finish geocoding** the remaining ~84 state-level programs to city precision.
 
 ## Other open threads (from this build)
-- **Gap analysis** of current vs. archived programs — see the gap-analysis output.
+- ✅ **Gap analysis** of current vs. archived programs — done (GAPS.md; the SNAG
+  gap pass added 266 programs + ~396 current faculty).
 - Re-check the `disputed` / `low-confidence` rows by hand.
-- Decide republication model + living-person consent before anything goes public
-  (per the original handoff §8).
+- ✅ Republication decided — it's live and public at renato.design/acmet-l2/;
+  corrections / removal requests via GitHub are authoritative.
 
 ## How it's all wired (so the roadmap is just wiring, not rework)
 One database (`acmet.db`) → `build_graph.py` emits `data/acmet-graph.json`

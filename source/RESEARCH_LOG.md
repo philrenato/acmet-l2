@@ -9,7 +9,8 @@ Method: every claim carries a **source URL**, a **confidence** level, and a
 **date-checked**. Nothing is asserted without a citation. Findings are logged
 here (narrative, auditable) and mirrored into `acmet.db` → `factcheck` table.
 
-Date-checked entries below: **2026-05-29**.
+Initial batch date-checked **2026-05-29**; later passes are dated in their own
+section headers below.
 
 ---
 
@@ -92,12 +93,17 @@ Date-checked entries below: **2026-05-29**.
 re-verified by a second skeptic agent. Loaded into `acmet.db` (`fc_*` columns +
 `factcheck` table); notable items in `CHANGES.md`.
 
-**People (217):** alive 74 · deceased 68 (+16 likely) · unknown 59 ·
+**People (217):** alive 74 · deceased 68 (+16 likely\*) · unknown 59 ·
 retired-emeritus 109 · moved 60 · still-in-archived-job 13.
 Confidence: high 152 / medium 41 / low 24. Verify: confirmed 85 / disputed 17 /
 not-needed 115.
+\* The "likely-deceased" category was later **purged entirely** (2026-05-30
+re-verification pass): no death is asserted or implied without a good source.
+These 16 were reclassified "unknown" and speculative language scrubbed from bios.
 
-**20 name changes found**, e.g.:
+**20 name discrepancies found** — the later coherence audit split these into
+**6 genuine name changes** (`fc_change_kind='name-change'`) plus name variants
+and archive spelling fixes. E.g.:
 - Phil Carrizzi → **Phil Renato** · Lynda Watson-Abbott → **Lynda Watson** ·
   Pamela E. Lins → **Pam Lins** · Sharon Church → **Sharon Church McNabb** ·
   Merry Renk → **Merry Renk-Curtis** · Mary Ann Scherr (née Weckman) ·
@@ -165,7 +171,7 @@ agents re-verified every claim against fetched, live URLs.
 - **Edit capability fixed:** profiles with no wiki page or repo bio file used
   to point "✎ edit this bio" at a 404; the fallback now opens GitHub's
   create-file flow (auto-fork + PR for non-collaborators), so every one of the
-  780 built profiles is publicly editable.
+  781 built profiles is publicly editable.
 
 ### Same-day follow-ups (2026-06-04, Phil-driven)
 
@@ -237,3 +243,51 @@ VERIFIED · Okon VERIFIED (archived EMU pages re-fetched) · Caballero-Perez
 VERIFIED (RIT directory re-fetched) · Sweigart facts VERIFIED via her CV;
 the standing rank conflict (Professor vs Associate Professor and Chair) is
 carried in her footnote, now including the CV.
+
+---
+
+## 2026-06-04 (later) — full-project audit + Mark Herndon
+
+Four parallel audit agents swept the docs, the built site, the map/lineage,
+and the deployed repo. Marquee corrections, each re-verified against a fetch:
+
+- **Arline Fisch's age at death corrected: 92, not 93.** She was born
+  August 21, 1931 and died August 20, 2024 — the day before her 93rd
+  birthday. SNAG's phrasing ("the day before her 93rd birthday") is the trap
+  that produced the off-by-one; JCK's "94th" is its own arithmetic slip. The
+  death itself is confirmed by SNAG, Wikipedia, SDSU, and AJF.
+  https://snagmetalsmith.org/2024/08/in-remembrance-arline-fisch/
+- **Rebecca Strzelec / "University of Michigan" — investigated, CORRECT.**
+  An audit flagged it as a likely error (she's the famous Penn State Altoona
+  professor); the DB had the full story all along: Penn State Altoona
+  2002–2023, then Associate Dean for Academic Programs and Professor at
+  Michigan's Stamps School since ~2023 (stamps.umich.edu). A good reminder
+  that "I know where this person teaches" is exactly the claim to re-check.
+- **Siena Heights "Reflections" URLs** (Wittersheim, Van Haren sources): the
+  site's HTTPS certificate is broken but plain http serves the content —
+  swapped scheme rather than dropping a live source.
+- Two `education.years` rows read "200 to 2002" → "2000 to 2002".
+- Doc-wide: the "20 name changes" figure is now stated honestly everywhere —
+  20 name *discrepancies*, of which **6 are genuine changes**
+  (`fc_change_kind='name-change'`); the rest are variants and archive typos.
+
+### Mark Herndon (editor tip → verified → added, person 1065)
+
+Phil's tip: taught at IAIA, now herndonforge.com, studied with Harlan,
+LinkedIn screenshot for education. Verification:
+- **IAIA faculty 2005–2015 — VERIFIED by the institution.** IAIA's "The
+  Stories We Carry" event page lists "Mark Herndon, faculty '05–'15" (live
+  page bot-blocked; text confirmed via the 2024-05-26 Wayback capture).
+  Discipline (jewelry/metals) supported by his LinkedIn headline + an IAIA
+  Chronicle piece — published as the role, no rank.
+- **Herndon Forge, Santa Fe — his own site** (with his wife, designer Naomi
+  Herndon). Work spans Southwestern jewelry, damascus steel, vessels.
+- **UNT MFA 2001–04, Corcoran BFA (Sculpture) 1993–97 — LinkedIn-supported
+  only**; no institutional page corroborates the years. Logged as such.
+- **"Studied with Harlan Butt" — INFERRED** (UNT metals MFA inside Butt's
+  long tenure) + the editor's direct statement; no fetched page says it.
+  Logged "inferred" in factcheck; a page naming Butt would harden it.
+- **No tribal affiliation stated or implied** — IAIA's artist list tags
+  Native artists "(Tribe) 'year"; Herndon is tagged only "faculty '05–'15".
+Cross-links: Harlan Butt ↔ Herndon (teacher/student), IAIA roster (former,
+2005–2015), UNT alumni. Script: `updates_2026_06_04_herndon.py`.

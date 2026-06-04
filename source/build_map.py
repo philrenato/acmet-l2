@@ -20,7 +20,8 @@ for n in G["nodes"]:
         pts.append({"name": n["name"], "status": n["status"], "state": n["location"]["state"],
                     "lat": n["location"]["lat"], "lng": n["location"]["lng"],
                     "prec": n["location"].get("precision", "state"),
-                    "w": deg[n["id"]], "summary": n["summary"]})
+                    "w": deg[n["id"]], "summary": n["summary"],
+                    "slug": n.get("pageslug")})
 
 # lineage-migration flows: person's studied-at state -> taught-at state
 prog_state = {n["id"]: n["location"]["state"] for n in G["nodes"]
@@ -42,7 +43,8 @@ state_counts = collections.Counter(p["state"] for p in pts)
 
 DATA = {"points": pts, "flows": flows, "stateCounts": dict(state_counts),
         "n_programs": sum(1 for n in G["nodes"] if n["kind"] == "program"),
-        "n_placed": len(pts), "n_people": sum(1 for n in G["nodes"] if n["kind"] == "person")}
+        "n_placed": len(pts), "n_people": sum(1 for n in G["nodes"] if n["kind"] == "person"),
+        "n_state": sum(1 for p in pts if p["prec"] != "city")}
 
 HTML = """<!doctype html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -52,8 +54,8 @@ HTML = """<!doctype html><html lang="en"><head><meta charset="utf-8">
     font:14px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}
   #map{display:block;width:100vw;height:100vh;touch-action:none;cursor:grab}
   #map:active{cursor:grabbing}
-  .hint{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);z-index:5;
-    font-size:11px;color:#7a776c;pointer-events:none;text-align:center}
+  .hint{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:5;
+    font-size:11px;color:#7a776c;pointer-events:none;text-align:center;white-space:nowrap}
   @media (max-width:600px){
     .hdr h1{font-size:19px} .hdr .sub{font-size:11px;max-width:64vw}
     .legend{font-size:10.5px;bottom:34px} .legend span{margin-right:9px}
@@ -64,17 +66,26 @@ HTML = """<!doctype html><html lang="en"><head><meta charset="utf-8">
   .hdr h1{margin:4px 0 2px;font-size:26px;font-weight:600;letter-spacing:-.01em;
     text-shadow:0 0 24px rgba(255,140,40,.25)}
   .hdr .sub{font-size:12.5px;color:#a8a499;max-width:430px}
-  .legend{position:fixed;bottom:18px;left:24px;z-index:5;font-size:12px;color:#b6b2a6}
+  .legend{position:fixed;bottom:18px;left:24px;z-index:5;font-size:12px;color:#b6b2a6;max-width:520px}
   .legend span{display:inline-flex;align-items:center;margin-right:14px}
+  .legend .note{margin-top:5px;font-size:10.5px;color:#7a776c;max-width:460px}
   .dot{width:10px;height:10px;border-radius:50%;margin-right:6px;display:inline-block}
+  .dot.ring{width:9px;height:9px}
   .ctl{position:fixed;bottom:18px;right:24px;z-index:5;font-size:12px;color:#b6b2a6}
   .ctl label{cursor:pointer;-webkit-user-select:none;user-select:none}
   .tip{position:fixed;z-index:9;pointer-events:none;background:rgba(14,14,20,.96);
     border:1px solid #33323e;border-radius:8px;padding:8px 11px;max-width:280px;
     font-size:12.5px;color:#e8e6df;opacity:0;transition:opacity .1s;box-shadow:0 8px 30px rgba(0,0,0,.6)}
   .tip b{color:#ffb968}
+  .tip a{color:#9ad0ff;text-decoration:none;pointer-events:auto} .tip a:hover{text-decoration:underline}
+  .tip{pointer-events:auto}
   a.back{position:fixed;top:20px;right:24px;z-index:5;color:#8a8678;text-decoration:none;font-size:12px}
   a.back:hover{color:#e8e6df}
+  .foot{position:fixed;bottom:3px;left:50%;transform:translateX(-50%);z-index:4;
+    font-size:10px;color:#5d5a52;text-align:center;max-width:96vw;
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .foot a{color:#7a776c;text-decoration:none} .foot a:hover{color:#a8a499}
+  @media (max-width:600px){ .foot{display:none} .legend{max-width:86vw} .legend .note{max-width:80vw} }
 </style></head><body>
 <div class="hdr">
   <div class="k">Academic Metals Directory</div>
@@ -88,9 +99,15 @@ HTML = """<!doctype html><html lang="en"><head><meta charset="utf-8">
   <span><i class="dot" style="background:#ffd27a;box-shadow:0 0 8px #ffb24a"></i>active</span>
   <span><i class="dot" style="background:#e08b4a;box-shadow:0 0 8px #c0682a"></i>merged / renamed</span>
   <span><i class="dot" style="background:#8a4a4a;box-shadow:0 0 6px #6a2a2a"></i>closed</span>
+  <span><i class="dot ring" style="background:transparent;border:1px dashed #b6b2a6;box-shadow:none"></i>location approximate (state-level)</span>
+  <div class="note">bigger / brighter glow = more connected · arcs trace where people studied → went on to teach ·
+  __N_STATE__ of __N_PLACED__ dots are placed at the state center, not the exact city.</div>
 </div>
 <div class="ctl"><label><input type="checkbox" id="arcs" checked> lineage arcs</label></div>
 <div class="hint">pinch or scroll to zoom · drag to pan · tap a dot</div>
+<div class="foot">data from the recovered Tyler / Temple <a href="../">“Academic Metals Directory”</a>
+  (Wayback), brought current in 2026 · generated __TODAY__ ·
+  <a href="https://github.com/philrenato/acmet-l2">github.com/philrenato/acmet-l2</a></div>
 <div class="tip" id="tip"></div>
 <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
 <script src="https://cdn.jsdelivr.net/npm/topojson-client@3"></script>
@@ -139,31 +156,66 @@ function draw(us){
       .attr("stroke-linecap","round");
   d3.select("#arcs").on("change",function(){arcG.attr("display",this.checked?null:"none")});
 
-  // program glow dots
+  // tooltip body — discloses approximate (state-level) placement + a link through
+  // to the program's directory page (only when that page exists). Link is in the
+  // tooltip so a first tap shows it without navigating away.
+  function tipHTML(p){
+    const approx = p.prec!=="city" ? `<br><span style="color:#8a8678">· location approximate (state-level)</span>` : "";
+    const link = p.slug ? `<br><a href="../${p.slug}.html">open program page →</a>` : "";
+    return `<b>${p.name}</b><br>${p.status} · ${p.state} · ${p.w} connections${approx}`+
+           `<br><span style="color:#9a968a">${p.summary||""}</span>${link}`;
+  }
+  function showTip(ev,p){ tip.style("opacity",1)
+      .style("left",Math.min(ev.clientX+14,innerWidth-240)+"px").style("top",(ev.clientY+12)+"px").html(tipHTML(p)); }
+
+  // program glow dots — state-level dots render hollow/dashed + dimmer so the eye
+  // knows they sit at the state center, not the exact city.
   const r = d3.scaleSqrt().domain([1, Math.max(2,d3.max(DATA.points,p=>p.w))]).range([3.5,16]);
   const g = vp.append("g");
-  g.selectAll("circle").data(DATA.points.filter(p=>proj([p.lng,p.lat]))).join("circle")
+  const dots = g.selectAll("circle").data(DATA.points.filter(p=>proj([p.lng,p.lat]))).join("circle")
     .attr("cx",p=>(P(p)||[-99,-99])[0]).attr("cy",p=>(P(p)||[-99,-99])[1])
-    .attr("r",p=>r(p.w)).attr("fill",p=>COLOR[p.status]||COLOR.unknown)
-    .attr("fill-opacity",.85).style("filter",p=>`drop-shadow(0 0 ${r(p.w)*.9}px ${GLOW[p.status]||GLOW.unknown})`)
-    .attr("stroke","rgba(255,255,255,.25)").attr("stroke-width",.5)
-    .on("mousemove",(ev,p)=>{tip.style("opacity",1).style("left",(ev.clientX+14)+"px").style("top",(ev.clientY+12)+"px")
-        .html(`<b>${p.name}</b><br>${p.status} · ${p.state} · ${p.w} connections<br><span style="color:#9a968a">${p.summary||""}</span>`);})
+    .attr("r",p=>r(p.w))
+    .attr("fill",p=>p.prec==="city" ? (COLOR[p.status]||COLOR.unknown) : "transparent")
+    .attr("fill-opacity",p=>p.prec==="city"?.85:0)
+    .style("filter",p=>p.prec==="city"?`drop-shadow(0 0 ${r(p.w)*.9}px ${GLOW[p.status]||GLOW.unknown})`:"none")
+    .attr("stroke",p=>p.prec==="city"?"rgba(255,255,255,.25)":(COLOR[p.status]||COLOR.unknown))
+    .attr("stroke-opacity",p=>p.prec==="city"?1:.65)
+    .attr("stroke-width",p=>p.prec==="city"?.5:1.1)
+    .attr("stroke-dasharray",p=>p.prec==="city"?null:"3,2")
+    .on("mousemove",(ev,p)=>showTip(ev,p))
     .on("mouseleave",()=>tip.style("opacity",0))
-    .on("click",(ev,p)=>{ev.stopPropagation();tip.style("opacity",1)
-        .style("left",Math.min(ev.clientX+14,innerWidth-220)+"px").style("top",(ev.clientY+12)+"px")
-        .html(`<b>${p.name}</b><br>${p.status} · ${p.state} · ${p.w} connections<br><span style="color:#9a968a">${p.summary||""}</span>`);});
+    .on("click",(ev,p)=>{ev.stopPropagation();showTip(ev,p);});
 
   // pinch (touch) + wheel (desktop) zoom, drag to pan
   const zoom = d3.zoom().scaleExtent([0.8,9]).on("zoom",ev=>vp.attr("transform",ev.transform));
   svg.call(zoom).on("dblclick.zoom",null);
   svg.on("click",()=>tip.style("opacity",0));  // tap empty space to dismiss tip
+
+  // ?focus=<program slug> deep-link: pan/zoom to the dot + open its tooltip
+  function readFocus(){ const m=/[?&]focus=([^&#]+)/.exec(location.search)||/#focus=([^&]+)/.exec(location.hash);
+    return m?decodeURIComponent(m[1]).toLowerCase():null; }
+  const fslug = readFocus();
+  if(fslug){
+    const p = DATA.points.find(d=>d.slug===fslug);
+    if(p){
+      const xy = proj([p.lng,p.lat]);
+      if(xy){ const k=3.2, t=d3.zoomIdentity.translate(W/2-k*xy[0],H/2-k*xy[1]).scale(k);
+        svg.transition().duration(650).call(zoom.transform,t)
+           .on("end",()=>{ const c=P(p)||xy; const sx=W/2,sy=H/2;
+             tip.style("opacity",1).style("left",Math.min(sx+14,innerWidth-240)+"px")
+                .style("top",(sy+12)+"px").html(tipHTML(p)); });
+      }
+    }
+  }
 }
 </script></body></html>"""
 
+import datetime
 out = (HTML.replace("__DATA__", json.dumps(DATA))
            .replace("__N_PLACED__", str(DATA["n_placed"]))
-           .replace("__N_PROGRAMS__", str(DATA["n_programs"])))
+           .replace("__N_PROGRAMS__", str(DATA["n_programs"]))
+           .replace("__N_STATE__", str(DATA["n_state"]))
+           .replace("__TODAY__", datetime.date.today().isoformat()))
 os.makedirs(os.path.join(HERE, "site", "map"), exist_ok=True)
 open(os.path.join(HERE, "site", "map", "index.html"), "w").write(out)
 print(f"wrote site/map/index.html  ({DATA['n_placed']} dots, {len(DATA['flows'])} flows)")

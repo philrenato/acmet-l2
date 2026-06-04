@@ -36,7 +36,7 @@ cd source
 `source/acmet.db` (SQLite). Poke at it with no setup:
 
 ```
-sqlite3 acmet.db "select name, currently_at from people where fc_checked is not null limit 10;"
+sqlite3 acmet.db "select name, fc_current_role, fc_alive from people where fc_checked is not null limit 10;"
 sqlite3 acmet.db "select name, fc_current_name from people where fc_change_kind='name-change';"
 sqlite3 acmet.db "select name, school_type, fc_still_exists from programs;"
 ```
@@ -88,7 +88,8 @@ Read `HANDOFF.md` and `RESEARCH_LOG.md` for the method, and `CHANGES.md` /
   Emerita," not "no longer teaching").
 - **The archived pages are the trusted baseline** (hand-verified by Stanley
   Lechtzin). Anything newer than the archive should be verifiable.
-- **Living people get a say** before new entries about them go public.
+- **Living people get a say.** A person's corrections to their own entry are
+  authoritative; if someone asks to be edited or removed, honor it.
 
 ## How to contribute back
 

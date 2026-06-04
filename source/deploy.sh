@@ -16,10 +16,12 @@ MSG="${1:-Update directory + republish}"
 
 echo "==> build"
 cd "$HERE"
+# site FIRST: build_graph existence-checks site/*.html to decide which nodes
+# get profile links — a brand-new person's page must exist before the graph runs
+python3 build_site.py | tail -2
 python3 build_graph.py >/dev/null
 python3 build_map.py >/dev/null
 python3 build_lineage.py >/dev/null
-python3 build_site.py | tail -2
 
 echo "==> sync into $REPO"
 [ -d "$REPO/.git" ] || git clone https://github.com/philrenato/acmet-l2.git "$REPO"
@@ -28,6 +30,7 @@ rsync -a --exclude 'wiki/' "$HERE/site/" "$REPO/"
 cp "$HERE/site/wiki/"*.md "$REPO/" 2>/dev/null || true
 mkdir -p "$REPO/data"; cp "$HERE/data/acmet-graph.json" "$REPO/data/" 2>/dev/null || true
 cp "$HERE/MIRROR.md" "$REPO/" 2>/dev/null || true
+cp "$HERE/REPO_README.md" "$REPO/README.md" 2>/dev/null || true
 touch "$REPO/.nojekyll"
 # full source under /source (everything except build output, DB backups, git)
 rsync -a --delete \

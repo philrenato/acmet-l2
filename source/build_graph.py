@@ -7,9 +7,11 @@ Output: data/acmet-graph.json
   edges[]  : lineage + affiliation (studied-under / studied-at / taught-at / faculty)
   meta     : coverage stats
 """
-import json, os, re, sqlite3
+import json, os, re, sqlite3, datetime
 
 HERE = os.path.dirname(os.path.abspath(__file__))
+TODAY = datetime.date.today().isoformat()
+TODAY_YEAR = datetime.date.today().year
 con = sqlite3.connect(os.path.join(HERE, "acmet.db")); con.row_factory = sqlite3.Row
 
 # state name -> USPS, and USPS -> centroid (approx lat,lng)
@@ -204,6 +206,39 @@ def yr(s):
     m = re.search(r"(18|19|20)\d\d", s or "")
     return int(m.group()) if m else None
 
+def earliest_year(s, floor=1880):
+    """smallest 4-digit year >= floor anywhere in a string (e.g. '2002-2004',
+    '1970 to 1975', 'circa 2005', '2010, 2018'). None if no plausible year."""
+    best = None
+    for m in re.findall(r"(?:18|19|20)\d\d", s or ""):
+        y = int(m)
+        if y >= floor and (best is None or y < best):
+            best = y
+    return best
+
+# program directory pages are named after the program (build_site.slugify);
+# only link the map dot when that page actually exists in site/.
+def page_slug(name):
+    sl = re.sub(r"[^a-z0-9]+", "-", (name or "").lower()).strip("-")
+    if sl and os.path.exists(os.path.join(HERE, "site", sl + ".html")):
+        return sl
+    return None
+
+# person pages are named after the DISPLAY name (the changed name wins,
+# parentheticals stripped) — mirror build_site's choice and existence-check it,
+# so every node with a built profile links to it (BUILT covers curated names).
+def person_page(r):
+    cands = []
+    if r["fc_name_changed"] == "yes" and r["fc_current_name"]:
+        cands.append(r["fc_current_name"])
+    cands.append(r["name"])
+    for c in cands:
+        c = re.sub(r"\s*\(.*?\)\s*", " ", c or "")
+        sl = re.sub(r"[^a-z0-9]+", "-", c.lower()).strip("-")
+        if sl and os.path.exists(os.path.join(HERE, "site", sl + ".html")):
+            return sl + ".html"
+    return None
+
 # ---- people ----
 people = {r["slug"]: r for r in con.execute("SELECT * FROM people WHERE fc_checked IS NOT NULL")}
 # index for instructor-name resolution
@@ -243,12 +278,24 @@ for slug, r in programs.items():
     elif st and st in CENTROID:
         loc = {"state": st, "lat": CENTROID[st][0], "lng": CENTROID[st][1], "precision": "state"}; placed += 1
     status = {"yes":"active","no":"closed","merged-renamed":"merged","unknown":"unknown"}.get(r["fc_still_exists"], "unknown")
+    date = yr(r["program_started"]); yinferred = False
+    if not date:
+        # infer from the earliest year mentioned in any faculty 'years' string
+        cand = None
+        for f in con.execute("SELECT years FROM program_faculty WHERE program_id=?", (r["id"],)):
+            y = earliest_year(f["years"])
+            if y and (cand is None or y < cand): cand = y
+        if cand: date, yinferred = cand, True
     nodes.append({"id": slug, "kind": "program", "name": re.sub(r"\s+"," ",r["name"]).strip(),
-                  "date": yr(r["program_started"]), "status": status, "location": loc,
-                  "summary": (r["fc_what_happened"] or "")[:240], "page": None})
+                  "date": date, "yinferred": yinferred, "status": status, "location": loc,
+                  "summary": (r["fc_what_happened"] or "")[:240],
+                  "page": None, "pageslug": page_slug(r["name"])})
 
 for slug, r in people.items():
     nm = re.sub(r"\s+"," ",(r["name"] or "")).strip()
+    # a genuine name change displays under the CURRENT name (Carrizzi -> Renato)
+    if r["fc_name_changed"] == "yes" and r["fc_current_name"]:
+        nm = re.sub(r"\s*\(.*?\)\s*", " ", r["fc_current_name"]).strip() or nm
     status = {"yes":"alive","no":"deceased","likely-deceased":"deceased","unknown":"unknown"}.get(r["fc_alive"], "unknown")
     if r["fc_still_in_job"] == "retired-emeritus": status = "retired"
     # person located at their (current/archived) institution
@@ -260,9 +307,21 @@ for slug, r in people.items():
         loc = {"state": st, "lat": CENTROID[st][0], "lng": CENTROID[st][1], "precision": "state"}
     else:
         loc = None
-    nodes.append({"id": slug, "kind": "person", "name": nm, "date": yr(r["dob"]), "status": status,
+    date = yr(r["dob"]); yinferred = False
+    if not date:
+        # infer from the earliest year named in any education 'years' string.
+        # (no current-year fallback: anchoring every undated current teacher at
+        # TODAY piles hundreds of nodes into one column — a wall, not a timeline.
+        # truly year-less people stay undated; the lineage legend discloses them.)
+        cand = None
+        for e in con.execute("SELECT years FROM education WHERE person_id=?", (r["id"],)):
+            y = earliest_year(e["years"])
+            if y and (cand is None or y < cand): cand = y
+        if cand: date, yinferred = cand, True
+    nodes.append({"id": slug, "kind": "person", "name": nm, "date": date,
+                  "yinferred": yinferred, "status": status,
                   "location": loc, "summary": (r["fc_summary"] or r["fc_current_role"] or "")[:240],
-                  "page": BUILT.get(slug)})
+                  "page": BUILT.get(slug) or person_page(r)})
     # edges from education: studied-under (instructor) + studied-at (school)
     for e in con.execute("SELECT school,instructor,degree,years FROM education WHERE person_id=?", (r["id"],)):
         if e["instructor"]:
@@ -292,10 +351,12 @@ for e in edges:
     if k not in seen: seen.add(k); uniq.append(e)
 
 out = {
-  "_generated": "2026-05-30", "_source": "acmet.db",
+  "_generated": TODAY, "_source": "acmet.db",
   "stats": {"nodes": len(nodes), "people": sum(1 for n in nodes if n["kind"]=="person"),
             "programs": sum(1 for n in nodes if n["kind"]=="program"),
-            "programs_placed": placed, "edges": len(uniq)},
+            "programs_placed": placed, "edges": len(uniq),
+            "yinferred": sum(1 for n in nodes if n.get("yinferred")),
+            "undated": sum(1 for n in nodes if not n.get("date"))},
   "nodes": nodes, "edges": uniq,
 }
 os.makedirs(os.path.join(HERE, "data"), exist_ok=True)

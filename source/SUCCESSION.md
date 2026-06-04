@@ -2,7 +2,10 @@
 
 Re-scanned 152 surviving programs for their CURRENT metals/jewelry faculty.
 
-## NEW people to add (218) — successors not in the archived directory
+> Snapshot of the scan as found on 2026-05-30. The 218 people below **have since
+> been added** to the database and the live site (`load_succession.py`).
+
+## New people ADDED (218) — successors not in the archived directory
 
 - **Charlene Modena** — Director, School of Jewelry & Metal Arts · Academy of Art College
 - **Lindsey Eason** — Part-Time Faculty · Academy of Art College

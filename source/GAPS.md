@@ -118,4 +118,4 @@ Method: 4 parallel finder agents (major-MFA / new-since-2014 / craft-regional / 
 
 ## SEPARATE GAP DIMENSION: faculty succession (people)
 
-Program-level scanning misses **new faculty who succeeded the listed names at programs that ARE in the directory** — e.g. **Anne Mondro** (U-M Stamps, full Professor 2026) succeeded the Pijanowskis but isn't in the directory. A future pass should re-scan each surviving program for its *current* metals/jewelry faculty.
+Program-level scanning misses **new faculty who succeeded the listed names at programs that ARE in the directory** — e.g. **Anne Mondro** (U-M Stamps, promoted to full in 2026) succeeded the Pijanowskis but wasn't in the directory. ✅ Done — the succession re-scan (SUCCESSION.md, 2026-05-30) added 218 current faculty, Mondro included.

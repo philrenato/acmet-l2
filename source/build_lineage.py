@@ -8,23 +8,31 @@ import json, os, re, collections
 HERE = os.path.dirname(os.path.abspath(__file__))
 G = json.load(open(os.path.join(HERE, "data", "acmet-graph.json")))
 
-BUILT = {
- "crafts/metalsdirectorypage/s272.html":"phil-renato.html","crafts/metalsdirectorypage/p82.html":"mary-lee-hu.html",
- "crafts/metalsdirectorypage/p97.html":"stanley-lechtzin.html","crafts/metalsdirectorypage/p88.html":"daniella-kerner.html",
- "crafts/metalsdirectorypage/p170.html":"vickie-sedman.html","gap/rebecca-strzelec":"rebecca-strzelec.html",
- "gap/skip-hunter":"skip-hunter.html",
-}
 deg = collections.Counter()
 for e in G["edges"]:
     deg[e["from"]] += 1; deg[e["to"]] += 1
 
 idx = {n["id"]: i for i, n in enumerate(G["nodes"])}
 TYPES = {"studied-under":0, "studied-at":1, "taught-at":2, "faculty-of":3}
+def fslug(name):
+    return re.sub(r"[^a-z0-9]+", "-", (name or "").lower()).strip("-")
+
+# a node's profile page comes from the graph (build_graph existence-checks
+# people via person_page(); programs carry pageslug) — every built page links.
+def page_of(n):
+    if n.get("page"): return n["page"]
+    if n.get("pageslug"): return n["pageslug"] + ".html"
+    return None
+
 nodes = [{
     "n": n["name"], "y": n.get("date"),
     "k": 0 if n["kind"] == "person" else 1,
     "st": n["status"], "d": deg[n["id"]],
-    "p": BUILT.get(n["id"]), "sum": (n.get("summary") or "")[:170],
+    "p": page_of(n), "sum": (n.get("summary") or "")[:170],
+    "yi": 1 if n.get("yinferred") else 0,        # year inferred, not recorded
+    # slug for ?focus= deep-links + search — the page stem when a page exists,
+    # so directory pages can link straight to their node
+    "s": (page_of(n)[:-5] if page_of(n) else fslug(n["name"])),
 } for n in G["nodes"]]
 edges = [{"a": idx[e["from"]], "b": idx[e["to"]], "t": TYPES.get(e["type"], 1)}
          for e in G["edges"] if e["from"] in idx and e["to"] in idx]
@@ -48,8 +56,8 @@ HTML = """<!doctype html><html lang="en"><head><meta charset="utf-8">
     font:14px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}
   svg{display:block;width:100vw;height:100vh;cursor:grab;touch-action:none}
   svg.drag{cursor:grabbing}
-  .hint{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);z-index:5;
-    font-size:11px;color:#7a776c;pointer-events:none;text-align:center}
+  .hint{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:5;
+    font-size:11px;color:#7a776c;pointer-events:none;text-align:center;white-space:nowrap}
   @media (max-width:600px){
     .hdr{max-width:62vw} .hdr h1{font-size:19px} .hdr .sub{font-size:11px}
     .legend{font-size:10px;bottom:30px} .panel{max-width:78vw;left:12px;bottom:34px} .hint{bottom:4px}
@@ -78,6 +86,22 @@ HTML = """<!doctype html><html lang="en"><head><meta charset="utf-8">
   .panel a{color:var(--gold);font-size:12.5px;text-decoration:none} .panel .x{float:right;color:var(--soft);cursor:pointer}
   .legend{position:fixed;bottom:18px;right:24px;z-index:5;font-size:11.5px;color:#b6b2a6;text-align:right}
   .legend i{width:9px;height:9px;border-radius:50%;display:inline-block;margin:0 5px 0 12px;vertical-align:middle}
+  .legend .undated{margin-top:5px;font-size:10.5px;color:#7a776c;max-width:280px;margin-left:auto}
+  .find{position:fixed;top:58px;left:24px;z-index:6}
+  .find input{width:188px;background:#15151c;color:var(--ink);border:1px solid #2a2a35;border-radius:7px;
+    padding:6px 10px;font-size:12.5px;font-family:inherit;outline:none}
+  .find input:focus{border-color:#4a3520;box-shadow:0 0 14px rgba(255,150,60,.18)}
+  .find .sugg{margin-top:4px;background:rgba(14,14,20,.97);border:1px solid #2a2a35;border-radius:8px;
+    max-width:240px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,.6)}
+  .find .sugg div{padding:6px 10px;font-size:12.5px;color:#cbc6ba;cursor:pointer;white-space:nowrap;
+    overflow:hidden;text-overflow:ellipsis}
+  .find .sugg div:hover,.find .sugg div.sel{background:#241a12;color:var(--gold)}
+  .foot{position:fixed;bottom:3px;left:50%;transform:translateX(-50%);z-index:4;
+    font-size:10px;color:#5d5a52;text-align:center;max-width:96vw;pointer-events:auto;
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .foot a{color:#7a776c;text-decoration:none} .foot a:hover{color:#a8a499}
+  @media (max-width:600px){ .find{top:54px;left:12px} .find input{width:150px}
+    .legend .undated{max-width:62vw} .foot{display:none} }
 </style></head><body>
 <div class="hdr"><div class="k">Academic Metals Directory</div><h1>the lineage</h1>
   <div class="sub">Every teacher and program across a century, placed by year. Hover for a name,
@@ -88,12 +112,19 @@ HTML = """<!doctype html><html lang="en"><head><meta charset="utf-8">
   <button id="b-all">all connections</button>
   <a href="./">← directory</a> <a href="map/">map →</a>
 </div>
+<div class="find"><input id="find" type="text" placeholder="find a person…" autocomplete="off"
+   autocapitalize="off" spellcheck="false"><div class="sugg" id="sugg"></div></div>
 <div class="legend"><span><i style="background:#ffd27a;box-shadow:0 0 7px #ffb24a"></i>person</span>
   <span><i style="background:#7fb2e6;box-shadow:0 0 7px #4a86c8"></i>program</span>
-  <span><i style="background:#6e6456"></i>deceased / closed</span></div>
+  <span><i style="background:#6e6456"></i>deceased / closed</span>
+  <span><i style="background:#ffd27a;outline:1px dashed #ffd27a;outline-offset:1px;opacity:.6"></i>year inferred</span>
+  <div class="undated">__UNDATED__ entries with no known year aren't drawn — they're all in the directory.</div></div>
 <svg id="svg"></svg><div class="tip" id="tip"></div>
 <div class="hint">pinch or scroll to zoom · drag to pan · tap a name</div>
 <div class="panel" id="panel"></div>
+<div class="foot">data from the recovered Tyler / Temple <a href="./">“Academic Metals Directory”</a>
+  (Wayback), brought current in 2026 · generated __TODAY__ ·
+  <a href="https://github.com/philrenato/acmet-l2">github.com/philrenato/acmet-l2</a></div>
 <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
 <script>
 const D = __DATA__, N = D.nodes, E = D.edges;
@@ -109,7 +140,9 @@ E.forEach((e,i)=>{ adj[e.a].push({o:e.b,e:i,dir:"out"}); adj[e.b].push({o:e.a,e:
 let labelShow = new Set();
 function computeLabels(){
   labelShow = new Set(); const placed=[];
-  N.map((n,i)=>i).filter(i=>N[i]._set).sort((a,b)=>N[b].d-N[a].d).forEach(i=>{
+  const cand = N.map((n,i)=>i).filter(i=>N[i]._set).sort((a,b)=>N[b].d-N[a].d);
+  // label the default 1960+ window first, then fill from the long tail
+  cand.filter(i=>N[i].y>=1957).concat(cand.filter(i=>N[i].y<1957)).forEach(i=>{
     if(labelShow.size>=16) return;
     const x=N[i]._x, y=N[i]._y;
     if(placed.some(p=>Math.abs(p.x-x)<170 && Math.abs(p.y-y)<24)) return;
@@ -120,7 +153,7 @@ function computeLabels(){
 const x = d3.scaleLinear().domain([D.minY-3, D.maxY+3]);
 const PAD=90, R=n=>Math.min(9, 3.6+Math.sqrt(n.d)*1.2);  // capped so dots don't bloat
 const LANE=26;                                            // fixed: > max dot diameter, no overlap
-let lanes=1, contentH=0;
+let lanes=1, contentH=0, fitK=1;
 function layout(){
   x.range([PAD, Math.max(1000,W)-PAD]);   // fit the screen width
   const dated = N.map((n,i)=>({n,i})).filter(d=>d.n.y).sort((a,b)=>a.n.y-b.n.y);
@@ -164,7 +197,11 @@ node.select("circle").attr("r",d=>R(d.n));
 node.select("rect").attr("width",d=>R(d.n)*1.7).attr("height",d=>R(d.n)*1.7)
   .attr("x",d=>-R(d.n)*.85).attr("y",d=>-R(d.n)*.85).attr("transform","rotate(45)").attr("rx",1);
 node.selectAll("circle,rect").attr("fill",d=>color(d.n))
-  .attr("stroke","rgba(255,255,255,.22)").attr("stroke-width",.5);
+  // inferred-year nodes read as a hollow/dashed ring so the eye knows the year is a guess
+  .attr("fill-opacity",d=>d.n.yi?.55:1)
+  .attr("stroke",d=>d.n.yi?glow(d.n):"rgba(255,255,255,.22)")
+  .attr("stroke-width",d=>d.n.yi?.9:.5)
+  .attr("stroke-dasharray",d=>d.n.yi?"2,1.6":null);
 // labels
 const label = node.append("text").text(d=>d.n.n)
   .attr("x",d=>R(d.n)+4).attr("y",3.5).attr("font-size",11.5).attr("fill","#d8d2c6")
@@ -172,14 +209,14 @@ const label = node.append("text").text(d=>d.n.n)
   .style("pointer-events","none")
   .attr("display",d=>labelShow.has(d.i)?null:"none");
 function relabel(){
-  const showAll = curK > 1.9;
+  const showAll = curK > fitK*1.45;
   label.attr("display",d=>{
       if(focus!=null) return (focusSet && focusSet.has(d.i))?null:"none";
       return (showAll||labelShow.has(d.i))?null:"none"; });
 }
 
 node.on("mousemove",(ev,d)=>{ tip.style("opacity",1).style("left",(ev.clientX+14)+"px").style("top",(ev.clientY+12)+"px")
-    .html(`<b>${d.n.n}</b><br><span class="meta">${d.n.k===1?"program":"person"} · ${d.n.st}${d.n.y?" · "+d.n.y:""} · ${d.n.d} links</span>`); })
+    .html(`<b>${d.n.n}</b><br><span class="meta">${d.n.k===1?"program":"person"} · ${d.n.st}${d.n.y?" · "+d.n.y+(d.n.yi?"~":""):""} · ${d.n.d} links</span>`); })
   .on("mouseleave",()=>tip.style("opacity",0))
   .on("click",(ev,d)=>{ ev.stopPropagation(); setFocus(d.i); });
 svg.on("click",()=>setFocus(null));
@@ -214,7 +251,7 @@ function setFocus(i){
   const students=adj[i].filter(a=>a.dir==="in"&&E[a.e].t===0).map(a=>N[a.o].n);
   panel.classed("show",true).html(
     `<span class="x" onclick="event.stopPropagation();document.getElementById('svg').dispatchEvent(new Event('click'))">✕</span>`+
-    `<h3>${n.n}</h3><div class="r">${n.k===1?"program":"person"} · ${n.st}${n.y?" · b. "+n.y:""}</div>`+
+    `<h3>${n.n}</h3><div class="r">${n.k===1?"program":"person"} · ${n.st}${n.y?(n.yi?" · placed ~"+n.y+" (year inferred)":" · b. "+n.y):""}</div>`+
     (n.sum?`<div class="r" style="margin-top:6px">${n.sum}</div>`:"")+
     (teachers.length?`<div class="r" style="margin-top:6px"><b style="color:#ffb968">taught by:</b> ${teachers.join(", ")}</div>`:"")+
     (students.length?`<div class="r"><b style="color:#ffb968">students:</b> ${students.slice(0,12).join(", ")}${students.length>12?"…":""}</div>`:"")+
@@ -235,18 +272,80 @@ function drawAxis(t){
 
 const zoom = d3.zoom().scaleExtent([0.4,16]).on("zoom",ev=>{
   curK = ev.transform.k; root.attr("transform",ev.transform); drawAxis(ev.transform);
-  const sa = curK > 1.9;                       // only relabel when crossing the threshold (cheap)
+  const sa = curK > fitK*1.45;                 // all-labels only past the default zoom (else mush)
   if(sa !== showAllState){ showAllState = sa; relabel(); }
 });
 svg.attr("width",W).attr("height",H).call(zoom)
   .on("mousedown.cur",()=>svg.classed("drag",true)).on("mouseup.cur",()=>svg.classed("drag",false));
 
-// initial: scale so the whole cascade fits on screen, centered
+// initial view: 1960 -> present (where most of the directory lives) — zoom or
+// pan left for the long tail back to 1885.
 function fit(){
-  const k = Math.min(1, (H-150)/Math.max(1,contentH));
-  svg.call(zoom.transform, d3.zoomIdentity.translate(0, H/2).scale(k));
+  const y1 = Math.max(D.minY, 1957), x1 = x(y1), x2 = x(D.maxY+3);
+  const k = Math.max(0.4, Math.min(3, (W-40)/Math.max(1, x2-x1)));
+  fitK = k;
+  // center vertically on the nodes that actually live in the window
+  let sy = 0, ny = 0;
+  N.forEach(n => { if(n._set && n.y >= y1){ sy += n._y; ny++; } });
+  const cy = ny ? sy/ny : 0;
+  // +40: keep the densest row clear of the fixed header
+  svg.call(zoom.transform, d3.zoomIdentity.translate(20 - k*x1, H/2 - k*cy + 40).scale(k));
 }
 fit(); renderEdges();
+
+// --- focus a node by its slug (shared by ?focus= deep-links and the search box) ---
+const bySlug = {}; N.forEach((n,i)=>{ if(n.s && !(n.s in bySlug)) bySlug[n.s]=i; });
+function panZoomTo(i, k){
+  const n=N[i]; if(n._x==null) return;
+  k = k || Math.max(curK, 2.6);
+  const t = d3.zoomIdentity.translate(W/2 - k*n._x, H/2 - k*n._y).scale(k);
+  svg.transition().duration(650).call(zoom.transform, t);
+}
+function focusSlug(slug){
+  if(slug==null) return false;
+  const i = bySlug[String(slug).toLowerCase()];
+  if(i==null) return false;                   // unknown → ignore silently
+  setFocus(i);                                 // undated: panel only (no dot to fly to)
+  if(N[i]._set) panZoomTo(i);
+  return true;
+}
+function readFocusParam(){
+  let m = /[?&]focus=([^&#]+)/.exec(location.search) || /#focus=([^&]+)/.exec(location.hash);
+  return m ? decodeURIComponent(m[1]) : null;
+}
+const _initFocus = readFocusParam();
+if(_initFocus) setTimeout(()=>focusSlug(_initFocus), 80);
+
+// --- find-a-person search box ---
+const findEl=document.getElementById("find"), suggEl=document.getElementById("sugg");
+// everyone is searchable — undated people aren't drawn, but picking one still
+// opens their panel (status, teachers, open-profile link)
+const SEARCHABLE = N.map((n,i)=>({i,n}));
+let suggList=[], suggSel=-1;
+function renderSugg(){
+  suggEl.innerHTML="";
+  suggList.forEach((d,j)=>{ const el=document.createElement("div");
+    el.textContent = d.n.n + (d.n.k===1?"  ·  program":"") + (!d.n._set?"  ·  no year":"");
+    if(j===suggSel) el.className="sel";
+    el.onclick=()=>{ pick(d.i); };
+    suggEl.appendChild(el); });
+}
+function pick(i){ findEl.value=N[i].n; suggList=[]; suggSel=-1; renderSugg(); focusSlug(N[i].s); findEl.blur(); }
+findEl.addEventListener("input",()=>{
+  const q=findEl.value.trim().toLowerCase(); suggSel=-1;
+  if(q.length<2){ suggList=[]; renderSugg(); return; }
+  suggList = SEARCHABLE.filter(d=>d.n.n.toLowerCase().includes(q))
+                       .sort((a,b)=>b.n.d-a.n.d).slice(0,8);
+  renderSugg();
+});
+findEl.addEventListener("keydown",ev=>{
+  if(ev.key==="ArrowDown"){ ev.preventDefault(); suggSel=Math.min(suggList.length-1,suggSel+1); renderSugg(); }
+  else if(ev.key==="ArrowUp"){ ev.preventDefault(); suggSel=Math.max(0,suggSel-1); renderSugg(); }
+  else if(ev.key==="Enter"){ ev.preventDefault();
+    const d = suggList[suggSel>=0?suggSel:0]; if(d) pick(d.i); }
+  else if(ev.key==="Escape"){ suggList=[]; suggSel=-1; renderSugg(); findEl.blur(); }
+});
+document.addEventListener("click",ev=>{ if(!ev.target.closest(".find")){ suggList=[]; renderSugg(); } });
 
 function setMode(m){ mode=m; ["time","line","all"].forEach(x=>d3.select("#b-"+x).classed("on",x===m));
   if(focus!=null) setFocus(null); renderEdges(); }
@@ -258,6 +357,10 @@ addEventListener("resize",()=>{ W=innerWidth;H=innerHeight;svg.attr("width",W).a
   link.attr("d",edgePath); fit(); relabel(); });
 </script></body></html>"""
 
-out = HTML.replace("__DATA__", json.dumps(DATA, separators=(",",":")))
+import datetime
+TODAY = datetime.date.today().isoformat()
+out = (HTML.replace("__DATA__", json.dumps(DATA, separators=(",",":")))
+           .replace("__UNDATED__", str(DATA["undated"]))
+           .replace("__TODAY__", TODAY))
 open(os.path.join(HERE, "site", "lineage.html"), "w").write(out)
 print(f"wrote site/lineage.html  nodes={len(nodes)} edges={len(edges)} undated={DATA['undated']}")

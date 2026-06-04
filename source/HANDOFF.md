@@ -12,9 +12,10 @@ front door, `MIRROR.md` is the clone-and-extend guide for the next person.
 - **One database** (`acmet.db`) → three faces: the **directory** (people + program
   pages), the **map** (`/map/`), the **lineage** (`/lineage.html`). Fix a record,
   rebuild, all three update.
-- **847 people / 465 programs** in the DB; **779 person pages + 463 program pages**
-  built and live. Distinct, deduped (the old/new archive trees produced shadow rows;
-  builders filter `fc_checked IS NOT NULL`).
+- **847 fact-checked people / 463 fact-checked programs** in the DB (1062 / 663 raw
+  rows — the old/new archive trees produced shadow rows; builders filter
+  `fc_checked IS NOT NULL`); **782 person pages + 463 program pages** built and live
+  (disputed / low-confidence people held back).
 
 ### what got done (chronological-ish)
 1. **Recovered** the dead site from the Wayback Machine → `archive/` (4,492 text pages,
@@ -159,6 +160,61 @@ against fetched URLs, then an adversarial agent re-checked all of it pre-publish
 RESEARCH_LOG.md). DB now ~849 people; 781 person pages + 463 program pages live.
 Four deploys, latest `c71082b`; deploy.sh worked as designed (clear stale
 /tmp/acmet-deploy if commit fails oddly).
+
+### 2026-06-04 (later) — full-project audit + Mark Herndon
+Phil asked for a top-to-bottom interrogation (facts, grammar, structure, the
+how-we-know / how-to-fix / mirror story, and a human-parseable map + timeline).
+Four parallel audit agents (docs, site content, map/lineage, deployed state) +
+fixes:
+
+**Facts fixed (DB):** Arline Fisch died the day before her **93rd** birthday —
+age **92**, not 93 (SNAG remembrance; CHANGES.md's "94th" also fixed); two
+`education.years` "200 to 2002" → "2000 to 2002"; Siena Heights source URLs
+swapped to `http://` (their HTTPS cert is broken, content live). Rebecca
+Strzelec's "University of Michigan" attribution was investigated and is
+CORRECT (Penn State Altoona 2002–2023 → Michigan Stamps since ~2023).
+
+**Docs reconciled:** README/FUTURE/GAPS/SUCCESSION no longer claim done work as
+future (succession + gap passes, "before it goes public"); name-change count
+corrected everywhere to **6 genuine** (`fc_change_kind='name-change'`; the 20
+were discrepancies); CHANGES.md got a superseded-snapshot banner (its
+"likely deceased" language was purged from live data); HANDOFF numbers above
+reconciled; MIRROR's sample query now uses a populated column.
+
+**Engine (build_site.py):** program names render verbatim from the DB — no
+more titlecase mangling ("College Of Dupage", "T.t.u."); deceased-roster
+demotion now matches name VARIANTS via the resolver (7 pages read "X to
+present" on dead people — fixed); meta description + OG tags on the index; an
+index footer block "How we know, and how to fix us" (sources, ✎ edit flow,
+issues, removal policy); a "Site last rebuilt DATE" stamp; `site/sitemap.xml`
+(every page); REPO_README.md → repo-root README (deploy.sh copies it).
+⚠ deploy.sh build order now **site FIRST, then graph/map/lineage** — the graph
+existence-checks `site/*.html` for profile links, so a brand-new person's page
+must exist before the graph builds.
+
+**Map + lineage (Phil: "default timeline zone 1960–present"):** dates inferred
+from education/faculty years (1084 undated → 1003 honestly undated — a
+current-year fallback that walled 564 nodes at 2026 was tried and REMOVED);
+inferred-year nodes draw dashed/hollow + disclosed in the legend; lineage
+defaults to the **1960→present window** (label threshold scales with the fit
+zoom — a hardcoded `curK>1.9` in `relabel()` was the mush); find-a-person
+search (undated people searchable too — panel opens, no dot); `?focus=<slug>`
+deep links on both faces; person pages link `lineage.html?focus=…`, program
+pages link both faces focused; profile links in the lineage went **7 → ~1,219**
+(the stale BUILT list died; build_graph existence-checks pages, name-changed
+people via fc_current_name); genuine name-changes display their CURRENT name in
+the graph; map disclosed state-centroid dots (221 of 365, dashed/hollow) +
+"open program page →" in tooltips + glow/arc legend; provenance footers on both.
+
+**Mark Herndon added** (person 1065, `gap/mark-herndon`) — editor tip,
+re-verified: IAIA's own event page ("The Stories We Carry") lists "faculty
+'05–'15" (Wayback-confirmed; live page bot-blocked) → former faculty 2005–2015;
+runs Herndon Forge, Santa Fe, with designer Naomi Herndon (his site); UNT MFA
+2001–04 + Corcoran BFA 1993–97 (LinkedIn-supported, noted as such); studied
+with **Harlan Butt** (lineage-inference rule + Phil's statement — flagged
+"inferred" in factcheck). No tribal affiliation stated — IAIA tags him faculty
+only. Cross-linked: Butt ↔ Herndon, IAIA roster, UNT alumni.
+`updates_2026_06_04_herndon.py`; 4 factcheck audit rows.
 
 ## loose threads / next moves (full roadmap in FUTURE.md)
 - **Donna Sweigart's "3 additional adjunct faculty"** at Rowan — unnamed, faculty

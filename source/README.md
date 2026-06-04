@@ -16,9 +16,10 @@ that's how i knew the recovery worked.)
 
 live at **renato.design/acmet-l2/**:
 
-- **the directory** — the list of names. greyed until someone's built out; a handful
-  are done (me, mary lee hu, lechtzin, kerner, sedman, strzelec, skip hunter). each
-  built page is the old listing next to today's facts, with a bio you can edit on github.
+- **the directory** — the list of names. nearly everyone fact-checked has a full page
+  now (~780 people, ~460 programs); only the disputed / low-confidence rows are held
+  back, greyed, waiting for a human look. each built page is the old listing next to
+  today's facts, with a bio you can edit on github.
 - **the map** (`/map/`) — everybody on a us map, glowing by how connected they are, with
   arcs showing where people studied then went off to teach. the craft spreading across
   the country.
@@ -48,7 +49,9 @@ one database feeds all three. fix a record, they all update.
 
 - ~half the programs are gone or folded into something else. nobody started a new
   one after this went offline — the last decade was closures, not openings.
-- 20 people changed their names. those are the easy-to-miss ones, so they're flagged loud.
+- about 20 entries had a name that didn't match anymore — but audited, only 6 are
+  genuine name changes (the rest were name variants and the archive's own typos).
+  the genuine ones are the easiest updates to miss, so they're flagged loud.
 - a lot of the old guard has died — the directory had no way to know. now it does,
   with obituaries attached.
 - the real gold isn't in the directory's own names — it's the people who *replaced*
@@ -58,7 +61,7 @@ one database feeds all three. fix a record, they all update.
 ## poking at it
 
 ```
-sqlite3 acmet.db "select name, fc_current_name from people where fc_name_changed='yes';"
+sqlite3 acmet.db "select name, fc_current_name from people where fc_change_kind='name-change';"
 sqlite3 acmet.db "select name, fc_what_happened from programs where fc_still_exists='no';"
 open exports/people.csv
 ```
@@ -73,7 +76,10 @@ open exports/people.csv
 
 ## next
 
-faculty-succession pass (who teaches metals *now* at every surviving program),
-clean up the disputed rows, then open it up past metals into the rest of art/design/crafts.
-nobody needs to ask permission to be in a directory — but living people get a say
-before any of this goes public.
+the succession pass (who teaches metals *now* at every surviving program) and the
+gap pass (programs that were never listed) are done — see SUCCESSION.md and GAPS.md.
+what's left: clean up the disputed rows, re-source the rotted links, then open it
+up past metals into the rest of art/design/crafts.
+
+it's public now. corrections welcome on github — and if a living person asks for
+their entry to be edited or removed, that's authoritative, no questions.

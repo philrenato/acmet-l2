@@ -13,7 +13,9 @@
 Each profile still pulls its narrative bio live from GitHub (wiki -> repo file
 -> embedded fallback); the embedded fallback is the hand-written wiki bio when
 one exists, otherwise the sourced fc_summary."""
-import os, re, sqlite3, html, json
+import os, re, sqlite3, html, json, datetime
+
+BUILD_DATE = datetime.date.today().isoformat()
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 SITE = os.path.join(HERE, "site")
@@ -46,6 +48,11 @@ def titlecase(n):
     n = re.sub(r"\s+", " ", (n or "").strip())
     cap = lambda w: "-".join(p.capitalize() for p in w.split("-"))
     return " ".join(cap(w) for w in n.split())
+
+def progname(n):
+    # program names are stored correctly cased in the DB — never titlecase them
+    # (titlecase mangles "College of DuPage"→"Of Dupage", "T.T.U."→"T.t.u.", "IS183"→"Is183")
+    return re.sub(r"\s+", " ", (n or "").strip())
 
 def clean_name(n):  # strip parentheticals like "Phil Renato (Phillip Renato)"
     return re.sub(r"\s*\(.*?\)\s*", "", n or "").strip()
@@ -282,6 +289,9 @@ def inst_link(nm):
 # a deceased person never renders as CURRENT faculty, however the archived row
 # reads ("X 1980 to present") — demote to former and drop the "to present"
 dead_norms = {norm(r["name"]) for r in people if r["fc_alive"] == "no"}
+# the roster name is often a variant ("Robert Pum" for "ROBERT J. (BOB) PUM"), so a
+# bare norm() match misses — also demote when the name RESOLVES to a deceased person
+dead_files = {fname_of[r["slug"]] for r in build_rows if r["fc_alive"] == "no"}
 prog_faculty = {}   # prog_slug -> list of (display, person_file_or_None, status, years)
 taught_at = {}      # person_file -> list of (prog_name, prog_file, status, years)
 for f in con.execute("SELECT program_id,name,person_url,status,years FROM program_faculty"):
@@ -293,11 +303,11 @@ for f in con.execute("SELECT program_id,name,person_url,status,years FROM progra
     if m and not yrs: yrs = raw[m.start():].strip()
     cleannm = re.sub(r"\s+\b(1[89]\d\d|20\d\d).*$", "", raw).strip()
     status = f["status"] or "current"
-    if status == "current" and norm(cleannm) in dead_norms:
+    pf = resolve_file(cleannm)
+    if status == "current" and (norm(cleannm) in dead_norms or (pf and pf in dead_files)):
         status = "former"
         y2 = re.sub(r"(?i)\s*to\s+present\s*$", "", yrs).strip()
         yrs = ("from " + y2) if re.fullmatch(r"1[89]\d\d|20\d\d", y2) else y2
-    pf = resolve_file(cleannm)
     prog_faculty.setdefault(pslug, []).append((titlecase(name_only(cleannm)) or titlecase(cleannm), pf, status, yrs))
     if pf:
         taught_at.setdefault(pf, []).append((prog_row[pslug]["name"], pfile_of[pslug], status, yrs))
@@ -527,7 +537,7 @@ def build_profile(r):
         lineage = (f'<div class="card lineage-card" style="margin-top:18px"><h3>Lineage</h3>'
                    + "".join(parts)
                    + f'<p class="checked" style="margin-top:8px">Students drawn from who lists this person as an instructor; '
-                     f'institutions from faculty records. See the full <a href="lineage.html">lineage timeline →</a></p></div>')
+                     f'institutions from faculty records. See them in the <a href="lineage.html?focus={fname_of[r["slug"]][:-5]}">lineage timeline →</a></p></div>')
     sources = "".join(f'<a href="{html.escape(u)}" target="_blank" rel="noopener">{html.escape(u)}</a>' for u in srcs(r["fc_sources"]))
     fb, wikiname = fallback_bio(r)
     fallback = json.dumps(fb)
@@ -571,11 +581,12 @@ PROG_PAGE = """<!doctype html><html lang="en"><head><meta charset="utf-8">
   <div class="sources">{sources}</div>
   <p class="checked" style="margin-top:14px">{provenance}</p>
   <p class="foot">A program in the Academic Metals Directory. People shown are linked where they
-  have an entry. <a href="map/">See it on the map →</a></p>
+  have an entry. <a href="{mapref}">See it on the map →</a> ·
+  <a href="lineage.html?focus={focusslug}">in the lineage →</a></p>
 </div></body></html>"""
 
 def build_program(p):
-    title = titlecase(re.sub(r"\s+", " ", p["name"]))
+    title = progname(p["name"])
     stype = p["school_type"] or ""
     typelabel = TYPE_LABEL.get(stype, "") or ""
     stat = STATUS_PROG.get(p["fc_still_exists"], "")
@@ -623,9 +634,11 @@ def build_program(p):
     prov = ("Added in the 2026 program review; not in the original 2014 directory."
             if p["fc_verified"] in ("snag-gap-2026", "phil-added")
             else "From the original Tyler “Academic Metals Directory” (≈2014), brought current in 2026.")
+    stem = pfile_of[p["slug"]][:-5]
     out = PROG_PAGE.format(title=html.escape(title), css=CSS, typelabel=tl, statusline=statusline,
                            checked=html.escape(checked), cards=cards, faculty=faculty, alumni=alumni,
-                           sources=sources, provenance=html.escape(prov))
+                           sources=sources, provenance=html.escape(prov),
+                           mapref=f"map/?focus={stem}", focusslug=stem)
     open(os.path.join(SITE, pfile_of[p["slug"]]), "w").write(out)
 
 # ---- build all profiles ----
@@ -698,7 +711,7 @@ for e in con.execute("SELECT person_id, instructor FROM education WHERE instruct
     for part in re.split(r"\s*[/,&]\s*|\s+and\s+", e["instructor"]):
         mention_add(part, hd, fname_of[pr["slug"]])
 for pslug, flist in prog_faculty.items():
-    pname = titlecase(re.sub(r"\s+", " ", prog_row[pslug]["name"]))
+    pname = progname(prog_row[pslug]["name"])
     for (dispnm, pf, _st, _yrs) in flist:
         if not pf: mention_add(dispnm, pname, pfile_of[pslug])
 mn_html = "\n".join(
@@ -719,7 +732,7 @@ n_deg, n_oth = len(deg), len(oth)
 # programs, same split (by the institution's own type)
 pdeg, poth = [], []
 for p in programs:
-    item = (titlecase(re.sub(r"\s+", " ", p["name"])), pfile_of[p["slug"]])
+    item = (progname(p["name"]), pfile_of[p["slug"]])
     (pdeg if (p["school_type"] in DG_TYPES) else poth).append(item)
 pdeg_html, poth_html = render_items(pdeg), render_items(poth)
 n_pdeg, n_poth = len(pdeg), len(poth)
@@ -728,6 +741,12 @@ total, nbuilt = n_deg + n_oth, len(built)
 INDEX = f"""<!doctype html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Academic Metals Directory</title>
+<meta name="description" content="The recovered Tyler School of Art directory of US jewelry, metals, and CAD-CAM teaching programs and the people who taught them — fact-checked and brought current. {total} people, {len(programs)} programs, a map, and a teacher-to-student lineage back to 1885.">
+<link rel="canonical" href="https://renato.design/acmet-l2/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Academic Metals Directory">
+<meta property="og:description" content="US jewelry/metals teaching programs and the people who taught them — the old Tyler directory recovered from the Wayback Machine, fact-checked, and brought current.">
+<meta property="og:url" content="https://renato.design/acmet-l2/">
 <style>{CSS}
   .names{{column-width:220px;column-gap:32px;margin-top:8px}}
   .names a, .names span{{display:block;padding:4px 0;font-size:15px;break-inside:avoid}}
@@ -764,7 +783,7 @@ INDEX = f"""<!doctype html><html lang="en"><head><meta charset="utf-8">
   <p class="kicker">recovered + being updated</p>
   <h1>Academic Metals Directory</h1>
   <p class="lead">US jewelry, metals, and CAD-CAM teaching programs and the people who taught them —
-  the old Tyler School of Art directory, brought current. {total} names across {len(programs)} programs;
+  the old Tyler School of Art directory, brought current. {total} people across {len(programs)} programs;
   the {nbuilt} in <b>bold</b> have a page. Degree-granting programs and their faculty come first;
   craft schools, studios, and workshops follow.</p>
   <a class="maplink" href="map/">🔥 see them on the map →</a>
@@ -810,6 +829,12 @@ INDEX = f"""<!doctype html><html lang="en"><head><meta charset="utf-8">
   <p class="foot">Names in grey don't have a page yet — held back pending a clearer source
   (the archived listing is the trusted baseline; anything newer is checked against a citation). Some are
   low-confidence or disputed on purpose, left visible rather than guessed at.</p>
+  <p class="foot"><b>How we know, and how to fix us.</b> Every page lists its sources — the
+  institution's own site, an obituary, or a Wayback capture — and says when it was last checked.
+  Spot something wrong? Every bio has a <b>✎ edit this bio</b> link (GitHub forks and opens a
+  pull request for you), or <a href="https://github.com/philrenato/acmet-l2/issues">open an issue</a>
+  with the correction and a source. Corrections to your own entry are authoritative — and if a
+  living person asks to be edited or removed, that's honored, no questions.</p>
   <p class="foot" style="margin-top:20px;border-top:1px solid #e6e3d8;padding-top:16px">
   <b>Mirror &amp; extend this.</b> The whole project is open source — the database (<code>acmet.db</code>),
   the build scripts, and the recovered archive all live in one repo:
@@ -818,6 +843,7 @@ INDEX = f"""<!doctype html><html lang="en"><head><meta charset="utf-8">
   add people, verify claims, fix a record, or rescope it past metals. Start with
   <a href="https://github.com/philrenato/acmet-l2/blob/main/MIRROR.md">MIRROR.md</a>.
   Nobody needs permission to be in a directory; living people get a say before anything new goes public.</p>
+  <p class="qcount" style="margin-top:10px">Site last rebuilt {BUILD_DATE} from <code>acmet.db</code>.</p>
 </div>
 <script>
 (function(){{
@@ -856,5 +882,15 @@ INDEX = f"""<!doctype html><html lang="en"><head><meta charset="utf-8">
 </body></html>"""
 open(os.path.join(SITE, "index.html"), "w").write(INDEX)
 print(f"index: {total} names, {nbuilt} built out")
+
+# ---- sitemap: every page, stamped with the build date ----
+BASE = "https://renato.design/acmet-l2/"
+sm_urls = ["", "lineage.html", "map/"] + sorted(set(fname_of.values()) | set(pfile_of.values()))
+sm = ['<?xml version="1.0" encoding="UTF-8"?>',
+      '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
+sm += [f"<url><loc>{BASE}{u}</loc><lastmod>{BUILD_DATE}</lastmod></url>" for u in sm_urls]
+sm.append("</urlset>")
+open(os.path.join(SITE, "sitemap.xml"), "w").write("\n".join(sm))
+print(f"sitemap.xml: {len(sm_urls)} urls")
 # coverage of cross-links
 print(f"teachers with student lists: {len(students_of)}; total student links: {sum(len(v) for v in students_of.values())}")

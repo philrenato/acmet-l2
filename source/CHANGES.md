@@ -1,11 +1,18 @@
 # Notable updates found by the fact-check pass (2026-05-29)
 
+> ⚠ Frozen snapshot of the 2026-05-29 pass, superseded by later work. In
+> particular: the speculative "likely/almost certainly deceased" language below
+> was later **purged from the live data** (no death is asserted without a good
+> source), and the 20 "NAME CHANGE" rows were audited down to **6 genuine name
+> changes** (the rest are name variants / archive typos — see `fc_change_kind`).
+> Current state lives in HANDOFF.md / RESEARCH_LOG.md.
+
 211 flagged changes (name changes, deaths, program closures/merges):
 
 - DECEASED?    Alma Eikerman  (Died January 3, 1995 in Bloomington, Indiana (born May 16, 1908, Pratt, Kansas))  [high]
 - DECEASED?    Alvin A. Pine  (Died January 28, 2010, at his home in Santa Rosa, CA, of natural causes (born 1933).)  [high]
 - DECEASED?    Antonio Cirono  (Died November 28, 1983 (born 1888 in Serino, Italy))  [high]
-- DECEASED?    Arline M. Fisch  (Died August 20, 2024 (one day before her 94th birthday); born August 21, 1931, Brooklyn. Multiple obituaries (SNAG, SDSU, JCK, American Craft Council, Art Jewelry Forum).)  [high]
+- DECEASED?    Arline M. Fisch  (Died August 20, 2024 (one day before her 93rd birthday); born August 21, 1931, Brooklyn. Multiple obituaries (SNAG, SDSU, JCK, American Craft Council, Art Jewelry Forum).)  [high]
 - DECEASED?    Arthur Pulos  (Died January 15, 1997 (born 1917). Wikidata lists death year as 1997; one secondary source erroneously gives 1993, which corresponds instead to his 1993 Sir Misha Black Medal award.)  [high]
 - DECEASED?    Arthur Vierthaler  (Death year not confirmed by a located obituary. Multiple sources refer to his death (his lapidary/stone collection was donated "when he died"); Artprice lists him as "1916–?". Born 1916, he would be ~110 today, so he is almost certainly deceased.)  [medium]
 - DECEASED?    Bernard Bernstein  (Died July 28, 2021, in New York (aged 92); born August 17, 1928, in the Bronx. Buried at Beth Israel Cemetery, Woodbridge Township, NJ.)  [high]
