@@ -195,3 +195,17 @@ agents re-verified every claim against fetched, live URLs.
   card, a name on a program roster — now yields a search result even without
   an entry of their own ("listed under …", pointing at the hosting page).
   122 such names became findable.
+
+### Round 2 (2026-06-04, editor corrections — Phil)
+
+- **Juan Carlos Caballero-Perez education was fabricated** (a scan agent had
+  him BFA Eastern Michigan under Skip Hunter + MFA U-Washington under Mary Lee
+  Hu — neither true). RIT's own directory says "BFA, MFA, Rochester Institute
+  of Technology"; rows replaced, false student-of links dissolved.
+- **Skip Hunter's real teaching lineage filled in**: Tara J. Nahabetian
+  (Associate Professor & Metals/Jewelry program coordinator, SUNY Buffalo
+  State — official bio confirms BFA EMU, MFA Kent State) and Eric Okon (BFA +
+  MFA EMU; teaches metalsmithing/jewelry there — EMU's pages list him as Part
+  Time Lecturer, 3D Media; published as Lecturer with the official title
+  footnoted, per the no-load-characterization rule), joining Phil Renato.
+- Removed an editorializing line from Phil's bio.

@@ -21,8 +21,7 @@ faculty before taking the position at Kendall.
 
 The names trace one person: **Rizzi** (1974–2002), then **Carrizzi** (2002–2008)
 — the name under which he appears in the original Academic Metals Directory — and
-**Renato** since 2008. This is exactly the kind of quiet change a static directory
-could never keep up with, and the reason this project exists.
+**Renato** since 2008.
 
 ---
 

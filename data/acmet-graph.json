@@ -6,7 +6,7 @@
   "people": 846,
   "programs": 463,
   "programs_placed": 365,
-  "edges": 2109
+  "edges": 2110
  },
  "nodes": [
   {
@@ -12131,7 +12131,7 @@
     "lng": -83.62,
     "precision": "city"
    },
-   "summary": "Part Time Lecturer (Metalsmithing/Jewelry)",
+   "summary": "Eric Okon is a metalsmith, designer, and educator who teaches metalsmithing and jewelry at Eastern Michigan University, where he also earned his BFA and MFA, studying under Skip Hunter. He works under the studio name eometals and serves the",
    "page": null
   },
   {
@@ -20935,27 +20935,9 @@
   },
   {
    "from": "gap/juan-carlos-caballero-perez",
-   "to": "gap/skip-hunter",
-   "type": "studied-under",
-   "label": "BFA"
-  },
-  {
-   "from": "gap/juan-carlos-caballero-perez",
-   "to": "crafts/metalsdirectorypage/s52.html",
+   "to": "crafts/metalsdirectorypage/s156.html",
    "type": "studied-at",
    "label": "BFA"
-  },
-  {
-   "from": "gap/juan-carlos-caballero-perez",
-   "to": "crafts/metalsdirectorypage/p82.html",
-   "type": "studied-under",
-   "label": "MFA"
-  },
-  {
-   "from": "gap/juan-carlos-caballero-perez",
-   "to": "crafts/metalsdirectorypage/s242.html",
-   "type": "studied-at",
-   "label": "MFA"
   },
   {
    "from": "gap/juan-carlos-caballero-perez",
@@ -21184,6 +21166,12 @@
    "to": "crafts/metalsdirectorypage/s181.html",
    "type": "taught-at",
    "label": ""
+  },
+  {
+   "from": "gap/tara-j-nahabetian",
+   "to": "gap/skip-hunter",
+   "type": "studied-under",
+   "label": "BFA"
   },
   {
    "from": "gap/tara-j-nahabetian",
@@ -22192,6 +22180,18 @@
    "to": "crafts/metalsdirectorypage/s51.html",
    "type": "taught-at",
    "label": ""
+  },
+  {
+   "from": "gap/eric-okon",
+   "to": "gap/skip-hunter",
+   "type": "studied-under",
+   "label": "BFA"
+  },
+  {
+   "from": "gap/eric-okon",
+   "to": "crafts/metalsdirectorypage/s52.html",
+   "type": "studied-at",
+   "label": "BFA"
   },
   {
    "from": "gap/eric-okon",
@@ -26431,6 +26431,12 @@
   },
   {
    "from": "gap/john-van-haren",
+   "to": "crafts/metalsdirectorypage/s52.html",
+   "type": "faculty-of",
+   "label": ""
+  },
+  {
+   "from": "gap/eric-okon",
    "to": "crafts/metalsdirectorypage/s52.html",
    "type": "faculty-of",
    "label": ""
