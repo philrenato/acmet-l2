@@ -96,6 +96,11 @@ def _scan(blob):
     return None
 
 def find_state(primary, *secondary):
+    # the geocode overlay (verified campus city + state) wins; it also corrects
+    # wrong-state scanner hits (e.g. Montgomery College is MD, not VA)
+    g = GEO_OVERLAY.get((primary or "").strip().lower())
+    if g and g.get("state"):
+        return g["state"]
     # the institution NAME is the most reliable signal; fall back to fc text
     return _scan(primary) or _scan(" ".join(t for t in secondary if t))
 
@@ -170,8 +175,21 @@ INST_CITY = {  # institution-name fragment -> city key (for names that don't rev
  "ringling":"sarasota","valencia":"valencia ca",
 }
 
+# exact-name geocode overlay (data/geocode_cities.json) — the 2026-06-04 pass
+# resolved every state-centroid/unplaced institution to its real campus city.
+# Keyed by the verbatim program name; wins over fragment matching.
+GEO_OVERLAY = {}
+_geo_path = os.path.join(HERE, "data", "geocode_cities.json")
+if os.path.exists(_geo_path):
+    for _g in json.load(open(_geo_path)).get("resolved", []):
+        if _g.get("city") and _g.get("lat") is not None:
+            GEO_OVERLAY[_g["name"].strip().lower()] = _g
+
 def find_latlng(name, *secondary):
     low = (name or "").lower()
+    # 0) exact-name overlay
+    g = GEO_OVERLAY.get(low.strip())
+    if g: return (g["lat"], g["lng"]), "city"
     # 1) institution -> known city
     for frag in sorted(INST_CITY, key=len, reverse=True):
         if re.search(r"\b"+re.escape(frag)+r"\b", low):

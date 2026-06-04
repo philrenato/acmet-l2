@@ -232,6 +232,15 @@ only. Cross-linked: Butt ↔ Herndon, IAIA roster, UNT alumni.
 - Rowan adjuncts re-attempted (403 + empty headless render + no recent
   Wayback) — still excluded, logged unverifiable in factcheck.
 
+### 2026-06-04 (fourth pass) — city geocoding complete
+All 319 imprecise programs resolved to campus cities (318/319; agents,
+59 web-verified). **27 wrong-state dots corrected** (Rowan-in-PA, Purdue-in-TX,
+Ghost-Ranch-in-GA class errors — centroids were hiding real mistakes).
+**Map now 462 city / 1 state / 0 unplaced** (was 144/221/98); 19 non-US
+schools disclosed in the legend (Albers-USA can't draw them).
+`data/geocode_cities.json` = exact-name overlay read by build_graph
+(find_latlng step 0 + find_state); wins over fragment matching.
+
 ## loose threads / next moves (full roadmap in FUTURE.md)
 - **Donna Sweigart's "3 additional adjunct faculty"** at Rowan — unnamed, faculty
   directory is JS-rendered + bot-blocked (re-tried 2026-06-04); excluded. If she

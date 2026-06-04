@@ -1,0 +1,2670 @@
+{
+ "_generated": "2026-06-04",
+ "_note": "campus-city geocode overlay; exact program-name match; 2026-06-04 pass (3 research agents, 318/319 resolved, 27 wrong-state detections corrected)",
+ "resolved": [
+  {
+   "name": "Middle Tennessee State University",
+   "city": "Murfreesboro",
+   "state": "TN",
+   "lat": 35.85,
+   "lng": -86.39,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Midwestern State University",
+   "city": "Wichita Falls",
+   "state": "TX",
+   "lat": 33.91,
+   "lng": -98.49,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Missouri Southern State College",
+   "city": "Joplin",
+   "state": "MO",
+   "lat": 37.08,
+   "lng": -94.51,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Montana State University",
+   "city": "Bozeman",
+   "state": "MT",
+   "lat": 45.68,
+   "lng": -111.04,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Montgomery College",
+   "city": "Rockville",
+   "state": "MD",
+   "lat": 39.08,
+   "lng": -77.15,
+   "basis": "knowledge",
+   "state_mismatch": true
+  },
+  {
+   "name": "Nazareth College",
+   "city": "Pittsford",
+   "state": "NY",
+   "lat": 43.09,
+   "lng": -77.52,
+   "basis": "knowledge"
+  },
+  {
+   "name": "New Mexico State University",
+   "city": "Las Cruces",
+   "state": "NM",
+   "lat": 32.32,
+   "lng": -106.77,
+   "basis": "knowledge"
+  },
+  {
+   "name": "New York University",
+   "city": "New York",
+   "state": "NY",
+   "lat": 40.73,
+   "lng": -73.99,
+   "basis": "knowledge"
+  },
+  {
+   "name": "North Hennepin Community College",
+   "city": "Brooklyn Park",
+   "state": "MN",
+   "lat": 45.1,
+   "lng": -93.36,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Bradley University",
+   "city": "Peoria",
+   "state": "IL",
+   "lat": 40.7,
+   "lng": -89.62,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Northeastern Illinois University",
+   "city": "Chicago",
+   "state": "IL",
+   "lat": 41.98,
+   "lng": -87.72,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Oklahoma State University",
+   "city": "Stillwater",
+   "state": "OK",
+   "lat": 36.12,
+   "lng": -97.07,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Old Dominion University",
+   "city": "Norfolk",
+   "state": "VA",
+   "lat": 36.89,
+   "lng": -76.31,
+   "basis": "knowledge",
+   "state_mismatch": true
+  },
+  {
+   "name": "Oral Roberts University",
+   "city": "Tulsa",
+   "state": "OK",
+   "lat": 36.06,
+   "lng": -95.94,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Pennsylvania State University",
+   "city": "University Park",
+   "state": "PA",
+   "lat": 40.8,
+   "lng": -77.86,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Purdue University",
+   "city": "West Lafayette",
+   "state": "IN",
+   "lat": 40.42,
+   "lng": -86.92,
+   "basis": "knowledge",
+   "state_mismatch": true
+  },
+  {
+   "name": "Quincy College",
+   "city": "Quincy",
+   "state": "MA",
+   "lat": 42.25,
+   "lng": -71.0,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Revere Academy of Jewelry Arts",
+   "city": "San Francisco",
+   "state": "CA",
+   "lat": 37.77,
+   "lng": -122.42,
+   "basis": "web"
+  },
+  {
+   "name": "Rhode Island College",
+   "city": "Providence",
+   "state": "RI",
+   "lat": 41.84,
+   "lng": -71.43,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Roberts Wesleyan College",
+   "city": "Rochester",
+   "state": "NY",
+   "lat": 43.13,
+   "lng": -77.71,
+   "basis": "knowledge",
+   "state_mismatch": true
+  },
+  {
+   "name": "Rowan University",
+   "city": "Glassboro",
+   "state": "NJ",
+   "lat": 39.71,
+   "lng": -75.11,
+   "basis": "knowledge",
+   "state_mismatch": true
+  },
+  {
+   "name": "San Antonio College",
+   "city": "San Antonio",
+   "state": "TX",
+   "lat": 29.46,
+   "lng": -98.49,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Sawtooth Center for Visual Art",
+   "city": "Winston-Salem",
+   "state": "NC",
+   "lat": 36.1,
+   "lng": -80.24,
+   "basis": "web"
+  },
+  {
+   "name": "School of the Museum of Fine Arts",
+   "city": "Boston",
+   "state": "MA",
+   "lat": 42.34,
+   "lng": -71.09,
+   "basis": "knowledge",
+   "state_mismatch": true
+  },
+  {
+   "name": "Shorter College",
+   "city": "Rome",
+   "state": "GA",
+   "lat": 34.26,
+   "lng": -85.16,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Skidmore College",
+   "city": "Saratoga Springs",
+   "state": "NY",
+   "lat": 43.1,
+   "lng": -73.78,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Slippery Rock University",
+   "city": "Slippery Rock",
+   "state": "PA",
+   "lat": 41.06,
+   "lng": -80.06,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Southeastern Louisiana University",
+   "city": "Hammond",
+   "state": "LA",
+   "lat": 30.5,
+   "lng": -90.46,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Southern Connecticut State University",
+   "city": "New Haven",
+   "state": "CT",
+   "lat": 41.33,
+   "lng": -72.95,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Southwest School of Art and Craft",
+   "city": "San Antonio",
+   "state": "TX",
+   "lat": 29.43,
+   "lng": -98.48,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Southwest Missouri State University",
+   "city": "Springfield",
+   "state": "MO",
+   "lat": 37.2,
+   "lng": -93.28,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Southwest Texas State University",
+   "city": "San Marcos",
+   "state": "TX",
+   "lat": 29.88,
+   "lng": -97.94,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Spokane Falls Community College",
+   "city": "Spokane",
+   "state": "WA",
+   "lat": 47.66,
+   "lng": -117.5,
+   "basis": "knowledge",
+   "state_mismatch": true
+  },
+  {
+   "name": "State University of New York at Geneseo",
+   "city": "Geneseo",
+   "state": "NY",
+   "lat": 42.8,
+   "lng": -77.82,
+   "basis": "knowledge"
+  },
+  {
+   "name": "The Florida State University",
+   "city": "Tallahassee",
+   "state": "FL",
+   "lat": 30.44,
+   "lng": -84.3,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Academy of Art College",
+   "city": "San Francisco",
+   "state": "CA",
+   "lat": 37.79,
+   "lng": -122.4,
+   "basis": "knowledge"
+  },
+  {
+   "name": "The University of Michigan",
+   "city": "Ann Arbor",
+   "state": "MI",
+   "lat": 42.28,
+   "lng": -83.74,
+   "basis": "knowledge"
+  },
+  {
+   "name": "The University of Texas at Austin",
+   "city": "Austin",
+   "state": "TX",
+   "lat": 30.28,
+   "lng": -97.74,
+   "basis": "knowledge"
+  },
+  {
+   "name": "The University of Texas at El Paso",
+   "city": "El Paso",
+   "state": "TX",
+   "lat": 31.77,
+   "lng": -106.5,
+   "basis": "knowledge"
+  },
+  {
+   "name": "The University of Texas Pan American",
+   "city": "Edinburg",
+   "state": "TX",
+   "lat": 26.3,
+   "lng": -98.16,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Tufts University",
+   "city": "Medford",
+   "state": "MA",
+   "lat": 42.41,
+   "lng": -71.12,
+   "basis": "knowledge",
+   "state_mismatch": true
+  },
+  {
+   "name": "University of Arizona",
+   "city": "Tucson",
+   "state": "AZ",
+   "lat": 32.23,
+   "lng": -110.95,
+   "basis": "knowledge"
+  },
+  {
+   "name": "University of Delaware",
+   "city": "Newark",
+   "state": "DE",
+   "lat": 39.68,
+   "lng": -75.75,
+   "basis": "knowledge"
+  },
+  {
+   "name": "University of Illinois at Urbana-Champaign",
+   "city": "Urbana",
+   "state": "IL",
+   "lat": 40.11,
+   "lng": -88.21,
+   "basis": "knowledge"
+  },
+  {
+   "name": "University of Massachusetts / Dartmouth",
+   "city": "Dartmouth",
+   "state": "MA",
+   "lat": 41.63,
+   "lng": -71.0,
+   "basis": "knowledge"
+  },
+  {
+   "name": "University of Minnesota",
+   "city": "Minneapolis",
+   "state": "MN",
+   "lat": 44.97,
+   "lng": -93.24,
+   "basis": "knowledge"
+  },
+  {
+   "name": "University of Missouri",
+   "city": "Columbia",
+   "state": "MO",
+   "lat": 38.95,
+   "lng": -92.33,
+   "basis": "knowledge"
+  },
+  {
+   "name": "University of Oregon",
+   "city": "Eugene",
+   "state": "OR",
+   "lat": 44.05,
+   "lng": -123.07,
+   "basis": "knowledge"
+  },
+  {
+   "name": "University of Science & Arts of Oklahoma",
+   "city": "Chickasha",
+   "state": "OK",
+   "lat": 35.05,
+   "lng": -97.94,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Casper College",
+   "city": "Casper",
+   "state": "WY",
+   "lat": 42.85,
+   "lng": -106.32,
+   "basis": "knowledge",
+   "state_mismatch": true
+  },
+  {
+   "name": "University of South Carolina",
+   "city": "Columbia",
+   "state": "SC",
+   "lat": 34.0,
+   "lng": -81.03,
+   "basis": "knowledge"
+  },
+  {
+   "name": "University of Texas at Arlington",
+   "city": "Arlington",
+   "state": "TX",
+   "lat": 32.73,
+   "lng": -97.11,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Weber State University",
+   "city": "Ogden",
+   "state": "UT",
+   "lat": 41.19,
+   "lng": -111.94,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Western Maryland College",
+   "city": "Westminster",
+   "state": "MD",
+   "lat": 39.58,
+   "lng": -77.0,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Western Montana College",
+   "city": "Dillon",
+   "state": "MT",
+   "lat": 45.21,
+   "lng": -112.64,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Western State College of Colorado",
+   "city": "Gunnison",
+   "state": "CO",
+   "lat": 38.55,
+   "lng": -106.92,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Winthrop College",
+   "city": "Rock Hill",
+   "state": "SC",
+   "lat": 34.94,
+   "lng": -81.03,
+   "basis": "knowledge",
+   "state_mismatch": true
+  },
+  {
+   "name": "Ohio State University",
+   "city": "Columbus",
+   "state": "OH",
+   "lat": 40.0,
+   "lng": -83.01,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Stephen F. Austin State University",
+   "city": "Nacogdoches",
+   "state": "TX",
+   "lat": 31.62,
+   "lng": -94.65,
+   "basis": "knowledge",
+   "state_mismatch": true
+  },
+  {
+   "name": "Clark College",
+   "city": "Vancouver",
+   "state": "WA",
+   "lat": 45.64,
+   "lng": -122.66,
+   "basis": "knowledge"
+  },
+  {
+   "name": "College of DuPage",
+   "city": "Glen Ellyn",
+   "state": "IL",
+   "lat": 41.86,
+   "lng": -88.07,
+   "basis": "knowledge",
+   "state_mismatch": true
+  },
+  {
+   "name": "Dakota State University",
+   "city": "Madison",
+   "state": "SD",
+   "lat": 44.01,
+   "lng": -97.11,
+   "basis": "knowledge",
+   "state_mismatch": true
+  },
+  {
+   "name": "East Tennessee State University",
+   "city": "Johnson City",
+   "state": "TN",
+   "lat": 36.31,
+   "lng": -82.35,
+   "basis": "knowledge"
+  },
+  {
+   "name": "East Texas Baptist University",
+   "city": "Marshall",
+   "state": "TX",
+   "lat": 32.54,
+   "lng": -94.37,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Eastern Illinois University",
+   "city": "Charleston",
+   "state": "IL",
+   "lat": 39.5,
+   "lng": -88.17,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Eastern Kentucky University",
+   "city": "Richmond",
+   "state": "KY",
+   "lat": 37.75,
+   "lng": -84.29,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Eastern New Mexico University",
+   "city": "Portales",
+   "state": "NM",
+   "lat": 34.18,
+   "lng": -103.34,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Florida Atlantic University",
+   "city": "Boca Raton",
+   "state": "FL",
+   "lat": 26.37,
+   "lng": -80.1,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Florida Gulf Coast Art Center",
+   "city": "Belleair",
+   "state": "FL",
+   "lat": 27.94,
+   "lng": -82.81,
+   "basis": "web",
+   "note": "Belleair art center (222 Ponce de Leon Blvd), distinct from FGCU; foundation now inactive."
+  },
+  {
+   "name": "Florida Keys Community College",
+   "city": "Key West",
+   "state": "FL",
+   "lat": 24.57,
+   "lng": -81.76,
+   "basis": "web"
+  },
+  {
+   "name": "Georgia State University",
+   "city": "Atlanta",
+   "state": "GA",
+   "lat": 33.75,
+   "lng": -84.39,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Glassboro State College",
+   "city": "Glassboro",
+   "state": "NJ",
+   "lat": 39.7,
+   "lng": -75.11,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Haywood Community College",
+   "city": "Clyde",
+   "state": "NC",
+   "lat": 35.53,
+   "lng": -82.92,
+   "basis": "web",
+   "state_mismatch": true
+  },
+  {
+   "name": "Holland School for Jewelers",
+   "city": "Selma",
+   "state": "AL",
+   "lat": 32.41,
+   "lng": -87.02,
+   "basis": "web"
+  },
+  {
+   "name": "Humboldt State University",
+   "city": "Arcata",
+   "state": "CA",
+   "lat": 40.87,
+   "lng": -124.08,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Illinois Central College",
+   "city": "East Peoria",
+   "state": "IL",
+   "lat": 40.67,
+   "lng": -89.58,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Barton County Community College",
+   "city": "Great Bend",
+   "state": "KS",
+   "lat": 38.36,
+   "lng": -98.76,
+   "basis": "web"
+  },
+  {
+   "name": "Institute of American Indian Arts",
+   "city": "Santa Fe",
+   "state": "NM",
+   "lat": 35.52,
+   "lng": -106.02,
+   "basis": "knowledge"
+  },
+  {
+   "name": "New Jersey City University",
+   "city": "Jersey City",
+   "state": "NJ",
+   "lat": 40.71,
+   "lng": -74.08,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Beaver College",
+   "city": "Glenside",
+   "state": "PA",
+   "lat": 40.1,
+   "lng": -75.15,
+   "basis": "knowledge",
+   "state_mismatch": true
+  },
+  {
+   "name": "Maine College of Art",
+   "city": "Portland",
+   "state": "ME",
+   "lat": 43.66,
+   "lng": -70.26,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Maryland Art Institute, Jewelry Institute",
+   "city": "Baltimore",
+   "state": "MD",
+   "lat": 39.3,
+   "lng": -76.62,
+   "basis": "web"
+  },
+  {
+   "name": "Southern Illinois University",
+   "city": "Carbondale",
+   "state": "IL",
+   "lat": 37.73,
+   "lng": -89.22,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Academy of Art University",
+   "city": "San Francisco",
+   "state": "CA",
+   "lat": 37.79,
+   "lng": -122.4,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Adam's Forge",
+   "city": "Simi Valley",
+   "state": "CA",
+   "lat": 34.27,
+   "lng": -118.74,
+   "basis": "web"
+  },
+  {
+   "name": "Adirondack Folk School",
+   "city": "Lake Luzerne",
+   "state": "NY",
+   "lat": 43.31,
+   "lng": -73.83,
+   "basis": "web"
+  },
+  {
+   "name": "Ah Haa School for the Arts",
+   "city": "Telluride",
+   "state": "CO",
+   "lat": 37.94,
+   "lng": -107.81,
+   "basis": "web"
+  },
+  {
+   "name": "Alabama Folk School",
+   "city": "Nauvoo",
+   "state": "AL",
+   "lat": 33.99,
+   "lng": -87.36,
+   "basis": "web"
+  },
+  {
+   "name": "American School of Jewelry",
+   "city": "Sunrise",
+   "state": "FL",
+   "lat": 26.16,
+   "lng": -80.29,
+   "basis": "web"
+  },
+  {
+   "name": "Arapahoe Community College",
+   "city": "Littleton",
+   "state": "CO",
+   "lat": 39.61,
+   "lng": -105.01,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Arbutus Folk School",
+   "city": "Olympia",
+   "state": "WA",
+   "lat": 47.04,
+   "lng": -122.9,
+   "basis": "web"
+  },
+  {
+   "name": "Arcadia University",
+   "city": "Glenside",
+   "state": "PA",
+   "lat": 40.1,
+   "lng": -75.15,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Arkansas Craft School",
+   "city": "Mountain View",
+   "state": "AR",
+   "lat": 35.87,
+   "lng": -92.12,
+   "basis": "web"
+  },
+  {
+   "name": "Arlington Center for the Arts",
+   "city": "Arlington",
+   "state": "MA",
+   "lat": 42.42,
+   "lng": -71.16,
+   "basis": "web",
+   "state_mismatch": true
+  },
+  {
+   "name": "Armory Art Center",
+   "city": "West Palm Beach",
+   "state": "FL",
+   "lat": 26.71,
+   "lng": -80.06,
+   "basis": "web"
+  },
+  {
+   "name": "Art Association of Jackson Hole",
+   "city": "Jackson",
+   "state": "WY",
+   "lat": 43.48,
+   "lng": -110.76,
+   "basis": "web"
+  },
+  {
+   "name": "Berkshire Art Center (formerly IS183 Art School of the Berkshires)",
+   "city": "Stockbridge",
+   "state": "MA",
+   "lat": 42.29,
+   "lng": -73.32,
+   "basis": "web"
+  },
+  {
+   "name": "BARN Jewelry and Fine Metal Studio (Bainbridge Artisan Resource Network)",
+   "city": "Bainbridge Island",
+   "state": "WA",
+   "lat": 47.63,
+   "lng": -122.52,
+   "basis": "knowledge"
+  },
+  {
+   "name": "BAYarts",
+   "city": "Bay Village",
+   "state": "OH",
+   "lat": 41.49,
+   "lng": -81.93,
+   "basis": "web"
+  },
+  {
+   "name": "Bridgewater State University (formerly Bridgewater State College)",
+   "city": "Bridgewater",
+   "state": "MA",
+   "lat": 41.99,
+   "lng": -70.97,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Brockway Center for Arts & Technology",
+   "city": "Brockway",
+   "state": "PA",
+   "lat": 41.25,
+   "lng": -78.8,
+   "basis": "web"
+  },
+  {
+   "name": "Brookdale Community College",
+   "city": "Lincroft",
+   "state": "NJ",
+   "lat": 40.33,
+   "lng": -74.12,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Brookfield Craft Center",
+   "city": "Brookfield",
+   "state": "CT",
+   "lat": 41.45,
+   "lng": -73.4,
+   "basis": "web"
+  },
+  {
+   "name": "Brookline Arts Center",
+   "city": "Brookline",
+   "state": "MA",
+   "lat": 42.33,
+   "lng": -71.12,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Canton Museum of Art",
+   "city": "Canton",
+   "state": "OH",
+   "lat": 40.8,
+   "lng": -81.37,
+   "basis": "web"
+  },
+  {
+   "name": "Center for Enamel Art",
+   "city": "El Cerrito",
+   "state": "CA",
+   "lat": 37.92,
+   "lng": -122.3,
+   "basis": "web"
+  },
+  {
+   "name": "Central Oregon Community College",
+   "city": "Bend",
+   "state": "OR",
+   "lat": 44.06,
+   "lng": -121.32,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Central Piedmont Community College",
+   "city": "Charlotte",
+   "state": "NC",
+   "lat": 35.22,
+   "lng": -80.84,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Clear Creek Academy of Jewelry & Metal Arts",
+   "city": "Glendale",
+   "state": "CO",
+   "lat": 39.7,
+   "lng": -104.93,
+   "basis": "web"
+  },
+  {
+   "name": "Community Arts Center (Wallingford, PA)",
+   "city": "Wallingford",
+   "state": "PA",
+   "lat": 39.9,
+   "lng": -75.37,
+   "basis": "web",
+   "url": "https://communityartscenter.org/"
+  },
+  {
+   "name": "Custom Design Metal Arts",
+   "city": "Ocala",
+   "state": "FL",
+   "lat": 29.19,
+   "lng": -82.13,
+   "basis": "web"
+  },
+  {
+   "name": "Creative Arts Workshop",
+   "city": "New Haven",
+   "state": "CT",
+   "lat": 41.31,
+   "lng": -72.92,
+   "basis": "knowledge",
+   "url": "https://www.creativeartsworkshop.org/"
+  },
+  {
+   "name": "Crown Trout Jewelers",
+   "city": "Lanesboro",
+   "state": "MN",
+   "lat": 43.72,
+   "lng": -91.98,
+   "basis": "web"
+  },
+  {
+   "name": "Delaware Art Museum",
+   "city": "Wilmington",
+   "state": "DE",
+   "lat": 39.77,
+   "lng": -75.56,
+   "basis": "knowledge",
+   "url": "https://delart.org/"
+  },
+  {
+   "name": "Des Moines Art Center",
+   "city": "Des Moines",
+   "state": "IA",
+   "lat": 41.59,
+   "lng": -93.65,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Diablo Valley College",
+   "city": "Pleasant Hill",
+   "state": "CA",
+   "lat": 37.95,
+   "lng": -122.06,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Drouhard National Jewelers School",
+   "city": "Mansfield",
+   "state": "OH",
+   "lat": 40.76,
+   "lng": -82.52,
+   "basis": "web"
+  },
+  {
+   "name": "Dunedin Fine Art Center",
+   "city": "Dunedin",
+   "state": "FL",
+   "lat": 28.02,
+   "lng": -82.77,
+   "basis": "knowledge"
+  },
+  {
+   "name": "El Camino College",
+   "city": "Torrance",
+   "state": "CA",
+   "lat": 33.89,
+   "lng": -118.33,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Eureka Springs School of the Arts",
+   "city": "Eureka Springs",
+   "state": "AR",
+   "lat": 36.4,
+   "lng": -93.74,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Evanston Art Center",
+   "city": "Evanston",
+   "state": "IL",
+   "lat": 42.06,
+   "lng": -87.68,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Fine Line Creative Arts Center",
+   "city": "St. Charles",
+   "state": "IL",
+   "lat": 41.91,
+   "lng": -88.31,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Fire Arts, Inc.",
+   "city": "South Bend",
+   "state": "IN",
+   "lat": 41.68,
+   "lng": -86.25,
+   "basis": "web"
+  },
+  {
+   "name": "Firehouse Art Center (Norman Firehouse Art Center)",
+   "city": "Norman",
+   "state": "OK",
+   "lat": 35.22,
+   "lng": -97.44,
+   "basis": "web",
+   "state_mismatch": true,
+   "url": "https://www.normanfirehouse.com/"
+  },
+  {
+   "name": "Flathead Valley Community College",
+   "city": "Kalispell",
+   "state": "MT",
+   "lat": 48.2,
+   "lng": -114.31,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Fletcher Farm School for the Arts and Crafts",
+   "city": "Ludlow",
+   "state": "VT",
+   "lat": 43.39,
+   "lng": -72.7,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Folsom Lake College",
+   "city": "Folsom",
+   "state": "CA",
+   "lat": 38.68,
+   "lng": -121.16,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Foothill Creative Arts Group",
+   "city": "Sierra Madre",
+   "state": "CA",
+   "lat": 34.16,
+   "lng": -118.05,
+   "basis": "web"
+  },
+  {
+   "name": "Fredricka Kulicke School of Jewelry Art",
+   "city": "Wayne",
+   "state": "NJ",
+   "lat": 40.93,
+   "lng": -74.25,
+   "basis": "web",
+   "url": "https://kulickejewelryschool.com/"
+  },
+  {
+   "name": "Fresno City College",
+   "city": "Fresno",
+   "state": "CA",
+   "lat": 36.78,
+   "lng": -119.8,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Front Range Community College",
+   "city": "Westminster",
+   "state": "CO",
+   "lat": 39.84,
+   "lng": -105.04,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Fuller Craft Museum",
+   "city": "Brockton",
+   "state": "MA",
+   "lat": 42.08,
+   "lng": -71.02,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Gem City College",
+   "city": "Quincy",
+   "state": "IL",
+   "lat": 39.94,
+   "lng": -91.41,
+   "basis": "web",
+   "url": "http://www.gemcitycollege.com/"
+  },
+  {
+   "name": "Georgia Southern University",
+   "city": "Statesboro",
+   "state": "GA",
+   "lat": 32.42,
+   "lng": -81.78,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Ghost Ranch",
+   "city": "Abiquiu",
+   "state": "NM",
+   "lat": 36.33,
+   "lng": -106.47,
+   "basis": "web",
+   "state_mismatch": true,
+   "url": "https://www.ghostranch.org/"
+  },
+  {
+   "name": "Glendale Community College",
+   "city": "Glendale",
+   "state": "CA",
+   "lat": 34.15,
+   "lng": -118.25,
+   "basis": "knowledge"
+  },
+  {
+   "name": "GoggleWorks Center for the Arts",
+   "city": "Reading",
+   "state": "PA",
+   "lat": 40.33,
+   "lng": -75.93,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Golden West College",
+   "city": "Huntington Beach",
+   "state": "CA",
+   "lat": 33.72,
+   "lng": -118.01,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Goshen College",
+   "city": "Goshen",
+   "state": "IN",
+   "lat": 41.58,
+   "lng": -85.83,
+   "basis": "web",
+   "state_mismatch": true,
+   "url": "https://www.goshen.edu/"
+  },
+  {
+   "name": "Guilded Lynx",
+   "city": "Ridgefield",
+   "state": "CT",
+   "lat": 41.28,
+   "lng": -73.5,
+   "basis": "web",
+   "url": "https://www.guildedlynx.com/"
+  },
+  {
+   "name": "Guilford Art Center",
+   "city": "Guilford",
+   "state": "CT",
+   "lat": 41.29,
+   "lng": -72.68,
+   "basis": "knowledge",
+   "url": "https://guilfordartcenter.org/"
+  },
+  {
+   "name": "Hofstra University",
+   "city": "Hempstead",
+   "state": "NY",
+   "lat": 40.71,
+   "lng": -73.6,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Idyllwild Arts",
+   "city": "Idyllwild",
+   "state": "CA",
+   "lat": 33.74,
+   "lng": -116.72,
+   "basis": "knowledge"
+  },
+  {
+   "name": "James Carter Studio & School of Jewelry Arts",
+   "city": "Carrboro",
+   "state": "NC",
+   "lat": 35.91,
+   "lng": -79.08,
+   "basis": "web",
+   "url": "https://jamescarterstudio.com/"
+  },
+  {
+   "name": "Jewelry Arts Institute",
+   "city": "New York",
+   "state": "NY",
+   "lat": 40.74,
+   "lng": -73.98,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Jewelry Institute of America",
+   "city": "Houston",
+   "state": "TX",
+   "lat": 29.78,
+   "lng": -95.58,
+   "basis": "web",
+   "url": "https://www.jewelryinstitute.org/"
+  },
+  {
+   "name": "John C. Campbell Folk School",
+   "city": "Brasstown",
+   "state": "NC",
+   "lat": 35.02,
+   "lng": -83.8,
+   "basis": "knowledge",
+   "url": "https://www.folkschool.org/"
+  },
+  {
+   "name": "Johnson County Community College",
+   "city": "Overland Park",
+   "state": "KS",
+   "lat": 38.92,
+   "lng": -94.74,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Kentucky School of Craft",
+   "city": "Hindman",
+   "state": "KY",
+   "lat": 37.33,
+   "lng": -82.98,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Kishwaukee College",
+   "city": "Malta",
+   "state": "IL",
+   "lat": 41.93,
+   "lng": -88.86,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Krasl Art Center",
+   "city": "St. Joseph",
+   "state": "MI",
+   "lat": 42.11,
+   "lng": -86.48,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Laramie County Community College",
+   "city": "Cheyenne",
+   "state": "WY",
+   "lat": 41.16,
+   "lng": -104.76,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Littleton Studio School",
+   "city": "Littleton",
+   "state": "NH",
+   "lat": 44.31,
+   "lng": -71.77,
+   "basis": "web",
+   "url": "https://www.littletonstudioschool.org/"
+  },
+  {
+   "name": "Lighthouse ArtCenter",
+   "city": "Tequesta",
+   "state": "FL",
+   "lat": 26.97,
+   "lng": -80.1,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Louisiana State University \u2014 College of Art & Design (School of Art)",
+   "city": "Baton Rouge",
+   "state": "LA",
+   "lat": 30.41,
+   "lng": -91.18,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Milan Village Arts School",
+   "city": "Milan",
+   "state": "MN",
+   "lat": 45.11,
+   "lng": -95.91,
+   "basis": "web",
+   "url": "https://milanvillageartsschool.org/"
+  },
+  {
+   "name": "Main Line Art Center",
+   "city": "Haverford",
+   "state": "PA",
+   "lat": 40.01,
+   "lng": -75.3,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Maryland Hall for the Creative Arts",
+   "city": "Annapolis",
+   "state": "MD",
+   "lat": 38.98,
+   "lng": -76.5,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Mesa Arts Center",
+   "city": "Mesa",
+   "state": "AZ",
+   "lat": 33.42,
+   "lng": -111.83,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Metalwerx",
+   "city": "Waltham",
+   "state": "MA",
+   "lat": 42.38,
+   "lng": -71.24,
+   "basis": "knowledge",
+   "url": "https://www.metalwerx.com/"
+  },
+  {
+   "name": "Midland Center for the Arts",
+   "city": "Midland",
+   "state": "MI",
+   "lat": 43.62,
+   "lng": -84.23,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Mission College",
+   "city": "Santa Clara",
+   "state": "CA",
+   "lat": 37.39,
+   "lng": -121.98,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Monterey Peninsula College",
+   "city": "Monterey",
+   "state": "CA",
+   "lat": 36.6,
+   "lng": -121.89,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Mt. Hood Community College",
+   "city": "Gresham",
+   "state": "OR",
+   "lat": 45.51,
+   "lng": -122.43,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Multnomah Arts Center",
+   "city": "Portland",
+   "state": "OR",
+   "lat": 45.48,
+   "lng": -122.7,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Munson-Williams-Proctor Arts Institute (MUNSON)",
+   "city": "Utica",
+   "state": "NY",
+   "lat": 43.1,
+   "lng": -75.23,
+   "basis": "knowledge"
+  },
+  {
+   "name": "New Approach School for Jewelers",
+   "city": "Arrington",
+   "state": "TN",
+   "lat": 35.81,
+   "lng": -86.66,
+   "basis": "web",
+   "url": "https://newapproachschool.com/"
+  },
+  {
+   "name": "North Country Studio Workshops",
+   "city": "Bennington",
+   "state": "VT",
+   "lat": 42.88,
+   "lng": -73.2,
+   "basis": "web",
+   "url": "https://ncsw.org/"
+  },
+  {
+   "name": "North House Folk School",
+   "city": "Grand Marais",
+   "state": "MN",
+   "lat": 47.75,
+   "lng": -90.34,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Ohio Wesleyan University",
+   "city": "Delaware",
+   "state": "OH",
+   "lat": 40.3,
+   "lng": -83.07,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Ox-Bow School of Art & Artists' Residency",
+   "city": "Saugatuck",
+   "state": "MI",
+   "lat": 42.66,
+   "lng": -86.21,
+   "basis": "knowledge",
+   "state_mismatch": true,
+   "url": "https://www.ox-bow.org/"
+  },
+  {
+   "name": "Ox-Bow School of Art",
+   "city": "Saugatuck",
+   "state": "MI",
+   "lat": 42.66,
+   "lng": -86.21,
+   "basis": "knowledge",
+   "state_mismatch": true,
+   "url": "https://www.ox-bow.org/"
+  },
+  {
+   "name": "Peninsula School of Art (PenArt)",
+   "city": "Fish Creek",
+   "state": "WI",
+   "lat": 45.13,
+   "lng": -87.24,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Pennsylvania Guild of Craftsmen",
+   "city": "Lancaster",
+   "state": "PA",
+   "lat": 40.04,
+   "lng": -76.31,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Petaluma Arts Center",
+   "city": "Petaluma",
+   "state": "CA",
+   "lat": 38.23,
+   "lng": -122.63,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Peters Valley School of Craft",
+   "city": "Layton",
+   "state": "NJ",
+   "lat": 41.2,
+   "lng": -74.81,
+   "basis": "web",
+   "state_mismatch": true,
+   "url": "https://petersvalley.org/"
+  },
+  {
+   "name": "Pueblo Community College",
+   "city": "Pueblo",
+   "state": "CO",
+   "lat": 38.25,
+   "lng": -104.63,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Radford University",
+   "city": "Radford",
+   "state": "VA",
+   "lat": 37.13,
+   "lng": -80.55,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Rogue Community College",
+   "city": "Grants Pass",
+   "state": "OR",
+   "lat": 42.44,
+   "lng": -123.33,
+   "basis": "knowledge",
+   "state_mismatch": true
+  },
+  {
+   "name": "Saddleback College",
+   "city": "Mission Viejo",
+   "state": "CA",
+   "lat": 33.58,
+   "lng": -117.66,
+   "basis": "knowledge"
+  },
+  {
+   "name": "San Jacinto College \u2013 South Campus",
+   "city": "Houston",
+   "state": "TX",
+   "lat": 29.57,
+   "lng": -95.21,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Schack Art Center",
+   "city": "Everett",
+   "state": "WA",
+   "lat": 47.98,
+   "lng": -122.2,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Sierra College",
+   "city": "Rocklin",
+   "state": "CA",
+   "lat": 38.79,
+   "lng": -121.2,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Silvera Jewelry School",
+   "city": "Berkeley",
+   "state": "CA",
+   "lat": 37.87,
+   "lng": -122.28,
+   "basis": "web",
+   "state_mismatch": true,
+   "url": "https://www.silverajewelry.com/"
+  },
+  {
+   "name": "Silvermine Arts Center",
+   "city": "New Canaan",
+   "state": "CT",
+   "lat": 41.16,
+   "lng": -73.46,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Smith Shop",
+   "city": "Detroit",
+   "state": "MI",
+   "lat": 42.36,
+   "lng": -83.04,
+   "basis": "web",
+   "url": "https://smithshop.com/"
+  },
+  {
+   "name": "Snow Farm",
+   "city": "Williamsburg",
+   "state": "MA",
+   "lat": 42.39,
+   "lng": -72.73,
+   "basis": "web",
+   "url": "https://snowfarm.org/"
+  },
+  {
+   "name": "Southern Maine Community College",
+   "city": "South Portland",
+   "state": "ME",
+   "lat": 43.65,
+   "lng": -70.23,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Southwestern College",
+   "city": "Chula Vista",
+   "state": "CA",
+   "lat": 32.64,
+   "lng": -117.01,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Spruill Center for the Arts",
+   "city": "Atlanta",
+   "state": "GA",
+   "lat": 33.94,
+   "lng": -84.34,
+   "basis": "knowledge",
+   "url": "https://spruillarts.org/"
+  },
+  {
+   "name": "Stewart's International School for Jewelers",
+   "city": "Jupiter",
+   "state": "FL",
+   "lat": 26.93,
+   "lng": -80.09,
+   "basis": "web",
+   "url": "http://www.stewartsintlschool.com/"
+  },
+  {
+   "name": "Stonybrook Fine Arts (now Stonybrook Metal Arts & Sculpture School)",
+   "city": "Jamaica Plain",
+   "state": "MA",
+   "lat": 42.31,
+   "lng": -71.11,
+   "basis": "web",
+   "url": "https://www.stonybrookmass.org/"
+  },
+  {
+   "name": "Sul Ross State University",
+   "city": "Alpine",
+   "state": "TX",
+   "lat": 30.36,
+   "lng": -103.66,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Sweetwater Center for the Arts",
+   "city": "Sewickley",
+   "state": "PA",
+   "lat": 40.54,
+   "lng": -80.18,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Texas State University - San Marcos (School of Art and Design)",
+   "city": "San Marcos",
+   "state": "TX",
+   "lat": 29.89,
+   "lng": -97.94,
+   "basis": "knowledge"
+  },
+  {
+   "name": "The Art Center Highland Park",
+   "city": "Highland Park",
+   "state": "IL",
+   "lat": 42.18,
+   "lng": -87.8,
+   "basis": "knowledge"
+  },
+  {
+   "name": "The Art League",
+   "city": "Alexandria",
+   "state": "VA",
+   "lat": 38.8,
+   "lng": -77.04,
+   "basis": "web",
+   "state_mismatch": true,
+   "url": "https://www.theartleague.org/"
+  },
+  {
+   "name": "The Art School at Old Church",
+   "city": "Demarest",
+   "state": "NJ",
+   "lat": 40.96,
+   "lng": -73.96,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Colorado Springs Fine Arts Center at Colorado College (FAC's Bemis School of Art)",
+   "city": "Colorado Springs",
+   "state": "CO",
+   "lat": 38.84,
+   "lng": -104.83,
+   "basis": "knowledge"
+  },
+  {
+   "name": "The Craft Guild (of Dallas)",
+   "city": "Carrollton",
+   "state": "TX",
+   "lat": 32.99,
+   "lng": -96.9,
+   "basis": "web",
+   "state_mismatch": true,
+   "url": "https://www.thecraftguild.org/"
+  },
+  {
+   "name": "The Crucible",
+   "city": "Oakland",
+   "state": "CA",
+   "lat": 37.81,
+   "lng": -122.29,
+   "basis": "knowledge",
+   "url": "https://www.thecrucible.org/"
+  },
+  {
+   "name": "The Delaplaine Arts Center",
+   "city": "Frederick",
+   "state": "MD",
+   "lat": 39.41,
+   "lng": -77.41,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Thompson Enamel",
+   "city": "Bellevue",
+   "state": "KY",
+   "lat": 39.1,
+   "lng": -84.48,
+   "basis": "web",
+   "url": "https://thompsonenamel.com/"
+  },
+  {
+   "name": "Touchstone Center for Crafts",
+   "city": "Farmington",
+   "state": "PA",
+   "lat": 39.81,
+   "lng": -79.58,
+   "basis": "knowledge",
+   "url": "https://touchstonecrafts.org/"
+  },
+  {
+   "name": "Tryon Arts & Crafts School",
+   "city": "Tryon",
+   "state": "NC",
+   "lat": 35.21,
+   "lng": -82.24,
+   "basis": "knowledge"
+  },
+  {
+   "name": "University of Central Oklahoma",
+   "city": "Edmond",
+   "state": "OK",
+   "lat": 35.65,
+   "lng": -97.47,
+   "basis": "knowledge"
+  },
+  {
+   "name": "University of Louisiana at Lafayette",
+   "city": "Lafayette",
+   "state": "LA",
+   "lat": 30.21,
+   "lng": -92.02,
+   "basis": "knowledge"
+  },
+  {
+   "name": "University of Texas Rio Grande Valley - School of Art and Design",
+   "city": "Edinburg",
+   "state": "TX",
+   "lat": 26.31,
+   "lng": -98.17,
+   "basis": "knowledge"
+  },
+  {
+   "name": "University of Utah",
+   "city": "Salt Lake City",
+   "state": "UT",
+   "lat": 40.76,
+   "lng": -111.84,
+   "basis": "knowledge"
+  },
+  {
+   "name": "University of Wyoming",
+   "city": "Laramie",
+   "state": "WY",
+   "lat": 41.31,
+   "lng": -105.58,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Valentin Yotkov Studio",
+   "city": "Brooklyn",
+   "state": "NY",
+   "lat": 40.7,
+   "lng": -73.99,
+   "basis": "web",
+   "url": "http://www.valentinyotkov.com/"
+  },
+  {
+   "name": "Valley Art Center",
+   "city": "Chagrin Falls",
+   "state": "OH",
+   "lat": 41.43,
+   "lng": -81.39,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Venice Art Center",
+   "city": "Venice",
+   "state": "FL",
+   "lat": 27.1,
+   "lng": -82.45,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Visual Arts Center of New Jersey",
+   "city": "Summit",
+   "state": "NJ",
+   "lat": 40.72,
+   "lng": -74.36,
+   "basis": "knowledge",
+   "url": "https://artcenternj.org/"
+  },
+  {
+   "name": "Washington Glass School",
+   "city": "Mount Rainier",
+   "state": "MD",
+   "lat": 38.94,
+   "lng": -76.96,
+   "basis": "web",
+   "state_mismatch": true,
+   "url": "http://washingtonglassschool.com/"
+  },
+  {
+   "name": "Western Illinois University \u2014 Department of Art & Design",
+   "city": "Macomb",
+   "state": "IL",
+   "lat": 40.46,
+   "lng": -90.68,
+   "basis": "knowledge"
+  },
+  {
+   "name": "White Bear Center for the Arts",
+   "city": "White Bear Lake",
+   "state": "MN",
+   "lat": 45.08,
+   "lng": -93.01,
+   "basis": "knowledge"
+  },
+  {
+   "name": "William Holland School of Lapidary Arts",
+   "city": "Young Harris",
+   "state": "GA",
+   "lat": 34.93,
+   "lng": -83.85,
+   "basis": "knowledge",
+   "url": "https://lapidaryschool.org/"
+  },
+  {
+   "name": "Wolf Tools (Kate Wolf Workshops)",
+   "city": "Portland",
+   "state": "ME",
+   "lat": 43.66,
+   "lng": -70.26,
+   "basis": "web",
+   "url": "https://wolftools.com/"
+  },
+  {
+   "name": "Worcester Center for Crafts",
+   "city": "Worcester",
+   "state": "MA",
+   "lat": 42.27,
+   "lng": -71.79,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Millersville University",
+   "city": "Millersville",
+   "state": "PA",
+   "lat": 40.0,
+   "lng": -76.35,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Blue Mountain Community College",
+   "city": "Pendleton",
+   "state": "OR",
+   "lat": 45.67,
+   "lng": -118.79,
+   "basis": "knowledge"
+  },
+  {
+   "name": "North Bennet Street School",
+   "city": "Boston",
+   "state": "MA",
+   "lat": 42.36,
+   "lng": -71.05,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Cabrillo College",
+   "city": "Aptos",
+   "state": "CA",
+   "lat": 36.98,
+   "lng": -121.9,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Palomar College",
+   "city": "San Marcos",
+   "state": "CA",
+   "lat": 33.14,
+   "lng": -117.17,
+   "basis": "knowledge"
+  },
+  {
+   "name": "San Francisco State University",
+   "city": "San Francisco",
+   "state": "CA",
+   "lat": 37.77,
+   "lng": -122.42,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Seton Hill College",
+   "city": "Greensburg",
+   "state": "PA",
+   "lat": 40.3,
+   "lng": -79.54,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Siena Heights University",
+   "city": "Adrian",
+   "state": "MI",
+   "lat": 41.9,
+   "lng": -84.04,
+   "basis": "knowledge"
+  },
+  {
+   "name": "St. Norbert College",
+   "city": "De Pere",
+   "state": "WI",
+   "lat": 44.45,
+   "lng": -88.06,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Tarrant County Junior College/ N.E.",
+   "city": "Hurst",
+   "state": "TX",
+   "lat": 32.82,
+   "lng": -97.18,
+   "basis": "knowledge"
+  },
+  {
+   "name": "The University of Mary Hardin-Baylor",
+   "city": "Belton",
+   "state": "TX",
+   "lat": 31.06,
+   "lng": -97.46,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Tulsa Community College/Cultural & Social Services Division",
+   "city": "Tulsa",
+   "state": "OK",
+   "lat": 36.15,
+   "lng": -95.99,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Calvin College",
+   "city": "Grand Rapids",
+   "state": "MI",
+   "lat": 42.93,
+   "lng": -85.59,
+   "basis": "knowledge"
+  },
+  {
+   "name": "University of Houston",
+   "city": "Houston",
+   "state": "TX",
+   "lat": 29.72,
+   "lng": -95.34,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Yakima Valley Community College",
+   "city": "Yakima",
+   "state": "WA",
+   "lat": 46.6,
+   "lng": -120.51,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Yavapai College",
+   "city": "Prescott",
+   "state": "AZ",
+   "lat": 34.54,
+   "lng": -112.47,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Cheltenham Center for the Arts",
+   "city": "Cheltenham",
+   "state": "PA",
+   "lat": 40.06,
+   "lng": -75.11,
+   "basis": "web",
+   "url": "https://www.cheltenhamarts.org/"
+  },
+  {
+   "name": "College of the Redwoods",
+   "city": "Eureka",
+   "state": "CA",
+   "lat": 40.73,
+   "lng": -124.16,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Dallas Jewelry Institute",
+   "city": "Dallas",
+   "state": "TX",
+   "lat": 32.78,
+   "lng": -96.8,
+   "basis": "web",
+   "note": "Jewelry trade school in Dallas; no single canonical address surfaced, placed at Dallas city center"
+  },
+  {
+   "name": "Eastfield College",
+   "city": "Mesquite",
+   "state": "TX",
+   "lat": 32.77,
+   "lng": -96.6,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Flagler College",
+   "city": "St. Augustine",
+   "state": "FL",
+   "lat": 29.89,
+   "lng": -81.31,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Georgian Court College",
+   "city": "Lakewood",
+   "state": "NJ",
+   "lat": 40.1,
+   "lng": -74.22,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Glassell School of Art / The Museum of Fine Arts",
+   "city": "Houston",
+   "state": "TX",
+   "lat": 29.73,
+   "lng": -95.39,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Harding University",
+   "city": "Searcy",
+   "state": "AR",
+   "lat": 35.25,
+   "lng": -91.74,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Hartnell College",
+   "city": "Salinas",
+   "state": "CA",
+   "lat": 36.68,
+   "lng": -121.66,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Joliet Junior College",
+   "city": "Joliet",
+   "state": "IL",
+   "lat": 41.53,
+   "lng": -88.08,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Long Island University",
+   "city": "Brookville",
+   "state": "NY",
+   "lat": 40.81,
+   "lng": -73.57,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Longwood College",
+   "city": "Farmville",
+   "state": "VA",
+   "lat": 37.3,
+   "lng": -78.39,
+   "basis": "knowledge"
+  },
+  {
+   "name": "92nd Street Y (92NY)",
+   "city": "New York",
+   "state": "NY",
+   "lat": 40.78,
+   "lng": -73.95,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Abington Art Center",
+   "city": "Jenkintown",
+   "state": "PA",
+   "lat": 40.1,
+   "lng": -75.13,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Alvin Community College",
+   "city": "Alvin",
+   "state": "TX",
+   "lat": 29.42,
+   "lng": -95.24,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Anderson Ranch Arts Center",
+   "city": "Snowmass Village",
+   "state": "CO",
+   "lat": 39.21,
+   "lng": -106.94,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Art Center Manatee (now Herrig Center for the Arts)",
+   "city": "Bradenton",
+   "state": "FL",
+   "lat": 27.5,
+   "lng": -82.57,
+   "basis": "web",
+   "url": "https://herrigcenter.org/"
+  },
+  {
+   "name": "Art League School",
+   "city": "Alexandria",
+   "state": "VA",
+   "lat": 38.8,
+   "lng": -77.04,
+   "basis": "web",
+   "url": "https://www.theartleague.org/"
+  },
+  {
+   "name": "Austin Community College",
+   "city": "Austin",
+   "state": "TX",
+   "lat": 30.27,
+   "lng": -97.74,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Banana Factory (ArtsQuest)",
+   "city": "Bethlehem",
+   "state": "PA",
+   "lat": 40.61,
+   "lng": -75.38,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Boca Raton Museum of Art",
+   "city": "Boca Raton",
+   "state": "FL",
+   "lat": 26.35,
+   "lng": -80.08,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Cape Breton Centre for Craft & Design",
+   "city": "Sydney",
+   "state": "NS",
+   "lat": 46.14,
+   "lng": -60.19,
+   "basis": "web",
+   "non_us": true,
+   "url": "https://capebretoncraft.com/"
+  },
+  {
+   "name": "Centro Mexicano de Joyer\u00eda",
+   "city": "Mexico City",
+   "state": "CDMX",
+   "lat": 19.41,
+   "lng": -99.17,
+   "basis": "web",
+   "non_us": true,
+   "url": "https://www.cmjoyeria.com/"
+  },
+  {
+   "name": "Chastain Arts Center",
+   "city": "Atlanta",
+   "state": "GA",
+   "lat": 33.88,
+   "lng": -84.38,
+   "basis": "web",
+   "url": "https://ocaatlanta.com/chastain-arts-center"
+  },
+  {
+   "name": "City Arts Centre",
+   "city": "Edinburgh",
+   "state": "",
+   "lat": 55.95,
+   "lng": -3.19,
+   "basis": "web",
+   "non_us": true,
+   "note": "Ambiguous: British 'Centre' spelling points to Edinburgh's City Art Centre; could also be the former City Arts Center, Oklahoma City (now Oklahoma Contemporary). Placed at Edinburgh to match spelling.",
+   "url": "https://cultureedinburgh.com/our-venues/city-art-centre"
+  },
+  {
+   "name": "College of The Albemarle",
+   "city": "Elizabeth City",
+   "state": "NC",
+   "lat": 36.29,
+   "lng": -76.25,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Contemporary Craft",
+   "city": "Pittsburgh",
+   "state": "PA",
+   "lat": 40.48,
+   "lng": -79.95,
+   "basis": "web",
+   "url": "https://contemporarycraft.org/"
+  },
+  {
+   "name": "Craft Alliance",
+   "city": "St. Louis",
+   "state": "MO",
+   "lat": 38.66,
+   "lng": -90.3,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Craft Alliance Center of Art and Design",
+   "city": "St. Louis",
+   "state": "MO",
+   "lat": 38.66,
+   "lng": -90.3,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Creative Arts Center of Dallas",
+   "city": "Dallas",
+   "state": "TX",
+   "lat": 32.83,
+   "lng": -96.69,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Cultural Arts Center (Priscilla R. Tyson Cultural Arts Center)",
+   "city": "Columbus",
+   "state": "OH",
+   "lat": 39.96,
+   "lng": -83.0,
+   "basis": "web",
+   "url": "https://www.culturalartscenteronline.org/"
+  },
+  {
+   "name": "Danaca Design",
+   "city": "Seattle",
+   "state": "WA",
+   "lat": 47.67,
+   "lng": -122.31,
+   "basis": "web",
+   "url": "https://danacadesign.com/"
+  },
+  {
+   "name": "Davide Bigazzi Studio & Gallery",
+   "city": "Menlo Park",
+   "state": "CA",
+   "lat": 37.45,
+   "lng": -122.18,
+   "basis": "web",
+   "url": "https://www.davidebigazzistudio.com"
+  },
+  {
+   "name": "Design Centre Enmore (TAFE NSW)",
+   "city": "Enmore",
+   "state": "NSW",
+   "lat": -33.9,
+   "lng": 151.17,
+   "basis": "knowledge",
+   "non_us": true,
+   "note": "Sydney, New South Wales, Australia"
+  },
+  {
+   "name": "Front Range Community College, Larimer Campus",
+   "city": "Fort Collins",
+   "state": "CO",
+   "lat": 40.59,
+   "lng": -105.08,
+   "basis": "knowledge"
+  },
+  {
+   "name": "George Brown College",
+   "city": "Toronto",
+   "state": "ON",
+   "lat": 43.65,
+   "lng": -79.38,
+   "basis": "knowledge",
+   "non_us": true
+  },
+  {
+   "name": "Georgian College \u2014 Jewellery and Metals",
+   "city": "Barrie",
+   "state": "ON",
+   "lat": 44.39,
+   "lng": -79.69,
+   "basis": "knowledge",
+   "non_us": true
+  },
+  {
+   "name": "Glassell School of Art \u2013 Studio School (MFAH)",
+   "city": "Houston",
+   "state": "TX",
+   "lat": 29.73,
+   "lng": -95.39,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Haliburton School of Art + Design (Fleming College)",
+   "city": "Haliburton",
+   "state": "ON",
+   "lat": 45.05,
+   "lng": -78.51,
+   "basis": "knowledge",
+   "non_us": true
+  },
+  {
+   "name": "Hot Shops Art Center",
+   "city": "Omaha",
+   "state": "NE",
+   "lat": 41.27,
+   "lng": -95.94,
+   "basis": "web",
+   "url": "https://hotshopsartcenter.org/"
+  },
+  {
+   "name": "Houston Center for Contemporary Craft",
+   "city": "Houston",
+   "state": "TX",
+   "lat": 29.74,
+   "lng": -95.39,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Hui No'eau Visual Arts Center",
+   "city": "Makawao",
+   "state": "HI",
+   "lat": 20.86,
+   "lng": -156.31,
+   "basis": "web",
+   "url": "https://www.huinoeau.com/"
+  },
+  {
+   "name": "Indianapolis Art Center",
+   "city": "Indianapolis",
+   "state": "IN",
+   "lat": 39.82,
+   "lng": -86.14,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Instituto Allende",
+   "city": "San Miguel de Allende",
+   "state": "GTO",
+   "lat": 20.91,
+   "lng": -100.74,
+   "basis": "knowledge",
+   "non_us": true,
+   "note": "Guanajuato, Mexico"
+  },
+  {
+   "name": "Irvine Fine Arts Center",
+   "city": "Irvine",
+   "state": "CA",
+   "lat": 33.69,
+   "lng": -117.79,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Jewel Envy",
+   "city": "Toronto",
+   "state": "ON",
+   "lat": 43.65,
+   "lng": -79.45,
+   "basis": "web",
+   "non_us": true,
+   "url": "https://www.jewelenvy.ca/"
+  },
+  {
+   "name": "Kean University",
+   "city": "Union",
+   "state": "NJ",
+   "lat": 40.68,
+   "lng": -74.24,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Laredo College (formerly Laredo Community College)",
+   "city": "Laredo",
+   "state": "TX",
+   "lat": 27.51,
+   "lng": -99.51,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Lillstreet Art Center",
+   "city": "Chicago",
+   "state": "IL",
+   "lat": 41.94,
+   "lng": -87.67,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Liloveve Jewelry School",
+   "city": "Brooklyn",
+   "state": "NY",
+   "lat": 40.71,
+   "lng": -73.95,
+   "basis": "web",
+   "url": "https://www.liloveve.com/"
+  },
+  {
+   "name": "Loyola Marymount University",
+   "city": "Los Angeles",
+   "state": "CA",
+   "lat": 33.97,
+   "lng": -118.42,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Marlboro Studio School",
+   "city": "Marlboro",
+   "state": "VT",
+   "lat": 42.86,
+   "lng": -72.73,
+   "basis": "web",
+   "url": "https://www.marlborostudioschool.org/"
+  },
+  {
+   "name": "Mendocino Art Center",
+   "city": "Mendocino",
+   "state": "CA",
+   "lat": 39.31,
+   "lng": -123.8,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Minnetonka Center for the Arts",
+   "city": "Wayzata",
+   "state": "MN",
+   "lat": 44.97,
+   "lng": -93.51,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Morean Arts Center",
+   "city": "St. Petersburg",
+   "state": "FL",
+   "lat": 27.77,
+   "lng": -82.64,
+   "basis": "knowledge"
+  },
+  {
+   "name": "NSCAD University",
+   "city": "Halifax",
+   "state": "NS",
+   "lat": 44.65,
+   "lng": -63.57,
+   "basis": "knowledge",
+   "non_us": true
+  },
+  {
+   "name": "New Brunswick College of Craft & Design",
+   "city": "Fredericton",
+   "state": "NB",
+   "lat": 45.96,
+   "lng": -66.64,
+   "basis": "knowledge",
+   "non_us": true
+  },
+  {
+   "name": "OCAD University (Ontario College of Art and Design)",
+   "city": "Toronto",
+   "state": "ON",
+   "lat": 43.65,
+   "lng": -79.39,
+   "basis": "knowledge",
+   "non_us": true
+  },
+  {
+   "name": "Ottawa School of Art",
+   "city": "Ottawa",
+   "state": "ON",
+   "lat": 45.43,
+   "lng": -75.69,
+   "basis": "knowledge",
+   "non_us": true
+  },
+  {
+   "name": "Pocosin Arts School of Fine Craft",
+   "city": "Columbia",
+   "state": "NC",
+   "lat": 35.92,
+   "lng": -76.25,
+   "basis": "web",
+   "url": "https://pocosinarts.org/"
+  },
+  {
+   "name": "Racine Art Museum",
+   "city": "Racine",
+   "state": "WI",
+   "lat": 42.73,
+   "lng": -87.78,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Rio Grande",
+   "city": "Albuquerque",
+   "state": "NM",
+   "lat": 35.08,
+   "lng": -106.66,
+   "basis": "web",
+   "note": "Rio Grande jewelry-making supply company, Albuquerque",
+   "url": "https://riogrande.com/"
+  },
+  {
+   "name": "Scintillant Studio",
+   "city": "San Francisco",
+   "state": "CA",
+   "lat": 37.75,
+   "lng": -122.42,
+   "basis": "web",
+   "url": "https://www.scintillantstudio.com/"
+  },
+  {
+   "name": "Shelburne Craft School",
+   "city": "Shelburne",
+   "state": "VT",
+   "lat": 44.38,
+   "lng": -73.23,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Shiawassee Arts Council",
+   "city": "Owosso",
+   "state": "MI",
+   "lat": 42.99,
+   "lng": -84.18,
+   "basis": "web",
+   "url": "https://shiawasseearts.org/"
+  },
+  {
+   "name": "Tacoma Metal Arts Center",
+   "city": "Tacoma",
+   "state": "WA",
+   "lat": 47.26,
+   "lng": -122.49,
+   "basis": "web",
+   "url": "https://www.tacomametalarts.com/"
+  },
+  {
+   "name": "Tecnologico de Monterrey, Campus Mexico (Ciudad de Mexico)",
+   "city": "Mexico City",
+   "state": "CDMX",
+   "lat": 19.28,
+   "lng": -99.14,
+   "basis": "knowledge",
+   "non_us": true
+  },
+  {
+   "name": "The Baum School of Art",
+   "city": "Allentown",
+   "state": "PA",
+   "lat": 40.6,
+   "lng": -75.47,
+   "basis": "knowledge"
+  },
+  {
+   "name": "The Carving Studio & Sculpture Center",
+   "city": "West Rutland",
+   "state": "VT",
+   "lat": 43.59,
+   "lng": -73.04,
+   "basis": "knowledge"
+  },
+  {
+   "name": "The Creative Arts Center in Chatham",
+   "city": "Chatham",
+   "state": "MA",
+   "lat": 41.68,
+   "lng": -69.96,
+   "basis": "web",
+   "url": "https://www.capecodcreativearts.org/"
+  },
+  {
+   "name": "Tillers International \u2013 Cook's Mill Learning Center",
+   "city": "Scotts",
+   "state": "MI",
+   "lat": 42.21,
+   "lng": -85.4,
+   "basis": "web",
+   "url": "https://tillersinternational.org/"
+  },
+  {
+   "name": "Torched",
+   "city": "Asheville",
+   "state": "NC",
+   "lat": 35.58,
+   "lng": -82.58,
+   "basis": "web",
+   "url": "https://torchedavl.com/"
+  },
+  {
+   "name": "Facultad de Artes y Dise\u00f1o (FAD), UNAM \u2014 formerly Escuela Nacional de Artes Pl\u00e1sticas (ENAP)",
+   "city": "Mexico City",
+   "state": "CDMX",
+   "lat": 19.36,
+   "lng": -99.18,
+   "basis": "knowledge",
+   "non_us": true,
+   "note": "FAD-UNAM main campus in Xochimilco/Coyoac\u00e1n area, Mexico City"
+  },
+  {
+   "name": "Universidad An\u00e1huac M\u00e9xico (Sur)",
+   "city": "Mexico City",
+   "state": "CDMX",
+   "lat": 19.31,
+   "lng": -99.25,
+   "basis": "knowledge",
+   "non_us": true,
+   "note": "Campus Sur, Mexico City"
+  },
+  {
+   "name": "Universidad Aut\u00f3noma de Ciudad Ju\u00e1rez (UACJ)",
+   "city": "Ciudad Ju\u00e1rez",
+   "state": "CHIH",
+   "lat": 31.74,
+   "lng": -106.49,
+   "basis": "knowledge",
+   "non_us": true,
+   "note": "Chihuahua, Mexico"
+  },
+  {
+   "name": "University of Evansville",
+   "city": "Evansville",
+   "state": "IN",
+   "lat": 37.97,
+   "lng": -87.55,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Vancouver Community College",
+   "city": "Vancouver",
+   "state": "BC",
+   "lat": 49.28,
+   "lng": -123.1,
+   "basis": "knowledge",
+   "non_us": true
+  },
+  {
+   "name": "WARG Enamel & Tool Center",
+   "city": "Scarborough",
+   "state": "ME",
+   "lat": 43.58,
+   "lng": -70.32,
+   "basis": "web",
+   "url": "http://www.wargetc.com/"
+  },
+  {
+   "name": "Water Street Glassworks",
+   "city": "Benton Harbor",
+   "state": "MI",
+   "lat": 42.12,
+   "lng": -86.45,
+   "basis": "web",
+   "url": "https://waterstreetglassworks.org/"
+  },
+  {
+   "name": "Wesleyan Potters",
+   "city": "Middletown",
+   "state": "CT",
+   "lat": 41.54,
+   "lng": -72.65,
+   "basis": "web",
+   "url": "https://www.wesleyanpotters.com/"
+  },
+  {
+   "name": "Woodstock Byrdcliffe Guild",
+   "city": "Woodstock",
+   "state": "NY",
+   "lat": 42.04,
+   "lng": -74.12,
+   "basis": "knowledge"
+  },
+  {
+   "name": "Yukon Art Society / Arts Underground",
+   "city": "Whitehorse",
+   "state": "YT",
+   "lat": 60.72,
+   "lng": -135.06,
+   "basis": "web",
+   "non_us": true,
+   "url": "https://www.artsunderground.ca/"
+  }
+ ]
+}

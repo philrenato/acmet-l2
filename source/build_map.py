@@ -41,10 +41,26 @@ flows = [{"from": a, "to": b, "n": n, "a": CENT[a], "b": CENT[b]}
 
 state_counts = collections.Counter(p["state"] for p in pts)
 
+# the projection is Albers-USA: points outside the US (Canada/Mexico/UK/AU
+# schools the directory listed) can't render on it — count them for disclosure.
+# The geocode overlay flags non-US institutions explicitly (a bare bounding box
+# misses Toronto / Mexico City, which sit inside US lat/lng ranges).
+_ov_path = os.path.join(HERE, "data", "geocode_cities.json")
+NONUS = set()
+if os.path.exists(_ov_path):
+    NONUS = {r["name"].strip().lower() for r in json.load(open(_ov_path))["resolved"] if r.get("non_us")}
+
+def in_us(p):
+    return (p["name"].strip().lower() not in NONUS
+            and 18 < p["lat"] < 72 and -170 < p["lng"] < -65)
+
+n_outside = sum(1 for p in pts if not in_us(p))
 DATA = {"points": pts, "flows": flows, "stateCounts": dict(state_counts),
         "n_programs": sum(1 for n in G["nodes"] if n["kind"] == "program"),
-        "n_placed": len(pts), "n_people": sum(1 for n in G["nodes"] if n["kind"] == "person"),
-        "n_state": sum(1 for p in pts if p["prec"] != "city")}
+        "n_placed": len(pts) - n_outside,
+        "n_people": sum(1 for n in G["nodes"] if n["kind"] == "person"),
+        "n_state": sum(1 for p in pts if p["prec"] != "city" and in_us(p)),
+        "n_outside": n_outside}
 
 HTML = """<!doctype html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -101,7 +117,8 @@ HTML = """<!doctype html><html lang="en"><head><meta charset="utf-8">
   <span><i class="dot" style="background:#8a4a4a;box-shadow:0 0 6px #6a2a2a"></i>closed</span>
   <span><i class="dot ring" style="background:transparent;border:1px dashed #b6b2a6;box-shadow:none"></i>location approximate (state-level)</span>
   <div class="note">bigger / brighter glow = more connected · arcs trace where people studied → went on to teach ·
-  __N_STATE__ of __N_PLACED__ dots are placed at the state center, not the exact city.</div>
+  __N_STATE__ of __N_PLACED__ dots are placed at the state center, not the exact city ·
+  __N_OUTSIDE__ schools outside the US are in the directory but not on this US map.</div>
 </div>
 <div class="ctl"><label><input type="checkbox" id="arcs" checked> lineage arcs</label></div>
 <div class="hint">pinch or scroll to zoom · drag to pan · tap a dot</div>
@@ -215,6 +232,7 @@ out = (HTML.replace("__DATA__", json.dumps(DATA))
            .replace("__N_PLACED__", str(DATA["n_placed"]))
            .replace("__N_PROGRAMS__", str(DATA["n_programs"]))
            .replace("__N_STATE__", str(DATA["n_state"]))
+           .replace("__N_OUTSIDE__", str(DATA["n_outside"]))
            .replace("__TODAY__", datetime.date.today().isoformat()))
 os.makedirs(os.path.join(HERE, "site", "map"), exist_ok=True)
 open(os.path.join(HERE, "site", "map", "index.html"), "w").write(out)

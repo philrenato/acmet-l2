@@ -335,3 +335,28 @@ obituary), Sholtis (a horn professor). No death asserted anywhere; one
 Script: `updates_2026_06_04_audit2.py`. Also: Rowan's "3 additional adjunct
 faculty" re-attempted (curl 403, headless render empty, no recent Wayback) —
 still excluded, logged unverifiable.
+
+---
+
+## 2026-06-04 (fourth pass) — city geocoding: every program placed
+
+Three research agents resolved all 319 imprecisely-placed institutions (221
+state-centroid + 98 entirely unplaced) to their actual campus cities:
+**318 of 319 resolved** (Dunconnor Workshop unfindable — likely a defunct
+private studio), 59 web-verified, the rest unambiguous knowledge.
+
+The headline wasn't precision — it was **27 wrong-state errors hiding under
+the centroids**: Rowan plotted in PA (it's Glassboro NJ), Purdue in TX,
+Tufts in MI, Ghost Ranch in GA (Abiquiu NM), Peters Valley in DE (Layton NJ),
+Washington Glass School in WA state (it's Mount Rainier MD — the scanner
+matched the wrong "Washington"), Silvera Jewelry School in VA (its Berkeley CA
+street address is "Virginia St"). All corrected via `data/geocode_cities.json`
+(exact-name overlay, wins over fragment matching; also corrects find_state).
+
+Also surfaced: **19 non-US schools** (Canada / Mexico / UK / Australia —
+NSCAD, OCAD, Instituto Allende, Birmingham School of Jewellery, TAFE NSW…)
+that an Albers-USA map can't draw; the map legend now discloses them.
+
+Map before → after: 144 city-accurate / 221 state-centroid / 98 unplaced →
+**462 city-accurate / 1 state-centroid / 0 unplaced** (444 on the US map +
+19 disclosed non-US).
