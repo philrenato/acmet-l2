@@ -149,6 +149,7 @@ for r in sorted(build_rows, key=lambda r: r["name"]):
     if r["slug"] in CURATED:
         fname_of[r["slug"]] = CURATED[r["slug"]][0]; continue
     disp = clean_name(r["fc_current_name"]) if (r["fc_name_changed"] == "yes" and r["fc_current_name"]) else r["name"]
+    disp = name_only(disp) or disp        # filenames are name fields too — no dr-/phd in a URL
     base = slugify(disp) or slugify(r["name"]) or ("person-" + str(r["id"]))
     fn = base + ".html"; i = 2
     while fn in used:
