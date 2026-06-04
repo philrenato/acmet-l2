@@ -8,6 +8,24 @@ front door, `MIRROR.md` is the clone-and-extend guide for the next person.
 
 ## status: working, published, link-audited.
 
+### ⚠ STANDING RULE — check inbound FIRST (Phil, 2026-06-04)
+At the start of any session on this project (and before any deploy), check for
+inbound contributions — nothing notifies us:
+```
+git clone -q https://github.com/philrenato/acmet-l2.wiki.git /tmp/acmet-wiki && git -C /tmp/acmet-wiki log --oneline | head
+gh api repos/philrenato/acmet-l2/issues --jq '.[] | "\(.number) \(.title) (\(.user.login))"'
+gh pr list -R philrenato/acmet-l2
+```
+Inbound claims follow the house rule (verify against fetched sources before
+publishing). If a wiki bio was edited, pull it into `site/wiki/` so the next
+deploy doesn't fight it.
+
+### ⚠ WRITING RULE — no process exposition in copy (Phil, 2026-06-04)
+Public pages never narrate research rules or effort ("belongs in directory",
+"per the no-invent rule", "confirmed via…", "couldn't be documented"). State
+the fact, or say "Unknown." and stop. The audit trail lives in `factcheck` +
+RESEARCH_LOG, not in the copy.
+
 ### the shape of it
 - **One database** (`acmet.db`) → three faces: the **directory** (people + program
   pages), the **map** (`/map/`), the **lineage** (`/lineage.html`). Fix a record,

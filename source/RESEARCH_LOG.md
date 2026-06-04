@@ -360,3 +360,22 @@ that an Albers-USA map can't draw; the map legend now discloses them.
 Map before → after: 144 city-accurate / 221 state-centroid / 98 unplaced →
 **462 city-accurate / 1 state-centroid / 0 unplaced** (444 on the US map +
 19 disclosed non-US).
+
+---
+
+## 2026-06-04 (sixth pass) — the "write simple" copy sweep
+
+Phil, on the Rio Grande page: "Your exposition is too much. We don't need to
+tell people all the rules. Just say unknown when we don't know stuff and leave
+it at that. Simple." It was systemic — 130 program texts + 33 people summaries
+carried scan-agent reasoning as public copy ("Belongs in directory", "faculty
+left empty per the no-invent rule", "SNAG's tag is a mis-categorization",
+"confirmed via…", "no obituary could be located", "the archived record carried
+no start date").
+
+All 163 rewritten by deletion/condensation only — no facts added; pure
+we-found-nothing rows now read "Unknown." (e.g. Veda Beetler's four sentences
+of search narration → "Unknown."). The rule is now standing: copy states the
+fact or says unknown; the audit trail lives here and in `factcheck`, not on
+the page. Also standing from today: check inbound (wiki commits, issues, PRs)
+at the start of every session. Script: `updates_2026_06_04_simple_copy.py`.
