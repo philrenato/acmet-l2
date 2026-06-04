@@ -209,3 +209,31 @@ agents re-verified every claim against fetched, live URLs.
   Time Lecturer, 3D Media; published as Lecturer with the official title
   footnoted, per the no-load-characterization rule), joining Phil Renato.
 - Removed an editorializing line from Phil's bio.
+
+### Round 3 (2026-06-04, name-field hygiene)
+
+- **Name fields hold names and names only** (Phil's rule): no honorifics or
+  academic credentials in name lines/page titles (Dr. Samanthessa R. Jacob,
+  PhD → Samanthessa R. Jacob — degrees live on the page), no departments
+  "(sculpture)", no "? to ?", no role tails ("…, Director of the Academy"),
+  no stray connectors ("Harlan Butt In"). `name_only()` now cleans every
+  display site: page titles, index entries, lineage chips, program rosters,
+  Training-card instructor links.
+- **Mentions must look like names**: partial names with only a title
+  ("Professor Zicari") and narrative fragments ("worked with…") are pulled
+  entirely; misspelled/variant near-names are suppressed when they match a
+  listed person — including under corrected spellings and middle-initial
+  variants ("Gary S Griffin" ≡ Gary Griffin). Mention set: 122 → 77, all
+  plausible names.
+- **Lineage evidence rule (Phil)**: X attending school Y while Z was the
+  only/primary teacher there is sufficient to record "X studied with Z,"
+  dates permitting — with respect for a person's own stated teacher
+  (Wittersheim named Van Haren, not Hunter, and that stands).
+- Pre-publish adversarial re-check run over every person added/updated today.
+
+**Pre-publish adversarial verdicts** (every person added/updated 2026-06-04):
+Duffy VERIFIED · Van Haren VERIFIED (obituary re-fetched) · Nahabetian
+VERIFIED · Okon VERIFIED (archived EMU pages re-fetched) · Caballero-Perez
+VERIFIED (RIT directory re-fetched) · Sweigart facts VERIFIED via her CV;
+the standing rank conflict (Professor vs Associate Professor and Chair) is
+carried in her footnote, now including the CV.

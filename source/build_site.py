@@ -50,6 +50,43 @@ def titlecase(n):
 def clean_name(n):  # strip parentheticals like "Phil Renato (Phillip Renato)"
     return re.sub(r"\s*\(.*?\)\s*", "", n or "").strip()
 
+# ---- name fields hold names and names only ----
+# No honorifics or academic credentials in a name line or page title (they live
+# on the page, in the role/bio), no departments "(sculpture)", no "? to ?", no
+# trailing connectors the year-strip leaves behind ("Harlan Butt In"), no role
+# tails ("Alan Revere, Director of the Academy"). Hedging happens on the page.
+HONOR_RE = re.compile(r"^(?:dr|prof(?:essor)?|mr|mrs|ms)\.?\s+", re.I)
+CRED_RE  = re.compile(r"[,\s]+(?:ph\.?\s?d|ed\.?d|m\.?f\.?a|b\.?f\.?a|m\.?a|m\.?s|b\.?a|b\.?s|j\.?d)\.?$", re.I)
+TRAILJUNK_RE = re.compile(r"\s+(?:in|at|and|with|from|to|the|of|for|since|until|current|added|present)[\s,]*$", re.I)
+def name_only(s):
+    s = re.sub(r"\([^)]*\)?", " ", s or "")        # incl. an unclosed "(painting"
+    s = re.sub(r"[?]", " ", s)
+    s = re.sub(r"\s+", " ", s).strip(" ,;:.&")
+    prev = None
+    while prev != s:
+        prev = s
+        s = HONOR_RE.sub("", s)
+        s = CRED_RE.sub("", s).strip(" ,;:.")
+    s = s.split(",")[0].strip()                    # "Name, Director of ..." -> "Name"
+    prev = None
+    while prev != s:
+        prev = s
+        s = TRAILJUNK_RE.sub("", s).strip(" ,;:.")
+    return s
+
+# a mention must LOOK like a person's name, or it doesn't get listed at all
+ROLEJUNK_RE = re.compile(r"\b(visit\w*|artist|director|academ\w*|professor|prof|instructor|lecturer|faculty|staff|emeritus|emerita|chair|head|dean|coordinator|assistant|associate|guest|adjunct|various|unknown|department|studio|workshop|added|current|retired|deceased|worked|studied|under|formerly|school|college|university)\b", re.I)
+NAME_PARTICLES = {"de","da","del","della","der","den","di","du","la","le","van","von","ten","ter","st","mac","mc","y","e"}
+def plausible_name(s):
+    if not s or any(ch.isdigit() for ch in s): return False
+    words = s.split()
+    if len(words) < 2 or len(words) > 5: return False
+    if ROLEJUNK_RE.search(s): return False
+    for w in words:
+        wl = w.strip(".'’-")
+        if wl and wl[0].islower() and wl.lower() not in NAME_PARTICLES: return False
+    return True
+
 def status_phrase(alive, job):
     # state what someone is/was, never emphasize what they aren't
     if alive == "no": return "Deceased"
@@ -182,7 +219,7 @@ for e in con.execute("SELECT person_id, instructor FROM education WHERE instruct
                 cand = bylastinit.get((ps[-1], ps[0][0])) or bylast.get(ps[-1])
                 if cand and len(cand) == 1: tslug = next(iter(cand))
         if tslug and sb and tslug != sb["slug"]:
-            students_of.setdefault(tslug, set()).add((clean_name(sb["fc_current_name"]) if (sb["fc_name_changed"]=="yes" and sb["fc_current_name"]) else titlecase(sb["name"]), fname_of[sb["slug"]]))
+            students_of.setdefault(tslug, set()).add((name_only(clean_name(sb["fc_current_name"])) if (sb["fc_name_changed"]=="yes" and sb["fc_current_name"]) else name_only(titlecase(sb["name"])), fname_of[sb["slug"]]))
 
 # ---------------------------------------------------------------------------
 # PROGRAMS: profile pages + person<->program cross-links
@@ -260,7 +297,7 @@ for f in con.execute("SELECT program_id,name,person_url,status,years FROM progra
         y2 = re.sub(r"(?i)\s*to\s+present\s*$", "", yrs).strip()
         yrs = ("from " + y2) if re.fullmatch(r"1[89]\d\d|20\d\d", y2) else y2
     pf = resolve_file(cleannm)
-    prog_faculty.setdefault(pslug, []).append((titlecase(cleannm), pf, status, yrs))
+    prog_faculty.setdefault(pslug, []).append((titlecase(name_only(cleannm)) or titlecase(cleannm), pf, status, yrs))
     if pf:
         taught_at.setdefault(pf, []).append((prog_row[pslug]["name"], pfile_of[pslug], status, yrs))
 
@@ -377,7 +414,7 @@ def link_instructor(nm):
             out.append(html.escape(part)); continue
         f = resolve_file(part)
         if f:
-            out.append(f'<a class="instr-link" href="{f}">{html.escape(part.strip())}</a>')
+            out.append(f'<a class="instr-link" href="{f}">{html.escape(name_only(part) or part.strip())}</a>')
         else:
             out.append(html.escape(part))
     return "".join(out)
@@ -389,7 +426,7 @@ def fallback_bio(r):
         p = os.path.join(WIKI_DIR, CURATED[r["slug"]][1] + ".md")
         if os.path.exists(p): return open(p).read(), CURATED[r["slug"]][1]
     # otherwise synthesize from the sourced summary
-    disp = clean_name(r["fc_current_name"]) if (r["fc_name_changed"]=="yes" and r["fc_current_name"]) else titlecase(r["name"])
+    disp = name_only(clean_name(r["fc_current_name"])) if (r["fc_name_changed"]=="yes" and r["fc_current_name"]) else name_only(titlecase(r["name"]))
     wikiname = re.sub(r"\.html$", "", fname_of[r["slug"]])
     wikiname = "-".join(w.capitalize() for w in wikiname.split("-"))
     body = r["fc_summary"] or ""
@@ -402,7 +439,7 @@ def fallback_bio(r):
 def build_profile(r):
     name = r["name"]; changed = (r["fc_name_changed"] == "yes")
     kind = r["fc_change_kind"]
-    cur = clean_name(r["fc_current_name"]) if (changed and r["fc_current_name"]) else titlecase(name)
+    cur = name_only(clean_name(r["fc_current_name"])) if (changed and r["fc_current_name"]) else name_only(titlecase(name))
     title = cur
     # if the "change" leaves the displayed name identical, there's nothing to note
     if changed and norm(cur) == norm(titlecase(name)):
@@ -630,19 +667,28 @@ def bucket_of(name):
 all_names = {r["name"] for r in people if r["kind"] != "person-gap-addition"} | set(built.keys())
 deg, oth = [], []
 for n in all_names:
-    disp, fn = built[n] if n in built else (titlecase(n), None)
+    disp, fn = built[n] if n in built else (titlecase(name_only(n)) or titlecase(n), None)
     (deg if bucket_of(n) == "degree" else oth).append((disp, fn))
 
 # ---- mention-only names: anyone listed on a page (an instructor on a Training
 # card, a faculty name on a program page) gets a search hit even without an
 # entry of their own — the result points at the page that lists them.
-known_norms = {norm(n) for n in all_names}
+# suppress mentions of anyone already here — including under a corrected name
+# (the archive often repeats its own misspelling, so the misspelled form matches)
+known_norms = {norm(n) for n in all_names} | {norm(clean_name(r["fc_current_name"])) for r in people if r["fc_current_name"]}
+# first+last pairs too, so "Gary S Griffin" doesn't shadow the listed Gary Griffin
+known_pairs = set()
+for kn in list(known_norms):
+    w = kn.split()
+    if len(w) >= 2: known_pairs.add((w[0], w[-1]))
 row_by_id = {r["id"]: r for r in people}
 mention_hosts = {}   # display name -> set of (host display, host file)
 def mention_add(nm, host_disp, host_file):
-    nm = re.sub(r"\s+", " ", (nm or "").strip(" .;:"))
-    if len(nm) < 5 or " " not in nm: return          # need a real first+last name
+    nm = name_only(nm)
+    if not plausible_name(nm): return                # names and names only
     if norm(nm) in known_norms or resolve_file(nm): return  # already in the index
+    w = norm(nm).split()
+    if len(w) >= 2 and (w[0], w[-1]) in known_pairs: return  # middle-initial variant of a listed name
     mention_hosts.setdefault(titlecase(nm), set()).add((host_disp, host_file))
 for e in con.execute("SELECT person_id, instructor FROM education WHERE instructor IS NOT NULL AND instructor!=''"):
     pr = row_by_id.get(e["person_id"])
