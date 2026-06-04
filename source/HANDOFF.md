@@ -1,4 +1,4 @@
-# acmet-l2 — handoff (state as of 2026-05-30)
+# acmet-l2 — handoff (state as of 2026-06-04)
 
 The recovered Tyler "Academic Metals Directory," brought current and published.
 This is the "what's actually done and what's loose" doc; `README.md` is the
@@ -105,7 +105,69 @@ correctly. Confirm the target with `gh api repos/philrenato/acmet-l2/pages`.
 - `philrenato-web/data/apps.json` entry slug `acmet-l2` → feeds the polyhedral launcher.
 - sitemap entry at 0.8. (Separate repo `philrenato/philrenato.github.io`.)
 
+### 2026-06-04 session — the Rowan pass + editorial-rules day
+The directory got its **first inbound contributor email** (Donna Sweigart, Rowan). House
+rule held: nothing published on an email alone — research agents re-verified every claim
+against fetched URLs, then an adversarial agent re-checked all of it pre-publish.
+
+**Records:**
+- **Donna Sweigart** added (Professor, head of Rowan's Metals/Jewelry/CAD area; Tyler MFA
+  2004 → cross-links to the home program; UTPA→UTRGV→Rowan). Rank conflict carried as an
+  on-page footnote (research profile/bio/sig say Professor; dept page + 2023 archived
+  roster + her own CV say Associate Professor and Chair).
+- **Maureen Duffy** built out. Her old `ccca.rowan.edu` source URLs are DEAD (301 to an
+  unrelated college) — replaced. A **Feb-2023 Wayback capture of Rowan's faculty roster**
+  (`/web/20230203221908/https://ccca.rowan.edu/departments/art/facultystaff/`) settles
+  ranks for the whole department — the Wayback-the-dead-roster move is reusable.
+- **John Van Haren** added (1930–2010; founded EMU's Jewelry Program 1970; 40 yrs EMU,
+  15 as dept head — obituary-sourced). Archive typo "John Vanharen" on Wittersheim's card
+  fixed; teacher↔student cross-linked. Wittersheim listed Van Haren (not Skip Hunter)
+  because they were close — a person's own stated teacher wins.
+- **Skip Hunter's lineage** completed: Phil Renato, **Tara Nahabetian** (Buffalo State,
+  official bio confirms EMU BFA), **Eric Okon** (EMU; official title "Part Time Lecturer,
+  3D Media" footnoted, published as Lecturer). **Juan Carlos Caballero-Perez's education
+  was FABRICATED by a scan agent** (EMU/Skip + UW/Mary Lee Hu — both false); RIT's own
+  directory says "BFA, MFA, RIT" — replaced. Lesson: a plausible big-name education row
+  from a workflow agent is exactly the thing to re-verify.
+
+**Editorial rules (Phil, now policy — see also the memory files):**
+- Never "full professor" (only "promoted to full in YEAR" sentences).
+- Rank comes from the school's own current/recent page (Wayback counts); people say
+  "professor" colloquially. No school evidence → state the ROLE ("teaches jewelry…"),
+  which is never wrong the way a mis-stated rank is. Never characterize teaching load.
+- Conflicting evidence → publish best-evidenced value + footnote what each source says.
+- **Name fields hold names only** — no Dr./PhD/MFA in name lines, page titles, or URLs;
+  no departments, date fragments, role tails, or stray words. `name_only()` +
+  `plausible_name()` in build_site.py clean every display site AND filenames (11 pages
+  renamed; redirect stubs left at the old URLs).
+- Lineage inference: X at school Y while Z was the only/primary teacher = "X studied
+  with Z" (dates must be right).
+
+**Presentation/engine (all in build_site.py):**
+- Deceased people never read as employed: "Last role" label, bold **Deceased**, and
+  ~199 archived "…to present" program-roster rows demote to *former* at build time.
+- Institution fates carry links: a `closed` / `renamed / merged` tag (`.fatetag`) on
+  institution names, pointing at the program page that holds the story + citations.
+- **Mention search**: names that appear only on someone else's page (Training-card
+  instructors, program rosters) get index search results ("listed under …") — junk
+  filtered, misspelled/middle-initial variants of listed people suppressed (77 live).
+- "✎ edit this bio" fixed for all pages: no wiki page/repo file → GitHub's create-file
+  flow (`/new/main?filename=…`), which auto-forks + PRs for non-collaborators. (The
+  GitHub wiki itself STILL doesn't exist — needs one page made in the browser UI once.)
+
+**Update scripts this session:** `updates_2026_06_04_rowan.py` + direct SQL (logged in
+RESEARCH_LOG.md). DB now ~849 people; 781 person pages + 463 program pages live.
+Four deploys, latest `c71082b`; deploy.sh worked as designed (clear stale
+/tmp/acmet-deploy if commit fails oddly).
+
 ## loose threads / next moves (full roadmap in FUTURE.md)
+- **Donna Sweigart's "3 additional adjunct faculty"** at Rowan — unnamed, faculty
+  directory is JS-rendered; excluded. If she replies with names, verify + add.
+- **Okon/Nahabetian studied-with-Skip links** rest on Phil's editor knowledge + the
+  era inference (documented rule); fine, but a fetched page naming Skip would harden them.
+- **Other scan-fabricated education rows?** Caballero-Perez was caught only because Phil
+  knew. A targeted audit (education rows added by workflows vs. a source check) is a
+  good next sweep.
 - **Living-person consent** — it's public now; corrections welcome via GitHub. If anyone asks
   to be removed/edited, that's authoritative.
 - **Bot-blocked / slow links** (205 blocked + ~69 timeouts) were left as-is — they're live in a
