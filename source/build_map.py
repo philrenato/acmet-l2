@@ -97,6 +97,17 @@ HTML = """<!doctype html><html lang="en"><head><meta charset="utf-8">
   .tip{pointer-events:auto}
   a.back{position:fixed;top:20px;right:24px;z-index:5;color:#8a8678;text-decoration:none;font-size:12px}
   a.back:hover{color:#e8e6df}
+  .find{position:fixed;top:128px;left:24px;z-index:7}
+  .find input{width:220px;padding:7px 11px;font-size:13px;color:#e8e6df;background:rgba(14,14,20,.92);
+    border:1px solid #33323e;border-radius:9px;outline:none}
+  .find input:focus{border-color:#ffb968}
+  .find input::placeholder{color:#7a776c}
+  .find .sugg{margin-top:4px;background:rgba(14,14,20,.96);border:1px solid #33323e;border-radius:9px;
+    overflow:hidden;max-width:300px}
+  .find .sugg div{padding:6px 11px;font-size:12.5px;color:#b6b2a6;cursor:pointer;white-space:nowrap;
+    overflow:hidden;text-overflow:ellipsis}
+  .find .sugg div:hover,.find .sugg div.sel{background:#241a12;color:#ffd27a}
+  @media (max-width:600px){ .find{top:108px;left:12px} .find input{width:170px} }
   .foot{position:fixed;bottom:3px;left:50%;transform:translateX(-50%);z-index:4;
     font-size:10px;color:#5d5a52;text-align:center;max-width:96vw;
     white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -121,6 +132,9 @@ HTML = """<!doctype html><html lang="en"><head><meta charset="utf-8">
   __N_OUTSIDE__ schools outside the US are in the directory but not on this US map.</div>
 </div>
 <div class="ctl"><label><input type="checkbox" id="arcs" checked> lineage arcs</label></div>
+<div class="find"><input id="find" type="search" placeholder="find a person or program…"
+  autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Find on the map">
+  <div class="sugg" id="sugg"></div></div>
 <div class="hint">pinch or scroll to zoom · drag to pan · tap a dot</div>
 <div class="foot">data from the recovered Tyler / Temple <a href="../">“Academic Metals Directory”</a>
   (Wayback), brought current in 2026 · generated __TODAY__ ·
@@ -130,6 +144,7 @@ HTML = """<!doctype html><html lang="en"><head><meta charset="utf-8">
 <script src="https://cdn.jsdelivr.net/npm/topojson-client@3"></script>
 <script>
 const DATA = __DATA__;
+const SEARCH = __SEARCH__;
 const svg = d3.select("#map"), tip = d3.select("#tip");
 let W = innerWidth, H = innerHeight;
 function hash(s){let h=2166136261;for(let i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619)}return (h>>>0)/4294967295}
@@ -208,27 +223,65 @@ function draw(us){
   svg.call(zoom).on("dblclick.zoom",null);
   svg.on("click",()=>tip.style("opacity",0));  // tap empty space to dismiss tip
 
-  // ?focus=<program slug> deep-link: pan/zoom to the dot + open its tooltip
+  // focus a program dot by slug: pan/zoom + open its tooltip
+  // (shared by the ?focus= deep-link and the find box)
+  function focusProgram(slug){
+    if(!slug) return false;
+    const p = DATA.points.find(d=>d.slug===String(slug).toLowerCase());
+    if(!p) return false;
+    const xy = proj([p.lng,p.lat]);
+    if(!xy) return false;                       // non-US point: can't fly there
+    const k=3.2, t=d3.zoomIdentity.translate(W/2-k*xy[0],H/2-k*xy[1]).scale(k);
+    svg.transition().duration(650).call(zoom.transform,t)
+       .on("end",()=>{ const sx=W/2,sy=H/2;
+         tip.style("opacity",1).style("left",Math.min(sx+14,innerWidth-240)+"px")
+            .style("top",(sy+12)+"px").html(tipHTML(p)); });
+    return true;
+  }
   function readFocus(){ const m=/[?&]focus=([^&#]+)/.exec(location.search)||/#focus=([^&]+)/.exec(location.hash);
     return m?decodeURIComponent(m[1]).toLowerCase():null; }
   const fslug = readFocus();
-  if(fslug){
-    const p = DATA.points.find(d=>d.slug===fslug);
-    if(p){
-      const xy = proj([p.lng,p.lat]);
-      if(xy){ const k=3.2, t=d3.zoomIdentity.translate(W/2-k*xy[0],H/2-k*xy[1]).scale(k);
-        svg.transition().duration(650).call(zoom.transform,t)
-           .on("end",()=>{ const c=P(p)||xy; const sx=W/2,sy=H/2;
-             tip.style("opacity",1).style("left",Math.min(sx+14,innerWidth-240)+"px")
-                .style("top",(sy+12)+"px").html(tipHTML(p)); });
-      }
-    }
+  if(fslug) focusProgram(fslug);
+
+  // --- find box: one search across the directory — programs by name/city/state,
+  // people by name/school/teacher (a person flies to the dot where they taught)
+  const findEl=document.getElementById("find"), suggEl=document.getElementById("sugg");
+  let suggList=[], suggSel=-1;
+  function renderSugg(){
+    suggEl.innerHTML="";
+    suggList.forEach((s,j)=>{ const el=document.createElement("div");
+      el.textContent = s.n + (s.t==="person" ? (s.at?"  ·  at "+s.at:"") : "  ·  program");
+      if(j===suggSel) el.className="sel";
+      el.onclick=()=>pick(s);
+      suggEl.appendChild(el); });
   }
+  function pick(s){ findEl.value=s.n; suggList=[]; suggSel=-1; renderSugg();
+    if(!focusProgram(s.mapslug) && s.page) location.href="../"+s.page;   // no dot → their page
+    findEl.blur(); }
+  findEl.addEventListener("input",()=>{
+    const q=findEl.value.trim().toLowerCase(); suggSel=-1;
+    if(q.length<2){ suggList=[]; renderSugg(); return; }
+    suggList = SEARCH.filter(s=>(s.n+" "+(s.kw||"")).toLowerCase().includes(q))
+                     .sort((a,b)=>(a.t==="program"?0:1)-(b.t==="program"?0:1) || a.n.localeCompare(b.n))
+                     .slice(0,8);
+    renderSugg();
+  });
+  findEl.addEventListener("keydown",ev=>{
+    if(ev.key==="ArrowDown"){ ev.preventDefault(); suggSel=Math.min(suggList.length-1,suggSel+1); renderSugg(); }
+    else if(ev.key==="ArrowUp"){ ev.preventDefault(); suggSel=Math.max(0,suggSel-1); renderSugg(); }
+    else if(ev.key==="Enter"){ if(suggList.length) pick(suggList[Math.max(0,suggSel)]); }
+    else if(ev.key==="Escape"){ suggList=[]; suggSel=-1; renderSugg(); findEl.blur(); }
+  });
 }
 </script></body></html>"""
 
+# the shared search manifest (emitted by build_site, which runs first in deploy)
+_sj = os.path.join(HERE, "data", "search.json")
+SEARCH = json.load(open(_sj)) if os.path.exists(_sj) else []
+
 import datetime
 out = (HTML.replace("__DATA__", json.dumps(DATA))
+           .replace("__SEARCH__", json.dumps(SEARCH))
            .replace("__N_PLACED__", str(DATA["n_placed"]))
            .replace("__N_PROGRAMS__", str(DATA["n_programs"]))
            .replace("__N_STATE__", str(DATA["n_state"]))

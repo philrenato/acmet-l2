@@ -682,11 +682,38 @@ def bucket_of(name):
         return "other"
     return "degree"
 
+# ---- search keywords: a name matches on more than its letters --------------
+# people: their schools, instructors, institution, and (for changed names) the
+# archive name; programs: campus city + state (from the geocode overlay) + the
+# current name. Rendered as data-kw; the index search matches name + keywords.
+edu_kw = {}
+for e in con.execute("SELECT person_id, school, instructor FROM education"):
+    edu_kw.setdefault(e["person_id"], []).extend(x for x in (e["school"], e["instructor"]) if x)
+
+def person_kw(r):
+    parts = list(edu_kw.get(r["id"], []))
+    if r["currently_at"]: parts.append(r["currently_at"])
+    if r["fc_name_changed"] == "yes" and r["fc_current_name"]:
+        parts.append(r["name"])               # find them under the old name too
+    return re.sub(r"\s+", " ", " ".join(parts)).strip().lower()
+
+GEO_KW = {}
+_geo = os.path.join(HERE, "data", "geocode_cities.json")
+if os.path.exists(_geo):
+    for g in json.load(open(_geo)).get("resolved", []):
+        GEO_KW[g["name"].strip().lower()] = g
+
+def prog_kw(p):
+    g = GEO_KW.get(progname(p["name"]).lower(), {})
+    parts = [g.get("city") or "", g.get("state") or "", p["fc_current_name"] or ""]
+    return re.sub(r"\s+", " ", " ".join(x for x in parts if x)).strip().lower()
+
 all_names = {r["name"] for r in people if r["kind"] != "person-gap-addition"} | set(built.keys())
 deg, oth = [], []
 for n in all_names:
     disp, fn = built[n] if n in built else (titlecase(name_only(n)) or titlecase(n), None)
-    (deg if bucket_of(n) == "degree" else oth).append((disp, fn))
+    r = row_by_name.get(n)
+    (deg if bucket_of(n) == "degree" else oth).append((disp, fn, person_kw(r) if r else ""))
 
 # ---- mention-only names: anyone listed on a page (an instructor on a Training
 # card, a faculty name on a program page) gets a search hit even without an
@@ -727,16 +754,19 @@ n_mn = len(mention_hosts)
 
 def render_items(lst):
     lst.sort(key=lambda e: ((e[0].split()[-1].lower() if e[0].split() else e[0].lower()), e[0].lower()))
-    return "\n".join(
-        f'<a class="on nm" href="{fn}">{html.escape(d)}</a>' if fn else f'<span class="off nm">{html.escape(d)}</span>'
-        for d, fn in lst)
+    out = []
+    for d, fn, kw in lst:
+        kwa = f' data-kw="{html.escape(kw)}"' if kw else ""
+        out.append(f'<a class="on nm" href="{fn}"{kwa}>{html.escape(d)}</a>' if fn
+                   else f'<span class="off nm"{kwa}>{html.escape(d)}</span>')
+    return "\n".join(out)
 deg_html, oth_html = render_items(deg), render_items(oth)
 n_deg, n_oth = len(deg), len(oth)
 
 # programs, same split (by the institution's own type)
 pdeg, poth = [], []
 for p in programs:
-    item = (progname(p["name"]), pfile_of[p["slug"]])
+    item = (progname(p["name"]), pfile_of[p["slug"]], prog_kw(p))
     (pdeg if (p["school_type"] in DG_TYPES) else poth).append(item)
 pdeg_html, poth_html = render_items(pdeg), render_items(poth)
 n_pdeg, n_poth = len(pdeg), len(poth)
@@ -798,7 +828,7 @@ INDEX = f"""<!doctype html><html lang="en"><head><meta charset="utf-8">
     <button class="tab" id="tab-people" role="tab" aria-selected="true" onclick="showTab('people')">People</button>
     <button class="tab" id="tab-programs" role="tab" aria-selected="false" onclick="showTab('programs')">Programs</button>
   </div>
-  <input class="search" id="q" type="search" placeholder="Search people…" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Search">
+  <input class="search" id="q" type="search" placeholder="Search people — or a school, teacher, city, state…" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Search">
   <div class="qcount" id="qcount"></div>
 
   <div class="panel" id="panel-people" data-noun="people">
@@ -862,7 +892,8 @@ INDEX = f"""<!doctype html><html lang="en"><head><meta charset="utf-8">
       var items=sets[s].children, shown=0;
       var isMention=sets[s].hasAttribute('data-mention'); // mention-only names appear only in search results
       for(var i=0;i<items.length;i++){{
-        var hit = v ? items[i].textContent.toLowerCase().indexOf(v)>=0 : !isMention;
+        var hay = (items[i].textContent+' '+(items[i].getAttribute('data-kw')||'')).toLowerCase();
+        var hit = v ? hay.indexOf(v)>=0 : !isMention;
         items[i].style.display = hit ? '' : 'none'; if(hit){{shown++; n++;}}
       }}
       // hide a set's label + list when nothing in it matches
@@ -877,7 +908,7 @@ INDEX = f"""<!doctype html><html lang="en"><head><meta charset="utf-8">
     panels.people.hidden = t!=='people'; panels.programs.hidden = t!=='programs';
     document.getElementById('tab-people').setAttribute('aria-selected', t==='people');
     document.getElementById('tab-programs').setAttribute('aria-selected', t==='programs');
-    q.placeholder = t==='people' ? 'Search people…' : 'Search programs…';
+    q.placeholder = t==='people' ? 'Search people — or a school, teacher, city, state…' : 'Search programs — or a city, state…';
     run();
   }};
   q.addEventListener('input', run);
@@ -886,6 +917,25 @@ INDEX = f"""<!doctype html><html lang="en"><head><meta charset="utf-8">
 </body></html>"""
 open(os.path.join(SITE, "index.html"), "w").write(INDEX)
 print(f"index: {total} names, {nbuilt} built out")
+
+# ---- shared search manifest (data/search.json): one search, three faces ----
+# the map's find box reads this — people resolve to the dot where they taught.
+search_entries = []
+for r in build_rows:
+    fn = fname_of[r["slug"]]
+    stints = sorted(taught_at.get(fn, []), key=lambda t: t[2] != "current")
+    search_entries.append({"n": built[r["name"]][0], "t": "person", "page": fn,
+                           "mapslug": (stints[0][1][:-5] if stints else None),
+                           "at": (progname(stints[0][0]) if stints else None),
+                           "kw": person_kw(r)})
+for p in programs:
+    search_entries.append({"n": progname(p["name"]), "t": "program",
+                           "page": pfile_of[p["slug"]],
+                           "mapslug": pfile_of[p["slug"]][:-5], "at": None,
+                           "kw": prog_kw(p)})
+os.makedirs(os.path.join(HERE, "data"), exist_ok=True)
+json.dump(search_entries, open(os.path.join(HERE, "data", "search.json"), "w"))
+print(f"search.json: {len(search_entries)} entries")
 
 # ---- sitemap: every page, stamped with the build date ----
 BASE = "https://renato.design/acmet-l2/"

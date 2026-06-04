@@ -241,6 +241,20 @@ schools disclosed in the legend (Albers-USA can't draw them).
 `data/geocode_cities.json` = exact-name overlay read by build_graph
 (find_latlng step 0 + find_state); wins over fragment matching.
 
+### 2026-06-04 (fifth pass) — one search, three faces
+Roadmap item done. (1) **Index search matches more than names**: every entry
+carries `data-kw` — people match on their schools, instructors, institution,
+and former name ("carrizzi" finds Phil Renato; "skip hunter" finds his
+students); programs match on campus city/state + current name ("glassboro"
+finds Rowan). (2) **The map got a find box** (top-left, lineage-style):
+searches the shared manifest — programs fly to their dot; a person flies to
+the dot where they taught ("at <program>" shown in the suggestion); no-dot
+entries fall through to their directory page. (3) The lineage already had its
+box. Mechanism: build_site emits `data/search.json` (1,253 entries; person →
+mapslug via taught_at) + `data-kw` attrs; build_map embeds it (build order
+site-first matters here too). `focusProgram(slug)` refactored out of the
+deep-link so search + ?focus= share one path.
+
 ## loose threads / next moves (full roadmap in FUTURE.md)
 - **Donna Sweigart's "3 additional adjunct faculty"** at Rowan — unnamed, faculty
   directory is JS-rendered + bot-blocked (re-tried 2026-06-04); excluded. If she

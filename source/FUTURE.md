@@ -34,9 +34,13 @@ What widening the net means in practice:
 - **A way for anyone to add a person or program** — a contributor flow (form →
   GitHub issue/PR, or an editable data file like the bios already are). New entry
   = a row in the data + a bio markdown.
-- **Solid search** — across names, programs, states, degrees, instructors,
-  lineage; powers all three faces (directory, map, lineage).
-- **Finish geocoding** the remaining ~84 state-level programs to city precision.
+- ✅ **Solid search** — done 2026-06-04: index matches names + schools +
+  instructors + cities/states + former names (`data-kw`); the map and lineage
+  each have a find box; people resolve to the dot where they taught
+  (`data/search.json`, one manifest for all three faces).
+- ✅ **Finish geocoding** — done 2026-06-04: all 463 programs placed, 462 at
+  campus-city precision (`data/geocode_cities.json`); 27 wrong-state dots
+  corrected; 19 non-US schools disclosed on the map.
 
 ## Other open threads (from this build)
 - ✅ **Gap analysis** of current vs. archived programs — done (GAPS.md; the SNAG
