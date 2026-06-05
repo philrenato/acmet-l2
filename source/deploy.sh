@@ -30,6 +30,7 @@ rsync -a --exclude 'wiki/' "$HERE/site/" "$REPO/"
 cp "$HERE/site/wiki/"*.md "$REPO/" 2>/dev/null || true
 mkdir -p "$REPO/data"; cp "$HERE/data/acmet-graph.json" "$REPO/data/" 2>/dev/null || true
 cp "$HERE/MIRROR.md" "$REPO/" 2>/dev/null || true
+cp "$HERE/LICENSE" "$HERE/DISCLAIMER.md" "$REPO/" 2>/dev/null || true
 cp "$HERE/REPO_README.md" "$REPO/README.md" 2>/dev/null || true
 touch "$REPO/.nojekyll"
 # full source under /source (everything except build output, DB backups, git)

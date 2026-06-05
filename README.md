@@ -48,3 +48,9 @@ Sources, not guesses. No death is asserted without a good source. State what
 someone is or was doing, never what they aren't. The archived pages
 (hand-verified by Stanley Lechtzin) are the trusted baseline; everything newer
 carries a citation.
+
+## License
+
+MIT (see [LICENSE](LICENSE)) — released as research, authored through
+Iterative LLM Co-Authorship between Phil Renato and Claude (Anthropic).
+Read [DISCLAIMER.md](DISCLAIMER.md) before relying on anything here.
