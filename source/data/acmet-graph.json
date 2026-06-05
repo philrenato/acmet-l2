@@ -1,14 +1,14 @@
 {
- "_generated": "2026-06-04",
+ "_generated": "2026-06-05",
  "_source": "acmet.db",
  "stats": {
-  "nodes": 1310,
-  "people": 847,
-  "programs": 463,
-  "programs_placed": 463,
-  "edges": 2066,
-  "yinferred": 67,
-  "undated": 1018
+  "nodes": 1291,
+  "people": 841,
+  "programs": 450,
+  "programs_placed": 450,
+  "edges": 1891,
+  "yinferred": 51,
+  "undated": 1016
  },
  "nodes": [
   {
@@ -371,7 +371,7 @@
   {
    "id": "crafts/metalsdirectorypage/s124.html",
    "kind": "program",
-   "name": "Nebraska Wesl e yan University",
+   "name": "Nebraska Wesleyan University",
    "date": null,
    "yinferred": false,
    "status": "active",
@@ -383,7 +383,7 @@
    },
    "summary": "Continuation with no closure or rename. Lisa Lockman, listed in the archived record as \"1990 to present,\" is still on faculty as Professor of Art teaching metalsmithing as of 2026, confirming uninterrupted operation of the metals/jewelry of",
    "page": null,
-   "pageslug": "nebraska-wesl-e-yan-university"
+   "pageslug": "nebraska-wesleyan-university"
   },
   {
    "id": "crafts/metalsdirectorypage/s125.html",
@@ -3429,23 +3429,6 @@
    "pageslug": "massachusetts-college-of-art"
   },
   {
-   "id": "crafts/public_html/mjcc/local/history/s175.html",
-   "kind": "program",
-   "name": "Southern Illinois University",
-   "date": 1959,
-   "yinferred": false,
-   "status": "active",
-   "location": {
-    "state": "IL",
-    "lat": 37.73,
-    "lng": -89.22,
-    "precision": "city"
-   },
-   "summary": "Continuation with a generational faculty handoff. The program founded by L. Brent Kington (began rebuilding SIU metals after 1961; \"reintroduced blacksmithing as an art form to the US\"; Lifetime Achievement, SNAG 2011; the $1M endowed L. Br",
-   "page": null,
-   "pageslug": "southern-illinois-university"
-  },
-  {
    "id": "snag-gap/92nd-street-y-92ny",
    "kind": "program",
    "name": "92nd Street Y (92NY)",
@@ -3478,23 +3461,6 @@
    "summary": "Community art center (515 Meetinghouse Rd, Jenkintown PA) on Alverthorpe Manor grounds; runs a Studio School with adult \"Jewelry and Metals - Evening\" classes plus a teen Jewelry Camp; site active with 2025-2026 registration. Wendy Tonsits ",
    "page": null,
    "pageslug": "abington-art-center"
-  },
-  {
-   "id": "snag-gap/academy-of-art-university",
-   "kind": "program",
-   "name": "Academy of Art University",
-   "date": null,
-   "yinferred": false,
-   "status": "active",
-   "location": {
-    "state": "CA",
-    "lat": 37.79,
-    "lng": -122.4,
-    "precision": "city"
-   },
-   "summary": "San Francisco art college (Academy of Art University) with an active School of Jewelry & Metal Arts offering AA/BFA/MA/MFA degrees plus online + pre-college; teaches fabrication, casting, raising, stonesetting, enameling, forging, smithing,",
-   "page": null,
-   "pageslug": "academy-of-art-university"
   },
   {
    "id": "snag-gap/adam-s-forge",
@@ -3699,23 +3665,6 @@
    "summary": "An 11,000 sq ft craft/trade school in Rochester, NY for welding, glass, blacksmithing, and jewelry, with dedicated Jewelry + Metalsmithing departments offering metalsmithed jewelry, enameling, and chainmail classes. Calendar runs through Au",
    "page": null,
    "pageslug": "rochester-arc-flame-center"
-  },
-  {
-   "id": "snag-gap/arcadia-university",
-   "kind": "program",
-   "name": "Arcadia University",
-   "date": null,
-   "yinferred": false,
-   "status": "active",
-   "location": {
-    "state": "PA",
-    "lat": 40.1,
-    "lng": -75.15,
-    "precision": "city"
-   },
-   "summary": "Private university in Glenside, PA; BFA Art lists \"Metals and Jewelry\" as one of 8 studio concentrations with a full course sequence (FA 205/240/241/342) plus a metal workshop in Murphy Hall. Karen Misher is the metals/jewelry professor (co",
-   "page": null,
-   "pageslug": "arcadia-university"
   },
   {
    "id": "snag-gap/arkansas-craft-school",
@@ -4347,23 +4296,6 @@
    "pageslug": "custom-design-metal-arts"
   },
   {
-   "id": "snag-gap/craft-alliance",
-   "kind": "program",
-   "name": "Craft Alliance",
-   "date": null,
-   "yinferred": false,
-   "status": "active",
-   "location": {
-    "state": "MO",
-    "lat": 38.66,
-    "lng": -90.3,
-    "precision": "city"
-   },
-   "summary": "St. Louis nonprofit craft center/school (founded 1964) at 5080 Delmar Blvd; runs a full metals program (Metalsmithing 1\u20134, casting, enameling, mokume gane, hydraulic press) for ages 16+, with 2026 class schedules.",
-   "page": null,
-   "pageslug": "craft-alliance"
-  },
-  {
    "id": "snag-gap/craft-alliance-center-of-art-and-design",
    "kind": "program",
    "name": "Craft Alliance Center of Art and Design",
@@ -4857,23 +4789,6 @@
    "pageslug": "fresno-city-college"
   },
   {
-   "id": "snag-gap/front-range-community-college",
-   "kind": "program",
-   "name": "Front Range Community College",
-   "date": null,
-   "yinferred": false,
-   "status": "active",
-   "location": {
-    "state": "CO",
-    "lat": 39.84,
-    "lng": -105.04,
-    "precision": "city"
-   },
-   "summary": "Operating Colorado public community college (campuses in Westminster, Larimer/Fort Collins, and Boulder County). Its Art (AA) program teaches metals/jewelry: the 2026\u20132027 catalog lists a full sequence \u2014 ART 1604 Jewelry & Metalwork I (meta",
-   "page": null,
-   "pageslug": "front-range-community-college"
-  },
-  {
    "id": "snag-gap/front-range-community-college-larimer-campus",
    "kind": "program",
    "name": "Front Range Community College, Larimer Campus",
@@ -5025,23 +4940,6 @@
    "summary": "Education/retreat center in Abiquiu, NM (Georgia O'Keeffe country) with a fully-equipped silversmith studio; runs many current 2026 Southwest silversmithing/jewelry/metalsmithing workshops (sawing, soldering, bezel/stone setting, lapidary, ",
    "page": null,
    "pageslug": "ghost-ranch"
-  },
-  {
-   "id": "snag-gap/glassell-school-of-art-studio-school-mfah",
-   "kind": "program",
-   "name": "Glassell School of Art \u2013 Studio School (MFAH)",
-   "date": null,
-   "yinferred": false,
-   "status": "active",
-   "location": {
-    "state": "TX",
-    "lat": 29.73,
-    "lng": -95.39,
-    "precision": "city"
-   },
-   "summary": "Adult studio school of the Museum of Fine Arts, Houston (MFAH); runs a Jewelry and Enamel program since 1965 with a full curriculum in metalsmithing, enameling, and digital technology. Summer 2025 catalog confirms active operation. Faculty ",
-   "page": null,
-   "pageslug": null
   },
   {
    "id": "snag-gap/glendale-community-college",
@@ -6098,23 +5996,6 @@
    "pageslug": "nscad-university"
   },
   {
-   "id": "snag-gap/nebraska-wesleyan-university",
-   "kind": "program",
-   "name": "Nebraska Wesleyan University",
-   "date": null,
-   "yinferred": false,
-   "status": "active",
-   "location": {
-    "state": "NE",
-    "lat": 40.81,
-    "lng": -96.7,
-    "precision": "city"
-   },
-   "summary": "Accredited liberal-arts university (Lincoln, NE) offering Art B.A./B.F.A.; metalsmithing is a listed studio discipline with courses (ART 1800 Metalsmithing 1) and a sculpture/metalsmithing studio with silver-soldering and enameling stations",
-   "page": null,
-   "pageslug": "nebraska-wesleyan-university"
-  },
-  {
    "id": "snag-gap/new-approach-school-for-jewelers",
    "kind": "program",
    "name": "New Approach School for Jewelers",
@@ -6283,23 +6164,6 @@
    "summary": "Real 501c3 art school + artists' residency in Saugatuck, MI, affiliated with SAIC; live site with 2026 summer courses. Has a dedicated open-air Padnos Metals Studio that hosts jewelry making, metalsmithing, and blacksmithing; instruction is",
    "page": null,
    "pageslug": "ox-bow-school-of-art-artists-residency"
-  },
-  {
-   "id": "snag-gap/ox-bow-school-of-art",
-   "kind": "program",
-   "name": "Ox-Bow School of Art",
-   "date": null,
-   "yinferred": false,
-   "status": "active",
-   "location": {
-    "state": "MI",
-    "lat": 42.66,
-    "lng": -86.21,
-    "precision": "city"
-   },
-   "summary": "Real, operating 501(c)(3) art school + artists' residency in Saugatuck MI, affiliated with SAIC. Has a dedicated open-air Padnos Metals Studio that hosts jewelry-making, metals, iron pours and blacksmithing courses; 2026 catalog confirms me",
-   "page": null,
-   "pageslug": "ox-bow-school-of-art"
   },
   {
    "id": "snag-gap/peninsula-school-of-art-penart",
@@ -6538,57 +6402,6 @@
    "summary": "Public community college in Grants Pass, OR (Redwood Campus). The Visual Arts & Design dept teaches a full jewelry/metalsmithing sequence \u2014 ART 257/258/259 (piercing, riveting, lost-wax casting, soldering, enameling, chasing/repouss\u00e9, stone",
    "page": null,
    "pageslug": "rogue-community-college"
-  },
-  {
-   "id": "snag-gap/suny-college-at-brockport-department-of-art-and-design",
-   "kind": "program",
-   "name": "SUNY College at Brockport \u2014 Department of Art and Design",
-   "date": null,
-   "yinferred": false,
-   "status": "active",
-   "location": {
-    "state": "NY",
-    "lat": 43.21,
-    "lng": -77.94,
-    "precision": "city"
-   },
-   "summary": "Real, operating SUNY university with active Dept. of Art & Design (BFA/BA/BS). Metal-working IS currently taught, but within the Sculpture area (ART 362 Sculpture: Metal \u2014 direct/indirect metalworking, casting foundry, welding, plasma cutte",
-   "page": null,
-   "pageslug": "suny-college-at-brockport-department-of-art-and-design"
-  },
-  {
-   "id": "snag-gap/suny-buffalo-state-university",
-   "kind": "program",
-   "name": "SUNY Buffalo State University",
-   "date": null,
-   "yinferred": false,
-   "status": "active",
-   "location": {
-    "state": "NY",
-    "lat": 42.89,
-    "lng": -78.88,
-    "precision": "city"
-   },
-   "summary": "SUNY Buffalo State Art & Design Dept (Upton Hall) offers a studio-intensive Metals/Jewelry concentration (BFA and BA) plus a Jewelry Arts Certificate; NASAD-accredited; covers fabrication, casting, stone setting, electroforming, enameling, ",
-   "page": null,
-   "pageslug": "suny-buffalo-state-university"
-  },
-  {
-   "id": "snag-gap/suny-new-paltz",
-   "kind": "program",
-   "name": "SUNY New Paltz",
-   "date": null,
-   "yinferred": false,
-   "status": "active",
-   "location": {
-    "state": "NY",
-    "lat": 41.75,
-    "lng": -74.09,
-    "precision": "city"
-   },
-   "summary": "The SUNY New Paltz Art Dept Metal program offers a BFA and a top-ranked MFA in metal/jewelry/metalsmithing; current faculty include Mimlitsch-Gray (director) and Batchelder.",
-   "page": null,
-   "pageslug": "suny-new-paltz"
   },
   {
    "id": "snag-gap/saddleback-college",
@@ -7033,23 +6846,6 @@
    "pageslug": null
   },
   {
-   "id": "snag-gap/tennessee-tech-university-appalachian-center-for-craft",
-   "kind": "program",
-   "name": "Tennessee Tech University / Appalachian Center for Craft",
-   "date": null,
-   "yinferred": false,
-   "status": "active",
-   "location": {
-    "state": "TN",
-    "lat": 35.96,
-    "lng": -85.81,
-    "precision": "city"
-   },
-   "summary": "Tennessee Tech's College of Fine Arts craft campus (NASAD-accredited); offers a BFA metals concentration plus public metals/jewelry summer workshops (raising, jewelry/casting, blacksmithing studios). Active 2025-2026 with current faculty an",
-   "page": null,
-   "pageslug": "tennessee-tech-university-appalachian-center-for-craft"
-  },
-  {
    "id": "snag-gap/texas-state-university-san-marcos-school-of-art-and-design",
    "kind": "program",
    "name": "Texas State University - San Marcos (School of Art and Design)",
@@ -7473,23 +7269,6 @@
    "summary": "Public university; the School of Visual Arts offers a BFA Metalwork & Jewelry concentration (the only one in Louisiana) teaching forming, soldering, casting, enameling, stone setting, and digital tools. Coordinator: Daniel DiCaprio; Anne Bu",
    "page": null,
    "pageslug": "university-of-louisiana-at-lafayette"
-  },
-  {
-   "id": "snag-gap/university-of-texas-rio-grande-valley-school-of-art-and-design",
-   "kind": "program",
-   "name": "University of Texas Rio Grande Valley - School of Art and Design",
-   "date": 2015,
-   "yinferred": true,
-   "status": "active",
-   "location": {
-    "state": "TX",
-    "lat": 26.31,
-    "lng": -98.17,
-    "precision": "city"
-   },
-   "summary": "Public university (UTRGV, Edinburg/Brownsville, TX); the School of Art and Design within the College of Fine Arts. Jewelry is a named specialization in the BFA Studio Art and MFA, and the 2025\u20132026 undergraduate catalog lists a full sequenc",
-   "page": null,
-   "pageslug": "university-of-texas-rio-grande-valley-school-of-art-and-design"
   },
   {
    "id": "snag-gap/university-of-utah",
@@ -11299,22 +11078,6 @@
    "page": "phil-renato.html"
   },
   {
-   "id": "crafts/public_html/mjcc/local/history/p178.html",
-   "kind": "person",
-   "name": "CARLYLE SMITH",
-   "date": 1928,
-   "yinferred": true,
-   "status": "retired",
-   "location": {
-    "state": "KS",
-    "lat": 38.5,
-    "lng": -98.4,
-    "precision": "state"
-   },
-   "summary": "Carlyle H. Smith was the RISD-trained pioneer metalsmith who founded the first U.S. public-university jewelry/silversmithing program at the University of Kansas (1947\u20131977); he died Nov. 11, 2004 at age 93. KU's metalsmithing studio is name",
-   "page": "carlyle-smith.html"
-  },
-  {
    "id": "gap/anne-mondro",
    "kind": "person",
    "name": "Anne Mondro",
@@ -12838,8 +12601,8 @@
    "id": "gap/hiroko-m-streppone",
    "kind": "person",
    "name": "Hiroko M. Streppone",
-   "date": 1958,
-   "yinferred": true,
+   "date": null,
+   "yinferred": false,
    "status": "alive",
    "location": null,
    "summary": "Instructor",
@@ -12887,8 +12650,8 @@
    "id": "gap/nancy-slagle",
    "kind": "person",
    "name": "Nancy Slagle",
-   "date": 1926,
-   "yinferred": true,
+   "date": null,
+   "yinferred": false,
    "status": "alive",
    "location": {
     "state": "TX",
@@ -12983,7 +12746,7 @@
    "id": "gap/rachel-shimpock",
    "kind": "person",
    "name": "Rachel Shimpock",
-   "date": 1975,
+   "date": 2006,
    "yinferred": true,
    "status": "alive",
    "location": {
@@ -13127,8 +12890,8 @@
    "id": "gap/jim-charles",
    "kind": "person",
    "name": "Jim Charles",
-   "date": 1940,
-   "yinferred": true,
+   "date": null,
+   "yinferred": false,
    "status": "alive",
    "location": {
     "state": "WI",
@@ -13190,7 +12953,7 @@
   {
    "id": "gap/andrew-andy-lowrie",
    "kind": "person",
-   "name": "Andrew (Andy) Lowrie",
+   "name": "Andy Lowrie",
    "date": null,
    "yinferred": false,
    "status": "alive",
@@ -13201,7 +12964,7 @@
     "precision": "city"
    },
    "summary": "Adjunct Faculty \u2014 Jewelry + Metalsmithing",
-   "page": "andrew-lowrie.html"
+   "page": "andy-lowrie.html"
   },
   {
    "id": "gap/mallory-weston",
@@ -13287,7 +13050,7 @@
    "id": "gap/sharon-stampfer",
    "kind": "person",
    "name": "Sharon Stampfer",
-   "date": 1970,
+   "date": 2022,
    "yinferred": true,
    "status": "alive",
    "location": {
@@ -13495,8 +13258,8 @@
    "id": "gap/carli-holcomb",
    "kind": "person",
    "name": "Carli Holcomb",
-   "date": 1949,
-   "yinferred": true,
+   "date": null,
+   "yinferred": false,
    "status": "alive",
    "location": {
     "state": "WY",
@@ -13687,8 +13450,8 @@
    "id": "gap/mayela-cardenas-surillo",
    "kind": "person",
    "name": "Mayela Cardenas Surillo",
-   "date": 1957,
-   "yinferred": true,
+   "date": null,
+   "yinferred": false,
    "status": "alive",
    "location": {
     "state": "CO",
@@ -13796,22 +13559,6 @@
    "page": "marthe-roberts-shea.html"
   },
   {
-   "id": "gap/phillip-renato",
-   "kind": "person",
-   "name": "Phillip Renato",
-   "date": null,
-   "yinferred": false,
-   "status": "alive",
-   "location": {
-    "state": "MI",
-    "lat": 42.96,
-    "lng": -85.67,
-    "precision": "city"
-   },
-   "summary": "Professor, M.F.A. (metals/jewelry, now within the interdisciplinary Product Design program)",
-   "page": "phillip-renato.html"
-  },
-  {
    "id": "gap/lauren-selden",
    "kind": "person",
    "name": "Lauren Selden",
@@ -13847,7 +13594,7 @@
    "id": "gap/adam-grinovich",
    "kind": "person",
    "name": "Adam Grinovich",
-   "date": 1971,
+   "date": 2006,
    "yinferred": true,
    "status": "alive",
    "location": {
@@ -13911,8 +13658,8 @@
    "id": "gap/allison-syes",
    "kind": "person",
    "name": "Allison Syes",
-   "date": 1936,
-   "yinferred": true,
+   "date": null,
+   "yinferred": false,
    "status": "alive",
    "location": {
     "state": "WA",
@@ -13975,8 +13722,8 @@
    "id": "gap/tova-lund",
    "kind": "person",
    "name": "Tova Lund",
-   "date": 1949,
-   "yinferred": true,
+   "date": null,
+   "yinferred": false,
    "status": "alive",
    "location": {
     "state": "CA",
@@ -14023,8 +13770,8 @@
    "id": "gap/tim-lazure",
    "kind": "person",
    "name": "Tim Lazure",
-   "date": 1940,
-   "yinferred": true,
+   "date": null,
+   "yinferred": false,
    "status": "alive",
    "location": {
     "state": "NC",
@@ -14087,8 +13834,8 @@
    "id": "gap/erin-m-rice",
    "kind": "person",
    "name": "Erin M. Rice",
-   "date": 1937,
-   "yinferred": true,
+   "date": null,
+   "yinferred": false,
    "status": "alive",
    "location": {
     "state": "IL",
@@ -14103,8 +13850,8 @@
    "id": "gap/felicia-szorad",
    "kind": "person",
    "name": "Felicia Szorad",
-   "date": 1969,
-   "yinferred": true,
+   "date": null,
+   "yinferred": false,
    "status": "alive",
    "location": {
     "state": "KY",
@@ -14199,8 +13946,8 @@
    "id": "gap/dana-buscaglia",
    "kind": "person",
    "name": "Dana Buscaglia",
-   "date": 1888,
-   "yinferred": true,
+   "date": null,
+   "yinferred": false,
    "status": "alive",
    "location": {
     "state": "NY",
@@ -14311,8 +14058,8 @@
    "id": "gap/sandie-zilker",
    "kind": "person",
    "name": "Sandie Zilker",
-   "date": 1969,
-   "yinferred": true,
+   "date": null,
+   "yinferred": false,
    "status": "alive",
    "location": {
     "state": "TX",
@@ -14631,8 +14378,8 @@
    "id": "gap/alexandra-dickinson",
    "kind": "person",
    "name": "Alexandra Dickinson",
-   "date": 1951,
-   "yinferred": true,
+   "date": null,
+   "yinferred": false,
    "status": "alive",
    "location": {
     "state": "CA",
@@ -14658,8 +14405,8 @@
    "id": "gap/kathleen-kennedy",
    "kind": "person",
    "name": "Kathleen Kennedy",
-   "date": 1942,
-   "yinferred": true,
+   "date": null,
+   "yinferred": false,
    "status": "alive",
    "location": {
     "state": "VA",
@@ -16471,7 +16218,7 @@
   {
    "id": "snag-gap/caryn-hetherston",
    "kind": "person",
-   "name": "Caryn Hetherston",
+   "name": "Caryn L. Hetherston",
    "date": null,
    "yinferred": false,
    "status": "alive",
@@ -16481,8 +16228,8 @@
     "lng": -75.56,
     "precision": "city"
    },
-   "summary": "Metalsmithing/Jewelry Instructor (40 yrs craft, ~10 yrs teaching at the Museum), Delaware Art Museum.",
-   "page": "caryn-hetherston.html"
+   "summary": "Metalsmithing/Jewelry Instructor (40 yrs craft, ~10 yrs teaching at the Museum), Delaware Art Museum; also teaches Fine Metals workshops at Peters Valley School of Craft.",
+   "page": "caryn-l-hetherston.html"
   },
   {
    "id": "snag-gap/kristen-landon",
@@ -17136,22 +16883,6 @@
    "page": "kathy-shann.html"
   },
   {
-   "id": "snag-gap/bill-derrevere",
-   "kind": "person",
-   "name": "Bill Derrevere",
-   "date": null,
-   "yinferred": false,
-   "status": "alive",
-   "location": {
-    "state": "NM",
-    "lat": 36.33,
-    "lng": -106.47,
-    "precision": "city"
-   },
-   "summary": "Instructor, Contemporary Southwest Silver / Jewelry, Ghost Ranch.",
-   "page": "bill-derrevere.html"
-  },
-  {
    "id": "snag-gap/steve-cree-larance",
    "kind": "person",
    "name": "Steve & Cree LaRance",
@@ -17198,22 +16929,6 @@
    },
    "summary": "Part-time Faculty, Jewelry, Golden West College.",
    "page": "tony-nguyen.html"
-  },
-  {
-   "id": "snag-gap/kristi-glick",
-   "kind": "person",
-   "name": "Kristi Glick",
-   "date": null,
-   "yinferred": false,
-   "status": "alive",
-   "location": {
-    "state": "IN",
-    "lat": 41.58,
-    "lng": -85.83,
-    "precision": "city"
-   },
-   "summary": "Assistant Professor of Art (jewelry/metals; teaches Jewelry I, Enameling); MFA in metal design, East Carolina University, Goshen College.",
-   "page": "kristi-glick.html"
   },
   {
    "id": "snag-gap/renee-zettle-sterling",
@@ -19207,22 +18922,6 @@
    "page": "elaine-robnett-moore.html"
   },
   {
-   "id": "snag-gap/andy-lowrie",
-   "kind": "person",
-   "name": "Andy Lowrie",
-   "date": null,
-   "yinferred": false,
-   "status": "alive",
-   "location": {
-    "state": "NJ",
-    "lat": 41.2,
-    "lng": -74.81,
-    "precision": "city"
-   },
-   "summary": "Jewelry & Fine Metals workshop instructor (2025-2026), Peters Valley School of Craft.",
-   "page": "andy-lowrie.html"
-  },
-  {
    "id": "snag-gap/andrew-thornton",
    "kind": "person",
    "name": "Andrew Thornton",
@@ -19269,22 +18968,6 @@
    },
    "summary": "Department Head of Fine Metals; jewelry artist/educator, Artist in Residence since 1991, Peters Valley School of Craft.",
    "page": "frederick-marshall.html"
-  },
-  {
-   "id": "snag-gap/caryn-l-hetherston",
-   "kind": "person",
-   "name": "Caryn L. Hetherston",
-   "date": null,
-   "yinferred": false,
-   "status": "alive",
-   "location": {
-    "state": "NJ",
-    "lat": 41.2,
-    "lng": -74.81,
-    "precision": "city"
-   },
-   "summary": "Fine Metals instructor (fine art jeweler 40+ yrs), Peters Valley School of Craft.",
-   "page": "caryn-l-hetherston.html"
   },
   {
    "id": "snag-gap/elizabeth-tokoly",
@@ -21420,12 +21103,6 @@
    "label": "BA"
   },
   {
-   "from": "crafts/metalsdirectorypage/p103.html",
-   "to": "crafts/metalsdirectorypage/s124.html",
-   "type": "taught-at",
-   "label": ""
-  },
-  {
    "from": "crafts/metalsdirectorypage/p104.html",
    "to": "crafts/metalsdirectorypage/p195.html",
    "type": "studied-under",
@@ -21619,25 +21296,13 @@
   },
   {
    "from": "crafts/metalsdirectorypage/p115.html",
-   "to": "crafts/public_html/mjcc/local/history/p178.html",
+   "to": "crafts/metalsdirectorypage/p178.html",
    "type": "studied-under",
    "label": "MFA"
   },
   {
    "from": "crafts/metalsdirectorypage/p115.html",
    "to": "crafts/metalsdirectorypage/s228.html",
-   "type": "studied-at",
-   "label": "MFA"
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p115.html",
-   "to": "crafts/public_html/mjcc/local/history/s175.html",
-   "type": "taught-at",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p116.html",
-   "to": "crafts/public_html/mjcc/local/history/s175.html",
    "type": "studied-at",
    "label": "MFA"
   },
@@ -21781,13 +21446,7 @@
   },
   {
    "from": "crafts/metalsdirectorypage/p125.html",
-   "to": "crafts/public_html/mjcc/local/history/s175.html",
-   "type": "studied-at",
-   "label": "MFA"
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p125.html",
-   "to": "crafts/public_html/mjcc/local/history/p178.html",
+   "to": "crafts/metalsdirectorypage/p178.html",
    "type": "studied-under",
    "label": "MFA"
   },
@@ -21799,7 +21458,7 @@
   },
   {
    "from": "crafts/metalsdirectorypage/p126.html",
-   "to": "crafts/public_html/mjcc/local/history/p178.html",
+   "to": "crafts/metalsdirectorypage/p178.html",
    "type": "studied-under",
    "label": "M.F.A."
   },
@@ -22201,12 +21860,6 @@
   },
   {
    "from": "crafts/metalsdirectorypage/p150.html",
-   "to": "crafts/public_html/mjcc/local/history/s175.html",
-   "type": "studied-at",
-   "label": "BS"
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p150.html",
    "to": "crafts/metalsdirectorypage/s101.html",
    "type": "taught-at",
    "label": ""
@@ -22246,12 +21899,6 @@
    "to": "crafts/metalsdirectorypage/s42.html",
    "type": "studied-at",
    "label": "MFA"
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p154.html",
-   "to": "crafts/public_html/mjcc/local/history/s175.html",
-   "type": "studied-at",
-   "label": "BA"
   },
   {
    "from": "crafts/metalsdirectorypage/p154.html",
@@ -22417,7 +22064,7 @@
   },
   {
    "from": "crafts/metalsdirectorypage/p166.html",
-   "to": "crafts/public_html/mjcc/local/history/p178.html",
+   "to": "crafts/metalsdirectorypage/p178.html",
    "type": "studied-under",
    "label": "MFA"
   },
@@ -22735,7 +22382,7 @@
   },
   {
    "from": "crafts/metalsdirectorypage/p187.html",
-   "to": "crafts/public_html/mjcc/local/history/s175.html",
+   "to": "crafts/metalsdirectorypage/s175.html",
    "type": "studied-at",
    "label": "BA"
   },
@@ -22819,7 +22466,7 @@
   },
   {
    "from": "crafts/metalsdirectorypage/p192.html",
-   "to": "crafts/public_html/mjcc/local/history/p178.html",
+   "to": "crafts/metalsdirectorypage/p178.html",
    "type": "studied-under",
    "label": "MFA"
   },
@@ -22927,7 +22574,7 @@
   },
   {
    "from": "crafts/metalsdirectorypage/p20.html",
-   "to": "crafts/public_html/mjcc/local/history/s175.html",
+   "to": "crafts/metalsdirectorypage/s175.html",
    "type": "studied-at",
    "label": "MFA"
   },
@@ -23005,7 +22652,7 @@
   },
   {
    "from": "crafts/metalsdirectorypage/p203.html",
-   "to": "crafts/public_html/mjcc/local/history/p178.html",
+   "to": "crafts/metalsdirectorypage/p178.html",
    "type": "studied-under",
    "label": "BFA"
   },
@@ -23211,12 +22858,6 @@
    "from": "crafts/metalsdirectorypage/p275.html",
    "to": "crafts/metalsdirectorypage/p114.html",
    "type": "studied-under",
-   "label": "BFA"
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p275.html",
-   "to": "snag-gap/suny-new-paltz",
-   "type": "studied-at",
    "label": "BFA"
   },
   {
@@ -23779,7 +23420,7 @@
   },
   {
    "from": "crafts/metalsdirectorypage/p65.html",
-   "to": "crafts/public_html/mjcc/local/history/s175.html",
+   "to": "crafts/metalsdirectorypage/s175.html",
    "type": "studied-at",
    "label": "MFA"
   },
@@ -23989,7 +23630,7 @@
   },
   {
    "from": "crafts/metalsdirectorypage/p79.html",
-   "to": "crafts/public_html/mjcc/local/history/p178.html",
+   "to": "crafts/metalsdirectorypage/p178.html",
    "type": "studied-under",
    "label": "MFA"
   },
@@ -24055,7 +23696,7 @@
   },
   {
    "from": "crafts/metalsdirectorypage/p82.html",
-   "to": "crafts/public_html/mjcc/local/history/s175.html",
+   "to": "crafts/metalsdirectorypage/s175.html",
    "type": "studied-at",
    "label": "MFA"
   },
@@ -24187,7 +23828,7 @@
   },
   {
    "from": "crafts/metalsdirectorypage/p89.html",
-   "to": "crafts/public_html/mjcc/local/history/p178.html",
+   "to": "crafts/metalsdirectorypage/p178.html",
    "type": "studied-under",
    "label": "BFA"
   },
@@ -24277,7 +23918,7 @@
   },
   {
    "from": "crafts/metalsdirectorypage/p93.html",
-   "to": "crafts/public_html/mjcc/local/history/p178.html",
+   "to": "crafts/metalsdirectorypage/p178.html",
    "type": "studied-under",
    "label": "BFA"
   },
@@ -24442,24 +24083,6 @@
    "to": "crafts/metalsdirectorypage/s273.html",
    "type": "taught-at",
    "label": ""
-  },
-  {
-   "from": "crafts/public_html/mjcc/local/history/p178.html",
-   "to": "crafts/metalsdirectorypage/p27.html",
-   "type": "studied-under",
-   "label": "?"
-  },
-  {
-   "from": "crafts/public_html/mjcc/local/history/p178.html",
-   "to": "crafts/metalsdirectorypage/s153.html",
-   "type": "studied-at",
-   "label": "?"
-  },
-  {
-   "from": "crafts/public_html/mjcc/local/history/p178.html",
-   "to": "crafts/metalsdirectorypage/s228.html",
-   "type": "studied-at",
-   "label": "MFA"
   },
   {
    "from": "gap/robin-servo",
@@ -25074,12 +24697,6 @@
    "label": "Master of Science, Art Education (emphasis in Jewelry Design)"
   },
   {
-   "from": "gap/stephen-f-saracino",
-   "to": "snag-gap/suny-buffalo-state-university",
-   "type": "taught-at",
-   "label": ""
-  },
-  {
    "from": "gap/lynn-batchelder",
    "to": "crafts/metalsdirectorypage/s188.html",
    "type": "taught-at",
@@ -25141,12 +24758,6 @@
   },
   {
    "from": "gap/charlene-modena",
-   "to": "snag-gap/academy-of-art-university",
-   "type": "studied-at",
-   "label": "MFA Sculpture"
-  },
-  {
-   "from": "gap/charlene-modena",
    "to": "crafts/metalsdirectorypage/s2.html",
    "type": "taught-at",
    "label": ""
@@ -25180,12 +24791,6 @@
    "to": "crafts/metalsdirectorypage/s20.html",
    "type": "taught-at",
    "label": ""
-  },
-  {
-   "from": "gap/rachel-shimpock",
-   "to": "crafts/metalsdirectorypage/s232.html",
-   "type": "studied-at",
-   "label": "BA"
   },
   {
    "from": "gap/rachel-shimpock",
@@ -25279,12 +24884,6 @@
   },
   {
    "from": "gap/jim-charles",
-   "to": "crafts/metalsdirectorypage/s156.html",
-   "type": "studied-at",
-   "label": ""
-  },
-  {
-   "from": "gap/jim-charles",
    "to": "crafts/metalsdirectorypage/s209.html",
    "type": "taught-at",
    "label": ""
@@ -25342,12 +24941,6 @@
    "to": "crafts/metalsdirectorypage/s218.html",
    "type": "taught-at",
    "label": ""
-  },
-  {
-   "from": "gap/sharon-stampfer",
-   "to": "crafts/metalsdirectorypage/s126.html",
-   "type": "studied-at",
-   "label": "none"
   },
   {
    "from": "gap/sharon-stampfer",
@@ -25474,12 +25067,6 @@
    "to": "crafts/metalsdirectorypage/s238.html",
    "type": "taught-at",
    "label": ""
-  },
-  {
-   "from": "gap/carli-holcomb",
-   "to": "crafts/metalsdirectorypage/s227.html",
-   "type": "studied-at",
-   "label": "MFA"
   },
   {
    "from": "gap/carli-holcomb",
@@ -25644,12 +25231,6 @@
    "label": ""
   },
   {
-   "from": "gap/phillip-renato",
-   "to": "crafts/metalsdirectorypage/s273.html",
-   "type": "taught-at",
-   "label": ""
-  },
-  {
    "from": "gap/lauren-selden",
    "to": "crafts/metalsdirectorypage/s6.html",
    "type": "studied-at",
@@ -25666,12 +25247,6 @@
    "to": "crafts/metalsdirectorypage/s275.html",
    "type": "taught-at",
    "label": ""
-  },
-  {
-   "from": "gap/adam-grinovich",
-   "to": "crafts/metalsdirectorypage/s254.html",
-   "type": "studied-at",
-   "label": "BS"
   },
   {
    "from": "gap/adam-grinovich",
@@ -25702,12 +25277,6 @@
    "to": "crafts/metalsdirectorypage/s275.html",
    "type": "taught-at",
    "label": ""
-  },
-  {
-   "from": "gap/allison-syes",
-   "to": "crafts/metalsdirectorypage/s30.html",
-   "type": "studied-at",
-   "label": "Certificate"
   },
   {
    "from": "gap/allison-syes",
@@ -25777,18 +25346,6 @@
   },
   {
    "from": "gap/tim-lazure",
-   "to": "snag-gap/university-of-utah",
-   "type": "studied-at",
-   "label": "BA"
-  },
-  {
-   "from": "gap/tim-lazure",
-   "to": "crafts/metalsdirectorypage/s12.html",
-   "type": "studied-at",
-   "label": "MA"
-  },
-  {
-   "from": "gap/tim-lazure",
    "to": "crafts/metalsdirectorypage/s46.html",
    "type": "taught-at",
    "label": ""
@@ -25813,21 +25370,9 @@
   },
   {
    "from": "gap/erin-m-rice",
-   "to": "crafts/metalsdirectorypage/s42.html",
-   "type": "studied-at",
-   "label": ""
-  },
-  {
-   "from": "gap/erin-m-rice",
    "to": "crafts/metalsdirectorypage/s50.html",
    "type": "taught-at",
    "label": ""
-  },
-  {
-   "from": "gap/felicia-szorad",
-   "to": "crafts/metalsdirectorypage/s156.html",
-   "type": "studied-at",
-   "label": "BFA"
   },
   {
    "from": "gap/felicia-szorad",
@@ -25864,12 +25409,6 @@
    "to": "crafts/metalsdirectorypage/s52.html",
    "type": "taught-at",
    "label": ""
-  },
-  {
-   "from": "gap/cappy-counard",
-   "to": "crafts/public_html/mjcc/local/history/s175.html",
-   "type": "studied-at",
-   "label": "MFA"
   },
   {
    "from": "gap/kim-nelson",
@@ -25936,12 +25475,6 @@
    "to": "crafts/metalsdirectorypage/s7.html",
    "type": "taught-at",
    "label": ""
-  },
-  {
-   "from": "gap/sandie-zilker",
-   "to": "crafts/metalsdirectorypage/s227.html",
-   "type": "studied-at",
-   "label": "MFA"
   },
   {
    "from": "gap/sandie-zilker",
@@ -26065,18 +25598,6 @@
   },
   {
    "from": "gap/mark-rooker",
-   "to": "crafts/metalsdirectorypage/s22.html",
-   "type": "studied-at",
-   "label": "AB"
-  },
-  {
-   "from": "gap/mark-rooker",
-   "to": "snag-gap/western-michigan-university",
-   "type": "studied-at",
-   "label": "MA"
-  },
-  {
-   "from": "gap/mark-rooker",
    "to": "crafts/metalsdirectorypage/s86.html",
    "type": "taught-at",
    "label": ""
@@ -26113,12 +25634,6 @@
   },
   {
    "from": "gap/sophia-park",
-   "to": "crafts/public_html/mjcc/local/history/s175.html",
-   "type": "studied-at",
-   "label": "BA"
-  },
-  {
-   "from": "gap/sophia-park",
    "to": "crafts/metalsdirectorypage/s160.html",
    "type": "studied-at",
    "label": "MFA"
@@ -26134,12 +25649,6 @@
    "to": "crafts/metalsdirectorypage/s93.html",
    "type": "taught-at",
    "label": ""
-  },
-  {
-   "from": "gap/alexandra-dickinson",
-   "to": "crafts/metalsdirectorypage/s194.html",
-   "type": "studied-at",
-   "label": "MFA"
   },
   {
    "from": "gap/alexandra-dickinson",
@@ -26215,12 +25724,6 @@
   },
   {
    "from": "gap/michael-nashef",
-   "to": "gap/phillip-renato",
-   "type": "studied-under",
-   "label": "BFA Metal/Jewelry Design"
-  },
-  {
-   "from": "gap/michael-nashef",
    "to": "crafts/metalsdirectorypage/s273.html",
    "type": "studied-at",
    "label": "BFA Metal/Jewelry Design"
@@ -26230,12 +25733,6 @@
    "to": "crafts/metalsdirectorypage/s12.html",
    "type": "studied-at",
    "label": "MFA Jewelry Design / Metals"
-  },
-  {
-   "from": "gap/caitlin-skelcey",
-   "to": "gap/phillip-renato",
-   "type": "studied-under",
-   "label": "BFA Metals/Jewelry Design & BFA Painting"
   },
   {
    "from": "gap/caitlin-skelcey",
@@ -26755,37 +26252,37 @@
   },
   {
    "from": "snag-gap/lauren-nall",
-   "to": "snag-gap/craft-alliance",
+   "to": "snag-gap/craft-alliance-center-of-art-and-design",
    "type": "taught-at",
    "label": ""
   },
   {
    "from": "snag-gap/kelly-draper",
-   "to": "snag-gap/craft-alliance",
+   "to": "snag-gap/craft-alliance-center-of-art-and-design",
    "type": "taught-at",
    "label": ""
   },
   {
    "from": "snag-gap/peg-fetter",
-   "to": "snag-gap/craft-alliance",
+   "to": "snag-gap/craft-alliance-center-of-art-and-design",
    "type": "taught-at",
    "label": ""
   },
   {
    "from": "snag-gap/cindy-howenstien",
-   "to": "snag-gap/craft-alliance",
+   "to": "snag-gap/craft-alliance-center-of-art-and-design",
    "type": "taught-at",
    "label": ""
   },
   {
    "from": "snag-gap/meri-ellen-taylor",
-   "to": "snag-gap/craft-alliance",
+   "to": "snag-gap/craft-alliance-center-of-art-and-design",
    "type": "taught-at",
    "label": ""
   },
   {
    "from": "snag-gap/kate-snyder",
-   "to": "snag-gap/craft-alliance",
+   "to": "snag-gap/craft-alliance-center-of-art-and-design",
    "type": "taught-at",
    "label": ""
   },
@@ -27126,12 +26623,6 @@
    "label": ""
   },
   {
-   "from": "snag-gap/bill-derrevere",
-   "to": "snag-gap/ghost-ranch",
-   "type": "taught-at",
-   "label": ""
-  },
-  {
    "from": "snag-gap/steve-cree-larance",
    "to": "snag-gap/ghost-ranch",
    "type": "taught-at",
@@ -27146,12 +26637,6 @@
   {
    "from": "snag-gap/tony-nguyen",
    "to": "snag-gap/golden-west-college",
-   "type": "taught-at",
-   "label": ""
-  },
-  {
-   "from": "snag-gap/kristi-glick",
-   "to": "snag-gap/goshen-college",
    "type": "taught-at",
    "label": ""
   },
@@ -27930,12 +27415,6 @@
    "label": ""
   },
   {
-   "from": "snag-gap/andy-lowrie",
-   "to": "snag-gap/peters-valley-school-of-craft",
-   "type": "taught-at",
-   "label": ""
-  },
-  {
    "from": "snag-gap/andrew-thornton",
    "to": "snag-gap/peters-valley-school-of-craft",
    "type": "taught-at",
@@ -27949,12 +27428,6 @@
   },
   {
    "from": "snag-gap/frederick-marshall",
-   "to": "snag-gap/peters-valley-school-of-craft",
-   "type": "taught-at",
-   "label": ""
-  },
-  {
-   "from": "snag-gap/caryn-l-hetherston",
    "to": "snag-gap/peters-valley-school-of-craft",
    "type": "taught-at",
    "label": ""
@@ -28052,18 +27525,6 @@
   {
    "from": "snag-gap/michael-dadayan",
    "to": "snag-gap/richmond-art-center",
-   "type": "taught-at",
-   "label": ""
-  },
-  {
-   "from": "snag-gap/jennifer-hecker",
-   "to": "snag-gap/suny-college-at-brockport-department-of-art-and-design",
-   "type": "taught-at",
-   "label": ""
-  },
-  {
-   "from": "snag-gap/mitchell-christensen",
-   "to": "snag-gap/suny-college-at-brockport-department-of-art-and-design",
    "type": "taught-at",
    "label": ""
   },
@@ -29298,6 +28759,18 @@
    "label": ""
   },
   {
+   "from": "gap/tara-j-nahabetian",
+   "to": "crafts/metalsdirectorypage/s184.html",
+   "type": "faculty-of",
+   "label": ""
+  },
+  {
+   "from": "gap/caitlin-skelcey",
+   "to": "crafts/metalsdirectorypage/s184.html",
+   "type": "faculty-of",
+   "label": ""
+  },
+  {
    "from": "crafts/metalsdirectorypage/p112.html",
    "to": "crafts/metalsdirectorypage/s186.html",
    "type": "faculty-of",
@@ -29305,6 +28778,18 @@
   },
   {
    "from": "crafts/metalsdirectorypage/p141.html",
+   "to": "crafts/metalsdirectorypage/s186.html",
+   "type": "faculty-of",
+   "label": ""
+  },
+  {
+   "from": "snag-gap/jennifer-hecker",
+   "to": "crafts/metalsdirectorypage/s186.html",
+   "type": "faculty-of",
+   "label": ""
+  },
+  {
+   "from": "snag-gap/mitchell-christensen",
    "to": "crafts/metalsdirectorypage/s186.html",
    "type": "faculty-of",
    "label": ""
@@ -29329,6 +28814,24 @@
   },
   {
    "from": "crafts/metalsdirectorypage/p201.html",
+   "to": "crafts/metalsdirectorypage/s188.html",
+   "type": "faculty-of",
+   "label": ""
+  },
+  {
+   "from": "gap/lynn-batchelder",
+   "to": "crafts/metalsdirectorypage/s188.html",
+   "type": "faculty-of",
+   "label": ""
+  },
+  {
+   "from": "gap/amelia-toelke",
+   "to": "crafts/metalsdirectorypage/s188.html",
+   "type": "faculty-of",
+   "label": ""
+  },
+  {
+   "from": "gap/adam-mastropaolo",
    "to": "crafts/metalsdirectorypage/s188.html",
    "type": "faculty-of",
    "label": ""
@@ -29384,6 +28887,30 @@
   {
    "from": "crafts/metalsdirectorypage/p137.html",
    "to": "crafts/metalsdirectorypage/s199.html",
+   "type": "faculty-of",
+   "label": ""
+  },
+  {
+   "from": "gap/charlene-modena",
+   "to": "crafts/metalsdirectorypage/s2.html",
+   "type": "faculty-of",
+   "label": ""
+  },
+  {
+   "from": "gap/lindsey-eason",
+   "to": "crafts/metalsdirectorypage/s2.html",
+   "type": "faculty-of",
+   "label": ""
+  },
+  {
+   "from": "gap/justin-mcginnis",
+   "to": "crafts/metalsdirectorypage/s2.html",
+   "type": "faculty-of",
+   "label": ""
+  },
+  {
+   "from": "gap/chrystal-sunshine",
+   "to": "crafts/metalsdirectorypage/s2.html",
    "type": "faculty-of",
    "label": ""
   },
@@ -29640,7 +29167,7 @@
    "label": ""
   },
   {
-   "from": "crafts/public_html/mjcc/local/history/p178.html",
+   "from": "crafts/metalsdirectorypage/p178.html",
    "to": "crafts/metalsdirectorypage/s228.html",
    "type": "faculty-of",
    "label": ""
@@ -30018,6 +29545,18 @@
    "label": ""
   },
   {
+   "from": "gap/daniel-randall",
+   "to": "crafts/metalsdirectorypage/s5.html",
+   "type": "faculty-of",
+   "label": ""
+  },
+  {
+   "from": "gap/talia-tax",
+   "to": "crafts/metalsdirectorypage/s5.html",
+   "type": "faculty-of",
+   "label": ""
+  },
+  {
    "from": "crafts/metalsdirectorypage/p65.html",
    "to": "crafts/metalsdirectorypage/s51.html",
    "type": "faculty-of",
@@ -30068,6 +29607,18 @@
   {
    "from": "crafts/metalsdirectorypage/p151.html",
    "to": "crafts/metalsdirectorypage/s6.html",
+   "type": "faculty-of",
+   "label": ""
+  },
+  {
+   "from": "gap/sandie-zilker",
+   "to": "crafts/metalsdirectorypage/s70.html",
+   "type": "faculty-of",
+   "label": ""
+  },
+  {
+   "from": "gap/jan-arthur-harrell",
+   "to": "crafts/metalsdirectorypage/s70.html",
    "type": "faculty-of",
    "label": ""
   },
@@ -30174,6 +29725,12 @@
    "label": ""
   },
   {
+   "from": "gap/karen-e-misher",
+   "to": "crafts/metalsdirectorypage/s9.html",
+   "type": "faculty-of",
+   "label": ""
+  },
+  {
    "from": "crafts/metalsdirectorypage/p167.html",
    "to": "crafts/metalsdirectorypage/s90.html",
    "type": "faculty-of",
@@ -30252,74 +29809,14 @@
    "label": ""
   },
   {
-   "from": "crafts/metalsdirectorypage/p89.html",
-   "to": "crafts/public_html/mjcc/local/history/s175.html",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p82.html",
-   "to": "crafts/public_html/mjcc/local/history/s175.html",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p115.html",
-   "to": "crafts/public_html/mjcc/local/history/s175.html",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
    "from": "snag-gap/jonathan-wahl",
    "to": "snag-gap/92nd-street-y-92ny",
    "type": "faculty-of",
    "label": ""
   },
   {
-   "from": "crafts/metalsdirectorypage/P68.html",
-   "to": "snag-gap/abington-art-center",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
    "from": "snag-gap/wendy-tonsits",
    "to": "snag-gap/abington-art-center",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p73.html",
-   "to": "snag-gap/academy-of-art-university",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p137.html",
-   "to": "snag-gap/academy-of-art-university",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "gap/charlene-modena",
-   "to": "snag-gap/academy-of-art-university",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "gap/lindsey-eason",
-   "to": "snag-gap/academy-of-art-university",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "gap/justin-mcginnis",
-   "to": "snag-gap/academy-of-art-university",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "gap/chrystal-sunshine",
-   "to": "snag-gap/academy-of-art-university",
    "type": "faculty-of",
    "label": ""
   },
@@ -30336,32 +29833,14 @@
    "label": ""
   },
   {
-   "from": "crafts/metalsdirectorypage/p137.html",
-   "to": "snag-gap/adirondack-folk-school",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
    "from": "snag-gap/nancy-miller",
    "to": "snag-gap/adirondack-folk-school",
    "type": "faculty-of",
    "label": ""
   },
   {
-   "from": "crafts/metalsdirectorypage/p152.html",
-   "to": "snag-gap/ah-haa-school-for-the-arts",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
    "from": "snag-gap/tony-finocchio",
    "to": "snag-gap/ah-haa-school-for-the-arts",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p167.html",
-   "to": "snag-gap/alberta-university-of-the-arts",
    "type": "faculty-of",
    "label": ""
   },
@@ -30396,18 +29875,6 @@
    "label": ""
   },
   {
-   "from": "crafts/metalsdirectorypage/p148.html",
-   "to": "snag-gap/american-school-of-jewelry",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p110.html",
-   "to": "snag-gap/american-school-of-jewelry",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
    "from": "snag-gap/edgardo-eddie-zargon",
    "to": "snag-gap/american-school-of-jewelry",
    "type": "faculty-of",
@@ -30426,12 +29893,6 @@
    "label": ""
   },
   {
-   "from": "crafts/metalsdirectorypage/p29.html",
-   "to": "snag-gap/arapahoe-community-college",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
    "from": "snag-gap/amy-bailey",
    "to": "snag-gap/arapahoe-community-college",
    "type": "faculty-of",
@@ -30440,42 +29901,6 @@
   {
    "from": "snag-gap/jailyn-becerra",
    "to": "snag-gap/arbutus-folk-school",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p187.html",
-   "to": "snag-gap/rochester-arc-flame-center",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "gap/karen-e-misher",
-   "to": "snag-gap/arcadia-university",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p36.html",
-   "to": "snag-gap/arkansas-craft-school",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p92.html",
-   "to": "snag-gap/arkansas-craft-school",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p147.html",
-   "to": "snag-gap/arkansas-craft-school",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p197.html",
-   "to": "snag-gap/arkansas-craft-school",
    "type": "faculty-of",
    "label": ""
   },
@@ -30510,12 +29935,6 @@
    "label": ""
   },
   {
-   "from": "crafts/metalsdirectorypage/p55.html",
-   "to": "snag-gap/art-association-of-jackson-hole",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
    "from": "snag-gap/wendy-thurlow",
    "to": "snag-gap/art-center-manatee-now-herrig-center-for-the-arts",
    "type": "faculty-of",
@@ -30530,30 +29949,6 @@
   {
    "from": "snag-gap/bernadette-nichols",
    "to": "snag-gap/art-center-manatee-now-herrig-center-for-the-arts",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p97.html",
-   "to": "snag-gap/art-league-school",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p154.html",
-   "to": "snag-gap/art-league-school",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p170.html",
-   "to": "snag-gap/art-league-school",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p88.html",
-   "to": "snag-gap/art-league-school",
    "type": "faculty-of",
    "label": ""
   },
@@ -30618,24 +30013,6 @@
    "label": ""
   },
   {
-   "from": "crafts/metalsdirectorypage/p105.html",
-   "to": "snag-gap/baltimore-jewelry-center",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p199.html",
-   "to": "snag-gap/baltimore-jewelry-center",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p36.html",
-   "to": "snag-gap/baltimore-jewelry-center",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
    "from": "snag-gap/kirsten-rook",
    "to": "snag-gap/baltimore-jewelry-center",
    "type": "faculty-of",
@@ -30662,12 +30039,6 @@
   {
    "from": "snag-gap/bren-brenda-glasure",
    "to": "snag-gap/bayarts",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p101.html",
-   "to": "snag-gap/birmingham-city-university-school-of-jewellery",
    "type": "faculty-of",
    "label": ""
   },
@@ -30708,30 +30079,6 @@
    "label": ""
   },
   {
-   "from": "crafts/metalsdirectorypage/p155.html",
-   "to": "snag-gap/boca-raton-museum-of-art",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p196.html",
-   "to": "snag-gap/boca-raton-museum-of-art",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p122.html",
-   "to": "snag-gap/boca-raton-museum-of-art",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p186.html",
-   "to": "snag-gap/boca-raton-museum-of-art",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
    "from": "snag-gap/sol-filippi",
    "to": "snag-gap/boca-raton-museum-of-art",
    "type": "faculty-of",
@@ -30756,18 +30103,6 @@
    "label": ""
   },
   {
-   "from": "crafts/metalsdirectorypage/p23.html",
-   "to": "snag-gap/brookdale-community-college",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p136.html",
-   "to": "snag-gap/brookdale-community-college",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
    "from": "snag-gap/lori-meehan",
    "to": "snag-gap/brookfield-craft-center",
    "type": "faculty-of",
@@ -30788,30 +30123,6 @@
   {
    "from": "snag-gap/joy-raskin",
    "to": "snag-gap/brookfield-craft-center",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/public_html/mjcc/local/history/p178.html",
-   "to": "snag-gap/brookline-arts-center",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p85.html",
-   "to": "snag-gap/brookline-arts-center",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p192.html",
-   "to": "snag-gap/brookline-arts-center",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p76.html",
-   "to": "snag-gap/brookline-arts-center",
    "type": "faculty-of",
    "label": ""
   },
@@ -30906,30 +30217,6 @@
    "label": ""
   },
   {
-   "from": "crafts/metalsdirectorypage/p52.html",
-   "to": "snag-gap/central-oregon-community-college",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p11.html",
-   "to": "snag-gap/central-oregon-community-college",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p214.htm",
-   "to": "snag-gap/central-oregon-community-college",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p74.html",
-   "to": "snag-gap/central-oregon-community-college",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
    "from": "snag-gap/michelle-keller",
    "to": "snag-gap/central-oregon-community-college",
    "type": "faculty-of",
@@ -30966,20 +30253,8 @@
    "label": ""
   },
   {
-   "from": "crafts/metalsdirectorypage/p127.html",
-   "to": "snag-gap/clear-creek-academy-of-jewelry-metal-arts",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
    "from": "snag-gap/kathy-pritchett",
    "to": "snag-gap/clear-creek-academy-of-jewelry-metal-arts",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p4.html",
-   "to": "snag-gap/college-of-the-albemarle",
    "type": "faculty-of",
    "label": ""
   },
@@ -30990,32 +30265,8 @@
    "label": ""
   },
   {
-   "from": "crafts/metalsdirectorypage/p20.html",
-   "to": "snag-gap/community-arts-center-wallingford-pa",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
    "from": "snag-gap/dori-mcclennen",
    "to": "snag-gap/community-arts-center-wallingford-pa",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p155.html",
-   "to": "snag-gap/contemporary-craft",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p33.html",
-   "to": "snag-gap/contemporary-craft",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p197.html",
-   "to": "snag-gap/contemporary-craft",
    "type": "faculty-of",
    "label": ""
   },
@@ -31056,43 +30307,7 @@
    "label": ""
   },
   {
-   "from": "snag-gap/lauren-nall",
-   "to": "snag-gap/craft-alliance",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "snag-gap/kelly-draper",
-   "to": "snag-gap/craft-alliance",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "snag-gap/peg-fetter",
-   "to": "snag-gap/craft-alliance",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "snag-gap/cindy-howenstien",
-   "to": "snag-gap/craft-alliance",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
    "from": "snag-gap/meri-ellen-taylor",
-   "to": "snag-gap/craft-alliance",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "snag-gap/kate-snyder",
-   "to": "snag-gap/craft-alliance",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p81.html",
    "to": "snag-gap/craft-alliance-center-of-art-and-design",
    "type": "faculty-of",
    "label": ""
@@ -31158,20 +30373,8 @@
    "label": ""
   },
   {
-   "from": "crafts/metalsdirectorypage/p164.html",
-   "to": "snag-gap/creative-arts-workshop",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
    "from": "snag-gap/connie-pfeiffer",
    "to": "snag-gap/creative-arts-workshop",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p87.html",
-   "to": "snag-gap/crown-trout-jewelers",
    "type": "faculty-of",
    "label": ""
   },
@@ -31184,30 +30387,6 @@
   {
    "from": "snag-gap/michael-seiler",
    "to": "snag-gap/crown-trout-jewelers",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p210.html",
-   "to": "snag-gap/cultural-arts-center-priscilla-r-tyson-cultural-arts-center",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p113.html",
-   "to": "snag-gap/cultural-arts-center-priscilla-r-tyson-cultural-arts-center",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p82.html",
-   "to": "snag-gap/cultural-arts-center-priscilla-r-tyson-cultural-arts-center",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p83.html",
-   "to": "snag-gap/cultural-arts-center-priscilla-r-tyson-cultural-arts-center",
    "type": "faculty-of",
    "label": ""
   },
@@ -31260,30 +30439,6 @@
    "label": ""
   },
   {
-   "from": "crafts/metalsdirectorypage/p195.html",
-   "to": "snag-gap/denver-school-of-metal-arts",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p49.html",
-   "to": "snag-gap/denver-school-of-metal-arts",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p128.html",
-   "to": "snag-gap/denver-school-of-metal-arts",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p82.html",
-   "to": "snag-gap/denver-school-of-metal-arts",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
    "from": "snag-gap/stephen-dove",
    "to": "snag-gap/diablo-valley-college",
    "type": "faculty-of",
@@ -31296,32 +30451,8 @@
    "label": ""
   },
   {
-   "from": "crafts/metalsdirectorypage/p156.html",
-   "to": "snag-gap/dunedin-fine-art-center",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p184.html",
-   "to": "snag-gap/dunedin-fine-art-center",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
    "from": "snag-gap/stacy-perry",
    "to": "snag-gap/dunedin-fine-art-center",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p132.html",
-   "to": "snag-gap/eureka-springs-school-of-the-arts",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p110.html",
-   "to": "snag-gap/eureka-springs-school-of-the-arts",
    "type": "faculty-of",
    "label": ""
   },
@@ -31362,12 +30493,6 @@
    "label": ""
   },
   {
-   "from": "crafts/metalsdirectorypage/p100.html",
-   "to": "snag-gap/evergreen-valley-college",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
    "from": "snag-gap/miles-schlagel",
    "to": "snag-gap/pratt-fine-arts-center",
    "type": "faculty-of",
@@ -31376,12 +30501,6 @@
   {
    "from": "snag-gap/monica-street",
    "to": "snag-gap/pratt-fine-arts-center",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p189.html",
-   "to": "snag-gap/fine-line-creative-arts-center",
    "type": "faculty-of",
    "label": ""
   },
@@ -31422,20 +30541,8 @@
    "label": ""
   },
   {
-   "from": "crafts/metalsdirectorypage/p172.html",
-   "to": "snag-gap/fire-arts-inc",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
    "from": "snag-gap/elyse-bogart",
    "to": "snag-gap/firehouse-art-center-norman-firehouse-art-center",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p50.html",
-   "to": "snag-gap/flathead-valley-community-college",
    "type": "faculty-of",
    "label": ""
   },
@@ -31448,30 +30555,6 @@
   {
    "from": "snag-gap/c-flowers",
    "to": "snag-gap/flathead-valley-community-college",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p18.html",
-   "to": "snag-gap/fletcher-farm-school-for-the-arts-and-crafts",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p179.html",
-   "to": "snag-gap/flint-institute-of-arts",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p34.html",
-   "to": "snag-gap/flint-institute-of-arts",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p99.html",
-   "to": "snag-gap/flint-institute-of-arts",
    "type": "faculty-of",
    "label": ""
   },
@@ -31502,48 +30585,6 @@
   {
    "from": "snag-gap/alicia-dib",
    "to": "snag-gap/fredricka-kulicke-school-of-jewelry-art",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p10.html",
-   "to": "snag-gap/fuller-craft-museum",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p124.html",
-   "to": "snag-gap/fuller-craft-museum",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p123.html",
-   "to": "snag-gap/fuller-craft-museum",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p76.html",
-   "to": "snag-gap/fuller-craft-museum",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p19.html",
-   "to": "snag-gap/fuller-craft-museum",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p137.html",
-   "to": "snag-gap/fuller-craft-museum",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p80.html",
-   "to": "snag-gap/fuller-craft-museum",
    "type": "faculty-of",
    "label": ""
   },
@@ -31644,7 +30685,7 @@
    "label": ""
   },
   {
-   "from": "snag-gap/bill-derrevere",
+   "from": "crafts/metalsdirectorypage/p41.html",
    "to": "snag-gap/ghost-ranch",
    "type": "faculty-of",
    "label": ""
@@ -31652,42 +30693,6 @@
   {
    "from": "snag-gap/steve-cree-larance",
    "to": "snag-gap/ghost-ranch",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "gap/sandie-zilker",
-   "to": "snag-gap/glassell-school-of-art-studio-school-mfah",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "gap/jan-arthur-harrell",
-   "to": "snag-gap/glassell-school-of-art-studio-school-mfah",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p86.html",
-   "to": "snag-gap/glendale-community-college",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p94.html",
-   "to": "snag-gap/goggleworks-center-for-the-arts",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p61.html",
-   "to": "snag-gap/goggleworks-center-for-the-arts",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p121.html",
-   "to": "snag-gap/goggleworks-center-for-the-arts",
    "type": "faculty-of",
    "label": ""
   },
@@ -31704,14 +30709,8 @@
    "label": ""
   },
   {
-   "from": "snag-gap/kristi-glick",
+   "from": "gap/kristina-glick",
    "to": "snag-gap/goshen-college",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p60.html",
-   "to": "snag-gap/grand-valley-state-university",
    "type": "faculty-of",
    "label": ""
   },
@@ -31730,24 +30729,6 @@
   {
    "from": "gap/beverly-seley",
    "to": "snag-gap/grand-valley-state-university",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p13.html",
-   "to": "snag-gap/guilded-lynx",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p188.html",
-   "to": "snag-gap/guilded-lynx",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p70.html",
-   "to": "snag-gap/guilded-lynx",
    "type": "faculty-of",
    "label": ""
   },
@@ -31776,12 +30757,6 @@
    "label": ""
   },
   {
-   "from": "crafts/metalsdirectorypage/p53.html",
-   "to": "snag-gap/haystack-mountain-school-of-crafts",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
    "from": "snag-gap/laura-mochales-matte",
    "to": "snag-gap/haystack-mountain-school-of-crafts",
    "type": "faculty-of",
@@ -31806,12 +30781,6 @@
    "label": ""
   },
   {
-   "from": "crafts/metalsdirectorypage/p166.html",
-   "to": "snag-gap/honolulu-museum-of-art",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
    "from": "snag-gap/kaori-vaughn",
    "to": "snag-gap/honolulu-museum-of-art",
    "type": "faculty-of",
@@ -31820,12 +30789,6 @@
   {
    "from": "snag-gap/angela-szelag",
    "to": "snag-gap/hot-shops-art-center",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p104.html",
-   "to": "snag-gap/houston-center-for-contemporary-craft",
    "type": "faculty-of",
    "label": ""
   },
@@ -31842,12 +30805,6 @@
    "label": ""
   },
   {
-   "from": "crafts/metalsdirectorypage/p30.html",
-   "to": "snag-gap/hui-no-eau-visual-arts-center",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
    "from": "snag-gap/noryne-hiromoto-taylor",
    "to": "snag-gap/hui-no-eau-visual-arts-center",
    "type": "faculty-of",
@@ -31856,12 +30813,6 @@
   {
    "from": "snag-gap/roberta-ann-weisenburg",
    "to": "snag-gap/hui-no-eau-visual-arts-center",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p65.html",
-   "to": "snag-gap/idyllwild-arts",
    "type": "faculty-of",
    "label": ""
   },
@@ -31884,20 +30835,8 @@
    "label": ""
   },
   {
-   "from": "crafts/metalsdirectorypage/p110.html",
-   "to": "snag-gap/illinois-state-university",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
    "from": "snag-gap/randy-reid",
    "to": "snag-gap/illinois-state-university",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p171.html",
-   "to": "snag-gap/indianapolis-art-center",
    "type": "faculty-of",
    "label": ""
   },
@@ -31938,32 +30877,8 @@
    "label": ""
   },
   {
-   "from": "crafts/metalsdirectorypage/p191.html",
-   "to": "snag-gap/irvine-fine-arts-center",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p96.html",
-   "to": "snag-gap/james-carter-studio-school-of-jewelry-arts",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
    "from": "snag-gap/james-carter",
    "to": "snag-gap/james-carter-studio-school-of-jewelry-arts",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p105.html",
-   "to": "snag-gap/jewel-envy",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p151.html",
-   "to": "snag-gap/jewel-envy",
    "type": "faculty-of",
    "label": ""
   },
@@ -32058,20 +30973,8 @@
    "label": ""
   },
   {
-   "from": "crafts/metalsdirectorypage/p69.html",
-   "to": "snag-gap/kentucky-school-of-craft",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
    "from": "snag-gap/michael-flynn",
    "to": "snag-gap/kentucky-school-of-craft",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p42.html",
-   "to": "snag-gap/krasl-art-center",
    "type": "faculty-of",
    "label": ""
   },
@@ -32088,26 +30991,8 @@
    "label": ""
   },
   {
-   "from": "crafts/metalsdirectorypage/p17.html",
-   "to": "snag-gap/laramie-county-community-college",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
    "from": "snag-gap/tracy-duck",
    "to": "snag-gap/laramie-county-community-college",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p45.html",
-   "to": "snag-gap/laredo-college-formerly-laredo-community-college",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p106.html",
-   "to": "snag-gap/laredo-college-formerly-laredo-community-college",
    "type": "faculty-of",
    "label": ""
   },
@@ -32130,12 +31015,6 @@
    "label": ""
   },
   {
-   "from": "crafts/metalsdirectorypage/p54.html",
-   "to": "snag-gap/lighthouse-artcenter",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
    "from": "snag-gap/joel-schwalb",
    "to": "snag-gap/lighthouse-artcenter",
    "type": "faculty-of",
@@ -32150,18 +31029,6 @@
   {
    "from": "snag-gap/cameron-walsh",
    "to": "snag-gap/lighthouse-artcenter",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p94.html",
-   "to": "snag-gap/lillstreet-art-center",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p32.html",
-   "to": "snag-gap/lillstreet-art-center",
    "type": "faculty-of",
    "label": ""
   },
@@ -32208,38 +31075,8 @@
    "label": ""
   },
   {
-   "from": "crafts/metalsdirectorypage/p24.html",
-   "to": "snag-gap/louisiana-state-university-college-of-art-design-school-of-art",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p47.html",
-   "to": "snag-gap/loyola-marymount-university",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p203.html",
-   "to": "snag-gap/mekah-gold-silversmith-metalsmith-studio-educational-center",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
    "from": "snag-gap/dr-mekah-gordon",
    "to": "snag-gap/mekah-gold-silversmith-metalsmith-studio-educational-center",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p275.html",
-   "to": "snag-gap/milan-village-arts-school",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p56.html",
-   "to": "snag-gap/milan-village-arts-school",
    "type": "faculty-of",
    "label": ""
   },
@@ -32280,20 +31117,8 @@
    "label": ""
   },
   {
-   "from": "crafts/metalsdirectorypage/p56.html",
-   "to": "snag-gap/marlboro-studio-school",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
    "from": "snag-gap/will-nevins-alderfer",
    "to": "snag-gap/marlboro-studio-school",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p154.html",
-   "to": "snag-gap/maryland-hall-for-the-creative-arts",
    "type": "faculty-of",
    "label": ""
   },
@@ -32312,42 +31137,6 @@
   {
    "from": "snag-gap/scott-newcomb",
    "to": "snag-gap/maryland-hall-for-the-creative-arts",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p67.html",
-   "to": "snag-gap/maryville-university",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p167.html",
-   "to": "snag-gap/mcmurry-university",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p73.html",
-   "to": "snag-gap/mcmurry-university",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p117.html",
-   "to": "snag-gap/mcmurry-university",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p193.html",
-   "to": "snag-gap/mcmurry-university",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p121.html",
-   "to": "snag-gap/mcmurry-university",
    "type": "faculty-of",
    "label": ""
   },
@@ -32430,20 +31219,8 @@
    "label": ""
   },
   {
-   "from": "crafts/metalsdirectorypage/p111.html",
-   "to": "snag-gap/midland-center-for-the-arts",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
    "from": "snag-gap/roger-schmidt",
    "to": "snag-gap/midland-center-for-the-arts",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p100.html",
-   "to": "snag-gap/minnetonka-center-for-the-arts",
    "type": "faculty-of",
    "label": ""
   },
@@ -32466,26 +31243,8 @@
    "label": ""
   },
   {
-   "from": "crafts/metalsdirectorypage/p180.html",
-   "to": "snag-gap/mission-college",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p6.html",
-   "to": "snag-gap/monterey-peninsula-college",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
    "from": "snag-gap/abby-bettencourt",
    "to": "snag-gap/monterey-peninsula-college",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p145.html",
-   "to": "snag-gap/moore-college-of-art-design",
    "type": "faculty-of",
    "label": ""
   },
@@ -32516,24 +31275,6 @@
   {
    "from": "snag-gap/josh-anderson",
    "to": "snag-gap/mount-mary-university",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p93.html",
-   "to": "snag-gap/mt-hood-community-college",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p121.html",
-   "to": "snag-gap/mt-hood-community-college",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p202.html",
-   "to": "snag-gap/mt-hood-community-college",
    "type": "faculty-of",
    "label": ""
   },
@@ -32594,12 +31335,6 @@
   {
    "from": "snag-gap/kye-yeon-son",
    "to": "snag-gap/nscad-university",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p103.html",
-   "to": "snag-gap/nebraska-wesleyan-university",
    "type": "faculty-of",
    "label": ""
   },
@@ -32700,12 +31435,6 @@
    "label": ""
   },
   {
-   "from": "snag-gap/natalie-murray",
-   "to": "snag-gap/ox-bow-school-of-art",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
    "from": "snag-gap/sarah-mann",
    "to": "snag-gap/peninsula-school-of-art-penart",
    "type": "faculty-of",
@@ -32760,12 +31489,6 @@
    "label": ""
   },
   {
-   "from": "gap/phillip-renato",
-   "to": "snag-gap/penland-school-of-craft",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
    "from": "snag-gap/jessica-keemer",
    "to": "snag-gap/pennsylvania-guild-of-craftsmen",
    "type": "faculty-of",
@@ -32784,30 +31507,6 @@
    "label": ""
   },
   {
-   "from": "crafts/metalsdirectorypage/p75.html",
-   "to": "snag-gap/peters-valley-school-of-craft",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p47.html",
-   "to": "snag-gap/peters-valley-school-of-craft",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p110.html",
-   "to": "snag-gap/peters-valley-school-of-craft",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p132.html",
-   "to": "snag-gap/peters-valley-school-of-craft",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
    "from": "snag-gap/everett-hoffman",
    "to": "snag-gap/peters-valley-school-of-craft",
    "type": "faculty-of",
@@ -32820,7 +31519,7 @@
    "label": ""
   },
   {
-   "from": "snag-gap/andy-lowrie",
+   "from": "gap/andrew-andy-lowrie",
    "to": "snag-gap/peters-valley-school-of-craft",
    "type": "faculty-of",
    "label": ""
@@ -32850,7 +31549,7 @@
    "label": ""
   },
   {
-   "from": "snag-gap/caryn-l-hetherston",
+   "from": "snag-gap/caryn-hetherston",
    "to": "snag-gap/peters-valley-school-of-craft",
    "type": "faculty-of",
    "label": ""
@@ -32954,54 +31653,6 @@
   {
    "from": "snag-gap/michael-dadayan",
    "to": "snag-gap/richmond-art-center",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "snag-gap/jennifer-hecker",
-   "to": "snag-gap/suny-college-at-brockport-department-of-art-and-design",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "snag-gap/mitchell-christensen",
-   "to": "snag-gap/suny-college-at-brockport-department-of-art-and-design",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "gap/tara-j-nahabetian",
-   "to": "snag-gap/suny-buffalo-state-university",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "gap/caitlin-skelcey",
-   "to": "snag-gap/suny-buffalo-state-university",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "gap/lynn-batchelder",
-   "to": "snag-gap/suny-new-paltz",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "gap/amelia-toelke",
-   "to": "snag-gap/suny-new-paltz",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "gap/adam-mastropaolo",
-   "to": "snag-gap/suny-new-paltz",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "crafts/metalsdirectorypage/p11.html",
-   "to": "snag-gap/suny-new-paltz",
    "type": "faculty-of",
    "label": ""
   },
@@ -33164,18 +31815,6 @@
   {
    "from": "snag-gap/alejandra-alfaro-suzan",
    "to": "snag-gap/tecnologico-de-monterrey-campus-mexico-ciudad-de-mexico",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "gap/daniel-randall",
-   "to": "snag-gap/tennessee-tech-university-appalachian-center-for-craft",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "gap/talia-tax",
-   "to": "snag-gap/tennessee-tech-university-appalachian-center-for-craft",
    "type": "faculty-of",
    "label": ""
   },
@@ -33464,12 +32103,6 @@
   {
    "from": "snag-gap/anne-bujold",
    "to": "snag-gap/university-of-louisiana-at-lafayette",
-   "type": "faculty-of",
-   "label": ""
-  },
-  {
-   "from": "gap/donna-sweigart",
-   "to": "snag-gap/university-of-texas-rio-grande-valley-school-of-art-and-design",
    "type": "faculty-of",
    "label": ""
   },

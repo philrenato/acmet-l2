@@ -379,3 +379,15 @@ of search narration → "Unknown."). The rule is now standing: copy states the
 fact or says unknown; the audit trail lives here and in `factcheck`, not on
 the page. Also standing from today: check inbound (wiki commits, issues, PRs)
 at the start of every session. Script: `updates_2026_06_04_simple_copy.py`.
+
+
+## 2026-06-05 — initials aliases + dedup/realness pass
+
+CCS/KCAD-style initials search shipped (data/school_aliases.json + alias_kw in
+build_site.py). Full dup audit (audit_dups.py): purged 158 stale-id
+program_faculty rows + 31 stale-id education rows (old-renumbering leftovers
+that put other schools' rosters / other people's schooling on gap entries),
+merged 12 duplicate programs + 5 duplicate people, un-published 2 history-tree
+shadows, fixed "Nebraska Wesl e yan", fixed Mc/O' name casing. 22 retired URLs
+now redirect (redirect_stubs.py). Fixes in updates_2026_06_05_dedup.py;
+DB backups acmet.db.bak-dedup-*. 450 programs / 784 profiles after.

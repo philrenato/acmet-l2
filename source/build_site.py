@@ -44,9 +44,17 @@ TYPE_LABEL = {
     "unclassified": "",
 }
 
+def _capword(p):
+    # plain capitalize mangles Scots/Irish surnames: McCORMICK -> Mccormick,
+    # O'CONNELL -> O'connell. (Mac is left alone — Macellaio is correct as-is.)
+    p = p.capitalize()
+    if p.startswith("Mc") and len(p) > 2: p = "Mc" + p[2:].capitalize()
+    if p.startswith("O'") and len(p) > 2: p = "O'" + p[2:].capitalize()
+    return p
+
 def titlecase(n):
     n = re.sub(r"\s+", " ", (n or "").strip())
-    cap = lambda w: "-".join(p.capitalize() for p in w.split("-"))
+    cap = lambda w: "-".join(_capword(p) for p in w.split("-"))
     return " ".join(cap(w) for w in n.split())
 
 def progname(n):
@@ -690,11 +698,51 @@ edu_kw = {}
 for e in con.execute("SELECT person_id, school, instructor FROM education"):
     edu_kw.setdefault(e["person_id"], []).extend(x for x in (e["school"], e["instructor"]) if x)
 
+# ---- school initials/aliases ------------------------------------------------
+# Any school that goes by initials (CCS, KCAD, RISD, SAIC, UWM…) — or by a
+# current/short name the archive doesn't carry — is searchable by them.
+# data/school_aliases.json maps normalized match substrings -> alias strings;
+# when a key appears in an entry's name+keywords, the aliases join its kw.
+SCHOOL_ALIASES = {}
+_al = os.path.join(HERE, "data", "school_aliases.json")
+if os.path.exists(_al):
+    SCHOOL_ALIASES = {k: v for k, v in json.load(open(_al)).items()
+                      if not k.startswith("_")}
+
+def _alias_norm(s):
+    # dashes/slashes/dots/commas/parens -> spaces, so "Wisconsin–Madison",
+    # "Wisconsin - Madison", and "Wisconsin-Madison" all read the same
+    return re.sub(r"\s+", " ", re.sub(r"[-–—/,.()&]", " ", (s or "").lower())).strip()
+
+_ALIAS_KEYS = None
+def alias_kw(*texts):
+    # keys anchor at the START of a name segment (segments split on / ( ) , ; —)
+    # so "Washington University" matches but "Central Washington University"
+    # doesn't; longest key wins its prefixes, so "Indiana University of
+    # Pennsylvania" takes IUP and never plain-IU.
+    global _ALIAS_KEYS
+    if _ALIAS_KEYS is None:
+        _ALIAS_KEYS = sorted(SCHOOL_ALIASES, key=len, reverse=True)
+    hay = " " + _alias_norm(" | ".join(t for t in texts if t)) + " "
+    out = []
+    for t in texts:
+        for piece in re.split(r"[/(),;|—]", t or ""):
+            p = _alias_norm(piece)
+            if p.startswith("the "): p = p[4:]
+            matched = []
+            for k in _ALIAS_KEYS:
+                if (p == k or p.startswith(k + " ")) and not any(m.startswith(k) for m in matched):
+                    matched.append(k)
+                    out.extend(a for a in SCHOOL_ALIASES[k]
+                               if " " + _alias_norm(a) + " " not in hay and a not in out)
+    return out
+
 def person_kw(r):
     parts = list(edu_kw.get(r["id"], []))
     if r["currently_at"]: parts.append(r["currently_at"])
     if r["fc_name_changed"] == "yes" and r["fc_current_name"]:
         parts.append(r["name"])               # find them under the old name too
+    parts += alias_kw(*parts)
     return re.sub(r"\s+", " ", " ".join(parts)).strip().lower()
 
 GEO_KW = {}
@@ -706,6 +754,7 @@ if os.path.exists(_geo):
 def prog_kw(p):
     g = GEO_KW.get(progname(p["name"]).lower(), {})
     parts = [g.get("city") or "", g.get("state") or "", p["fc_current_name"] or ""]
+    parts += alias_kw(progname(p["name"]), p["fc_current_name"])
     return re.sub(r"\s+", " ", " ".join(x for x in parts if x)).strip().lower()
 
 all_names = {r["name"] for r in people if r["kind"] != "person-gap-addition"} | set(built.keys())
@@ -721,6 +770,13 @@ for n in all_names:
 # suppress mentions of anyone already here — including under a corrected name
 # (the archive often repeats its own misspelling, so the misspelled form matches)
 known_norms = {norm(n) for n in all_names} | {norm(clean_name(r["fc_current_name"])) for r in people if r["fc_current_name"]}
+# parenthetical full-name variants are known too — "Phil Renato (Phillip
+# Renato)" suppresses mentions of either form
+for r in people:
+    for src in (r["name"], r["fc_current_name"]):
+        for par in re.findall(r"\(([^)]+)\)", src or ""):
+            if len(par.split()) >= 2 and plausible_name(par):
+                known_norms.add(norm(par))
 # first+last pairs too, so "Gary S Griffin" doesn't shadow the listed Gary Griffin
 known_pairs = set()
 for kn in list(known_norms):

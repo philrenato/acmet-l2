@@ -1,4 +1,4 @@
-# acmet-l2 — handoff (state as of 2026-06-04)
+# acmet-l2 — handoff (state as of 2026-06-05)
 
 The recovered Tyler "Academic Metals Directory," brought current and published.
 This is the "what's actually done and what's loose" doc; `README.md` is the
@@ -123,6 +123,78 @@ correctly. Confirm the target with `gh api repos/philrenato/acmet-l2/pages`.
   no per-app accent) in `philrenato-web/index.html`.
 - `philrenato-web/data/apps.json` entry slug `acmet-l2` → feeds the polyhedral launcher.
 - sitemap entry at 0.8. (Separate repo `philrenato/philrenato.github.io`.)
+
+### 2026-06-05 session — initials search + the dedup/realness pass
+
+Phil: CCS should find Center→College for Creative Studies; abstract to every
+school that goes by initials; and "be absolutely sure every school is
+real/well named/not accidentally duped. Same with people."
+
+**School-initials search aliases.** `data/school_aliases.json` (~190 keys) maps
+normalized school-name prefixes → aliases (CCS, KCAD, RISD, SAIC, UWM, MassArt,
+MECA, UTRGV, Cal Poly Humboldt…), including predecessor→current-name bridges
+(Glassboro→Rowan, Beaver→Arcadia, Portland School of Art→MECA&D). Wired into
+`person_kw`/`prog_kw` in build_site.py via `alias_kw()` — keys anchor at the
+START of a name segment (segments split on / ( ) , ; —), longest key wins its
+prefixes, so "Indiana University of Pennsylvania" takes IUP and never plain IU,
+and "Central Washington University" never gets WashU. Both the index search and
+the map find box inherit it (they read the same kw).
+
+**The dedup/realness audit (`audit_dups.py`, fixes in
+`updates_2026_06_05_dedup.py`, both rerunnable).** Found and fixed:
+
+- **158 stale program_faculty rows** — other schools' historical rosters sitting
+  on gap/snag-gap programs (Fuller Craft Museum carried the Cleveland Institute
+  of Art roster, Brookline Arts Center carried Kansas's, McMurry carried Kent
+  State's, Peters Valley carried BGSU's). Leftovers of an old DB renumbering;
+  every row was proven an exact twin of its correct archive row before deletion.
+  +16 fully orphaned rows (program_id with no program).
+- **31 stale education rows** — same disease on people: gap people carrying an
+  archive person's education verbatim (Rachel Shimpock with Pam Lins's
+  schooling, "Jim Charles" with Charles Loloma's, Carli Holcomb with Kurt
+  Matzdorf's 1949 Oxford diploma). Exact-twin proof again.
+- **12 duplicate programs** merged (gap loaders missed renamed archive rows;
+  SNAG listed some schools twice): Nebraska Wesleyan (also fixed the archived
+  OCR garble "Wesl e yan"), SUNY Buffalo State→State University College at
+  Buffalo, SUNY New Paltz, SUNY Brockport, Academy of Art University→College,
+  UTRGV→UT Pan American, TTU Appalachian, Arcadia→Beaver College, Ox-Bow ×2,
+  Front Range ×2, Craft Alliance ×2, Glassell ×2. Current-faculty links moved
+  to the kept row first.
+- **5 duplicate people** merged: Phillip Renato→Phil Renato (the archive's PHIL
+  CARRIZZI name-change row), Bill→William R. Derrevere, Andy/Andrew Lowrie
+  (kept as Andy Lowrie), Kristi→Kristina Glick (her own bio: goes by Kristi,
+  MFA East Carolina, now heads ISU metals; Goshen link set to former),
+  Caryn→Caryn L. Hetherston (carries both Delaware Art Museum + Peters Valley).
+- **2 shadow-tree rows un-published** (history-tree twins that had been
+  fact-checked by mistake): program 203 SIU (=65 Carbondale), person 224
+  CARLYLE SMITH (=90 CARLYLE H. SMITH).
+- **Mc/O' casing** — titlecase was rendering McCORMICK→Mccormick, O'CONNELL→
+  O'connell on 20 live names; `_capword()` fixes Mc and O' (Mac left alone —
+  Macellaio is correct as-is).
+- **known_norms now includes parenthetical name variants** so "Phil Renato
+  (Phillip Renato)" suppresses mentions of either form.
+
+**Retired URLs stay live as redirects.** `redirect_stubs.py` (rerunnable)
+overwrites all 22 retired filenames with meta-refresh+canonical stubs — Pages
+keeps old files (deploy rsyncs without --delete at the root), so stubs, not
+deletions. Includes two pre-existing strays it caught: jill-gower.html (name
+fixed to Jill Baker Gower on an earlier pass, old file left behind) and
+stephen-f-saracino.html (built under an older eligibility rule, since held
+back).
+
+**Currency check:** the fc_* layer already carried every rename/closure
+spot-checked (UArts closed, Memphis closed, Edinboro→PennWest, Humboldt→Cal
+Poly, IPFW→PFW, McDaniel, Winthrop, Eastfield→Dallas College, Missouri State,
+Texas State…). One alias-table error caught by it: archived "Columbus College"
+is CCAD (Ohio) per the fact-check, not Columbus State (GA).
+
+**Deliberately kept, not dups:** MATC's three campus entries; SMFA (57) +
+Tufts (94) — two historically distinct directory entries that converged in
+2016; Portland School of Art (43) + Maine College of Art (199) — the Tyler
+directory itself listed the school under both its pre- and post-1989 names,
+both archive records kept, search bridges them via MECA.
+
+Counts after: **450 program pages, 784 profiles, 840 index names.**
 
 ### 2026-06-04 session — the Rowan pass + editorial-rules day
 The directory got its **first inbound contributor email** (Donna Sweigart, Rowan). House
