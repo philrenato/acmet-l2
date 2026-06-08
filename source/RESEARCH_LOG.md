@@ -391,3 +391,44 @@ merged 12 duplicate programs + 5 duplicate people, un-published 2 history-tree
 shadows, fixed "Nebraska Wesl e yan", fixed Mc/O' name casing. 22 retired URLs
 now redirect (redirect_stubs.py). Fixes in updates_2026_06_05_dedup.py;
 DB backups acmet.db.bak-dedup-*. 450 programs / 784 profiles after.
+
+## 2026-06-08 — fact-check pass (curated bios + recent additions)
+
+Re-verified, against live sources, the 8 curated wiki bios (Hu, Lechtzin,
+Kerner, Strzelec, Sedman, Skip Hunter, Phil Renato) and the three newest
+additions (Mark Herndon, Donna Sweigart, John Van Haren). Four parallel
+research agents; report below.
+
+**Confirmed current / unchanged:** Mary Lee Hu (alive; UW 1980–2006, Prof.
+Emerita; SNAG Lifetime Achievement in person June 2024; ACC Fellows 1996;
+Cranbrook/RIT-Christensen/SIU-Kington). Stanley Lechtzin (alive; Tyler 1962–
+2018 = 56 yrs; SNAG 2009; ACC 1992; Temple Great Teacher 1989; Wayne State-Fike
+/ Cranbrook-Thomas). Daniella Kerner — **still Executive Director of the LBI
+Foundation** (verified on the foundation's live Our-Team page); Tyler 41 yrs,
+retired 2018. Rebecca Strzelec — **still Associate Dean for Academic Programs &
+Professor at U-Michigan Stamps** (since 2023); Penn State Altoona 2002–2023;
+Laureate 2016–17; 3D printing since 1999. Vickie Sedman (active studio practice;
+Tyler; Wayne State / UW-Madison). John Van Haren (1930–2010, 40 yrs EMU, 15 as
+head — obituary-confirmed). Mark Herndon (IAIA faculty + Herndon Forge + UNT MFA
+confirmed; the 2005–2015 dates / Corcoran BFA / Butt mentorship remain inferred,
+as already flagged in factcheck).
+
+**One correction — Donna Sweigart's rank.** The entry led with "Professor of
+Art & Design," while its own footnote conceded that Rowan's faculty page and her
+CV say Associate Professor and Chair. A fresh fetch of the school's current page
+(rowan.edu/.../sweigart.html) reads "Associate Professor of Art & Design"; her
+CV reads "Associate Professor of Art (tenured), Chair of the Department of Art,
+2020–present." Per the standing rank rule (the school's own page is
+authoritative; people/self-bios say "professor" colloquially; conflicts
+footnoted), the published rank was corrected to Associate Professor, footnote
+retained. Education (Beaver/Arcadia BFA 1996 → Tyler MFA 2004), chair role, area
+headship, employment history, honors — all re-verified, unchanged. Note: the
+HANDOFF shorthand "UTPA→UTRGV→Rowan" is her *employment* path (correctly stored
+as employment, not education); not an error. Script:
+`updates_2026_06_08_sweigart_rank.py`; backup `acmet.db.bak-sweigart-rank-060800`.
+
+**Soft notes (no change made):** Hu's "BFA under Richard Thomas" and Kerner/
+Sedman's named MFA advisors aren't separately source-confirmed beyond the
+school+era — kept as documented lineage inferences (Thomas led Cranbrook metals
+in that era). Sedman's 1949/Detroit birth and "Emerita" title weren't web-
+confirmable but aren't contradicted; kept from the archive/editor knowledge.
