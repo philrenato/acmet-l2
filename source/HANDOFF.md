@@ -20,6 +20,13 @@ Inbound claims follow the house rule (verify against fetched sources before
 publishing). If a wiki bio was edited, pull it into `site/wiki/` so the next
 deploy doesn't fight it.
 
+**Inbound check 2026-06-24 — CLEAN, nothing to act on.** Wiki: only the two
+2026-06-04 seed commits (Phil; Home + 7 curated bios), no third-party edits.
+Issues: none. PRs: none. Comments/discussions: none. One fork exists
+(`sawframe/acmet-l2`, created 2026-06-05) but it is **0 commits ahead / 4
+behind** — a plain fork with no changes. No deploy. Last real work remains the
+2026-06-08 Sweigart-rank fact-check pass.
+
 ### ⚠ WRITING RULE — no process exposition in copy (Phil, 2026-06-04)
 Public pages never narrate research rules or effort ("belongs in directory",
 "per the no-invent rule", "confirmed via…", "couldn't be documented"). State

@@ -1,14 +1,14 @@
 {
- "_generated": "2026-06-08",
+ "_generated": "2026-07-12",
  "_source": "acmet.db",
  "stats": {
-  "nodes": 1291,
-  "people": 841,
+  "nodes": 1292,
+  "people": 842,
   "programs": 450,
   "programs_placed": 450,
-  "edges": 1891,
-  "yinferred": 51,
-  "undated": 1016
+  "edges": 1895,
+  "yinferred": 53,
+  "undated": 1015
  },
  "nodes": [
   {
@@ -6373,8 +6373,8 @@
    "id": "snag-gap/rio-grande",
    "kind": "program",
    "name": "Rio Grande",
-   "date": null,
-   "yinferred": false,
+   "date": 2017,
+   "yinferred": true,
    "status": "active",
    "location": {
     "state": "NM",
@@ -20991,6 +20991,22 @@
    },
    "summary": "Mark Herndon is a metalsmith based in Santa Fe, New Mexico, where he and his wife, designer Naomi Herndon, run Herndon Forge, a studio making Southwestern jewelry in the foothills of the Sangre de Cristo mountains. He earned a BFA in Sculpt",
    "page": "mark-herndon.html"
+  },
+  {
+   "id": "gap/jim-binnion",
+   "kind": "person",
+   "name": "Jim Binnion",
+   "date": 1980,
+   "yinferred": true,
+   "status": "alive",
+   "location": {
+    "state": "NM",
+    "lat": 48.75,
+    "lng": -122.48,
+    "precision": "city"
+   },
+   "summary": "Jim Binnion (James Binnion) is a mokume-gane artist and metalsmith based in Bellingham, WA. After nine years as a U.S. Navy submarine electronics technician and thirteen years as a Silicon Valley electronics/research engineer, he took eveni",
+   "page": "jim-binnion.html"
   }
  ],
  "edges": [
@@ -28291,6 +28307,18 @@
    "label": "MFA"
   },
   {
+   "from": "gap/jim-binnion",
+   "to": "crafts/metalsdirectorypage/p163.html",
+   "type": "studied-under",
+   "label": "Evening/weekend jewelry classes"
+  },
+  {
+   "from": "gap/jim-binnion",
+   "to": "crafts/metalsdirectorypage/s151.html",
+   "type": "studied-at",
+   "label": "Evening/weekend jewelry classes"
+  },
+  {
    "from": "crafts/metalsdirectorypage/p165.html",
    "to": "crafts/metalsdirectorypage/s1.html",
    "type": "faculty-of",
@@ -28551,6 +28579,12 @@
   {
    "from": "crafts/metalsdirectorypage/p90.html",
    "to": "crafts/metalsdirectorypage/s149.html",
+   "type": "faculty-of",
+   "label": ""
+  },
+  {
+   "from": "gap/jim-binnion",
+   "to": "crafts/metalsdirectorypage/s151.html",
    "type": "faculty-of",
    "label": ""
   },
@@ -31653,6 +31687,12 @@
   {
    "from": "snag-gap/michael-dadayan",
    "to": "snag-gap/richmond-art-center",
+   "type": "faculty-of",
+   "label": ""
+  },
+  {
+   "from": "gap/jim-binnion",
+   "to": "snag-gap/rio-grande",
    "type": "faculty-of",
    "label": ""
   },
