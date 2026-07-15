@@ -3,7 +3,7 @@
 
 Updates existing directory people / inserts new ones with verified current role,
 institution, status, education, and a permalink source. Special handling:
-  * Jill Baker Gower -> College of DuPage (Phil's correction); merge the stray
+  * Jill Baker Gower -> College of DuPage (manual correction); merge the stray
     Glassboro/Rowan duplicate row into one canonical record.
 """
 import os, re, sys, json, sqlite3
@@ -71,7 +71,7 @@ for v in recs:
     conf = v.get("confidence","medium")
     still = "retired-emeritus" if status == "retired" else "yes"
 
-    # ---- Jill Baker Gower: Phil's correction overrides the agent ----
+    # ---- Jill Baker Gower: manual correction overrides the agent ----
     if "gower" in norm(name):
         inst = "College of DuPage"
         role = "Professor of Metalsmithing & Jewelry, College of DuPage"

@@ -16,6 +16,7 @@ MSG="${1:-Update directory + republish}"
 
 echo "==> build"
 cd "$HERE"
+find "$HERE" -name '.DS_Store' -delete
 # site FIRST: build_graph existence-checks site/*.html to decide which nodes
 # get profile links — a brand-new person's page must exist before the graph runs
 python3 build_site.py | tail -2
@@ -26,7 +27,7 @@ python3 build_lineage.py >/dev/null
 echo "==> sync into $REPO"
 [ -d "$REPO/.git" ] || git clone https://github.com/philrenato/acmet-l2.git "$REPO"
 # published site at root
-rsync -a --exclude 'wiki/' "$HERE/site/" "$REPO/"
+rsync -a --exclude 'wiki/' --exclude '.DS_Store' "$HERE/site/" "$REPO/"
 cp "$HERE/site/wiki/"*.md "$REPO/" 2>/dev/null || true
 mkdir -p "$REPO/data"; cp "$HERE/data/acmet-graph.json" "$REPO/data/" 2>/dev/null || true
 cp "$HERE/MIRROR.md" "$REPO/" 2>/dev/null || true
@@ -35,11 +36,12 @@ cp "$HERE/REPO_README.md" "$REPO/README.md" 2>/dev/null || true
 touch "$REPO/.nojekyll"
 # full source under /source (everything except build output, DB backups, git)
 rsync -a --delete \
-  --exclude 'site/' --exclude '.git/' --exclude '*.bak-*' --exclude '__pycache__/' \
+  --exclude 'site/' --exclude '.git/' --exclude '*.bak-*' --exclude '__pycache__/' --exclude '.DS_Store' \
   "$HERE/" "$REPO/source/"
 
 echo "==> commit + push"
 cd "$REPO"
+find "$REPO" -name '.DS_Store' -delete
 git add -A
 git commit -q -m "$MSG" || { echo "(nothing to commit)"; exit 0; }
 git push origin main | tail -1
