@@ -878,12 +878,20 @@ total, nbuilt = n_deg + n_oth, len(built)
 INDEX = f"""<!doctype html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Academic Metals Directory</title>
-<meta name="description" content="The recovered Tyler School of Art directory of US jewelry, metals, and CAD-CAM teaching programs and the people who taught them — fact-checked and brought current. {total} people, {len(programs)} programs, a map, and a teacher-to-student lineage back to 1885.">
+<meta name="description" content="The recovered Tyler School of Art directory of US jewelry, metals, and CAD-CAM teaching programs and the people who taught them, fact-checked and current.">
 <link rel="canonical" href="https://renato.design/acmet-l2/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Academic Metals Directory">
 <meta property="og:description" content="US jewelry/metals teaching programs and the people who taught them — the old Tyler directory recovered from the Wayback Machine, fact-checked, and brought current.">
 <meta property="og:url" content="https://renato.design/acmet-l2/">
+<meta property="og:image" content="https://renato.design/images/emblem.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Academic Metals Directory">
+<meta name="twitter:description" content="US jewelry/metals teaching programs and the people who taught them — the old Tyler directory recovered from the Wayback Machine, fact-checked, and brought current.">
+<meta name="twitter:image" content="https://renato.design/images/emblem.png">
+<script type="application/ld+json">
+{{"@context":"https://schema.org","@type":"Dataset","name":"Academic Metals Directory","description":"US jewelry, metals and CAD-CAM teaching programs and the people who taught them, recovered from the Tyler School of Art directory, fact-checked and current.","url":"https://renato.design/acmet-l2/","creator":{{"@type":"Person","name":"Phil Renato","url":"https://renato.design/"}}}}
+</script>
 <style>{CSS}
   .names{{column-width:220px;column-gap:32px;margin-top:8px}}
   .names a, .names span{{display:block;padding:4px 0;font-size:15px;break-inside:avoid}}

@@ -1,0 +1,37 @@
+# Local history hygiene, added 2026-09-02.
+# Build output, caches, and files over 2 MB stay out of git; they remain on disk.
+.DS_Store
+node_modules/
+__pycache__/
+*.pyc
+build/
+dist/
+DerivedData/
+.build/
+.swiftpm/
+xcuserdata/
+*.xcuserstate
+*.dSYM/
+*.bak
+*.bak.*
+*.blend1
+
+# files over 2 MB
+acmet.db.bak-herndon-141106
+acmet.db.bak-20260530-101515
+acmet.db.bak-audit2-144912
+acmet.db.bak-binnion-152252
+acmet.db.bak-sweigart-rank-060800
+acmet.db.bak-simplecopy-193519
+acmet.db
+acmet.db.bak-dedup-112954
+acmet.db.bak-rowan-125359
+acmet.db.bak-preload-113325
+acmet.db.bak-dedup-113800
+acmet.db.bak-gr-120639
+acmet.db.bak-links-124416
+acmet.db.bak-dedup-113100
+acmet.db.bak-prerecords-114334
+archive/data/cdx_full.json
+archive/data/schools.json
+archive/data/pages.json
